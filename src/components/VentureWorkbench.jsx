@@ -65,21 +65,21 @@ export default function VentureWorkbench() {
   ];
 
   return (
-    <section id="ventures" className="w-full bg-white text-neutral-950 py-24 lg:py-32 px-6 sm:px-12 border-t border-neutral-200 font-sans">
+    <section id="ventures" className="w-full bg-white text-[var(--color-text-primary)] py-24 lg:py-32 px-6 sm:px-12 border-t border-[var(--color-border)]/40 font-sans">
       <div className="max-w-6xl mx-auto space-y-16 lg:space-y-20">
         
         {/* Section Header */}
-        <div className="space-y-5 border-b border-neutral-200 pb-10">
-          <div className="inline-flex items-center space-x-2 bg-neutral-100 text-neutral-800 font-sans text-xs px-3.5 py-1.5 rounded-full font-semibold">
-            <Layers className="w-3.5 h-3.5 shrink-0 text-neutral-900" />
+        <div className="space-y-5 border-b border-[var(--color-border)]/40 pb-10">
+          <div className="inline-flex items-center space-x-2 bg-[var(--color-surface)]/30 text-[var(--color-accent-primary)] border border-[var(--color-border)]/40 font-sans text-xs px-3.5 py-1.5 rounded-full font-semibold">
+            <Layers className="w-3.5 h-3.5 shrink-0 text-[var(--color-accent-primary)]" />
             <span>02 // Ventures & Case Studies</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold font-sans tracking-tight text-neutral-950 leading-tight">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold font-sans tracking-tight text-[var(--color-text-primary)] leading-tight">
             Chief Operating Officer roles & verified case studies
           </h2>
 
-          <p className="text-base sm:text-lg text-neutral-600 font-sans leading-relaxed max-w-3xl">
+          <p className="text-base sm:text-lg text-[#383838] font-sans leading-relaxed max-w-3xl">
             Detailed case studies of ventures I have co-founded, built, and launched. Each case study documents the core problem, target user, personal ownership, shipped deliverables, and verifiable evidence.
           </p>
         </div>
@@ -88,66 +88,66 @@ export default function VentureWorkbench() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           
           {/* Case Study 1: Ziggers -> PixelTransition */}
-          <PixelTransition className="p-8 flex flex-col justify-between space-y-8 h-full">
+          <PixelTransition className="p-8 flex flex-col justify-between space-y-8 h-full bg-white border border-[var(--color-border)]/50 rounded-3xl hover:border-[var(--color-accent-secondary)] transition-all shadow-sm">
             <div className="space-y-6">
               <div className="flex items-center justify-between text-xs">
-                <span className="bg-neutral-100 text-neutral-800 px-3 py-1 rounded-full font-medium text-[11px]">
+                <span className="bg-[var(--color-surface)]/30 text-[var(--color-accent-primary)] border border-[var(--color-border)]/40 px-3 py-1 rounded-full font-medium text-[11px]">
                   {caseStudies[0].badge}
                 </span>
-                <span className="text-neutral-400 font-mono text-xs">Case Study 01</span>
+                <span className="text-[var(--color-text-muted)] font-mono text-xs">Case Study 01</span>
               </div>
 
               <div>
                 <div className="flex items-center justify-between">
-                  <h3 className="text-2xl font-bold text-neutral-950 tracking-tight">
+                  <h3 className="text-2xl font-bold text-[var(--color-text-primary)] tracking-tight">
                     <FuzzyText>{caseStudies[0].name}</FuzzyText>
                   </h3>
-                  <div className="w-9 h-9 bg-neutral-100 rounded-xl flex items-center justify-center">
-                    <Zap className="w-4 h-4 text-neutral-900" />
+                  <div className="w-9 h-9 bg-[var(--color-surface)]/30 border border-[var(--color-border)]/40 rounded-xl flex items-center justify-center">
+                    <Zap className="w-4 h-4 text-[var(--color-accent-primary)]" />
                   </div>
                 </div>
-                <div className="text-xs font-semibold text-neutral-900 mt-1">
+                <div className="text-xs font-semibold text-[var(--color-accent-primary)] mt-1">
                   {caseStudies[0].role}
                 </div>
-                <div className="text-xs text-neutral-500 mt-0.5">
+                <div className="text-xs text-[var(--color-text-muted)] mt-0.5">
                   {caseStudies[0].period} • {caseStudies[0].location}
                 </div>
               </div>
 
               {/* Case Study Questions & Answers */}
-              <div className="space-y-4 pt-2 text-xs border-t border-neutral-100">
+              <div className="space-y-4 pt-2 text-xs border-t border-[var(--color-border)]/30">
                 <div>
-                  <span className="font-bold text-neutral-900 block mb-1">Problem Solved:</span>
-                  <p className="text-neutral-600 leading-relaxed">{caseStudies[0].problem}</p>
+                  <span className="font-bold text-[var(--color-text-primary)] block mb-1">Problem Solved:</span>
+                  <p className="text-[#4A4A4A] leading-relaxed">{caseStudies[0].problem}</p>
                 </div>
 
                 <div>
-                  <span className="font-bold text-neutral-900 block mb-1">Target User:</span>
-                  <p className="text-neutral-600 leading-relaxed">{caseStudies[0].user}</p>
+                  <span className="font-bold text-[var(--color-text-primary)] block mb-1">Target User:</span>
+                  <p className="text-[#4A4A4A] leading-relaxed">{caseStudies[0].user}</p>
                 </div>
 
                 <div>
-                  <span className="font-bold text-neutral-900 block mb-1">What I Personally Owned:</span>
-                  <p className="text-neutral-600 leading-relaxed">{caseStudies[0].ownership}</p>
+                  <span className="font-bold text-[var(--color-text-primary)] block mb-1">What I Personally Owned:</span>
+                  <p className="text-[#4A4A4A] leading-relaxed">{caseStudies[0].ownership}</p>
                 </div>
 
                 <div>
-                  <span className="font-bold text-neutral-900 block mb-1">What Was Shipped:</span>
-                  <p className="text-neutral-600 leading-relaxed">{caseStudies[0].shipped}</p>
+                  <span className="font-bold text-[var(--color-text-primary)] block mb-1">What Was Shipped:</span>
+                  <p className="text-[#4A4A4A] leading-relaxed">{caseStudies[0].shipped}</p>
                 </div>
               </div>
 
               <div className="flex flex-wrap gap-1.5 pt-2">
                 {caseStudies[0].tags.map((t, i) => (
-                  <span key={i} className="text-[11px] bg-neutral-50 border border-neutral-200 px-2.5 py-1 rounded-md text-neutral-700 font-medium">
+                  <span key={i} className="text-[11px] bg-[var(--color-surface)]/25 border border-[var(--color-border)]/40 px-2.5 py-1 rounded-md text-[var(--color-accent-primary)] font-medium">
                     {t}
                   </span>
                 ))}
               </div>
             </div>
 
-            <div className="pt-6 border-t border-neutral-100 flex flex-wrap items-center justify-between gap-3">
-              <a href="/ventures/ziggers/" className="text-xs font-bold text-neutral-900 hover:underline">
+            <div className="pt-6 border-t border-[var(--color-border)]/30 flex flex-wrap items-center justify-between gap-3">
+              <a href="/ventures/ziggers/" className="text-xs font-bold text-[var(--color-accent-primary)] hover:underline">
                 Read full case study →
               </a>
               <a href={caseStudies[0].url} target="_blank" rel="noopener noreferrer" className="inline-block">
@@ -162,67 +162,67 @@ export default function VentureWorkbench() {
           </PixelTransition>
 
           {/* Case Study 2: LoopMemory -> StackCard */}
-          <StackCard className="h-full">
-            <div className="flex flex-col justify-between space-y-8 h-full">
+          <StackCard className="h-full bg-white border border-[var(--color-border)]/50 rounded-3xl hover:border-[var(--color-accent-secondary)] transition-all shadow-sm">
+            <div className="flex flex-col justify-between space-y-8 h-full p-8">
               <div className="space-y-6">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="bg-neutral-100 text-neutral-800 px-3 py-1 rounded-full font-medium text-[11px]">
+                  <span className="bg-[var(--color-surface)]/30 text-[var(--color-accent-primary)] border border-[var(--color-border)]/40 px-3 py-1 rounded-full font-medium text-[11px]">
                     {caseStudies[1].badge}
                   </span>
-                  <span className="text-neutral-400 font-mono text-xs">Case Study 02</span>
+                  <span className="text-[var(--color-text-muted)] font-mono text-xs">Case Study 02</span>
                 </div>
 
                 <div>
                   <div className="flex items-center justify-between">
-                    <h3 className="text-2xl font-bold text-neutral-950 tracking-tight">
+                    <h3 className="text-2xl font-bold text-[var(--color-text-primary)] tracking-tight">
                       <FuzzyText>{caseStudies[1].name}</FuzzyText>
                     </h3>
-                    <div className="w-9 h-9 bg-neutral-100 rounded-xl flex items-center justify-center">
-                      <Code className="w-4 h-4 text-neutral-900" />
+                    <div className="w-9 h-9 bg-[var(--color-surface)]/30 border border-[var(--color-border)]/40 rounded-xl flex items-center justify-center">
+                      <Code className="w-4 h-4 text-[var(--color-accent-primary)]" />
                     </div>
                   </div>
-                  <div className="text-xs font-semibold text-neutral-900 mt-1">
+                  <div className="text-xs font-semibold text-[var(--color-accent-primary)] mt-1">
                     {caseStudies[1].role}
                   </div>
-                  <div className="text-xs text-neutral-500 mt-0.5">
+                  <div className="text-xs text-[var(--color-text-muted)] mt-0.5">
                     {caseStudies[1].period} • {caseStudies[1].location}
                   </div>
                 </div>
 
                 {/* Case Study Questions & Answers */}
-                <div className="space-y-4 pt-2 text-xs border-t border-neutral-100">
+                <div className="space-y-4 pt-2 text-xs border-t border-[var(--color-border)]/30">
                   <div>
-                    <span className="font-bold text-neutral-900 block mb-1">Problem Solved:</span>
-                    <p className="text-neutral-600 leading-relaxed">{caseStudies[1].problem}</p>
+                    <span className="font-bold text-[var(--color-text-primary)] block mb-1">Problem Solved:</span>
+                    <p className="text-[#4A4A4A] leading-relaxed">{caseStudies[1].problem}</p>
                   </div>
 
                   <div>
-                    <span className="font-bold text-neutral-900 block mb-1">Target User:</span>
-                    <p className="text-neutral-600 leading-relaxed">{caseStudies[1].user}</p>
+                    <span className="font-bold text-[var(--color-text-primary)] block mb-1">Target User:</span>
+                    <p className="text-[#4A4A4A] leading-relaxed">{caseStudies[1].user}</p>
                   </div>
 
                   <div>
-                    <span className="font-bold text-neutral-900 block mb-1">What I Personally Owned:</span>
-                    <p className="text-neutral-600 leading-relaxed">{caseStudies[1].ownership}</p>
+                    <span className="font-bold text-[var(--color-text-primary)] block mb-1">What I Personally Owned:</span>
+                    <p className="text-[#4A4A4A] leading-relaxed">{caseStudies[1].ownership}</p>
                   </div>
 
                   <div>
-                    <span className="font-bold text-neutral-900 block mb-1">What Was Shipped:</span>
-                    <p className="text-neutral-600 leading-relaxed">{caseStudies[1].shipped}</p>
+                    <span className="font-bold text-[var(--color-text-primary)] block mb-1">What Was Shipped:</span>
+                    <p className="text-[#4A4A4A] leading-relaxed">{caseStudies[1].shipped}</p>
                   </div>
                 </div>
 
                 <div className="flex flex-wrap gap-1.5 pt-2">
                   {caseStudies[1].tags.map((t, i) => (
-                    <span key={i} className="text-[11px] bg-neutral-50 border border-neutral-200 px-2.5 py-1 rounded-md text-neutral-700 font-medium">
+                    <span key={i} className="text-[11px] bg-[var(--color-surface)]/25 border border-[var(--color-border)]/40 px-2.5 py-1 rounded-md text-[var(--color-accent-primary)] font-medium">
                       {t}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <div className="pt-6 border-t border-neutral-100 flex flex-wrap items-center justify-between gap-3">
-                <a href="/ventures/loopmemory/" className="text-xs font-bold text-neutral-900 hover:underline">
+              <div className="pt-6 border-t border-[var(--color-border)]/30 flex flex-wrap items-center justify-between gap-3">
+                <a href="/ventures/loopmemory/" className="text-xs font-bold text-[var(--color-accent-primary)] hover:underline">
                   Read full case study →
                 </a>
                 <a href={caseStudies[1].url} target="_blank" rel="noopener noreferrer" className="inline-block">
@@ -238,72 +238,72 @@ export default function VentureWorkbench() {
           </StackCard>
 
           {/* Case Study 3: Unfounded -> ChromaGrid */}
-          <ChromaGrid className="p-8 flex flex-col justify-between space-y-8 h-full">
+          <ChromaGrid className="p-8 flex flex-col justify-between space-y-8 h-full bg-white border border-[var(--color-border)]/50 rounded-3xl hover:border-[var(--color-accent-secondary)] transition-all shadow-sm">
             <div className="space-y-6">
               <div className="flex items-center justify-between text-xs">
-                <span className="bg-neutral-100 text-neutral-800 px-3 py-1 rounded-full font-medium text-[11px]">
+                <span className="bg-[var(--color-surface)]/30 text-[var(--color-accent-primary)] border border-[var(--color-border)]/40 px-3 py-1 rounded-full font-medium text-[11px]">
                   {caseStudies[2].badge}
                 </span>
-                <span className="text-neutral-400 font-mono text-xs">Case Study 03</span>
+                <span className="text-[var(--color-text-muted)] font-mono text-xs">Case Study 03</span>
               </div>
 
               <div>
                 <div className="flex items-center justify-between">
-                  <h3 className="text-2xl font-bold text-neutral-950 tracking-tight">
+                  <h3 className="text-2xl font-bold text-[var(--color-text-primary)] tracking-tight">
                     <FuzzyText>{caseStudies[2].name}</FuzzyText>
                   </h3>
-                  <div className="w-9 h-9 bg-neutral-100 rounded-xl flex items-center justify-center">
-                    <Rocket className="w-4 h-4 text-neutral-900" />
+                  <div className="w-9 h-9 bg-[var(--color-surface)]/30 border border-[var(--color-border)]/40 rounded-xl flex items-center justify-center">
+                    <Rocket className="w-4 h-4 text-[var(--color-accent-primary)]" />
                   </div>
                 </div>
-                <div className="text-xs font-semibold text-neutral-900 mt-1">
+                <div className="text-xs font-semibold text-[var(--color-accent-primary)] mt-1">
                   {caseStudies[2].role}
                 </div>
-                <div className="text-xs text-neutral-500 mt-0.5">
+                <div className="text-xs text-[var(--color-text-muted)] mt-0.5">
                   {caseStudies[2].period} • {caseStudies[2].location}
                 </div>
               </div>
 
               {/* Case Study Questions & Answers */}
-              <div className="space-y-4 pt-2 text-xs border-t border-neutral-100">
+              <div className="space-y-4 pt-2 text-xs border-t border-[var(--color-border)]/30">
                 <div>
-                  <span className="font-bold text-neutral-900 block mb-1">Problem Solved:</span>
-                  <p className="text-neutral-600 leading-relaxed">{caseStudies[2].problem}</p>
+                  <span className="font-bold text-[var(--color-text-primary)] block mb-1">Problem Solved:</span>
+                  <p className="text-[#4A4A4A] leading-relaxed">{caseStudies[2].problem}</p>
                 </div>
 
                 <div>
-                  <span className="font-bold text-neutral-900 block mb-1">Target User:</span>
-                  <p className="text-neutral-600 leading-relaxed">{caseStudies[2].user}</p>
+                  <span className="font-bold text-[var(--color-text-primary)] block mb-1">Target User:</span>
+                  <p className="text-[#4A4A4A] leading-relaxed">{caseStudies[2].user}</p>
                 </div>
 
                 <div>
-                  <span className="font-bold text-neutral-900 block mb-1">What I Personally Owned:</span>
-                  <p className="text-neutral-600 leading-relaxed">{caseStudies[2].ownership}</p>
+                  <span className="font-bold text-[var(--color-text-primary)] block mb-1">What I Personally Owned:</span>
+                  <p className="text-[#4A4A4A] leading-relaxed">{caseStudies[2].ownership}</p>
                 </div>
 
                 <div>
-                  <span className="font-bold text-neutral-900 block mb-1">What Was Shipped:</span>
-                  <p className="text-neutral-600 leading-relaxed">{caseStudies[2].shipped}</p>
+                  <span className="font-bold text-[var(--color-text-primary)] block mb-1">What Was Shipped:</span>
+                  <p className="text-[#4A4A4A] leading-relaxed">{caseStudies[2].shipped}</p>
                 </div>
               </div>
 
               <div className="flex flex-wrap gap-1.5 pt-2">
                 {caseStudies[2].tags.map((t, i) => (
-                  <span key={i} className="text-[11px] bg-neutral-50 border border-neutral-200 px-2.5 py-1 rounded-md text-neutral-700 font-medium">
+                  <span key={i} className="text-[11px] bg-[var(--color-surface)]/25 border border-[var(--color-border)]/40 px-2.5 py-1 rounded-md text-[var(--color-accent-primary)] font-medium">
                     {t}
                   </span>
                 ))}
               </div>
             </div>
 
-            <div className="pt-6 border-t border-neutral-100 flex flex-wrap items-center justify-between gap-3">
-              <a href="/about/" className="text-xs font-bold text-neutral-900 hover:underline">
-                Founder Bio & Education →
+            <div className="pt-6 border-t border-[var(--color-border)]/30 flex flex-wrap items-center justify-between gap-3">
+              <a href="/about/" className="text-xs font-bold text-[var(--color-accent-primary)] hover:underline">
+                Read studio methodology →
               </a>
               <a href={caseStudies[2].url} target="_blank" rel="noopener noreferrer" className="inline-block">
                 <ElectricBorder className="py-2 px-4 text-xs">
                   <span className="flex items-center space-x-1.5">
-                    <span>LinkedIn Profile</span>
+                    <span>LinkedIn Studio</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </span>
                 </ElectricBorder>

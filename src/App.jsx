@@ -51,9 +51,9 @@ export default function App() {
 
   // Streamlined Homepage: Living Parallax Hero + Proof Strip + Section Directory Portals
   return (
-    <div className="relative min-h-screen bg-white text-neutral-950 flex flex-col font-sans selection:bg-neutral-900 selection:text-white overflow-x-hidden">
+    <div className="relative min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] flex flex-col font-sans selection:bg-[var(--color-accent-primary)] selection:text-white overflow-x-hidden">
       {/* Global Ambient Interactive Particles Canvas Background */}
-      <Particles particleCount={30} speed={0.3} particleColor="#18181B" />
+      <Particles particleCount={30} speed={0.3} particleColor="#2C3E2D" />
 
       {/* Navigation Header */}
       <Header />

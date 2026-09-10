@@ -65,7 +65,7 @@ export default function SocialLinks({ className = "", compact = false }) {
               href={s.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 rounded-full bg-neutral-100 hover:bg-neutral-950 text-neutral-700 hover:text-white flex items-center justify-center transition-colors"
+              className="w-8 h-8 rounded-full bg-[var(--color-surface)]/30 hover:bg-[var(--color-accent-primary)] text-[var(--color-accent-primary)] hover:text-white border border-[var(--color-border)]/40 flex items-center justify-center transition-colors"
               title={`${s.name} (${s.handle})`}
               aria-label={s.name}
             >
@@ -87,18 +87,18 @@ export default function SocialLinks({ className = "", compact = false }) {
             href={s.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3.5 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 rounded-xl flex items-center justify-between group transition-all"
+            className="p-3.5 bg-white hover:bg-[var(--color-surface)]/20 border border-[var(--color-border)]/40 hover:border-[var(--color-accent-secondary)] rounded-xl flex items-center justify-between group transition-all"
           >
             <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 rounded-lg bg-white border border-neutral-200 flex items-center justify-center text-neutral-900 group-hover:bg-neutral-950 group-hover:text-white transition-colors">
+              <div className="w-8 h-8 rounded-lg bg-[var(--color-surface)]/30 border border-[var(--color-border)]/40 flex items-center justify-center text-[var(--color-accent-primary)] group-hover:bg-[var(--color-accent-primary)] group-hover:text-white transition-colors">
                 <Icon className="w-4 h-4" />
               </div>
               <div>
-                <span className="text-xs font-bold text-neutral-950 block">{s.name}</span>
-                <span className="text-[11px] text-neutral-500 block">{s.handle}</span>
+                <span className="text-xs font-bold text-[var(--color-text-primary)] block">{s.name}</span>
+                <span className="text-[11px] text-[var(--color-text-muted)] block">{s.handle}</span>
               </div>
             </div>
-            <span className="text-xs text-neutral-400 group-hover:text-neutral-950 group-hover:translate-x-0.5 transition-all">
+            <span className="text-xs text-[var(--color-text-muted)] group-hover:text-[var(--color-accent-primary)] group-hover:translate-x-0.5 transition-all">
               ↗
             </span>
           </a>

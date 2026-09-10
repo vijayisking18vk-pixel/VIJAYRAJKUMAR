@@ -43,19 +43,19 @@ export default function PagePortalsGrid() {
   ];
 
   return (
-    <section className="w-full bg-white text-neutral-950 py-20 px-6 sm:px-12 border-t border-neutral-200 font-sans">
+    <section id="portals" className="w-full bg-white text-[var(--color-text-primary)] py-20 px-6 sm:px-12 border-t border-[var(--color-border)]/40 font-sans">
       <div className="max-w-6xl mx-auto space-y-12">
         
         {/* Header */}
         <div className="space-y-3 max-w-2xl">
-          <div className="inline-flex items-center space-x-2 bg-neutral-100 text-neutral-800 text-xs px-3 py-1 rounded-full font-semibold">
-            <Layers className="w-3.5 h-3.5 text-neutral-900" />
+          <div className="inline-flex items-center space-x-2 bg-[var(--color-surface)]/30 text-[var(--color-accent-primary)] border border-[var(--color-border)]/40 text-xs px-3 py-1 rounded-full font-semibold">
+            <Layers className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
             <span>Explore the Platform</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-neutral-950">
+          <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-[var(--color-text-primary)]">
             Dedicated sections & portfolios
           </h2>
-          <p className="text-sm sm:text-base text-neutral-600 leading-relaxed">
+          <p className="text-sm sm:text-base text-[#4A4A4A] leading-relaxed">
             Navigate directly to detailed case studies, background credentials, strategic writing, or the collaboration dispatch.
           </p>
         </div>
@@ -70,33 +70,33 @@ export default function PagePortalsGrid() {
                 href={portal.href}
                 className="group block"
               >
-                <SpotlightCard className="p-8 h-full flex flex-col justify-between space-y-6 hover:border-neutral-400 transition-all rounded-3xl bg-neutral-50/50">
+                <SpotlightCard className="p-8 h-full flex flex-col justify-between space-y-6 hover:border-[var(--color-accent-secondary)] transition-all rounded-3xl bg-white border border-[var(--color-border)]/50 shadow-sm">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs uppercase tracking-wider font-semibold text-neutral-500">
+                      <span className="text-xs uppercase tracking-wider font-semibold text-[var(--color-text-muted)]">
                         {portal.category}
                       </span>
-                      <div className="w-8 h-8 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-neutral-900 group-hover:bg-neutral-950 group-hover:text-white transition-colors">
+                      <div className="w-8 h-8 rounded-full bg-[var(--color-surface)]/20 border border-[var(--color-border)]/40 flex items-center justify-center text-[var(--color-accent-primary)] group-hover:bg-[var(--color-accent-primary)] group-hover:text-white transition-colors">
                         <ArrowUpRight className="w-4 h-4" />
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <h3 className="text-xl sm:text-2xl font-bold text-neutral-950 group-hover:underline">
+                      <h3 className="text-xl sm:text-2xl font-bold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-primary)] transition-colors">
                         {portal.title}
                       </h3>
-                      <p className="text-sm text-neutral-600 leading-relaxed">
+                      <p className="text-sm text-[#4A4A4A] leading-relaxed">
                         {portal.description}
                       </p>
                     </div>
                   </div>
 
-                  <div className="space-y-4 pt-4 border-t border-neutral-200/70">
+                  <div className="space-y-4 pt-4 border-t border-[var(--color-border)]/30">
                     <div className="flex flex-wrap gap-2">
                       {portal.highlights.map((h, i) => (
                         <span
                           key={i}
-                          className="text-[11px] bg-white border border-neutral-200 text-neutral-700 px-2.5 py-1 rounded-md font-medium"
+                          className="text-[11px] bg-[var(--color-surface)]/25 border border-[var(--color-border)]/40 text-[var(--color-accent-primary)] px-2.5 py-1 rounded-md font-medium"
                         >
                           {h}
                         </span>
@@ -104,10 +104,10 @@ export default function PagePortalsGrid() {
                     </div>
 
                     <div className="flex items-center justify-between text-xs pt-1">
-                      <span className="font-semibold text-neutral-900">
+                      <span className="font-semibold text-[var(--color-accent-primary)]">
                         {portal.badge}
                       </span>
-                      <span className="font-medium text-neutral-500 group-hover:text-neutral-950 inline-flex items-center space-x-1">
+                      <span className="font-medium text-[var(--color-text-muted)] group-hover:text-[var(--color-accent-primary)] inline-flex items-center space-x-1 transition-colors">
                         <span>Open page</span>
                         <span>→</span>
                       </span>

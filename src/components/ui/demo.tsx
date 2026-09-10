@@ -374,37 +374,7 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
       targetCursorX.current = e.clientX;
     };
 
-    // Touch drag handler for mobile (smooth additive glide)
-    let touchStartX = 0;
-    let touchStartY = 0;
-
-    const handleTouchStart = (e: TouchEvent) => {
-      if (e.touches.length > 0) {
-        touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
-      }
-    };
-
-    const handleTouchMove = (e: TouchEvent) => {
-      if (e.touches.length > 0) {
-        const touch = e.touches[0];
-        const diffX = (touch.clientX - touchStartX) * 1.5;
-        const diffY = (touch.clientY - touchStartY) * 1.2;
-
-        const newX = (touch.clientX - window.innerWidth / 2) + diffX;
-        const newY = (touch.clientY - window.innerHeight / 2) + diffY;
-        const newRotate = (newX / (window.innerWidth / 2)) * 18;
-
-        targetX.current = newX;
-        targetY.current = newY;
-        targetRotate.current = newRotate;
-        targetCursorX.current = touch.clientX;
-      }
-    };
-
     window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('touchstart', handleTouchStart, { passive: true });
-    window.addEventListener('touchmove', handleTouchMove, { passive: true });
 
     // 60fps/120fps Hardware-Accelerated Physics Lerp Loop
     const animate = () => {
@@ -429,8 +399,6 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
     return () => {
       window.removeEventListener('resize', checkMobile);
       window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('deviceorientation', handleOrientation, true);
       if (rafId.current) {
         cancelAnimationFrame(rafId.current);
@@ -485,11 +453,20 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
     }
   };
 
+  const handleScrollDown = () => {
+    const portals = document.getElementById('portals');
+    if (portals) {
+      portals.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+    }
+  };
+
   return (
     <main
       ref={containerRef}
       className={cn(
-        'relative h-screen w-full overflow-hidden bg-gradient-to-b from-[#061224] via-[#091b35] to-[#040a14] touch-none select-none',
+        'relative h-screen w-full overflow-hidden bg-gradient-to-b from-[#061224] via-[#091b35] to-[#040a14] touch-pan-y select-none',
         className
       )}
       onClick={needsIosPermission ? requestGyroPermission : undefined}
@@ -533,7 +510,7 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
         <h1 className="font-black text-[22vw] sm:text-[18vw] md:text-[14vw] lg:text-[18rem] leading-[0.8] tracking-widest uppercase drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)] opacity-95">
           {title}
         </h1>
-        <p className="mt-4 text-xs sm:text-sm md:text-base uppercase tracking-[0.3em] sm:tracking-[0.35em] text-cyan-200/90 font-mono font-medium drop-shadow">
+        <p className="mt-4 text-xs sm:text-sm md:text-base uppercase tracking-[0.3em] sm:tracking-[0.35em] text-[#C9D6D3] font-mono font-medium drop-shadow">
           Chief Operating Officer & Co-Founder
         </p>
       </div>
@@ -543,20 +520,24 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
         {needsIosPermission ? (
           <button
             onClick={requestGyroPermission}
-            className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-cyan-500/20 hover:bg-cyan-500/30 active:scale-95 backdrop-blur-md border border-cyan-400/40 text-cyan-100 text-xs font-mono tracking-wider shadow-2xl transition-all animate-pulse"
+            className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[var(--color-accent-primary)]/70 hover:bg-[var(--color-accent-primary)] active:scale-95 backdrop-blur-md border border-[var(--color-border)]/40 text-white text-xs font-mono tracking-wider shadow-2xl transition-all animate-pulse"
           >
             <span>📱</span>
             <span>Tap to Enable 3D Tilt Effect</span>
           </button>
         ) : (
-          <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-black/50 backdrop-blur-md border border-white/15 text-white/90 text-xs font-mono tracking-wider shadow-2xl">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <button
+            type="button"
+            onClick={handleScrollDown}
+            className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-[var(--color-accent-primary)]/85 hover:bg-[var(--color-accent-primary)] active:scale-95 backdrop-blur-md border border-[var(--color-border)]/40 text-white text-xs font-mono tracking-wider shadow-2xl transition-all cursor-pointer group"
+          >
+            <span className="w-2 h-2 rounded-full bg-[#7E9490] animate-pulse" />
             <span>
               {isMobile
-                ? '📱 Tilt phone left or right to move 3D scene'
-                : 'Move cursor to explore depth • Scroll for ventures'}
+                ? '📱 Tilt phone to explore • Tap to scroll down ↓'
+                : 'Move cursor to explore depth • Scroll down ↓'}
             </span>
-          </div>
+          </button>
         )}
       </div>
     </main>

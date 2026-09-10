@@ -7,14 +7,27 @@ export default {
   theme: {
     extend: {
       colors: {
+        background: 'var(--color-background)',
+        'text-primary': 'var(--color-text-primary)',
+        'accent-primary': 'var(--color-accent-primary)',
+        'accent-secondary': 'var(--color-accent-secondary)',
+        'text-muted': 'var(--color-text-muted)',
+        surface: 'var(--color-surface)',
+        border: 'var(--color-border)',
         brand: {
-          bg: '#FFFFFF',
-          dark: '#0A0A0A',
-          card: '#FFFFFF',
-          border: '#E5E7EB',
-          subtle: '#F4F4F5',
-          secondary: '#6B6B6B',
-          muted: '#9CA3AF',
+          bg: 'var(--color-background)',
+          dark: 'var(--color-text-primary)',
+          card: 'var(--color-background)',
+          surface: 'var(--color-surface)',
+          border: 'var(--color-border)',
+          subtle: 'rgba(201, 214, 211, 0.25)',
+          accent: 'var(--color-accent-primary)',
+          secondary: 'var(--color-accent-secondary)',
+          muted: 'var(--color-text-muted)',
+        },
+        sky: {
+          1700: '#0d2238',
+          1900: '#06101e',
         }
       },
       fontFamily: {

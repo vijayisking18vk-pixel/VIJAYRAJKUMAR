@@ -94,53 +94,53 @@ export default function WritingPage() {
   const [selectedArticle, setSelectedArticle] = useState(null);
 
   return (
-    <div className="min-h-screen bg-white text-neutral-950 font-sans selection:bg-neutral-900 selection:text-white flex flex-col">
+    <div className="min-h-screen bg-white text-[var(--color-text-primary)] font-sans selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
       <Header />
 
       <main className="flex-grow max-w-4xl mx-auto px-6 py-16 lg:py-24 space-y-16">
         
         {/* Breadcrumbs */}
-        <div className="flex items-center space-x-2 text-xs text-neutral-500 font-medium">
-          <a href="/" className="hover:text-neutral-950">Home</a>
+        <div className="flex items-center space-x-2 text-xs text-[var(--color-text-muted)] font-medium">
+          <a href="/" className="hover:text-[var(--color-accent-primary)]">Home</a>
           <span>/</span>
-          <span className="text-neutral-950 font-semibold">Writing & Research</span>
+          <span className="text-[var(--color-text-primary)] font-semibold">Writing & Research</span>
         </div>
 
         {/* Page Header */}
-        <div className="space-y-4 border-b border-neutral-200 pb-10">
-          <div className="inline-flex items-center space-x-2 bg-neutral-100 text-neutral-800 text-xs px-3 py-1 rounded-full font-semibold">
-            <BookOpen className="w-3.5 h-3.5 text-neutral-900" />
+        <div className="space-y-4 border-b border-[var(--color-border)]/40 pb-10">
+          <div className="inline-flex items-center space-x-2 bg-[var(--color-surface)]/30 text-[var(--color-accent-primary)] border border-[var(--color-border)]/40 text-xs px-3 py-1 rounded-full font-semibold">
+            <BookOpen className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
             <span>Articles & Strategic Insights</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-neutral-950 leading-tight">
+          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[var(--color-text-primary)] leading-tight">
             Writing, Engineering & Venture Strategy
           </h1>
 
-          <p className="text-lg text-neutral-600 leading-relaxed max-w-3xl">
+          <p className="text-lg text-[#383838] leading-relaxed max-w-3xl">
             First-party perspectives on building marketplace infrastructure in India, architecting cognitive AI memory layers, and applying strategic defence doctrines to startup venture incubation.
           </p>
         </div>
 
         {/* Article Reader Modal / Full View */}
         {selectedArticle ? (
-          <article className="space-y-10 border border-neutral-200 bg-neutral-50 p-8 sm:p-12 rounded-3xl animate-in fade-in duration-200">
+          <article className="space-y-10 border border-[var(--color-border)]/50 bg-white p-8 sm:p-12 rounded-3xl shadow-sm animate-in fade-in duration-200">
             <button
               onClick={() => setSelectedArticle(null)}
-              className="text-xs font-semibold text-neutral-600 hover:text-neutral-950 flex items-center space-x-1"
+              className="text-xs font-semibold text-[var(--color-accent-primary)] hover:underline flex items-center space-x-1"
             >
               <span>← Back to all articles</span>
             </button>
 
-            <div className="space-y-4 border-b border-neutral-200 pb-8">
-              <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500">
+            <div className="space-y-4 border-b border-[var(--color-border)]/30 pb-8">
+              <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)]">
                 {selectedArticle.category}
               </span>
-              <h2 className="text-2xl sm:text-4xl font-bold text-neutral-950 leading-tight">
+              <h2 className="text-2xl sm:text-4xl font-bold text-[var(--color-text-primary)] leading-tight">
                 {selectedArticle.title}
               </h2>
-              <div className="flex flex-wrap items-center gap-4 text-xs text-neutral-500">
-                <span className="font-semibold text-neutral-800">{selectedArticle.author}</span>
+              <div className="flex flex-wrap items-center gap-4 text-xs text-[var(--color-text-muted)]">
+                <span className="font-semibold text-[var(--color-accent-primary)]">{selectedArticle.author}</span>
                 <span>•</span>
                 <span>{selectedArticle.date}</span>
                 <span>•</span>
@@ -149,12 +149,12 @@ export default function WritingPage() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="bg-white border border-neutral-200 rounded-2xl p-6 space-y-3">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-neutral-900">Key Takeaways</h3>
-              <ul className="space-y-2 text-sm text-neutral-700">
+            <div className="bg-[var(--color-surface)]/20 border border-[var(--color-border)]/40 rounded-2xl p-6 space-y-3">
+              <h3 className="text-sm font-bold uppercase tracking-wider text-[var(--color-accent-primary)]">Key Takeaways</h3>
+              <ul className="space-y-2 text-sm text-[#383838]">
                 {selectedArticle.takeaways.map((item, idx) => (
                   <li key={idx} className="flex items-start space-x-2">
-                    <ChevronRight className="w-4 h-4 text-neutral-900 shrink-0 mt-0.5" />
+                    <ChevronRight className="w-4 h-4 text-[var(--color-accent-primary)] shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -162,25 +162,25 @@ export default function WritingPage() {
             </div>
 
             {/* Content Sections */}
-            <div className="space-y-8 text-neutral-800 leading-relaxed text-base">
+            <div className="space-y-8 text-[#383838] leading-relaxed text-base">
               {selectedArticle.sections.map((section, idx) => (
                 <div key={idx} className="space-y-3">
-                  <h3 className="text-xl font-bold text-neutral-950">{section.heading}</h3>
-                  <p className="text-neutral-600 leading-relaxed">{section.body}</p>
+                  <h3 className="text-xl font-bold text-[var(--color-text-primary)]">{section.heading}</h3>
+                  <p className="text-[#4A4A4A] leading-relaxed">{section.body}</p>
                 </div>
               ))}
             </div>
 
-            <div className="pt-6 border-t border-neutral-200 flex justify-between items-center">
+            <div className="pt-6 border-t border-[var(--color-border)]/30 flex justify-between items-center">
               <button
                 onClick={() => setSelectedArticle(null)}
-                className="px-5 py-2.5 bg-neutral-950 text-white text-xs font-semibold rounded-full hover:bg-black transition-colors"
+                className="px-5 py-2.5 bg-[var(--color-accent-primary)] text-white text-xs font-semibold rounded-full hover:bg-[#1E2C1F] transition-colors"
               >
                 Close Article
               </button>
               <a
                 href="/contact/"
-                className="text-xs font-semibold text-neutral-700 hover:text-neutral-950 underline"
+                className="text-xs font-semibold text-[var(--color-accent-primary)] hover:underline"
               >
                 Discuss this essay with me →
               </a>
@@ -193,37 +193,37 @@ export default function WritingPage() {
               <div
                 key={art.id}
                 onClick={() => setSelectedArticle(art)}
-                className="p-8 bg-neutral-50 border border-neutral-200 rounded-2xl hover:border-neutral-400 transition-all cursor-pointer group space-y-4"
+                className="p-8 bg-white border border-[var(--color-border)]/40 hover:border-[var(--color-accent-secondary)] rounded-2xl shadow-sm transition-all cursor-pointer group space-y-4"
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)]">
                     {art.category}
                   </span>
-                  <div className="flex items-center space-x-3 text-xs text-neutral-500">
+                  <div className="flex items-center space-x-3 text-xs text-[var(--color-text-muted)]">
                     <span className="flex items-center space-x-1">
-                      <Calendar className="w-3.5 h-3.5" />
+                      <Calendar className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
                       <span>{art.date}</span>
                     </span>
                     <span className="flex items-center space-x-1">
-                      <Clock className="w-3.5 h-3.5" />
+                      <Clock className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
                       <span>{art.readTime}</span>
                     </span>
                   </div>
                 </div>
 
-                <h2 className="text-2xl font-bold text-neutral-950 group-hover:underline leading-snug">
+                <h2 className="text-2xl font-bold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-primary)] leading-snug transition-colors">
                   {art.title}
                 </h2>
 
-                <p className="text-sm text-neutral-600 leading-relaxed">
+                <p className="text-sm text-[#4A4A4A] leading-relaxed">
                   {art.summary}
                 </p>
 
                 <div className="pt-2 flex items-center justify-between">
-                  <span className="text-xs font-medium text-neutral-700">
+                  <span className="text-xs font-medium text-[var(--color-accent-primary)]">
                     {art.author}
                   </span>
-                  <span className="inline-flex items-center space-x-1 text-xs font-semibold text-neutral-950 group-hover:translate-x-1 transition-transform">
+                  <span className="inline-flex items-center space-x-1 text-xs font-semibold text-[var(--color-accent-primary)] group-hover:translate-x-1 transition-transform">
                     <span>Read complete essay</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </span>

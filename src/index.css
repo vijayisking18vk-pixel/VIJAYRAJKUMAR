@@ -2,21 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-background: #FFFFFF;        /* keep white base per your minimalist direction */
+  --color-text-primary: #1A1A1A;      /* charcoal instead of pure black — softer, matches image */
+  --color-accent-primary: #2C3E2D;    /* deep forest green — primary brand accent */
+  --color-accent-secondary: #7E9490;  /* slate teal — secondary accent/hover states */
+  --color-text-muted: #8FA3A8;        /* muted blue-gray — subtitles, labels */
+  --color-surface: #C9D6D3;           /* pale ice blue — subtle card backgrounds */
+  --color-border: #A8B8AA;            /* sage mist — hairline borders */
+}
+
 @layer base {
   html {
-    background-color: #FFFFFF;
+    background-color: var(--color-background);
   }
 
   body {
-    @apply bg-white text-neutral-950 font-sans antialiased leading-relaxed selection:bg-neutral-900 selection:text-white;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    font-family: "Plus Jakarta Sans", Poppins, sans-serif;
+    @apply antialiased leading-relaxed;
+  }
+
+  ::selection {
+    background-color: var(--color-accent-primary);
+    color: #FFFFFF;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sans font-bold tracking-tight text-neutral-950;
+    color: var(--color-text-primary);
+    @apply font-sans font-bold tracking-tight;
   }
 
   p {
-    @apply leading-relaxed text-neutral-600;
+    @apply leading-relaxed;
+    color: #383838;
   }
 }
 
@@ -57,14 +77,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #FFFFFF;
+  background: var(--color-background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #E5E7EB;
+  background: var(--color-border);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #D1D5DB;
+  background: var(--color-accent-secondary);
 }

@@ -31,50 +31,50 @@ export default function CollaborationDispatch() {
   ];
 
   return (
-    <section id="dispatch" className="w-full bg-white text-neutral-950 py-24 lg:py-32 px-6 sm:px-12 border-t border-neutral-200 font-sans">
+    <section id="dispatch" className="w-full bg-white text-[var(--color-text-primary)] py-24 lg:py-32 px-6 sm:px-12 border-t border-[var(--color-border)]/40 font-sans">
       <div className="max-w-6xl mx-auto space-y-16 lg:space-y-20">
         
         {/* Section Header */}
-        <div className="space-y-5 border-b border-neutral-200 pb-10">
-          <div className="inline-flex items-center space-x-2 bg-neutral-100 text-neutral-800 font-sans text-xs px-3.5 py-1.5 rounded-full font-semibold">
-            <Send className="w-3.5 h-3.5 shrink-0 text-neutral-900" />
+        <div className="space-y-5 border-b border-[var(--color-border)]/40 pb-10">
+          <div className="inline-flex items-center space-x-2 bg-[var(--color-surface)]/30 text-[var(--color-accent-primary)] border border-[var(--color-border)]/40 font-sans text-xs px-3.5 py-1.5 rounded-full font-semibold">
+            <Send className="w-3.5 h-3.5 shrink-0 text-[var(--color-accent-primary)]" />
             <span>04 // Contact & Collaboration</span>
           </div>
 
-          <div className="text-3xl sm:text-5xl lg:text-6xl font-bold font-sans tracking-tight text-neutral-950 leading-tight">
+          <div className="text-3xl sm:text-5xl lg:text-6xl font-bold font-sans tracking-tight text-[var(--color-text-primary)] leading-tight">
             <TrueFocus sentence="Let's build together" manualMode={false} blurAmount={3} />
           </div>
 
           {/* Explicit Contact Promise */}
-          <div className="p-5 bg-neutral-50 border border-neutral-200 rounded-2xl max-w-3xl space-y-2">
-            <p className="text-sm sm:text-base text-neutral-800 font-medium leading-relaxed">
+          <div className="p-5 bg-[var(--color-surface)]/20 border border-[var(--color-border)]/40 rounded-2xl max-w-3xl space-y-2">
+            <p className="text-sm sm:text-base text-[var(--color-text-primary)] font-medium leading-relaxed">
               "I usually respond within two working days. Contact me about venture partnerships, product and growth collaboration, startup ecosystems, or speaking and research opportunities."
             </p>
-            <div className="flex flex-wrap items-center gap-3 pt-1 text-xs text-neutral-500">
-              <span className="flex items-center space-x-1.5 font-medium text-neutral-700">
-                <Mail className="w-3.5 h-3.5 text-neutral-900" />
+            <div className="flex flex-wrap items-center gap-3 pt-1 text-xs text-[var(--color-text-muted)]">
+              <span className="flex items-center space-x-1.5 font-medium text-[var(--color-text-primary)]">
+                <Mail className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
                 <span>Direct email:</span>
               </span>
               <a
                 href={`mailto:${directEmail}`}
-                className="font-semibold text-neutral-900 underline hover:text-black"
+                className="font-semibold text-[var(--color-accent-primary)] underline hover:text-[#1A1A1A]"
               >
                 {directEmail}
               </a>
               <button
                 type="button"
                 onClick={handleCopyEmail}
-                className="inline-flex items-center space-x-1 px-2.5 py-1 bg-white border border-neutral-200 rounded-md text-[11px] font-medium text-neutral-700 hover:bg-neutral-100 transition-colors"
+                className="inline-flex items-center space-x-1 px-2.5 py-1 bg-white border border-[var(--color-border)]/40 rounded-md text-[11px] font-medium text-[var(--color-accent-primary)] hover:bg-[var(--color-surface)]/25 transition-colors"
                 title="Copy email to clipboard"
               >
                 {copied ? (
                   <>
-                    <Check className="w-3 h-3 text-emerald-600" />
-                    <span className="text-emerald-600 font-semibold">Copied</span>
+                    <Check className="w-3 h-3 text-[#2C3E2D]" />
+                    <span className="text-[#2C3E2D] font-semibold">Copied</span>
                   </>
                 ) : (
                   <>
-                    <Copy className="w-3 h-3 text-neutral-600" />
+                    <Copy className="w-3 h-3 text-[var(--color-text-muted)]" />
                     <span>Copy email</span>
                   </>
                 )}
