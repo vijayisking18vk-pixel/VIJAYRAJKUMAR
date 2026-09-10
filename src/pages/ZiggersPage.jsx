@@ -45,7 +45,7 @@ export default function ZiggersPage() {
               <ArrowUpRight className="w-4 h-4" />
             </a>
             <span className="text-xs text-neutral-500">
-              Co-founded by Vijayrajkumar · Live in Production
+              Chief Operating Officer & Co-Founder · Live in Production
             </span>
           </div>
         </div>

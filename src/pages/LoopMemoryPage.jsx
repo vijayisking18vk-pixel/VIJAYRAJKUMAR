@@ -45,7 +45,7 @@ export default function LoopMemoryPage() {
               <ArrowUpRight className="w-4 h-4" />
             </a>
             <span className="text-xs text-neutral-500">
-              Co-founded by Vijayrajkumar · Available for Developers
+              Chief Operating Officer & Co-Founder · Available for Developers
             </span>
           </div>
         </div>

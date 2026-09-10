@@ -14,11 +14,11 @@ export default function Footer() {
         <LetterGlitch>
           <span className="mx-4">Vijayrajkumar</span>
           <span className="mx-2 text-neutral-400">•</span>
-          <span className="mx-4">Co-Founder @ Unfounded</span>
+          <span className="mx-4">Chief Operating Officer @ Unfounded</span>
           <span className="mx-2 text-neutral-400">•</span>
-          <span className="mx-4">Co-Founder @ Zigger</span>
+          <span className="mx-4">Chief Operating Officer @ Zigger</span>
           <span className="mx-2 text-neutral-400">•</span>
-          <span className="mx-4">Co-Founder @ Loopverse</span>
+          <span className="mx-4">Chief Operating Officer @ LoopMemory</span>
           <span className="mx-2 text-neutral-400">•</span>
           <span className="mx-4">SRMIST (Defence & Strategy)</span>
           <span className="mx-2 text-neutral-400">•</span>
@@ -79,7 +79,7 @@ export default function Footer() {
               <span>Active Timeline: <CountUp from={2016} to={2026} duration={1.5} suffix="" /></span>
             </div>
             <p className="text-neutral-500 text-xs">
-              Co-Founder @ Unfounded • Zigger • LoopMemory | Chennai, Tamil Nadu, India
+              Chief Operating Officer & Co-Founder @ Unfounded • Zigger • LoopMemory | Chennai, Tamil Nadu, India
             </p>
           </div>
 

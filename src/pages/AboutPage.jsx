@@ -65,11 +65,11 @@ export default function AboutPage() {
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-neutral-950 leading-tight">
-            Vijayrajkumar — Co-Founder & Venture Builder
+            Chief Operating Officer & Venture Builder
           </h1>
 
           <p className="text-lg text-neutral-600 leading-relaxed max-w-3xl">
-            Based on-site in Chennai, Tamil Nadu. Building marketplaces and AI cognitive infrastructure at Unfounded, Ziggers, and LoopMemory.
+            Based on-site in Chennai, Tamil Nadu. Building marketplaces and AI cognitive infrastructure as Chief Operating Officer & Co-founder at Unfounded, Ziggers, and LoopMemory.
           </p>
 
           <div className="flex items-center space-x-2 text-xs text-neutral-500 pt-1">
@@ -185,7 +185,7 @@ export default function AboutPage() {
             href="/contact/"
             className="text-xs font-semibold text-neutral-700 hover:text-neutral-950 underline"
           >
-            Start a conversation with Vijayrajkumar →
+            Start a conversation with me →
           </a>
         </section>
 

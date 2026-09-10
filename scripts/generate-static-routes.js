@@ -18,19 +18,19 @@ const templateHtml = fs.readFileSync(templateHtmlPath, 'utf8');
 const routes = [
   {
     path: 'about',
-    title: 'About Vijayrajkumar | Co-Founder & Venture Builder in Chennai',
-    description: 'Learn about Vijayrajkumar, co-founder at Unfounded, Ziggers, and LoopMemory. Background in Defence and Strategic Studies (SRMIST) and Hindi Literature.',
+    title: 'About | Chief Operating Officer & Venture Builder in Chennai',
+    description: 'Learn about Vijayrajkumar, Chief Operating Officer and co-founder at Unfounded, Ziggers, and LoopMemory. Background in Defence and Strategic Studies (SRMIST) and Hindi Literature.',
     canonical: 'https://vijayrajkumar.vercel.app/about/',
     heading: 'About Vijayrajkumar',
     content: `
       <div class="max-w-4xl mx-auto px-6 py-16 space-y-12 font-sans">
         <nav class="text-xs text-neutral-500 mb-6"><a href="/">Home</a> / <span>About</span></nav>
-        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-neutral-950">Co-Founder & Venture Builder based in Chennai, India</h1>
-        <p class="text-lg text-neutral-600 leading-relaxed">Vijayrajkumar is a startup co-founder operating across marketplace dynamics, persistent AI memory infrastructure, product marketing, and venture incubation at Unfounded, Ziggers, and LoopMemory.</p>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-neutral-950">Chief Operating Officer & Venture Builder</h1>
+        <p class="text-lg text-neutral-600 leading-relaxed">Based on-site in Chennai, Tamil Nadu. Building marketplaces and AI cognitive infrastructure as Chief Operating Officer & Co-founder at Unfounded, Ziggers, and LoopMemory.</p>
         
         <section class="space-y-4 pt-6 border-t border-neutral-200">
-          <h2 class="text-2xl font-bold text-neutral-950">Who is Vijayrajkumar?</h2>
-          <p class="text-neutral-700 leading-relaxed">I am a venture builder based on-site in Chennai, Tamil Nadu. My work sits at the intersection of product architecture, rapid vibe coding execution, and go-to-market distribution.</p>
+          <h2 class="text-2xl font-bold text-neutral-950">About Me & Philosophy</h2>
+          <p class="text-neutral-700 leading-relaxed">I am a venture builder based on-site in Chennai, Tamil Nadu. My work sits at the intersection of product architecture, operational execution, and go-to-market distribution.</p>
           <p class="text-neutral-700 leading-relaxed">Rather than approaching venture building as purely software engineering, I treat it as strategic system design. My background spans literature, geopolitics, and defence strategy — fields that study how incentives, communications, and power dynamics govern human systems at scale.</p>
         </section>
 
@@ -55,9 +55,9 @@ const routes = [
         <section class="space-y-4 pt-6 border-t border-neutral-200">
           <h2 class="text-2xl font-bold text-neutral-950">Active Co-Founder Roles</h2>
           <ul class="space-y-3">
-            <li><a href="/ventures/ziggers/" class="font-bold underline text-neutral-950">Ziggers</a> — Local Gig-Economy Marketplace (Co-Founder)</li>
-            <li><a href="/ventures/loopmemory/" class="font-bold underline text-neutral-950">LoopMemory</a> — AI Context & Memory Infrastructure (Co-Founder)</li>
-            <li><a href="/ventures/" class="font-bold underline text-neutral-950">Unfounded Venture Studio</a> — Chennai Studio Core (Co-Founder)</li>
+            <li><a href="/ventures/ziggers/" class="font-bold underline text-neutral-950">Ziggers</a> — Local Gig-Economy Marketplace (COO & Co-Founder)</li>
+            <li><a href="/ventures/loopmemory/" class="font-bold underline text-neutral-950">LoopMemory</a> — AI Context & Memory Infrastructure (COO & Co-Founder)</li>
+            <li><a href="/ventures/" class="font-bold underline text-neutral-950">Unfounded Venture Studio</a> — Chennai Studio Core (COO & Co-Founder)</li>
           </ul>
         </section>
       </div>
@@ -65,21 +65,21 @@ const routes = [
   },
   {
     path: 'ventures',
-    title: 'Ventures & Case Studies | Vijayrajkumar · Co-Founder & Builder',
-    description: 'Explore ventures co-founded by Vijayrajkumar in Chennai: Ziggers (local gig marketplace), LoopMemory (AI context engine), and Unfounded Venture Studio.',
+    title: 'Ventures & Case Studies | Chief Operating Officer & Builder',
+    description: 'Explore ventures co-founded and operated by Vijayrajkumar in Chennai: Ziggers (local gig marketplace), LoopMemory (AI context engine), and Unfounded Venture Studio.',
     canonical: 'https://vijayrajkumar.vercel.app/ventures/',
     heading: 'Ventures & Case Studies',
     content: `
       <div class="max-w-6xl mx-auto px-6 py-16 space-y-12 font-sans">
         <nav class="text-xs text-neutral-500 mb-6"><a href="/">Home</a> / <span>Ventures</span></nav>
         <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-neutral-950">Ventures, Marketplaces & AI Systems</h1>
-        <p class="text-lg text-neutral-600 leading-relaxed max-w-3xl">Detailed case studies of ventures co-founded by Vijayrajkumar. Each study outlines the systemic problem, target audience, personal ownership, deliverables shipped, and verifiable evidence.</p>
+        <p class="text-lg text-neutral-600 leading-relaxed max-w-3xl">Detailed case studies of ventures co-founded and operated by me. Each study outlines the systemic problem, target audience, personal ownership, deliverables shipped, and verifiable evidence.</p>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-6 border-t border-neutral-200">
           <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-4">
             <span class="text-xs font-semibold px-2.5 py-1 bg-white border border-neutral-200 rounded-full text-neutral-800">Product Hunt Launched</span>
             <h2 class="text-2xl font-bold text-neutral-950"><a href="/ventures/ziggers/">Ziggers</a></h2>
-            <p class="text-xs font-semibold text-neutral-800">Co-Founder · Product & Growth</p>
+            <p class="text-xs font-semibold text-neutral-800">Chief Operating Officer & Co-Founder · Product & Growth</p>
             <p class="text-sm text-neutral-600">Local gig-economy marketplace replacing unorganized WhatsApp hiring with verified workers, geo-tracking, and milestone escrow payouts.</p>
             <div class="pt-2"><a href="/ventures/ziggers/" class="font-bold text-xs underline text-neutral-950">Read full case study →</a></div>
           </div>
@@ -87,7 +87,7 @@ const routes = [
           <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-4">
             <span class="text-xs font-semibold px-2.5 py-1 bg-white border border-neutral-200 rounded-full text-neutral-800">IGES Summit Showcase</span>
             <h2 class="text-2xl font-bold text-neutral-950"><a href="/ventures/loopmemory/">LoopMemory</a></h2>
-            <p class="text-xs font-semibold text-neutral-800">Co-Founder · Context Architecture</p>
+            <p class="text-xs font-semibold text-neutral-800">Chief Operating Officer & Co-Founder · Context Architecture</p>
             <p class="text-sm text-neutral-600">Persistent cognitive memory engine and knowledge graph for AI agents, preventing session context loss and reducing token overhead.</p>
             <div class="pt-2"><a href="/ventures/loopmemory/" class="font-bold text-xs underline text-neutral-950">Read full case study →</a></div>
           </div>
@@ -95,7 +95,7 @@ const routes = [
           <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-4">
             <span class="text-xs font-semibold px-2.5 py-1 bg-white border border-neutral-200 rounded-full text-neutral-800">Venture Studio Core</span>
             <h2 class="text-2xl font-bold text-neutral-950">Unfounded</h2>
-            <p class="text-xs font-semibold text-neutral-800">Co-Founder · Studio Orchestration</p>
+            <p class="text-xs font-semibold text-neutral-800">Chief Operating Officer & Co-Founder · Studio Orchestration</p>
             <p class="text-sm text-neutral-600">Chennai-based venture studio incubating parallel high-conviction ventures through rapid vibe coding execution and strategic ecosystem partnerships.</p>
             <div class="pt-2"><a href="/about/" class="font-bold text-xs underline text-neutral-950">About Founder & Studio →</a></div>
           </div>
@@ -147,8 +147,8 @@ const routes = [
   },
   {
     path: 'ventures/loopmemory',
-    title: 'LoopMemory Case Study | Vijayrajkumar · Co-Founder & Context Architecture',
-    description: 'Read the comprehensive case study on LoopMemory: persistent context and cognitive memory engine for AI agents co-founded by Vijayrajkumar. Featured at India Global Education Summit.',
+    title: 'LoopMemory Case Study | Chief Operating Officer & Context Architecture',
+    description: 'Read the comprehensive case study on LoopMemory: persistent context and cognitive memory engine for AI agents co-founded and operated by Vijayrajkumar. Featured at India Global Education Summit.',
     canonical: 'https://vijayrajkumar.vercel.app/ventures/loopmemory/',
     heading: 'LoopMemory Case Study',
     content: `
@@ -167,7 +167,7 @@ const routes = [
             <p class="text-neutral-600">AI developers, enterprise software teams, and researchers deploying autonomous agents or long-horizon customer assistants.</p>
           </div>
           <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl">
-            <h2 class="font-bold text-neutral-950 mb-2">3. What Vijayrajkumar Personally Owned</h2>
+            <h2 class="font-bold text-neutral-950 mb-2">3. What I Personally Owned</h2>
             <p class="text-neutral-600">Spearheaded the core context-structuring architecture, knowledge graph synthesis, developer ergonomics, and ecosystem distribution strategy.</p>
           </div>
           <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl">
@@ -203,21 +203,21 @@ const routes = [
           <article class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-3">
             <span class="text-xs uppercase font-bold text-neutral-500">Marketplace Mechanics & Labor Ops</span>
             <h2 class="text-2xl font-bold text-neutral-950">Building a Local Gig Marketplace in Chennai: Lessons Beyond WhatsApp Groups</h2>
-            <p class="text-xs text-neutral-500">By Vijayrajkumar · Co-Founder, Ziggers • Feb 2026 • 6 min read</p>
+            <p class="text-xs text-neutral-500">By COO & Co-Founder, Ziggers • Feb 2026 • 6 min read</p>
             <p class="text-sm text-neutral-600 leading-relaxed">Why informal WhatsApp hiring collapses at scale in Indian tier-1 cities, how milestone-based escrow resolves worker skepticism, and the operational playbook for building two-sided liquidity without cash burn.</p>
           </article>
 
           <article class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-3">
             <span class="text-xs uppercase font-bold text-neutral-500">AI Infrastructure & Cognitive Systems</span>
             <h2 class="text-2xl font-bold text-neutral-950">Designing Persistent Context & Memory Architecture for AI Agents</h2>
-            <p class="text-xs text-neutral-500">By Vijayrajkumar · Co-Founder, LoopMemory • Jan 2026 • 8 min read</p>
+            <p class="text-xs text-neutral-500">By COO & Co-Founder, LoopMemory • Jan 2026 • 8 min read</p>
             <p class="text-sm text-neutral-600 leading-relaxed">The technical and cognitive design challenges of multi-session AI agents: why dumping chat histories into large prompt windows causes context rot, and how hierarchical memory graphs solve long-term agent reasoning.</p>
           </article>
 
           <article class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-3">
             <span class="text-xs uppercase font-bold text-neutral-500">Strategy, Game Theory & Operations</span>
             <h2 class="text-2xl font-bold text-neutral-950">From Geopolitics and Defence Strategy to Startup Venture Studios</h2>
-            <p class="text-xs text-neutral-500">By Vijayrajkumar · Co-Founder, Unfounded • Dec 2025 • 7 min read</p>
+            <p class="text-xs text-neutral-500">By COO & Co-Founder, Unfounded • Dec 2025 • 7 min read</p>
             <p class="text-sm text-neutral-600 leading-relaxed">How academic frameworks in international security, intelligence doctrine, and deterrence strategy directly translate into early-stage startup execution, competitive defensibility, and rapid vibe coding.</p>
           </article>
         </div>
@@ -226,15 +226,15 @@ const routes = [
   },
   {
     path: 'contact',
-    title: 'Contact & Collaboration | Vijayrajkumar · Chennai, India',
-    description: 'Get in touch with Vijayrajkumar. Co-founder at Unfounded, Ziggers, and LoopMemory. Open to venture partnerships, product and growth collaboration, and speaking.',
+    title: 'Contact & Collaboration | Chief Operating Officer · Chennai, India',
+    description: 'Get in touch with Vijayrajkumar. Chief Operating Officer and co-founder at Unfounded, Ziggers, and LoopMemory. Open to venture partnerships, operational collaboration, and speaking.',
     canonical: 'https://vijayrajkumar.vercel.app/contact/',
-    heading: 'Contact Vijayrajkumar',
+    heading: 'Contact Me',
     content: `
       <div class="max-w-4xl mx-auto px-6 py-16 space-y-12 font-sans">
         <nav class="text-xs text-neutral-500 mb-6"><a href="/">Home</a> / <span>Contact</span></nav>
-        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-neutral-950">Start a Conversation with Vijayrajkumar</h1>
-        <p class="text-lg text-neutral-600 leading-relaxed">I usually respond within two working days. Reach out regarding venture partnerships, product and growth collaboration, startup ecosystems, or speaking and research opportunities.</p>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-neutral-950">Start a Conversation with Me</h1>
+        <p class="text-lg text-neutral-600 leading-relaxed">I usually respond within two working days. Reach out regarding venture partnerships, operational collaboration, product growth, startup ecosystems, or speaking and research opportunities.</p>
 
         <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-3 text-sm">
           <p><strong>Base:</strong> Chennai, Tamil Nadu, India (On-site)</p>

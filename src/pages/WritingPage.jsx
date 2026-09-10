@@ -10,7 +10,7 @@ const articles = [
     category: 'Marketplace Mechanics & Labor Ops',
     date: 'February 2026',
     readTime: '6 min read',
-    author: 'Vijayrajkumar · Co-Founder, Ziggers',
+    author: 'COO & Co-Founder, Ziggers',
     summary: 'Why informal WhatsApp hiring collapses at scale in Indian tier-1 cities, how milestone-based escrow resolves worker skepticism, and the operational playbook for building two-sided liquidity without cash burn.',
     takeaways: [
       'WhatsApp lacks escrow, resulting in 40%+ worker no-show rates and employer wage withholding.',
@@ -38,7 +38,7 @@ const articles = [
     category: 'AI Infrastructure & Cognitive Systems',
     date: 'January 2026',
     readTime: '8 min read',
-    author: 'Vijayrajkumar · Co-Founder, LoopMemory',
+    author: 'COO & Co-Founder, LoopMemory',
     summary: 'The technical and cognitive design challenges of multi-session AI agents: why dumping chat histories into large prompt windows causes context rot, and how hierarchical memory graphs solve long-term agent reasoning.',
     takeaways: [
       'Large context windows do not equal comprehension; attention decay degrades reasoning over lengthy prompts.',
@@ -66,7 +66,7 @@ const articles = [
     category: 'Strategy, Game Theory & Operations',
     date: 'December 2025',
     readTime: '7 min read',
-    author: 'Vijayrajkumar · Co-Founder, Unfounded',
+    author: 'COO & Co-Founder, Unfounded',
     summary: 'How academic frameworks in international security, intelligence doctrine, and deterrence strategy directly translate into early-stage startup execution, competitive defensibility, and rapid vibe coding.',
     takeaways: [
       'Startup competition is asymmetric warfare; small nimble teams must exploit incumbents\' rigid coordination costs.',
@@ -182,7 +182,7 @@ export default function WritingPage() {
                 href="/contact/"
                 className="text-xs font-semibold text-neutral-700 hover:text-neutral-950 underline"
               >
-                Discuss this essay with Vijayrajkumar →
+                Discuss this essay with me →
               </a>
             </div>
           </article>

@@ -143,11 +143,11 @@ export default function HeroPoster({ onStartAnimation }) {
           </div>
 
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold font-sans tracking-tight text-neutral-950 leading-tight">
-            Vijayrajkumar is a Chennai-based co-founder and venture builder building marketplaces and AI context infrastructure.
+            I am a Chennai-based Chief Operating Officer and venture builder building marketplaces and AI context infrastructure.
           </h1>
           
           <p className="text-base sm:text-lg text-neutral-600 font-sans leading-relaxed max-w-2xl mx-auto">
-            Co-founder at Unfounded, Ziggers, and LoopMemory. I work across product architecture, growth, marketing, and strategic research.
+            Chief Operating Officer & Co-founder at Unfounded, Ziggers, and LoopMemory. I lead operational execution, product architecture, growth, and strategic research.
           </p>
 
           {/* Two Primary Action CTAs */}
@@ -191,7 +191,7 @@ export default function HeroPoster({ onStartAnimation }) {
               <span>Current Role</span>
             </div>
             <p className="text-xs sm:text-sm font-bold text-neutral-950 leading-snug">
-              Co-founder at Unfounded, Ziggers & LoopMemory
+              Chief Operating Officer & Co-founder
             </p>
           </div>
 

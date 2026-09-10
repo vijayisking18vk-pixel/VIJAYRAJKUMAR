@@ -21,7 +21,7 @@ export default function VenturesPage() {
         <div className="space-y-4 border-b border-neutral-200 pb-10">
           <div className="inline-flex items-center space-x-2 bg-neutral-100 text-neutral-800 text-xs px-3 py-1 rounded-full font-semibold">
             <Layers className="w-3.5 h-3.5 text-neutral-900" />
-            <span>Co-Founder Portfolios & Case Studies</span>
+            <span>Chief Operating Officer & Co-Founder Portfolios</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-neutral-950 leading-tight">
@@ -29,7 +29,7 @@ export default function VenturesPage() {
           </h1>
 
           <p className="text-lg text-neutral-600 leading-relaxed max-w-3xl">
-            Detailed case studies of ventures co-founded by Vijayrajkumar. Each study outlines the systemic problem, target audience, personal ownership, deliverables shipped, and verifiable evidence.
+            Detailed case studies of ventures co-founded and operated by me. Each study outlines the systemic problem, target audience, personal ownership, deliverables shipped, and verifiable evidence.
           </p>
 
           <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-semibold">

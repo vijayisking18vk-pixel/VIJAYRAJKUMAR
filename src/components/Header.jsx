@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Compass, Layers, BookOpen, Send, Menu, X } from 'lucide-react';
 import GradientText from './react-bits/GradientText';
-import VariableProximity from './react-bits/VariableProximity';
 import StarBorder from './react-bits/StarBorder';
 
 export default function Header({ activeSection, setActiveSection }) {
@@ -18,15 +17,12 @@ export default function Header({ activeSection, setActiveSection }) {
     <header className="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md border-b border-neutral-200 font-sans text-xs select-none">
       <div className="max-w-6xl mx-auto px-6 lg:px-12 py-4 flex items-center justify-between">
         
-        {/* Brand Title linking to Home */}
-        <a href="/" className="flex items-center space-x-3 group">
+        {/* Brand Title linking to Home - Only Name */}
+        <a href="/" className="flex items-center space-x-2.5 group">
           <span className="w-2 h-2 bg-neutral-900 rounded-full animate-pulse"></span>
           <GradientText className="font-sans font-bold text-base tracking-tight text-neutral-950 group-hover:opacity-80 transition-opacity">
             Vijayrajkumar
           </GradientText>
-          <span className="hidden sm:inline-block text-xs text-neutral-500 border-l border-neutral-200 pl-3">
-            <VariableProximity label="Co-Founder @ Unfounded • Zigger • LoopMemory" radius={100} />
-          </span>
         </a>
 
         {/* Desktop Navigation Items */}

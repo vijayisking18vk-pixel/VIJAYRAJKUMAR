@@ -26,7 +26,7 @@ export default function ContactPage() {
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-neutral-950 leading-tight">
-            Start a Conversation with Vijayrajkumar
+            Start a Conversation with Me
           </h1>
 
           <p className="text-lg text-neutral-600 leading-relaxed max-w-3xl">

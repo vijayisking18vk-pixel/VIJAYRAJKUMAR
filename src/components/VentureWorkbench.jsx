@@ -11,7 +11,7 @@ export default function VentureWorkbench() {
     {
       id: 'ziggers',
       name: 'Ziggers',
-      role: 'Co-Founder · Product & Growth Direction',
+      role: 'Chief Operating Officer & Co-Founder · Product & Growth Direction',
       period: 'Jun 2025 – Present · 1 yr 4 mos',
       location: 'Chennai, Tamil Nadu, India (On-site)',
       category: 'Gig Staffing & Local Labor Marketplace',
@@ -29,7 +29,7 @@ export default function VentureWorkbench() {
     {
       id: 'loopmemory',
       name: 'LoopMemory',
-      role: 'Co-Founder · Product Positioning & Context Architecture',
+      role: 'Chief Operating Officer & Co-Founder · Context Architecture',
       period: 'Jun 2025 – Present · 1 yr 4 mos',
       location: 'Chennai, Tamil Nadu, India (On-site)',
       category: 'AI Memory & Context Structuring Engine',
@@ -47,7 +47,7 @@ export default function VentureWorkbench() {
     {
       id: 'unfounded',
       name: 'Unfounded',
-      role: 'Co-Founder · Venture Studio Orchestration',
+      role: 'Chief Operating Officer & Co-Founder · Studio Orchestration',
       period: 'Jun 2025 – Present · 1 yr 4 mos',
       location: 'Chennai, Tamil Nadu, India (On-site)',
       category: 'Parallel Venture Incubation & Validation Core',
@@ -76,7 +76,7 @@ export default function VentureWorkbench() {
           </div>
 
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold font-sans tracking-tight text-neutral-950 leading-tight">
-            Co-founder roles & verified case studies
+            Chief Operating Officer roles & verified case studies
           </h2>
 
           <p className="text-base sm:text-lg text-neutral-600 font-sans leading-relaxed max-w-3xl">

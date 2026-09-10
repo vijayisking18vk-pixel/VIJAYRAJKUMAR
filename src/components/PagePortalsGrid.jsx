@@ -18,7 +18,7 @@ export default function PagePortalsGrid() {
       category: '02 // Experience & Platforms',
       href: '/ventures/',
       description: 'Production case studies of Ziggers (local gig staffing marketplace) and LoopMemory (persistent AI agent memory), co-founded and built.',
-      badge: 'Active Co-Founder',
+      badge: 'COO & Co-Founder',
       icon: Layers,
       highlights: ['Ziggers (Production)', 'LoopMemory (Dev API)', 'Unfounded Studio']
     },
