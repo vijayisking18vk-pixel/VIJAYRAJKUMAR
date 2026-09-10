@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import React, { useState } from "react";
+import React from "react";
 import { ParallaxHero, ParallaxHeroProps, defaultLayers } from "./demo";
 
 export const ParallaxHeroDemo: React.FC = () => {

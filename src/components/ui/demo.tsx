@@ -257,42 +257,184 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const layerRefs = useRef<(HTMLImageElement | null)[]>([]);
   const textRef = useRef<HTMLDivElement>(null);
-  const [xValue, setXValue] = useState(0);
-  const [yValue, setYValue] = useState(0);
-  const [rotateDegree, setRotateDegree] = useState(0);
+
+  // Motion coordinates for requestAnimationFrame lerp loop
+  const targetX = useRef(0);
+  const targetY = useRef(0);
+  const targetRotate = useRef(0);
+  const targetCursorX = useRef(typeof window !== 'undefined' ? window.innerWidth / 2 : 0);
+
+  const currentX = useRef(0);
+  const currentY = useRef(0);
+  const currentRotate = useRef(0);
+  const currentCursorX = useRef(typeof window !== 'undefined' ? window.innerWidth / 2 : 0);
+
+  const rafId = useRef<number | null>(null);
+
+  const [isMobile, setIsMobile] = useState(false);
+  const [gyroActive, setGyroActive] = useState(false);
+  const [needsIosPermission, setNeedsIosPermission] = useState(false);
+
+  // Request iOS Gyroscope Permission
+  const requestGyroPermission = async () => {
+    if (
+      typeof DeviceOrientationEvent !== 'undefined' &&
+      typeof (DeviceOrientationEvent as any).requestPermission === 'function'
+    ) {
+      try {
+        const response = await (DeviceOrientationEvent as any).requestPermission();
+        if (response === 'granted') {
+          setGyroActive(true);
+          setNeedsIosPermission(false);
+          window.addEventListener('deviceorientation', handleOrientation, true);
+        }
+      } catch (err) {
+        console.warn('Device orientation permission rejected or unavailable:', err);
+      }
+    } else {
+      // Non-iOS or standard device
+      setGyroActive(true);
+      window.addEventListener('deviceorientation', handleOrientation, true);
+    }
+  };
+
+  // Device orientation tilt handler
+  const handleOrientation = (e: DeviceOrientationEvent) => {
+    if (e.gamma === null && e.beta === null) return;
+
+    setGyroActive(true);
+
+    // gamma: left-to-right tilt in degrees [-90, 90]
+    // Tilting left gives negative gamma; tilting right gives positive gamma.
+    // Clamp to [-35, 35] for comfortable handheld usage
+    const gamma = e.gamma || 0;
+    const clampedGamma = Math.max(-35, Math.min(35, gamma));
+    const normX = clampedGamma / 25; // 1.0 reached at 25deg tilt
+
+    // beta: front-to-back tilt in degrees [-180, 180]
+    // In normal handheld portrait viewing, reference neutral beta is ~45deg
+    const beta = e.beta || 45;
+    const deltaBeta = Math.max(-30, Math.min(30, beta - 45));
+    const normY = deltaBeta / 20;
+
+    // Movement: "WHEN TILTING MOVE THAT SIDE"
+    // Tilting right (normX > 0) moves the layers and scene to the right!
+    // Tilting left (normX < 0) moves to the left!
+    const travelX = normX * (window.innerWidth * 0.75);
+    const travelY = normY * (window.innerHeight * 0.4);
+    const rotateDeg = normX * 22;
+
+    targetX.current = travelX;
+    targetY.current = travelY;
+    targetRotate.current = rotateDeg;
+    targetCursorX.current = window.innerWidth / 2 + travelX;
+  };
 
   useEffect(() => {
+    const checkMobile = () => {
+      const mobileCheck =
+        'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0 ||
+        window.innerWidth < 1024;
+      setIsMobile(mobileCheck);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    // Check if iOS requires explicit permission
+    if (
+      typeof DeviceOrientationEvent !== 'undefined' &&
+      typeof (DeviceOrientationEvent as any).requestPermission === 'function'
+    ) {
+      setNeedsIosPermission(true);
+
+      // Auto-trigger permission request on first user touch/tap
+      const handleFirstInteraction = () => {
+        requestGyroPermission();
+        window.removeEventListener('touchstart', handleFirstInteraction);
+        window.removeEventListener('click', handleFirstInteraction);
+      };
+      window.addEventListener('touchstart', handleFirstInteraction, { passive: true, once: true });
+      window.addEventListener('click', handleFirstInteraction, { passive: true, once: true });
+    } else if (typeof window !== 'undefined' && 'DeviceOrientationEvent' in window) {
+      // Standard browsers (Android, etc.) - listen immediately
+      window.addEventListener('deviceorientation', handleOrientation, true);
+      setGyroActive(true);
+    }
+
+    // Mouse move handler for desktop
     const handleMouseMove = (e: MouseEvent) => {
       const newXValue = e.clientX - window.innerWidth / 2;
       const newYValue = e.clientY - window.innerHeight / 2;
       const newRotateDegree = (newXValue / (window.innerWidth / 2)) * 20;
 
-      setXValue(newXValue);
-      setYValue(newYValue);
-      setRotateDegree(newRotateDegree);
+      targetX.current = newXValue;
+      targetY.current = newYValue;
+      targetRotate.current = newRotateDegree;
+      targetCursorX.current = e.clientX;
+    };
 
-      updateLayers(e.clientX, newXValue, newYValue, newRotateDegree);
+    // Touch drag handler for mobile (smooth additive glide)
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }
     };
 
     const handleTouchMove = (e: TouchEvent) => {
       if (e.touches.length > 0) {
         const touch = e.touches[0];
-        const newXValue = touch.clientX - window.innerWidth / 2;
-        const newYValue = touch.clientY - window.innerHeight / 2;
-        const newRotateDegree = (newXValue / (window.innerWidth / 2)) * 15;
-        setXValue(newXValue);
-        setYValue(newYValue);
-        setRotateDegree(newRotateDegree);
-        updateLayers(touch.clientX, newXValue, newYValue, newRotateDegree);
+        const diffX = (touch.clientX - touchStartX) * 1.5;
+        const diffY = (touch.clientY - touchStartY) * 1.2;
+
+        const newX = (touch.clientX - window.innerWidth / 2) + diffX;
+        const newY = (touch.clientY - window.innerHeight / 2) + diffY;
+        const newRotate = (newX / (window.innerWidth / 2)) * 18;
+
+        targetX.current = newX;
+        targetY.current = newY;
+        targetRotate.current = newRotate;
+        targetCursorX.current = touch.clientX;
       }
     };
 
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
     window.addEventListener('touchmove', handleTouchMove, { passive: true });
 
+    // 60fps/120fps Hardware-Accelerated Physics Lerp Loop
+    const animate = () => {
+      // 0.10 lerp factor gives ultra-smooth inertia with zero sensor jitter
+      currentX.current += (targetX.current - currentX.current) * 0.10;
+      currentY.current += (targetY.current - currentY.current) * 0.10;
+      currentRotate.current += (targetRotate.current - currentRotate.current) * 0.10;
+      currentCursorX.current += (targetCursorX.current - currentCursorX.current) * 0.10;
+
+      updateLayers(
+        currentCursorX.current,
+        currentX.current,
+        currentY.current,
+        currentRotate.current
+      );
+
+      rafId.current = requestAnimationFrame(animate);
+    };
+
+    rafId.current = requestAnimationFrame(animate);
+
     return () => {
+      window.removeEventListener('resize', checkMobile);
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('deviceorientation', handleOrientation, true);
+      if (rafId.current) {
+        cancelAnimationFrame(rafId.current);
+      }
     };
   }, []);
 
@@ -314,18 +456,20 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
       const isInLeft = computedLeft < window.innerWidth / 2 ? 1 : -1;
       const zValue = (cursorPosition - computedLeft) * isInLeft * 0.1;
 
+      // When tilting right (xVal > 0), layer shifts to the right (+ xVal * speedX)
+      // When tilting left (xVal < 0), layer shifts to the left
       el.style.transform = `perspective(2300px) translateZ(${
         zValue * speedZ
       }px) rotateY(${rotateDeg * rotation}deg) translateX(calc(-50% + ${
-        -xVal * speedX
-      }px)) translateY(calc(-50% + ${yVal * speedY}px))`;
+        xVal * speedX * 1.35
+      }px)) translateY(calc(-50% + ${yVal * speedY * 1.25}px))`;
     });
 
     if (textRef.current) {
-      const textSpeedX = 0.07;
-      const textSpeedY = 0.05;
+      const textSpeedX = 0.085;
+      const textSpeedY = 0.065;
       const textSpeedZ = 0.08;
-      const textRotation = 0.04;
+      const textRotation = 0.055;
 
       const computedLeft = parseFloat(
         getComputedStyle(textRef.current).left.replace('px', '')
@@ -336,8 +480,8 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
       textRef.current.style.transform = `perspective(2300px) translateZ(${
         zValue * textSpeedZ
       }px) rotateY(${rotateDeg * textRotation}deg) translateX(calc(-50% + ${
-        -xVal * textSpeedX
-      }px)) translateY(calc(-50% + ${yVal * textSpeedY}px))`;
+        xVal * textSpeedX * 1.35
+      }px)) translateY(calc(-50% + ${yVal * textSpeedY * 1.25}px))`;
     }
   };
 
@@ -345,14 +489,15 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
     <main
       ref={containerRef}
       className={cn(
-        'relative h-screen w-full overflow-hidden bg-gradient-to-b from-[#061224] via-[#091b35] to-[#040a14]',
+        'relative h-screen w-full overflow-hidden bg-gradient-to-b from-[#061224] via-[#091b35] to-[#040a14] touch-none select-none',
         className
       )}
+      onClick={needsIosPermission ? requestGyroPermission : undefined}
     >
       {/* Cinematic Vignette */}
-      <div className="absolute inset-0 z-[100] pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_50%,rgba(0,0,0,0.7)_100%)]" />
+      <div className="absolute inset-0 z-[100] pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_45%,rgba(0,0,0,0.75)_100%)]" />
 
-      {/* Parallax Layers */}
+      {/* Parallax Layers - Hardware accelerated without CSS transition lag */}
       {layers.map((layer, index) => (
         <img
           key={index}
@@ -362,7 +507,7 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
           src={layer.src}
           alt={layer.alt}
           className={cn(
-            'absolute pointer-events-none transition-transform duration-[450ms] ease-out select-none max-w-none',
+            'absolute pointer-events-none select-none max-w-none will-change-transform',
             layer.className
           )}
           style={{
@@ -378,27 +523,41 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
       {/* Centered Dynamic Title */}
       <div
         ref={textRef}
-        className="absolute z-[9] text-white text-center pointer-events-none transition-transform duration-[450ms] ease-out select-none"
+        className="absolute z-[9] text-white text-center pointer-events-none select-none will-change-transform px-4"
         style={{
           top: 'calc(50% - 110px)',
           left: '50%',
           transform: 'translate(-50%, -50%)',
         }}
       >
-        <h1 className="font-black text-[18vw] sm:text-[14vw] md:text-[12vw] lg:text-[18rem] leading-[0.8] tracking-widest uppercase drop-shadow-[0_25px_40px_rgba(0,0,0,0.9)] opacity-95">
+        <h1 className="font-black text-[22vw] sm:text-[18vw] md:text-[14vw] lg:text-[18rem] leading-[0.8] tracking-widest uppercase drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)] opacity-95">
           {title}
         </h1>
-        <p className="mt-4 text-xs sm:text-sm md:text-base uppercase tracking-[0.35em] text-cyan-200/80 font-mono font-medium drop-shadow">
+        <p className="mt-4 text-xs sm:text-sm md:text-base uppercase tracking-[0.3em] sm:tracking-[0.35em] text-cyan-200/90 font-mono font-medium drop-shadow">
           Chief Operating Officer & Co-Founder
         </p>
       </div>
 
       {/* Floating Exploration Hint & Quick Actions at bottom */}
       <div className="absolute bottom-8 left-0 right-0 z-[105] flex flex-col items-center justify-center pointer-events-auto px-4">
-        <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white/80 text-xs font-mono tracking-wider shadow-2xl">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span>Move cursor to explore depth • Scroll for ventures</span>
-        </div>
+        {needsIosPermission ? (
+          <button
+            onClick={requestGyroPermission}
+            className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-cyan-500/20 hover:bg-cyan-500/30 active:scale-95 backdrop-blur-md border border-cyan-400/40 text-cyan-100 text-xs font-mono tracking-wider shadow-2xl transition-all animate-pulse"
+          >
+            <span>📱</span>
+            <span>Tap to Enable 3D Tilt Effect</span>
+          </button>
+        ) : (
+          <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-black/50 backdrop-blur-md border border-white/15 text-white/90 text-xs font-mono tracking-wider shadow-2xl">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span>
+              {isMobile
+                ? '📱 Tilt phone left or right to move 3D scene'
+                : 'Move cursor to explore depth • Scroll for ventures'}
+            </span>
+          </div>
+        )}
       </div>
     </main>
   );
