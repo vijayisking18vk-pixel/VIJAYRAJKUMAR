@@ -9,7 +9,7 @@ export default function Header({ activeSection, setActiveSection }) {
 
   const navItems = [
     { href: '/about/', label: 'About', icon: Compass },
-    { href: '/#ventures', label: 'Ventures', icon: Layers },
+    { href: '/ventures/', label: 'Ventures', icon: Layers },
     { href: '/writing/', label: 'Writing', icon: BookOpen },
     { href: '/contact/', label: 'Contact', icon: Send }
   ];

@@ -153,22 +153,22 @@ export default function HeroPoster({ onStartAnimation }) {
           {/* Two Primary Action CTAs */}
           <div className="flex flex-wrap items-center justify-center gap-4 pt-3">
             <Magnet magnetStrength={3} padding={40}>
-              <button
-                onClick={() => scrollToSection('ventures')}
+              <a
+                href="/ventures/"
                 className="flex items-center space-x-2 px-6 py-3 bg-neutral-950 text-white font-semibold rounded-full hover:bg-black transition-all shadow-sm text-sm"
               >
                 <span>Explore ventures</span>
                 <ArrowRight className="w-4 h-4 text-white shrink-0" />
-              </button>
+              </a>
             </Magnet>
 
             <Magnet magnetStrength={3} padding={40}>
-              <button
-                onClick={() => scrollToSection('dispatch')}
+              <a
+                href="/contact/"
                 className="flex items-center space-x-2 px-6 py-3 bg-neutral-100 border border-neutral-200 text-neutral-900 font-semibold rounded-full hover:bg-neutral-200 transition-all text-sm"
               >
                 <span>Start a conversation</span>
-              </button>
+              </a>
             </Magnet>
           </div>
         </motion.div>

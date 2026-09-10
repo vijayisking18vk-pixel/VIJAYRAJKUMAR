@@ -57,9 +57,49 @@ const routes = [
           <ul class="space-y-3">
             <li><a href="/ventures/ziggers/" class="font-bold underline text-neutral-950">Ziggers</a> — Local Gig-Economy Marketplace (Co-Founder)</li>
             <li><a href="/ventures/loopmemory/" class="font-bold underline text-neutral-950">LoopMemory</a> — AI Context & Memory Infrastructure (Co-Founder)</li>
-            <li><a href="/" class="font-bold underline text-neutral-950">Unfounded Venture Studio</a> — Chennai Studio Core (Co-Founder)</li>
+            <li><a href="/ventures/" class="font-bold underline text-neutral-950">Unfounded Venture Studio</a> — Chennai Studio Core (Co-Founder)</li>
           </ul>
         </section>
+      </div>
+    `
+  },
+  {
+    path: 'ventures',
+    title: 'Ventures & Case Studies | Vijayrajkumar · Co-Founder & Builder',
+    description: 'Explore ventures co-founded by Vijayrajkumar in Chennai: Ziggers (local gig marketplace), LoopMemory (AI context engine), and Unfounded Venture Studio.',
+    canonical: 'https://vijayrajkumar.vercel.app/ventures/',
+    heading: 'Ventures & Case Studies',
+    content: `
+      <div class="max-w-6xl mx-auto px-6 py-16 space-y-12 font-sans">
+        <nav class="text-xs text-neutral-500 mb-6"><a href="/">Home</a> / <span>Ventures</span></nav>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-neutral-950">Ventures, Marketplaces & AI Systems</h1>
+        <p class="text-lg text-neutral-600 leading-relaxed max-w-3xl">Detailed case studies of ventures co-founded by Vijayrajkumar. Each study outlines the systemic problem, target audience, personal ownership, deliverables shipped, and verifiable evidence.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-6 border-t border-neutral-200">
+          <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-4">
+            <span class="text-xs font-semibold px-2.5 py-1 bg-white border border-neutral-200 rounded-full text-neutral-800">Product Hunt Launched</span>
+            <h2 class="text-2xl font-bold text-neutral-950"><a href="/ventures/ziggers/">Ziggers</a></h2>
+            <p class="text-xs font-semibold text-neutral-800">Co-Founder · Product & Growth</p>
+            <p class="text-sm text-neutral-600">Local gig-economy marketplace replacing unorganized WhatsApp hiring with verified workers, geo-tracking, and milestone escrow payouts.</p>
+            <div class="pt-2"><a href="/ventures/ziggers/" class="font-bold text-xs underline text-neutral-950">Read full case study →</a></div>
+          </div>
+
+          <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-4">
+            <span class="text-xs font-semibold px-2.5 py-1 bg-white border border-neutral-200 rounded-full text-neutral-800">IGES Summit Showcase</span>
+            <h2 class="text-2xl font-bold text-neutral-950"><a href="/ventures/loopmemory/">LoopMemory</a></h2>
+            <p class="text-xs font-semibold text-neutral-800">Co-Founder · Context Architecture</p>
+            <p class="text-sm text-neutral-600">Persistent cognitive memory engine and knowledge graph for AI agents, preventing session context loss and reducing token overhead.</p>
+            <div class="pt-2"><a href="/ventures/loopmemory/" class="font-bold text-xs underline text-neutral-950">Read full case study →</a></div>
+          </div>
+
+          <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-4">
+            <span class="text-xs font-semibold px-2.5 py-1 bg-white border border-neutral-200 rounded-full text-neutral-800">Venture Studio Core</span>
+            <h2 class="text-2xl font-bold text-neutral-950">Unfounded</h2>
+            <p class="text-xs font-semibold text-neutral-800">Co-Founder · Studio Orchestration</p>
+            <p class="text-sm text-neutral-600">Chennai-based venture studio incubating parallel high-conviction ventures through rapid vibe coding execution and strategic ecosystem partnerships.</p>
+            <div class="pt-2"><a href="/about/" class="font-bold text-xs underline text-neutral-950">About Founder & Studio →</a></div>
+          </div>
+        </div>
       </div>
     `
   },

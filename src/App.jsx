@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import HeroPoster from './components/HeroPoster';
-import AboutBuilder from './components/AboutBuilder';
-import VentureWorkbench from './components/VentureWorkbench';
-import LearningStack from './components/LearningStack';
-import CollaborationDispatch from './components/CollaborationDispatch';
+import PagePortalsGrid from './components/PagePortalsGrid';
 import Footer from './components/Footer';
 import Particles from './components/react-bits/Particles';
 
 // Multi-page subpages
 import AboutPage from './pages/AboutPage';
+import VenturesPage from './pages/VenturesPage';
 import ZiggersPage from './pages/ZiggersPage';
 import LoopMemoryPage from './pages/LoopMemoryPage';
 import WritingPage from './pages/WritingPage';
@@ -35,6 +33,9 @@ export default function App() {
   if (normalizedPath === '/about') {
     return <AboutPage />;
   }
+  if (normalizedPath === '/ventures') {
+    return <VenturesPage />;
+  }
   if (normalizedPath === '/ventures/ziggers') {
     return <ZiggersPage />;
   }
@@ -48,14 +49,7 @@ export default function App() {
     return <ContactPage />;
   }
 
-  // Default: Homepage with living centerpiece, proof strip & structured sections
-  const scrollToJourney = () => {
-    const el = document.getElementById('journey');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
+  // Streamlined Homepage: Living Hero Poster + Proof Strip + Section Directory Portals
   return (
     <div className="relative min-h-screen bg-white text-neutral-950 flex flex-col font-sans selection:bg-neutral-900 selection:text-white overflow-x-hidden">
       {/* Global Ambient Interactive Particles Canvas Background */}
@@ -64,22 +58,13 @@ export default function App() {
       {/* Navigation Header */}
       <Header />
 
-      {/* Main Content Flow */}
+      {/* Main Content Flow: Living Centerpiece & Dedicated Portals */}
       <main className="relative z-10 flex-grow">
         {/* 1. Hero Poster Image Centerpiece & Proof Strip */}
-        <HeroPoster onStartAnimation={scrollToJourney} />
+        <HeroPoster />
 
-        {/* 01 // The Journey & Education */}
-        <AboutBuilder />
-
-        {/* 02 // Experience & Venture Matrix */}
-        <VentureWorkbench />
-
-        {/* 03 // Skills & Ecosystem Engagement */}
-        <LearningStack />
-
-        {/* 04 // Connect & Dispatch */}
-        <CollaborationDispatch />
+        {/* 2. Directory Portals to Dedicated Pages (About, Ventures, Writing, Contact) */}
+        <PagePortalsGrid />
       </main>
 
       {/* Footer */}
