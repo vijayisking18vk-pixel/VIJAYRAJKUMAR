@@ -6,12 +6,12 @@
   --color-background: #ACC2B9;        /* sage mist background extracted from uploaded reference image */
   --color-background-start: #98ACA5;  /* subtle top tone */
   --color-background-end: #BED5CC;    /* subtle bottom tone */
-  --color-text-primary: #1A1A1A;      /* charcoal instead of pure black */
-  --color-accent-primary: #2C3E2D;    /* deep forest green — primary brand accent */
-  --color-accent-secondary: #516A62;  /* slate teal accent */
-  --color-text-muted: #3D554D;        /* dark muted forest gray — crisp contrast against sage */
-  --color-surface: rgba(255, 255, 255, 0.45); /* card backgrounds / subtle overlays */
-  --color-border: #8FA79E;            /* sage hairline borders */
+  --color-text-primary: #111815;      /* very dark charcoal for maximum contrast */
+  --color-accent-primary: #203322;    /* deep forest green — primary brand accent */
+  --color-accent-secondary: #426055;  /* slate teal accent */
+  --color-text-muted: #354E45;        /* dark muted forest gray — crisp contrast against sage */
+  --color-surface: #DDE8E2;           /* prominent visible badge & tag pill background */
+  --color-border: #739084;            /* crisp, prominent visible borders */
 }
 
 @layer base {

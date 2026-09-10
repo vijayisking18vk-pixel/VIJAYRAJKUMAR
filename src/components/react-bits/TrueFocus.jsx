@@ -4,8 +4,8 @@ export default function TrueFocus({
   sentence = 'TRUE FOCUS ANIMATION',
   manualMode = false,
   blurAmount = 5,
-  borderColor = '#FFFFFF',
-  glowColor = 'rgba(255, 255, 255, 0.5)',
+  borderColor = '#2C3E2D',
+  glowColor = 'rgba(44, 62, 45, 0.25)',
   animationDuration = 0.4,
   pauseBetweenAnimations = 1
 }) {
@@ -43,8 +43,8 @@ export default function TrueFocus({
           onClick={() => manualMode && setCurrentIndex(index)}
           className={`cursor-pointer transition-all duration-300 font-bold ${
             index === currentIndex
-              ? 'text-white scale-105'
-              : 'text-neutral-500 blur-[2px]'
+              ? 'text-[var(--color-text-primary)] scale-105'
+              : 'text-[#486358] blur-[2px]'
           }`}
           style={{
             filter: index === currentIndex ? 'none' : `blur(${blurAmount}px)`
@@ -66,10 +66,10 @@ export default function TrueFocus({
           boxShadow: `0 0 15px ${glowColor}`
         }}
       >
-        <span className="absolute -top-1 -left-1 w-2 h-2 bg-white"></span>
-        <span className="absolute -top-1 -right-1 w-2 h-2 bg-white"></span>
-        <span className="absolute -bottom-1 -left-1 w-2 h-2 bg-white"></span>
-        <span className="absolute -bottom-1 -right-1 w-2 h-2 bg-white"></span>
+        <span className="absolute -top-1 -left-1 w-2 h-2 bg-[#2C3E2D]"></span>
+        <span className="absolute -top-1 -right-1 w-2 h-2 bg-[#2C3E2D]"></span>
+        <span className="absolute -bottom-1 -left-1 w-2 h-2 bg-[#2C3E2D]"></span>
+        <span className="absolute -bottom-1 -right-1 w-2 h-2 bg-[#2C3E2D]"></span>
       </div>
     </div>
   );

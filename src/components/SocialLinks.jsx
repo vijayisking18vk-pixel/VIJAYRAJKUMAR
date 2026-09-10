@@ -65,7 +65,7 @@ export default function SocialLinks({ className = "", compact = false }) {
               href={s.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 rounded-full bg-[var(--color-surface)]/30 hover:bg-[var(--color-accent-primary)] text-[var(--color-accent-primary)] hover:text-white border border-[var(--color-border)]/40 flex items-center justify-center transition-colors"
+              className="w-8 h-8 rounded-full bg-[#E2ECE7] hover:bg-[#203322] text-[#203322] hover:text-white border border-[#85A296] flex items-center justify-center transition-colors shadow-sm"
               title={`${s.name} (${s.handle})`}
               aria-label={s.name}
             >
@@ -78,7 +78,7 @@ export default function SocialLinks({ className = "", compact = false }) {
   }
 
   return (
-    <div className={`grid grid-cols-1 sm:grid-cols-2 gap-3 ${className}`}>
+    <div className={`grid grid-cols-1 sm:grid-cols-2 gap-3.5 ${className}`}>
       {socialLinks.map((s) => {
         const Icon = s.icon;
         return (
@@ -87,18 +87,18 @@ export default function SocialLinks({ className = "", compact = false }) {
             href={s.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3.5 bg-white hover:bg-[var(--color-surface)]/20 border border-[var(--color-border)]/40 hover:border-[var(--color-accent-secondary)] rounded-xl flex items-center justify-between group transition-all"
+            className="p-4 bg-white hover:bg-[#F2F7F4] border-2 border-[#7A968B] hover:border-[#203322] rounded-2xl flex items-center justify-between group transition-all shadow-sm"
           >
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 rounded-lg bg-[var(--color-surface)]/30 border border-[var(--color-border)]/40 flex items-center justify-center text-[var(--color-accent-primary)] group-hover:bg-[var(--color-accent-primary)] group-hover:text-white transition-colors">
+            <div className="flex items-center space-x-3.5">
+              <div className="w-9 h-9 rounded-xl bg-[#E2ECE7] border border-[#85A296] flex items-center justify-center text-[#203322] group-hover:bg-[#203322] group-hover:text-white transition-colors">
                 <Icon className="w-4 h-4" />
               </div>
               <div>
-                <span className="text-xs font-bold text-[var(--color-text-primary)] block">{s.name}</span>
-                <span className="text-[11px] text-[var(--color-text-muted)] block">{s.handle}</span>
+                <span className="text-xs font-bold text-[#111815] block">{s.name}</span>
+                <span className="text-[11px] text-[#354E45] font-semibold block">{s.handle}</span>
               </div>
             </div>
-            <span className="text-xs text-[var(--color-text-muted)] group-hover:text-[var(--color-accent-primary)] group-hover:translate-x-0.5 transition-all">
+            <span className="text-xs font-bold text-[#203322] group-hover:translate-x-1 transition-all">
               ↗
             </span>
           </a>

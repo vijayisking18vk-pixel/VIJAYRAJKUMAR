@@ -42,7 +42,7 @@ export default function TiltedCard({
         transformStyle: 'preserve-3d',
         height: containerHeight
       }}
-      className={`relative bg-white border border-neutral-200 rounded-2xl shadow-card-clean hover:shadow-card-hover transition-all duration-300 ${className}`}
+      className={`relative bg-white border-2 border-[#7A968B] hover:border-[#203322] rounded-2xl shadow-md transition-all duration-300 ${className}`}
     >
       <div className="relative z-10 h-full">{children}</div>
     </motion.div>

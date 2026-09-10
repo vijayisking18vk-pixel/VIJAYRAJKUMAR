@@ -35,9 +35,9 @@ export default function CollaborationDispatch() {
       <div className="max-w-6xl mx-auto space-y-16 lg:space-y-20">
         
         {/* Section Header */}
-        <div className="space-y-5 border-b border-[var(--color-border)]/40 pb-10">
-          <div className="inline-flex items-center space-x-2 bg-[var(--color-surface)]/30 text-[var(--color-accent-primary)] border border-[var(--color-border)]/40 font-sans text-xs px-3.5 py-1.5 rounded-full font-semibold">
-            <Send className="w-3.5 h-3.5 shrink-0 text-[var(--color-accent-primary)]" />
+        <div className="space-y-5 border-b border-[var(--color-border)]/60 pb-10">
+          <div className="inline-flex items-center space-x-2 bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] font-sans text-xs px-3.5 py-1.5 rounded-full font-bold">
+            <Send className="w-3.5 h-3.5 shrink-0 text-[#203322]" />
             <span>04 // Contact & Collaboration</span>
           </div>
 
@@ -45,36 +45,36 @@ export default function CollaborationDispatch() {
             <TrueFocus sentence="Let's build together" manualMode={false} blurAmount={3} />
           </div>
 
-          {/* Explicit Contact Promise */}
-          <div className="p-5 bg-[var(--color-surface)]/20 border border-[var(--color-border)]/40 rounded-2xl max-w-3xl space-y-2">
-            <p className="text-sm sm:text-base text-[var(--color-text-primary)] font-medium leading-relaxed">
+          {/* Explicit Contact Promise Box - High Contrast Card */}
+          <div className="p-6 bg-white border-2 border-[#7A968B] rounded-2xl max-w-3xl space-y-3 shadow-md">
+            <p className="text-sm sm:text-base text-[#111815] font-semibold leading-relaxed">
               "I usually respond within two working days. Contact me about venture partnerships, product and growth collaboration, startup ecosystems, or speaking and research opportunities."
             </p>
-            <div className="flex flex-wrap items-center gap-3 pt-1 text-xs text-[var(--color-text-muted)]">
-              <span className="flex items-center space-x-1.5 font-medium text-[var(--color-text-primary)]">
-                <Mail className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
+            <div className="flex flex-wrap items-center gap-3 pt-1 text-xs text-[#354E45]">
+              <span className="flex items-center space-x-1.5 font-bold text-[#111815]">
+                <Mail className="w-3.5 h-3.5 text-[#203322]" />
                 <span>Direct email:</span>
               </span>
               <a
                 href={`mailto:${directEmail}`}
-                className="font-semibold text-[var(--color-accent-primary)] underline hover:text-[#1A1A1A]"
+                className="font-bold text-[#203322] underline hover:text-[#111815]"
               >
                 {directEmail}
               </a>
               <button
                 type="button"
                 onClick={handleCopyEmail}
-                className="inline-flex items-center space-x-1 px-2.5 py-1 bg-white border border-[var(--color-border)]/40 rounded-md text-[11px] font-medium text-[var(--color-accent-primary)] hover:bg-[var(--color-surface)]/25 transition-colors"
+                className="inline-flex items-center space-x-1 px-3 py-1 bg-[#E2ECE7] border border-[#85A296] rounded-md text-xs font-bold text-[#1B2F21] hover:bg-[#203322] hover:text-white transition-colors cursor-pointer"
                 title="Copy email to clipboard"
               >
                 {copied ? (
                   <>
-                    <Check className="w-3 h-3 text-[#2C3E2D]" />
-                    <span className="text-[#2C3E2D] font-semibold">Copied</span>
+                    <Check className="w-3 h-3 text-[#203322]" />
+                    <span className="text-[#203322] font-bold">Copied</span>
                   </>
                 ) : (
                   <>
-                    <Copy className="w-3 h-3 text-[var(--color-text-muted)]" />
+                    <Copy className="w-3 h-3 text-[#1B2F21]" />
                     <span>Copy email</span>
                   </>
                 )}
@@ -169,69 +169,69 @@ export default function CollaborationDispatch() {
             )}
           </FluidGlass>
 
-          {/* Contact Details & Links */}
-          <div className="space-y-8 flex flex-col justify-between">
+          {/* Contact Details & Links Card */}
+          <div className="space-y-8 flex flex-col justify-between p-8 bg-white border-2 border-[#7A968B] rounded-3xl shadow-md">
             <div className="space-y-6">
               
               {/* Location */}
               <div className="space-y-1.5">
-                <span className="text-xs text-neutral-400 font-medium block">Base & Location</span>
-                <div className="text-lg font-bold text-neutral-950 flex items-center space-x-2">
-                  <MapPin className="w-4 h-4 text-neutral-900 shrink-0" />
+                <span className="text-xs text-[#354E45] font-bold uppercase tracking-wider block">Base & Location</span>
+                <div className="text-lg font-bold text-[#111815] flex items-center space-x-2">
+                  <MapPin className="w-4 h-4 text-[#203322] shrink-0" />
                   <span>Chennai, Tamil Nadu, India · On-site</span>
                 </div>
               </div>
 
               {/* Roles */}
               <div className="space-y-1.5">
-                <span className="text-xs text-neutral-400 font-medium block">Co-Founder Positions</span>
-                <div className="text-base font-bold text-neutral-950">
+                <span className="text-xs text-[#354E45] font-bold uppercase tracking-wider block">Co-Founder Positions</span>
+                <div className="text-base font-bold text-[#111815]">
                   Unfounded • Ziggers • LoopMemory
                 </div>
-                <div className="text-xs text-neutral-500">
+                <div className="text-xs text-[#354E45] font-medium">
                   Full-time (Jun 2025 – Present) · Vibe coding & product marketing
                 </div>
               </div>
 
               {/* Education 1: SRMIST */}
               <div className="space-y-1.5">
-                <span className="text-xs text-neutral-400 font-medium block">Education // Defence & Strategic Studies</span>
+                <span className="text-xs text-[#354E45] font-bold uppercase tracking-wider block">Education // Defence & Strategic Studies</span>
                 <a
                   href="https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/details/education/edit/forms/1193197386/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-semibold text-neutral-900 flex items-center space-x-2 hover:underline leading-snug"
+                  className="text-sm font-bold text-[#111815] flex items-center space-x-2 hover:text-[#203322] hover:underline leading-snug"
                 >
-                  <GraduationCap className="w-4 h-4 text-neutral-900 shrink-0" />
+                  <GraduationCap className="w-4 h-4 text-[#203322] shrink-0" />
                   <span>SRMIST — B.Sc. Defence & Strategic Studies (2023–2026)</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 shrink-0" />
+                  <ArrowUpRight className="w-3.5 h-3.5 shrink-0 text-[#203322]" />
                 </a>
               </div>
 
               {/* Education 2: Hindi MA */}
               <div className="space-y-1.5">
-                <span className="text-xs text-neutral-400 font-medium block">Education // Hindi Literature</span>
+                <span className="text-xs text-[#354E45] font-bold uppercase tracking-wider block">Education // Hindi Literature</span>
                 <a
                   href="https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/details/education/edit/forms/1193198586/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-semibold text-neutral-900 flex items-center space-x-2 hover:underline leading-snug"
+                  className="text-sm font-bold text-[#111815] flex items-center space-x-2 hover:text-[#203322] hover:underline leading-snug"
                 >
-                  <BookOpen className="w-4 h-4 text-neutral-900 shrink-0" />
+                  <BookOpen className="w-4 h-4 text-[#203322] shrink-0" />
                   <span>Dakshina Bharat Hindi Prachar Sabha — MA Hindi (2016–2021)</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 shrink-0" />
+                  <ArrowUpRight className="w-3.5 h-3.5 shrink-0 text-[#203322]" />
                 </a>
               </div>
 
             </div>
 
-            <div className="space-y-3 pt-2">
-              <span className="text-xs text-neutral-400 font-medium block">Direct Venture Platforms</span>
+            <div className="space-y-3 pt-2 border-t border-[#7A968B]/30">
+              <span className="text-xs text-[#354E45] font-bold uppercase tracking-wider block">Direct Venture Platforms</span>
               <BounceCards links={directLinks} />
             </div>
 
-            <div className="space-y-3 pt-4 border-t border-neutral-100">
-              <span className="text-xs text-neutral-400 font-medium block">Social & Professional Channels</span>
+            <div className="space-y-3 pt-4 border-t border-[#7A968B]/30">
+              <span className="text-xs text-[#354E45] font-bold uppercase tracking-wider block">Social & Professional Channels</span>
               <SocialLinks compact={false} />
             </div>
 

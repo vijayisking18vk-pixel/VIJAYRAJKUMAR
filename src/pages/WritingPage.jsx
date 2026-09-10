@@ -107,40 +107,40 @@ export default function WritingPage() {
         </div>
 
         {/* Page Header */}
-        <div className="space-y-4 border-b border-[var(--color-border)]/40 pb-10">
-          <div className="inline-flex items-center space-x-2 bg-[var(--color-surface)]/30 text-[var(--color-accent-primary)] border border-[var(--color-border)]/40 text-xs px-3 py-1 rounded-full font-semibold">
-            <BookOpen className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
+        <div className="space-y-4 border-b border-[#7A968B]/40 pb-10">
+          <div className="inline-flex items-center space-x-2 bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] text-xs px-3.5 py-1 rounded-full font-bold shadow-sm">
+            <BookOpen className="w-3.5 h-3.5 text-[#1B2F21]" />
             <span>Articles & Strategic Insights</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[var(--color-text-primary)] leading-tight">
+          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#111815] leading-tight">
             Writing, Engineering & Venture Strategy
           </h1>
 
-          <p className="text-lg text-[#383838] leading-relaxed max-w-3xl">
+          <p className="text-lg text-[#1D2B24] leading-relaxed max-w-3xl font-medium">
             First-party perspectives on building marketplace infrastructure in India, architecting cognitive AI memory layers, and applying strategic defence doctrines to startup venture incubation.
           </p>
         </div>
 
         {/* Article Reader Modal / Full View */}
         {selectedArticle ? (
-          <article className="space-y-10 border border-[var(--color-border)]/70 bg-white/85 backdrop-blur-sm p-8 sm:p-12 rounded-3xl shadow-sm animate-in fade-in duration-200">
+          <article className="space-y-10 border-2 border-[#7A968B] bg-white p-8 sm:p-12 rounded-3xl shadow-md animate-in fade-in duration-200">
             <button
               onClick={() => setSelectedArticle(null)}
-              className="text-xs font-semibold text-[var(--color-accent-primary)] hover:underline flex items-center space-x-1"
+              className="text-xs font-bold text-[#203322] hover:underline flex items-center space-x-1"
             >
               <span>← Back to all articles</span>
             </button>
 
-            <div className="space-y-4 border-b border-[var(--color-border)]/30 pb-8">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)]">
+            <div className="space-y-4 border-b border-[#7A968B]/30 pb-8">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#2A3E34]">
                 {selectedArticle.category}
               </span>
-              <h2 className="text-2xl sm:text-4xl font-bold text-[var(--color-text-primary)] leading-tight">
+              <h2 className="text-2xl sm:text-4xl font-bold text-[#111815] leading-tight">
                 {selectedArticle.title}
               </h2>
-              <div className="flex flex-wrap items-center gap-4 text-xs text-[var(--color-text-muted)]">
-                <span className="font-semibold text-[var(--color-accent-primary)]">{selectedArticle.author}</span>
+              <div className="flex flex-wrap items-center gap-4 text-xs text-[#2A3E34] font-medium">
+                <span className="font-bold text-[#203322]">{selectedArticle.author}</span>
                 <span>•</span>
                 <span>{selectedArticle.date}</span>
                 <span>•</span>
@@ -149,38 +149,38 @@ export default function WritingPage() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="bg-[var(--color-surface)]/20 border border-[var(--color-border)]/40 rounded-2xl p-6 space-y-3">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-[var(--color-accent-primary)]">Key Takeaways</h3>
-              <ul className="space-y-2 text-sm text-[#383838]">
+            <div className="bg-[#E2ECE7] border-2 border-[#85A296] rounded-2xl p-6 space-y-3">
+              <h3 className="text-sm font-bold uppercase tracking-wider text-[#111815]">Key Takeaways</h3>
+              <ul className="space-y-2 text-sm text-[#1D2B24]">
                 {selectedArticle.takeaways.map((item, idx) => (
                   <li key={idx} className="flex items-start space-x-2">
-                    <ChevronRight className="w-4 h-4 text-[var(--color-accent-primary)] shrink-0 mt-0.5" />
-                    <span>{item}</span>
+                    <ChevronRight className="w-4 h-4 text-[#203322] shrink-0 mt-0.5" />
+                    <span className="font-medium">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Content Sections */}
-            <div className="space-y-8 text-[#383838] leading-relaxed text-base">
+            <div className="space-y-8 text-[#1D2B24] leading-relaxed text-base">
               {selectedArticle.sections.map((section, idx) => (
                 <div key={idx} className="space-y-3">
-                  <h3 className="text-xl font-bold text-[var(--color-text-primary)]">{section.heading}</h3>
-                  <p className="text-[#4A4A4A] leading-relaxed">{section.body}</p>
+                  <h3 className="text-xl font-bold text-[#111815]">{section.heading}</h3>
+                  <p className="text-[#1D2B24] leading-relaxed font-normal">{section.body}</p>
                 </div>
               ))}
             </div>
 
-            <div className="pt-6 border-t border-[var(--color-border)]/30 flex justify-between items-center">
+            <div className="pt-6 border-t border-[#7A968B]/30 flex justify-between items-center">
               <button
                 onClick={() => setSelectedArticle(null)}
-                className="px-5 py-2.5 bg-[var(--color-accent-primary)] text-white text-xs font-semibold rounded-full hover:bg-[#1E2C1F] transition-colors"
+                className="px-5 py-2.5 bg-[#203322] text-white text-xs font-semibold rounded-full hover:bg-[#111815] transition-colors shadow-sm"
               >
                 Close Article
               </button>
               <a
                 href="/contact/"
-                className="text-xs font-semibold text-[var(--color-accent-primary)] hover:underline"
+                className="text-xs font-bold text-[#203322] hover:underline"
               >
                 Discuss this essay with me →
               </a>
@@ -193,37 +193,37 @@ export default function WritingPage() {
               <div
                 key={art.id}
                 onClick={() => setSelectedArticle(art)}
-                className="p-8 bg-white/75 backdrop-blur-sm border border-[var(--color-border)]/70 hover:border-[var(--color-accent-secondary)] rounded-2xl shadow-sm transition-all cursor-pointer group space-y-4"
+                className="p-8 bg-white border-2 border-[#7A968B] hover:border-[#203322] rounded-2xl shadow-md transition-all cursor-pointer group space-y-4"
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#2A3E34]">
                     {art.category}
                   </span>
-                  <div className="flex items-center space-x-3 text-xs text-[var(--color-text-muted)]">
+                  <div className="flex items-center space-x-3 text-xs text-[#2A3E34] font-medium">
                     <span className="flex items-center space-x-1">
-                      <Calendar className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
+                      <Calendar className="w-3.5 h-3.5 text-[#203322]" />
                       <span>{art.date}</span>
                     </span>
                     <span className="flex items-center space-x-1">
-                      <Clock className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
+                      <Clock className="w-3.5 h-3.5 text-[#203322]" />
                       <span>{art.readTime}</span>
                     </span>
                   </div>
                 </div>
 
-                <h2 className="text-2xl font-bold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-primary)] leading-snug transition-colors">
+                <h2 className="text-2xl font-bold text-[#111815] group-hover:text-[#203322] leading-snug transition-colors">
                   {art.title}
                 </h2>
 
-                <p className="text-sm text-[#4A4A4A] leading-relaxed">
+                <p className="text-sm text-[#1D2B24] leading-relaxed">
                   {art.summary}
                 </p>
 
                 <div className="pt-2 flex items-center justify-between">
-                  <span className="text-xs font-medium text-[var(--color-accent-primary)]">
+                  <span className="text-xs font-bold text-[#203322]">
                     {art.author}
                   </span>
-                  <span className="inline-flex items-center space-x-1 text-xs font-semibold text-[var(--color-accent-primary)] group-hover:translate-x-1 transition-transform">
+                  <span className="inline-flex items-center space-x-1 text-xs font-bold text-[#203322] group-hover:translate-x-1 transition-transform">
                     <span>Read complete essay</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </span>

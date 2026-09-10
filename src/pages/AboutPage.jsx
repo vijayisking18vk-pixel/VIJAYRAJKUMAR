@@ -58,9 +58,9 @@ export default function AboutPage() {
         </div>
 
         {/* Page Header */}
-        <div className="space-y-4 border-b border-[var(--color-border)]/40 pb-10">
-          <div className="inline-flex items-center space-x-2 bg-[var(--color-surface)]/30 text-[var(--color-accent-primary)] border border-[var(--color-border)]/40 text-xs px-3 py-1 rounded-full font-semibold">
-            <Compass className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
+        <div className="space-y-4 border-b border-[var(--color-border)]/60 pb-10">
+          <div className="inline-flex items-center space-x-2 bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] text-xs px-3.5 py-1.5 rounded-full font-bold">
+            <Compass className="w-3.5 h-3.5 text-[#203322]" />
             <span>Profile & Background</span>
           </div>
 
@@ -68,12 +68,12 @@ export default function AboutPage() {
             Chief Operating Officer & Venture Builder
           </h1>
 
-          <p className="text-lg text-[#383838] leading-relaxed max-w-3xl">
+          <p className="text-lg text-[#203028] leading-relaxed max-w-3xl">
             Based on-site in Chennai, Tamil Nadu. Building marketplaces and AI cognitive infrastructure as Chief Operating Officer & Co-founder at Unfounded, Ziggers, and LoopMemory.
           </p>
 
-          <div className="flex items-center space-x-2 text-xs text-[var(--color-text-muted)] pt-1">
-            <MapPin className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
+          <div className="flex items-center space-x-2 text-xs text-[#354E45] font-semibold pt-1">
+            <MapPin className="w-3.5 h-3.5 text-[#203322]" />
             <span>Chennai, Tamil Nadu, India · On-site</span>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function AboutPage() {
           <h2 className="text-2xl font-bold tracking-tight text-[var(--color-text-primary)]">
             From Literature to Geopolitics to Venture Building
           </h2>
-          <div className="text-[#383838] space-y-4 text-base leading-relaxed">
+          <div className="text-[#203028] space-y-4 text-base leading-relaxed">
             <p>
               I treat venture building not as isolated software coding, but as systemic architecture. A successful product is the convergence of incentive alignment, technical speed, and human trust.
             </p>
@@ -97,32 +97,32 @@ export default function AboutPage() {
         </section>
 
         {/* Education Credentials */}
-        <section className="space-y-6 border-t border-[var(--color-border)]/40 pt-10">
+        <section className="space-y-6 border-t border-[var(--color-border)]/60 pt-10">
           <h2 className="text-2xl font-bold tracking-tight text-[var(--color-text-primary)]">
             Academic Background & Degrees
           </h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="p-6 bg-white/75 backdrop-blur-sm border border-[var(--color-border)]/70 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-3 shadow-sm transition-all">
-              <div className="w-9 h-9 bg-[var(--color-surface)]/30 border border-[var(--color-border)]/40 rounded-xl flex items-center justify-center">
-                <Shield className="w-5 h-5 text-[var(--color-accent-primary)]" />
+            <div className="p-6 bg-white border-2 border-[#7A968B] hover:border-[var(--color-accent-primary)] rounded-2xl space-y-3 shadow-md transition-all">
+              <div className="w-10 h-10 bg-[#E2ECE7] border border-[#85A296] rounded-xl flex items-center justify-center">
+                <Shield className="w-5 h-5 text-[#203322]" />
               </div>
-              <span className="text-xs text-[var(--color-text-muted)] font-medium block">Apr 2023 – Apr 2026</span>
-              <h3 className="text-lg font-bold text-[var(--color-text-primary)]">B.Sc. in Defence & Strategic Studies</h3>
-              <p className="text-xs text-[var(--color-accent-primary)] font-semibold">SRM Institute of Science and Technology (SRMIST)</p>
-              <p className="text-sm text-[#4A4A4A] leading-relaxed pt-1">
+              <span className="text-xs text-[#354E45] font-bold block">Apr 2023 – Apr 2026</span>
+              <h3 className="text-lg font-bold text-[#111815]">B.Sc. in Defence & Strategic Studies</h3>
+              <p className="text-xs text-[#203322] font-bold">SRM Institute of Science and Technology (SRMIST)</p>
+              <p className="text-sm text-[#203028] leading-relaxed pt-1">
                 Rigorous study of international security, geopolitics, grand strategy, conflict resolution, deterrence theory, and global economic interdependencies.
               </p>
             </div>
 
-            <div className="p-6 bg-white/75 backdrop-blur-sm border border-[var(--color-border)]/70 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-3 shadow-sm transition-all">
-              <div className="w-9 h-9 bg-[var(--color-surface)]/30 border border-[var(--color-border)]/40 rounded-xl flex items-center justify-center">
-                <BookOpen className="w-5 h-5 text-[var(--color-accent-primary)]" />
+            <div className="p-6 bg-white border-2 border-[#7A968B] hover:border-[var(--color-accent-primary)] rounded-2xl space-y-3 shadow-md transition-all">
+              <div className="w-10 h-10 bg-[#E2ECE7] border border-[#85A296] rounded-xl flex items-center justify-center">
+                <BookOpen className="w-5 h-5 text-[#203322]" />
               </div>
-              <span className="text-xs text-[var(--color-text-muted)] font-medium block">Dec 2016 – Jan 2021</span>
-              <h3 className="text-lg font-bold text-[var(--color-text-primary)]">Master of Arts (MA) in Hindi Literature</h3>
-              <p className="text-xs text-[var(--color-accent-primary)] font-semibold">Dakshina Bharat Hindi Prachar Sabha</p>
-              <p className="text-sm text-[#4A4A4A] leading-relaxed pt-1">
+              <span className="text-xs text-[#354E45] font-bold block">Dec 2016 – Jan 2021</span>
+              <h3 className="text-lg font-bold text-[#111815]">Master of Arts (MA) in Hindi Literature</h3>
+              <p className="text-xs text-[#203322] font-bold">Dakshina Bharat Hindi Prachar Sabha</p>
+              <p className="text-sm text-[#203028] leading-relaxed pt-1">
                 Linguistic morphology, literary history, dialectic analysis, and cross-cultural communication strategy across India.
               </p>
             </div>
@@ -130,14 +130,14 @@ export default function AboutPage() {
         </section>
 
         {/* Core Competencies */}
-        <section className="space-y-6 border-t border-[var(--color-border)]/40 pt-10">
+        <section className="space-y-6 border-t border-[var(--color-border)]/60 pt-10">
           <h2 className="text-2xl font-bold tracking-tight text-[var(--color-text-primary)]">
             Core Competencies & Stack
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {skills.map((skill, idx) => (
-              <div key={idx} className="flex items-center space-x-2.5 p-3.5 bg-[var(--color-surface)]/20 border border-[var(--color-border)]/40 rounded-xl text-sm font-medium text-[var(--color-accent-primary)]">
-                <Zap className="w-4 h-4 text-[var(--color-accent-primary)] shrink-0" />
+              <div key={idx} className="flex items-center space-x-3 p-4 bg-white border-2 border-[#7A968B] rounded-xl text-sm font-bold text-[#111815] shadow-sm">
+                <Zap className="w-4 h-4 text-[#203322] shrink-0" />
                 <span>{skill}</span>
               </div>
             ))}
@@ -145,26 +145,26 @@ export default function AboutPage() {
         </section>
 
         {/* Ecosystem Milestones & Summits */}
-        <section className="space-y-6 border-t border-[var(--color-border)]/40 pt-10">
+        <section className="space-y-6 border-t border-[var(--color-border)]/60 pt-10">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-bold tracking-tight text-[var(--color-text-primary)]">
               Verified Ecosystem Milestones & Summits
             </h2>
-            <span className="text-xs text-[var(--color-text-muted)]">2025 – 2026</span>
+            <span className="text-xs text-[#354E45] font-bold">2025 – 2026</span>
           </div>
 
           <div className="space-y-4">
             {events.map((ev, idx) => (
-              <div key={idx} className="p-6 bg-white/75 backdrop-blur-sm border border-[var(--color-border)]/70 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-3 shadow-sm transition-all">
+              <div key={idx} className="p-6 bg-white border-2 border-[#7A968B] hover:border-[var(--color-accent-primary)] rounded-2xl space-y-3 shadow-md transition-all">
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="text-xs font-semibold px-2.5 py-1 bg-[var(--color-surface)]/30 border border-[var(--color-border)]/40 rounded-full text-[var(--color-accent-primary)]">
+                  <span className="text-xs font-bold px-3 py-1 bg-[#E2ECE7] border border-[#85A296] rounded-full text-[#1B2F21]">
                     {ev.tag}
                   </span>
-                  <span className="text-xs text-[var(--color-text-muted)]">{ev.location}</span>
+                  <span className="text-xs text-[#354E45] font-semibold">{ev.location}</span>
                 </div>
-                <h3 className="text-lg font-bold text-[var(--color-text-primary)]">{ev.title}</h3>
-                <p className="text-sm text-[#4A4A4A] leading-relaxed">{ev.detail}</p>
-                <div className="text-xs font-semibold text-[var(--color-accent-primary)] pt-1">
+                <h3 className="text-lg font-bold text-[#111815]">{ev.title}</h3>
+                <p className="text-sm text-[#203028] leading-relaxed">{ev.detail}</p>
+                <div className="text-xs font-bold text-[#203322] pt-1">
                   {ev.badge}
                 </div>
               </div>
