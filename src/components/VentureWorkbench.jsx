@@ -65,7 +65,7 @@ export default function VentureWorkbench() {
   ];
 
   return (
-    <section id="ventures" className="w-full bg-white text-[var(--color-text-primary)] py-24 lg:py-32 px-6 sm:px-12 border-t border-[var(--color-border)]/40 font-sans">
+    <section id="ventures" className="w-full bg-[var(--color-background)] text-[var(--color-text-primary)] py-24 lg:py-32 px-6 sm:px-12 border-t border-[var(--color-border)]/40 font-sans">
       <div className="max-w-6xl mx-auto space-y-16 lg:space-y-20">
         
         {/* Section Header */}
@@ -88,7 +88,7 @@ export default function VentureWorkbench() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           
           {/* Case Study 1: Ziggers -> PixelTransition */}
-          <PixelTransition className="p-8 flex flex-col justify-between space-y-8 h-full bg-white border border-[var(--color-border)]/50 rounded-3xl hover:border-[var(--color-accent-secondary)] transition-all shadow-sm">
+          <PixelTransition className="p-8 flex flex-col justify-between space-y-8 h-full bg-white/75 backdrop-blur-sm border border-[var(--color-border)]/70 rounded-3xl hover:border-[var(--color-accent-secondary)] transition-all shadow-sm">
             <div className="space-y-6">
               <div className="flex items-center justify-between text-xs">
                 <span className="bg-[var(--color-surface)]/30 text-[var(--color-accent-primary)] border border-[var(--color-border)]/40 px-3 py-1 rounded-full font-medium text-[11px]">
@@ -162,7 +162,7 @@ export default function VentureWorkbench() {
           </PixelTransition>
 
           {/* Case Study 2: LoopMemory -> StackCard */}
-          <StackCard className="h-full bg-white border border-[var(--color-border)]/50 rounded-3xl hover:border-[var(--color-accent-secondary)] transition-all shadow-sm">
+          <StackCard className="h-full bg-white/75 backdrop-blur-sm border border-[var(--color-border)]/70 rounded-3xl hover:border-[var(--color-accent-secondary)] transition-all shadow-sm">
             <div className="flex flex-col justify-between space-y-8 h-full p-8">
               <div className="space-y-6">
                 <div className="flex items-center justify-between text-xs">
@@ -238,7 +238,7 @@ export default function VentureWorkbench() {
           </StackCard>
 
           {/* Case Study 3: Unfounded -> ChromaGrid */}
-          <ChromaGrid className="p-8 flex flex-col justify-between space-y-8 h-full bg-white border border-[var(--color-border)]/50 rounded-3xl hover:border-[var(--color-accent-secondary)] transition-all shadow-sm">
+          <ChromaGrid className="p-8 flex flex-col justify-between space-y-8 h-full bg-white/75 backdrop-blur-sm border border-[var(--color-border)]/70 rounded-3xl hover:border-[var(--color-accent-secondary)] transition-all shadow-sm">
             <div className="space-y-6">
               <div className="flex items-center justify-between text-xs">
                 <span className="bg-[var(--color-surface)]/30 text-[var(--color-accent-primary)] border border-[var(--color-border)]/40 px-3 py-1 rounded-full font-medium text-[11px]">

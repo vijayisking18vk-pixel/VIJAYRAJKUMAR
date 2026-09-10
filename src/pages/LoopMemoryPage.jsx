@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 
 export default function LoopMemoryPage() {
   return (
-    <div className="min-h-screen bg-white text-[var(--color-text-primary)] font-sans selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
+    <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-sans selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
       <Header />
 
       <main className="flex-grow max-w-4xl mx-auto px-6 py-16 lg:py-24 space-y-16">
@@ -53,7 +53,7 @@ export default function LoopMemoryPage() {
         {/* Case Study Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-sm">
           
-          <div className="p-6 bg-white border border-[var(--color-border)]/40 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-2 shadow-sm transition-all">
+          <div className="p-6 bg-white/75 backdrop-blur-sm border border-[var(--color-border)]/70 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-2 shadow-sm transition-all">
             <div className="flex items-center space-x-2 text-[var(--color-accent-primary)] font-bold">
               <Brain className="w-4 h-4" />
               <h2 className="text-base">1. The Problem</h2>
@@ -63,7 +63,7 @@ export default function LoopMemoryPage() {
             </p>
           </div>
 
-          <div className="p-6 bg-white border border-[var(--color-border)]/40 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-2 shadow-sm transition-all">
+          <div className="p-6 bg-white/75 backdrop-blur-sm border border-[var(--color-border)]/70 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-2 shadow-sm transition-all">
             <div className="flex items-center space-x-2 text-[var(--color-accent-primary)] font-bold">
               <Database className="w-4 h-4" />
               <h2 className="text-base">2. The Target User</h2>
@@ -73,7 +73,7 @@ export default function LoopMemoryPage() {
             </p>
           </div>
 
-          <div className="p-6 bg-white border border-[var(--color-border)]/40 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-2 shadow-sm transition-all">
+          <div className="p-6 bg-white/75 backdrop-blur-sm border border-[var(--color-border)]/70 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-2 shadow-sm transition-all">
             <div className="flex items-center space-x-2 text-[var(--color-accent-primary)] font-bold">
               <Sparkles className="w-4 h-4" />
               <h2 className="text-base">3. What I Personally Owned</h2>
@@ -83,7 +83,7 @@ export default function LoopMemoryPage() {
             </p>
           </div>
 
-          <div className="p-6 bg-white border border-[var(--color-border)]/40 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-2 shadow-sm transition-all">
+          <div className="p-6 bg-white/75 backdrop-blur-sm border border-[var(--color-border)]/70 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-2 shadow-sm transition-all">
             <div className="flex items-center space-x-2 text-[var(--color-accent-primary)] font-bold">
               <Cpu className="w-4 h-4" />
               <h2 className="text-base">4. Deliverables Shipped</h2>

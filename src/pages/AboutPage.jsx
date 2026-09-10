@@ -45,7 +45,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-[var(--color-text-primary)] font-sans selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
+    <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-sans selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
       <Header />
 
       <main className="flex-grow max-w-4xl mx-auto px-6 py-16 lg:py-24 space-y-16">
@@ -103,7 +103,7 @@ export default function AboutPage() {
           </h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="p-6 bg-white border border-[var(--color-border)]/40 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-3 shadow-sm transition-all">
+            <div className="p-6 bg-white/75 backdrop-blur-sm border border-[var(--color-border)]/70 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-3 shadow-sm transition-all">
               <div className="w-9 h-9 bg-[var(--color-surface)]/30 border border-[var(--color-border)]/40 rounded-xl flex items-center justify-center">
                 <Shield className="w-5 h-5 text-[var(--color-accent-primary)]" />
               </div>
@@ -115,7 +115,7 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="p-6 bg-white border border-[var(--color-border)]/40 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-3 shadow-sm transition-all">
+            <div className="p-6 bg-white/75 backdrop-blur-sm border border-[var(--color-border)]/70 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-3 shadow-sm transition-all">
               <div className="w-9 h-9 bg-[var(--color-surface)]/30 border border-[var(--color-border)]/40 rounded-xl flex items-center justify-center">
                 <BookOpen className="w-5 h-5 text-[var(--color-accent-primary)]" />
               </div>
@@ -155,7 +155,7 @@ export default function AboutPage() {
 
           <div className="space-y-4">
             {events.map((ev, idx) => (
-              <div key={idx} className="p-6 bg-white border border-[var(--color-border)]/40 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-3 shadow-sm transition-all">
+              <div key={idx} className="p-6 bg-white/75 backdrop-blur-sm border border-[var(--color-border)]/70 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-3 shadow-sm transition-all">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <span className="text-xs font-semibold px-2.5 py-1 bg-[var(--color-surface)]/30 border border-[var(--color-border)]/40 rounded-full text-[var(--color-accent-primary)]">
                     {ev.tag}

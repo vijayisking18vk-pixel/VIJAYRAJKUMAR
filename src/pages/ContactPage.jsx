@@ -52,7 +52,7 @@ export default function ContactPage() {
 
         {/* Contextual Guidance */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm">
-          <div className="p-6 bg-[var(--color-surface)]/20 border border-[var(--color-border)]/50 rounded-2xl space-y-2">
+          <div className="p-6 bg-white/75 backdrop-blur-sm border border-[var(--color-border)]/70 rounded-2xl space-y-2">
             <h2 className="font-bold text-[var(--color-text-primary)] flex items-center space-x-2">
               <CheckCircle2 className="w-4 h-4 text-[var(--color-accent-primary)]" />
               <span>What I Prioritize</span>
@@ -65,7 +65,7 @@ export default function ContactPage() {
             </ul>
           </div>
 
-          <div className="p-6 bg-[var(--color-surface)]/20 border border-[var(--color-border)]/50 rounded-2xl space-y-2">
+          <div className="p-6 bg-white/75 backdrop-blur-sm border border-[var(--color-border)]/70 rounded-2xl space-y-2">
             <h2 className="font-bold text-[var(--color-text-primary)] flex items-center space-x-2">
               <CheckCircle2 className="w-4 h-4 text-[var(--color-accent-primary)]" />
               <span>What to Expect</span>

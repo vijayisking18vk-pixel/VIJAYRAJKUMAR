@@ -31,7 +31,7 @@ export default function CollaborationDispatch() {
   ];
 
   return (
-    <section id="dispatch" className="w-full bg-white text-[var(--color-text-primary)] py-24 lg:py-32 px-6 sm:px-12 border-t border-[var(--color-border)]/40 font-sans">
+    <section id="dispatch" className="w-full bg-[var(--color-background)] text-[var(--color-text-primary)] py-24 lg:py-32 px-6 sm:px-12 border-t border-[var(--color-border)]/40 font-sans">
       <div className="max-w-6xl mx-auto space-y-16 lg:space-y-20">
         
         {/* Section Header */}
@@ -122,13 +122,13 @@ export default function CollaborationDispatch() {
                     placeholder="e.g. Founder, Investor, Co-builder"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-3.5 text-neutral-950 placeholder-neutral-400 focus:bg-white focus:border-neutral-900 outline-none transition-all text-xs"
+                    className="w-full bg-white/75 border border-[var(--color-border)]/70 rounded-xl p-3.5 text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] focus:bg-white focus:border-[var(--color-accent-primary)] outline-none transition-all text-xs"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="contact-email" className="block text-neutral-700 font-medium">
-                    Contact Email Address <span className="text-neutral-400">*</span>
+                  <label htmlFor="contact-email" className="block text-[var(--color-text-primary)] font-medium">
+                    Contact Email Address <span className="text-[var(--color-text-muted)]">*</span>
                   </label>
                   <input
                     id="contact-email"
@@ -137,13 +137,13 @@ export default function CollaborationDispatch() {
                     placeholder="name@organization.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-3.5 text-neutral-950 placeholder-neutral-400 focus:bg-white focus:border-neutral-900 outline-none transition-all text-xs"
+                    className="w-full bg-white/75 border border-[var(--color-border)]/70 rounded-xl p-3.5 text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] focus:bg-white focus:border-[var(--color-accent-primary)] outline-none transition-all text-xs"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="contact-message" className="block text-neutral-700 font-medium">
-                    Brief Details & Context <span className="text-neutral-400">*</span>
+                  <label htmlFor="contact-message" className="block text-[var(--color-text-primary)] font-medium">
+                    Brief Details & Context <span className="text-[var(--color-text-muted)]">*</span>
                   </label>
                   <textarea
                     id="contact-message"
@@ -152,7 +152,7 @@ export default function CollaborationDispatch() {
                     placeholder="Venture partnership inquiry, product collaboration, or startup ecosystem project..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-3.5 text-neutral-950 placeholder-neutral-400 focus:bg-white focus:border-neutral-900 outline-none transition-all text-xs resize-none"
+                    className="w-full bg-white/75 border border-[var(--color-border)]/70 rounded-xl p-3.5 text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] focus:bg-white focus:border-[var(--color-accent-primary)] outline-none transition-all text-xs resize-none"
                   ></textarea>
                 </div>
 

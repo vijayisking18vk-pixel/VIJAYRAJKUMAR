@@ -43,7 +43,7 @@ export default function PagePortalsGrid() {
   ];
 
   return (
-    <section id="portals" className="w-full bg-white text-[var(--color-text-primary)] py-20 px-6 sm:px-12 border-t border-[var(--color-border)]/40 font-sans">
+    <section id="portals" className="w-full bg-[var(--color-background)] text-[var(--color-text-primary)] py-20 px-6 sm:px-12 border-t border-[var(--color-border)]/40 font-sans">
       <div className="max-w-6xl mx-auto space-y-12">
         
         {/* Header */}
@@ -70,7 +70,7 @@ export default function PagePortalsGrid() {
                 href={portal.href}
                 className="group block"
               >
-                <SpotlightCard className="p-8 h-full flex flex-col justify-between space-y-6 hover:border-[var(--color-accent-secondary)] transition-all rounded-3xl bg-white border border-[var(--color-border)]/50 shadow-sm">
+                <SpotlightCard className="p-8 h-full flex flex-col justify-between space-y-6 hover:border-[var(--color-accent-secondary)] transition-all rounded-3xl bg-white/75 backdrop-blur-sm border border-[var(--color-border)]/70 shadow-sm">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <span className="text-xs uppercase tracking-wider font-semibold text-[var(--color-text-muted)]">

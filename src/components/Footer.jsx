@@ -9,7 +9,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full bg-white text-[var(--color-text-primary)] border-t border-[var(--color-border)]/40 overflow-hidden font-sans relative z-10">
+    <footer className="w-full bg-[var(--color-background)] text-[var(--color-text-primary)] border-t border-[var(--color-border)]/40 overflow-hidden font-sans relative z-10">
       {/* Repeating Ribbon Seal with LetterGlitch */}
       <div className="bg-[var(--color-surface)]/20 text-[var(--color-text-primary)] py-3 text-xs font-semibold tracking-wider overflow-hidden select-none border-b border-[var(--color-border)]/30">
         <LetterGlitch>

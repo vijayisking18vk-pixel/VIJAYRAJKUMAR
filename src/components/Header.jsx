@@ -14,7 +14,7 @@ export default function Header({ activeSection, setActiveSection }) {
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-[var(--color-border)]/40 font-sans text-xs select-none">
+    <header className="sticky top-0 z-40 w-full bg-[var(--color-background)]/85 backdrop-blur-md border-b border-[var(--color-border)]/40 font-sans text-xs select-none">
       <div className="max-w-6xl mx-auto px-6 lg:px-12 py-4 flex items-center justify-between">
         
         {/* Brand Title linking to Home - Only Name */}
@@ -67,7 +67,7 @@ export default function Header({ activeSection, setActiveSection }) {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-[var(--color-border)]/40 bg-white px-6 py-4 space-y-3 shadow-lg">
+        <div className="md:hidden border-t border-[var(--color-border)]/40 bg-[var(--color-background)] px-6 py-4 space-y-3 shadow-lg">
           {navItems.map((item) => {
             const Icon = item.icon;
             return (

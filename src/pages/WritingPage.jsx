@@ -94,7 +94,7 @@ export default function WritingPage() {
   const [selectedArticle, setSelectedArticle] = useState(null);
 
   return (
-    <div className="min-h-screen bg-white text-[var(--color-text-primary)] font-sans selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
+    <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-sans selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
       <Header />
 
       <main className="flex-grow max-w-4xl mx-auto px-6 py-16 lg:py-24 space-y-16">
@@ -124,7 +124,7 @@ export default function WritingPage() {
 
         {/* Article Reader Modal / Full View */}
         {selectedArticle ? (
-          <article className="space-y-10 border border-[var(--color-border)]/50 bg-white p-8 sm:p-12 rounded-3xl shadow-sm animate-in fade-in duration-200">
+          <article className="space-y-10 border border-[var(--color-border)]/70 bg-white/85 backdrop-blur-sm p-8 sm:p-12 rounded-3xl shadow-sm animate-in fade-in duration-200">
             <button
               onClick={() => setSelectedArticle(null)}
               className="text-xs font-semibold text-[var(--color-accent-primary)] hover:underline flex items-center space-x-1"
@@ -193,7 +193,7 @@ export default function WritingPage() {
               <div
                 key={art.id}
                 onClick={() => setSelectedArticle(art)}
-                className="p-8 bg-white border border-[var(--color-border)]/40 hover:border-[var(--color-accent-secondary)] rounded-2xl shadow-sm transition-all cursor-pointer group space-y-4"
+                className="p-8 bg-white/75 backdrop-blur-sm border border-[var(--color-border)]/70 hover:border-[var(--color-accent-secondary)] rounded-2xl shadow-sm transition-all cursor-pointer group space-y-4"
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)]">

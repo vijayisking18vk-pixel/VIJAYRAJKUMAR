@@ -3,13 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --color-background: #FFFFFF;        /* keep white base per your minimalist direction */
-  --color-text-primary: #1A1A1A;      /* charcoal instead of pure black — softer, matches image */
+  --color-background: #ACC2B9;        /* sage mist background extracted from uploaded reference image */
+  --color-background-start: #98ACA5;  /* subtle top tone */
+  --color-background-end: #BED5CC;    /* subtle bottom tone */
+  --color-text-primary: #1A1A1A;      /* charcoal instead of pure black */
   --color-accent-primary: #2C3E2D;    /* deep forest green — primary brand accent */
-  --color-accent-secondary: #7E9490;  /* slate teal — secondary accent/hover states */
-  --color-text-muted: #8FA3A8;        /* muted blue-gray — subtitles, labels */
-  --color-surface: #C9D6D3;           /* pale ice blue — subtle card backgrounds */
-  --color-border: #A8B8AA;            /* sage mist — hairline borders */
+  --color-accent-secondary: #516A62;  /* slate teal accent */
+  --color-text-muted: #3D554D;        /* dark muted forest gray — crisp contrast against sage */
+  --color-surface: rgba(255, 255, 255, 0.45); /* card backgrounds / subtle overlays */
+  --color-border: #8FA79E;            /* sage hairline borders */
 }
 
 @layer base {
@@ -19,6 +21,8 @@
 
   body {
     background-color: var(--color-background);
+    background-image: linear-gradient(180deg, #98ACA5 0%, #ACC2B9 30%, #B4CBC2 70%, #BED5CC 100%);
+    background-attachment: fixed;
     color: var(--color-text-primary);
     font-family: "Plus Jakarta Sans", Poppins, sans-serif;
     @apply antialiased leading-relaxed;
@@ -36,7 +40,7 @@
 
   p {
     @apply leading-relaxed;
-    color: #383838;
+    color: #2D3E38;
   }
 }
 

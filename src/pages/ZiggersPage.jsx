@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 
 export default function ZiggersPage() {
   return (
-    <div className="min-h-screen bg-white text-[var(--color-text-primary)] font-sans selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
+    <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-sans selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
       <Header />
 
       <main className="flex-grow max-w-4xl mx-auto px-6 py-16 lg:py-24 space-y-16">
@@ -53,28 +53,28 @@ export default function ZiggersPage() {
         {/* Case Study Details */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-sm">
           
-          <div className="p-6 bg-white border border-[var(--color-border)]/40 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-2 shadow-sm transition-all">
+          <div className="p-6 bg-white/75 backdrop-blur-sm border border-[var(--color-border)]/70 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-2 shadow-sm transition-all">
             <h2 className="text-base font-bold text-[var(--color-accent-primary)]">1. The Problem</h2>
             <p className="text-[#4A4A4A] leading-relaxed">
               In urban India, millions of short-term gig staffing requests (events, hospitality, promotions, warehouse shifts) happen through unorganized WhatsApp groups. Employers suffer high no-show rates and unverified workers, while workers face payment delays and wage theft.
             </p>
           </div>
 
-          <div className="p-6 bg-white border border-[var(--color-border)]/40 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-2 shadow-sm transition-all">
+          <div className="p-6 bg-white/75 backdrop-blur-sm border border-[var(--color-border)]/70 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-2 shadow-sm transition-all">
             <h2 className="text-base font-bold text-[var(--color-accent-primary)]">2. The Target User</h2>
             <p className="text-[#4A4A4A] leading-relaxed">
               Business managers, event organizers, catering operators, and logistics leads needing 5 to 50 reliable hands on short notice; and college students/flexible workers looking for transparent daily or weekly gigs.
             </p>
           </div>
 
-          <div className="p-6 bg-white border border-[var(--color-border)]/40 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-2 shadow-sm transition-all">
+          <div className="p-6 bg-white/75 backdrop-blur-sm border border-[var(--color-border)]/70 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-2 shadow-sm transition-all">
             <h2 className="text-base font-bold text-[var(--color-accent-primary)]">3. What I Personally Owned</h2>
             <p className="text-[#4A4A4A] leading-relaxed">
               As Co-Founder, I shaped product direction, user onboarding flows, marketplace matching rules, and the milestone escrow payment logic. I led go-to-market positioning, offline student community outreach across Chennai colleges, and the Product Hunt launch.
             </p>
           </div>
 
-          <div className="p-6 bg-white border border-[var(--color-border)]/40 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-2 shadow-sm transition-all">
+          <div className="p-6 bg-white/75 backdrop-blur-sm border border-[var(--color-border)]/70 hover:border-[var(--color-accent-secondary)] rounded-2xl space-y-2 shadow-sm transition-all">
             <h2 className="text-base font-bold text-[var(--color-accent-primary)]">4. Deliverables Shipped</h2>
             <p className="text-[#4A4A4A] leading-relaxed">
               Shipped responsive web application on React and Vite, real-time geolocation check-in, verified worker identification, shift matching engine, and automated escrow payout processing upon verified shift completion.
