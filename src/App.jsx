@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
-import HeroPoster from './components/HeroPoster';
+import { ParallaxHero } from './components/ui/wilderness';
 import PagePortalsGrid from './components/PagePortalsGrid';
 import Footer from './components/Footer';
 import Particles from './components/react-bits/Particles';
@@ -49,7 +49,7 @@ export default function App() {
     return <ContactPage />;
   }
 
-  // Streamlined Homepage: Living Hero Poster + Proof Strip + Section Directory Portals
+  // Streamlined Homepage: Living Parallax Hero + Proof Strip + Section Directory Portals
   return (
     <div className="relative min-h-screen bg-white text-neutral-950 flex flex-col font-sans selection:bg-neutral-900 selection:text-white overflow-x-hidden">
       {/* Global Ambient Interactive Particles Canvas Background */}
@@ -60,12 +60,13 @@ export default function App() {
 
       {/* Main Content Flow: Living Centerpiece & Dedicated Portals */}
       <main className="relative z-10 flex-grow">
-        {/* 1. Hero Poster Image Centerpiece & Proof Strip */}
-        <HeroPoster />
+        {/* 1. 3D Interactive Parallax Hero Centerpiece */}
+        <ParallaxHero title="VIJAY" />
 
         {/* 2. Directory Portals to Dedicated Pages (About, Ventures, Writing, Contact) */}
         <PagePortalsGrid />
       </main>
+
 
       {/* Footer */}
       <Footer />
