@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowDown, Sparkles } from 'lucide-react';
-import ShinyText from './react-bits/ShinyText';
+import { ArrowDown, ArrowRight, Sparkles, MapPin, Briefcase, Cpu, CheckCircle2 } from 'lucide-react';
 import BorderGlow from './react-bits/BorderGlow';
 import TextPressure from './react-bits/TextPressure';
 import Marquee from './react-bits/Marquee';
@@ -30,45 +29,51 @@ export default function HeroPoster({ onStartAnimation }) {
     setMousePosition({ x, y });
   };
 
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <motion.section
       ref={containerRef}
       onMouseMove={handleMouseMove}
       style={{ scale: posterScale, opacity: posterOpacity }}
-      className="relative w-full min-h-screen bg-white text-neutral-950 flex flex-col justify-between items-center py-16 lg:py-24 px-6 sm:px-12 overflow-hidden font-sans select-none"
+      className="relative w-full min-h-screen bg-white text-neutral-950 flex flex-col justify-between items-center pt-12 pb-16 px-6 sm:px-12 overflow-hidden font-sans select-none"
     >
-      {/* Top Tag with Unique BorderGlow Component */}
+      {/* Top Tag with BorderGlow Component */}
       <motion.div
         initial={{ opacity: 0, y: -16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.15 }}
-        className="relative z-20 pt-2 pb-4 mb-6"
+        className="relative z-20 mb-6"
       >
         <BorderGlow borderRadius={9999} glowColor="#0A0A0A" className="px-5 py-1.5 shadow-sm">
           <div className="flex items-center space-x-2.5 font-sans text-xs text-neutral-700">
             <Sparkles className="w-3.5 h-3.5 text-neutral-900 animate-pulse shrink-0" />
             <span className="font-semibold text-neutral-900 tracking-tight">
-              Vijayrajkumar // Co-Founder @ Unfounded • Zigger • Loopverse
+              Vijayrajkumar // Co-Founder @ Unfounded • Ziggers • LoopMemory
             </span>
           </div>
         </BorderGlow>
       </motion.div>
 
-      {/* Living Poster Centerpiece */}
-      <div className="relative z-20 my-auto flex flex-col items-center max-w-4xl w-full py-4 space-y-8">
+      {/* Main Hero Container */}
+      <div className="relative z-20 my-auto flex flex-col items-center max-w-4xl w-full py-4 space-y-8 text-center">
         
-        {/* Living Editorial Poster */}
+        {/* Living Editorial Poster Graphic */}
         <motion.div
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className="relative w-full max-w-xl rounded-2xl border border-neutral-200 shadow-poster-light bg-black overflow-hidden group cursor-pointer"
+          className="relative w-full max-w-lg rounded-2xl border border-neutral-200 shadow-poster-light bg-black overflow-hidden group cursor-pointer"
           animate={{
             x: mousePosition.x * 0.35,
             y: mousePosition.y * 0.35
           }}
           transition={{ type: 'spring', stiffness: 100, damping: 20 }}
         >
-
           {/* Clean High-Resolution Poster Image */}
           <motion.div
             style={{ y: portraitParallaxY }}
@@ -79,8 +84,8 @@ export default function HeroPoster({ onStartAnimation }) {
           >
             <img
               src="/vijayrajkumar-poster.jpg"
-              alt="Vijayrajkumar Living Poster"
-              className="w-full h-auto max-h-[58vh] sm:max-h-[64vh] object-contain filter grayscale contrast-[120%] brightness-[0.98]"
+              alt="Vijayrajkumar — Co-Founder and Venture Builder based in Chennai"
+              className="w-full h-auto max-h-[52vh] sm:max-h-[58vh] object-contain filter grayscale contrast-[120%] brightness-[0.98]"
             />
           </motion.div>
 
@@ -102,7 +107,7 @@ export default function HeroPoster({ onStartAnimation }) {
             </motion.div>
           </div>
 
-          {/* Curved Bottom Ribbon Text Loop with Marquee Component */}
+          {/* Curved Bottom Ribbon Loop */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -113,56 +118,117 @@ export default function HeroPoster({ onStartAnimation }) {
               <Marquee speed={28}>
                 <span className="mx-4">UNFOUNDED VENTURE STUDIO</span>
                 <span className="mx-2 text-neutral-400">•</span>
-                <span className="mx-4">CO-FOUNDER @ ZIGGER</span>
+                <span className="mx-4">CO-FOUNDER @ ZIGGERS</span>
                 <span className="mx-2 text-neutral-400">•</span>
-                <span className="mx-4">CO-FOUNDER @ LOOPVERSE</span>
+                <span className="mx-4">CO-FOUNDER @ LOOPMEMORY</span>
                 <span className="mx-2 text-neutral-400">•</span>
                 <span className="mx-4">CHENNAI · ON-SITE</span>
                 <span className="mx-2 text-neutral-400">•</span>
-                <span className="mx-4">VIBE CODING & MARKETING</span>
+                <span className="mx-4">VIBE CODING & GTM MARKETING</span>
                 <span className="mx-2 text-neutral-400">•</span>
               </Marquee>
             </div>
           </motion.div>
-
         </motion.div>
 
-        {/* Title Headline Statement with TextPressure & ShinyText */}
+        {/* 5-Second Answer Rule Hero Statement */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.7 }}
-          className="text-center space-y-3 max-w-2xl"
+          className="space-y-4 max-w-3xl px-2"
         >
-          <TextPressure text="Vijayrajkumar" textColor="#0A0A0A" />
+          <div className="flex justify-center">
+            <TextPressure text="Vijayrajkumar" textColor="#0A0A0A" />
+          </div>
+
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold font-sans tracking-tight text-neutral-950 leading-tight">
+            Vijayrajkumar is a Chennai-based co-founder and venture builder building marketplaces and AI context infrastructure.
+          </h1>
           
-          <p className="text-base sm:text-lg text-neutral-600 font-sans leading-relaxed pt-1">
-            Co-founder & venture builder across marketplaces, context structuring, and venture incubation. Specializing in vibe coding, marketing, and geopolitics.
+          <p className="text-base sm:text-lg text-neutral-600 font-sans leading-relaxed max-w-2xl mx-auto">
+            Co-founder at Unfounded, Ziggers, and LoopMemory. I work across product architecture, growth, marketing, and strategic research.
           </p>
+
+          {/* Two Primary Action CTAs */}
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-3">
+            <Magnet magnetStrength={3} padding={40}>
+              <button
+                onClick={() => scrollToSection('ventures')}
+                className="flex items-center space-x-2 px-6 py-3 bg-neutral-950 text-white font-semibold rounded-full hover:bg-black transition-all shadow-sm text-sm"
+              >
+                <span>Explore ventures</span>
+                <ArrowRight className="w-4 h-4 text-white shrink-0" />
+              </button>
+            </Magnet>
+
+            <Magnet magnetStrength={3} padding={40}>
+              <button
+                onClick={() => scrollToSection('dispatch')}
+                className="flex items-center space-x-2 px-6 py-3 bg-neutral-100 border border-neutral-200 text-neutral-900 font-semibold rounded-full hover:bg-neutral-200 transition-all text-sm"
+              >
+                <span>Start a conversation</span>
+              </button>
+            </Magnet>
+          </div>
         </motion.div>
 
       </div>
 
-      {/* Bottom Scroll CTA Button with Magnet Component */}
+      {/* Verifiable Proof Strip (Immediately below hero) */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.85 }}
-        className="relative z-20 pt-6 pb-2 flex flex-col items-center space-y-2"
+        className="w-full max-w-5xl pt-10 border-t border-neutral-200"
       >
-        <Magnet magnetStrength={3} padding={60}>
-          <button
-            onClick={onStartAnimation}
-            className="flex items-center space-x-2.5 px-7 py-3.5 bg-neutral-950 text-white font-semibold rounded-full hover:bg-black transition-all shadow-sm text-sm"
-          >
-            <span>Explore journey & work</span>
-            <ArrowDown className="w-4 h-4 text-white animate-bounce shrink-0" />
-          </button>
-        </Magnet>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
+          
+          {/* Fact 1: Current Role */}
+          <div className="p-4 bg-neutral-50/80 border border-neutral-200 rounded-xl space-y-1">
+            <div className="flex items-center space-x-2 text-xs font-semibold text-neutral-500 uppercase tracking-wider">
+              <Briefcase className="w-3.5 h-3.5 text-neutral-900" />
+              <span>Current Role</span>
+            </div>
+            <p className="text-xs sm:text-sm font-bold text-neutral-950 leading-snug">
+              Co-founder at Unfounded, Ziggers & LoopMemory
+            </p>
+          </div>
 
-        <span className="text-xs text-neutral-400 font-medium">
-          Education, experience & milestones below
-        </span>
+          {/* Fact 2: Base */}
+          <div className="p-4 bg-neutral-50/80 border border-neutral-200 rounded-xl space-y-1">
+            <div className="flex items-center space-x-2 text-xs font-semibold text-neutral-500 uppercase tracking-wider">
+              <MapPin className="w-3.5 h-3.5 text-neutral-900" />
+              <span>Base</span>
+            </div>
+            <p className="text-xs sm:text-sm font-bold text-neutral-950 leading-snug">
+              Chennai, Tamil Nadu, India (On-site)
+            </p>
+          </div>
+
+          {/* Fact 3: Product Focus */}
+          <div className="p-4 bg-neutral-50/80 border border-neutral-200 rounded-xl space-y-1">
+            <div className="flex items-center space-x-2 text-xs font-semibold text-neutral-500 uppercase tracking-wider">
+              <Cpu className="w-3.5 h-3.5 text-neutral-900" />
+              <span>Product Focus</span>
+            </div>
+            <p className="text-xs sm:text-sm font-bold text-neutral-950 leading-snug">
+              Gig marketplaces & AI memory infrastructure
+            </p>
+          </div>
+
+          {/* Fact 4: Current Status */}
+          <div className="p-4 bg-neutral-50/80 border border-neutral-200 rounded-xl space-y-1">
+            <div className="flex items-center space-x-2 text-xs font-semibold text-neutral-500 uppercase tracking-wider">
+              <CheckCircle2 className="w-3.5 h-3.5 text-neutral-900" />
+              <span>Current Status</span>
+            </div>
+            <p className="text-xs sm:text-sm font-bold text-neutral-950 leading-snug">
+              Ziggers live · LoopMemory active · Unfounded studio
+            </p>
+          </div>
+
+        </div>
       </motion.div>
 
     </motion.section>

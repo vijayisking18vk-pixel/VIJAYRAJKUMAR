@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vijayrajkumar.vercel.app/sitemap.xml
