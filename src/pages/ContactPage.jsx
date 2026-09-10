@@ -2,7 +2,8 @@ import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CollaborationDispatch from '../components/CollaborationDispatch';
-import { Mail, MessageSquare, Clock, MapPin, CheckCircle2 } from 'lucide-react';
+import SocialLinks from '../components/SocialLinks';
+import { Mail, MessageSquare, Clock, MapPin, CheckCircle2, Share2 } from 'lucide-react';
 
 export default function ContactPage() {
   return (
@@ -44,7 +45,7 @@ export default function ContactPage() {
             </div>
             <div className="flex items-center space-x-1.5">
               <Mail className="w-4 h-4 text-neutral-800" />
-              <span>Email: <a href="mailto:contact@unfounded.in" className="font-semibold text-neutral-950 underline">contact@unfounded.in</a></span>
+              <span>Email: <a href="mailto:vijaykumarunfounded@gmail.com" className="font-semibold text-neutral-950 underline">vijaykumarunfounded@gmail.com</a></span>
             </div>
           </div>
         </div>
@@ -73,6 +74,15 @@ export default function ContactPage() {
               Direct communication without intermediary screening. If you share a brief with clear problem definitions and goals, we can schedule an introductory sync or meet in person across Chennai.
             </p>
           </div>
+        </div>
+
+        {/* Social & Professional Channels */}
+        <div className="space-y-4 pt-2">
+          <div className="flex items-center space-x-2 text-xs font-semibold text-neutral-500 uppercase tracking-wider">
+            <Share2 className="w-3.5 h-3.5 text-neutral-900" />
+            <span>Direct Social & Network Profiles</span>
+          </div>
+          <SocialLinks compact={false} />
         </div>
 
         {/* Embedded Collaboration Dispatch Form */}

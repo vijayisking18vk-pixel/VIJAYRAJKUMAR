@@ -239,8 +239,13 @@ const routes = [
         <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-3 text-sm">
           <p><strong>Base:</strong> Chennai, Tamil Nadu, India (On-site)</p>
           <p><strong>Response Commitment:</strong> Within 2 business days</p>
-          <p><strong>Direct Email:</strong> <a href="mailto:contact@unfounded.in" class="underline font-bold text-neutral-950">contact@unfounded.in</a></p>
-          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/" target="_blank" rel="noopener noreferrer" class="underline font-bold text-neutral-950">linkedin.com/in/vijayraj-kumar-3042b43a3/</a></p>
+          <p><strong>Direct Email:</strong> <a href="mailto:vijaykumarunfounded@gmail.com" class="underline font-bold text-neutral-950">vijaykumarunfounded@gmail.com</a></p>
+          <div class="pt-2 flex flex-wrap gap-4 text-xs font-semibold">
+            <a href="https://x.com/bigboy00106926" target="_blank" rel="noopener noreferrer" class="underline text-neutral-950">X (Twitter) ↗</a>
+            <a href="https://www.instagram.com/vijayrajkumar_5405/" target="_blank" rel="noopener noreferrer" class="underline text-neutral-950">Instagram ↗</a>
+            <a href="https://www.facebook.com/profile.php?id=61580836342430" target="_blank" rel="noopener noreferrer" class="underline text-neutral-950">Facebook ↗</a>
+            <a href="https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/" target="_blank" rel="noopener noreferrer" class="underline text-neutral-950">LinkedIn ↗</a>
+          </div>
         </div>
       </div>
     `

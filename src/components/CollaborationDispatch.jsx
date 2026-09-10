@@ -4,13 +4,14 @@ import TrueFocus from './react-bits/TrueFocus';
 import FluidGlass from './react-bits/FluidGlass';
 import SpecularButton from './react-bits/SpecularButton';
 import BounceCards from './react-bits/BounceCards';
+import SocialLinks from './SocialLinks';
 
 export default function CollaborationDispatch() {
   const [submitted, setSubmitted] = useState(false);
   const [copied, setCopied] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
-  const directEmail = 'contact@unfounded.in';
+  const directEmail = 'vijaykumarunfounded@gmail.com';
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -227,6 +228,11 @@ export default function CollaborationDispatch() {
             <div className="space-y-3 pt-2">
               <span className="text-xs text-neutral-400 font-medium block">Direct Venture Platforms</span>
               <BounceCards links={directLinks} />
+            </div>
+
+            <div className="space-y-3 pt-4 border-t border-neutral-100">
+              <span className="text-xs text-neutral-400 font-medium block">Social & Professional Channels</span>
+              <SocialLinks compact={false} />
             </div>
 
           </div>

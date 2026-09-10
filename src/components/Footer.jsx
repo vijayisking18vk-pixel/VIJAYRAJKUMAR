@@ -1,6 +1,7 @@
 import React from 'react';
 import LetterGlitch from './react-bits/LetterGlitch';
 import CountUp from './react-bits/CountUp';
+import SocialLinks from './SocialLinks';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -64,9 +65,11 @@ export default function Footer() {
             <span className="font-bold text-neutral-950 uppercase tracking-wider text-[11px] block">Connect</span>
             <ul className="space-y-1.5">
               <li><a href="/contact/" className="hover:text-neutral-950 transition-colors">Start a Conversation</a></li>
-              <li><a href="mailto:contact@unfounded.in" className="hover:text-neutral-950 transition-colors">contact@unfounded.in</a></li>
-              <li><a href="https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/" target="_blank" rel="noopener noreferrer" className="hover:text-neutral-950 transition-colors">LinkedIn Profile ↗</a></li>
+              <li><a href="mailto:vijaykumarunfounded@gmail.com" className="hover:text-neutral-950 transition-colors">vijaykumarunfounded@gmail.com</a></li>
             </ul>
+            <div className="pt-2">
+              <SocialLinks compact={true} />
+            </div>
           </div>
         </div>
 
