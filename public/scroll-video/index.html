@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Production-ready scroll-driven frame-by-frame video progress web application.">
+  <title>Scroll-Driven Video & Frame Progression</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Minimalist Brand Header -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <span class="brand-name">VIJAYRAJKUMAR</span>
+      </div>
+      <nav class="header-nav" aria-label="Main Navigation">
+        <a href="/about/" class="nav-link">About</a>
+        <a href="/ventures/" class="nav-link">Ventures</a>
+        <a href="/writing/" class="nav-link">Writing</a>
+        <a href="/contact/" class="nav-link">Contact</a>
+        <a href="https://www.linkedin.com/in/vijayrajkumar-s-43b97b252/" target="_blank" rel="noopener noreferrer" class="nav-pill">
+          LinkedIn profile <span class="arrow-up-right">↗</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Scroll-Controlled Video / Frame Section -->
+  <main>
+    <section 
+      id="scroll-video-section" 
+      class="scroll-container" 
+      aria-label="Scroll-driven interactive cinematic presentation"
+    >
+      <!-- Sticky Fullscreen Viewport -->
+      <div class="sticky-viewport">
+
+        <!-- 1. HTML5 High-DPI Canvas for Frame-by-Frame Mode -->
+        <canvas 
+          id="frame-canvas" 
+          class="media-layer frame-canvas" 
+          role="img" 
+          aria-label="Interactive frame animation progressing with scroll"
+        ></canvas>
+
+        <!-- 2. HTML5 Video Element for Video Mode (/uploads/video.mp4) -->
+        <video 
+          id="scroll-video" 
+          class="media-layer scroll-video" 
+          playsinline 
+          muted 
+          preload="auto"
+          aria-hidden="true"
+        >
+          <source src="/uploads/video.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+
+        <!-- Cinematic Gradient Vignette -->
+        <div class="cinematic-vignette" aria-hidden="true"></div>
+
+        <!-- Preloader Screen -->
+        <div id="preloader" class="preloader" role="status" aria-live="polite">
+          <div class="spinner"></div>
+          <div class="preloader-text">
+            <span class="preloader-title">INITIALIZING FRAMES</span>
+            <span id="load-progress" class="preloader-percent">0%</span>
+          </div>
+        </div>
+
+        <!-- Reduced Motion Fallback Banner -->
+        <div id="reduced-motion-notice" class="reduced-motion-notice" hidden>
+          <p>Reduced motion is active. Scroll-driven animation has been paused. Use manual controls below.</p>
+        </div>
+
+        <!-- Floating HUD Controls (Configurable via CONFIG.enableControls) -->
+        <div id="controls-hud" class="controls-hud" role="region" aria-label="Video playback controls">
+          <div class="hud-inner">
+            <!-- Reset Button -->
+            <button id="btn-reset" class="hud-btn" type="button" aria-label="Reset video to beginning">
+              <svg class="hud-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                <path d="M3 3v5h5"/>
+              </svg>
+              <span class="btn-label">Reset</span>
+            </button>
+
+            <!-- Play / Pause Button -->
+            <button id="btn-play" class="hud-btn" type="button" aria-label="Play or pause animation">
+              <svg id="icon-play" class="hud-icon" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+              <svg id="icon-pause" class="hud-icon hidden" viewBox="0 0 24 24" fill="currentColor">
+                <rect x="6" y="4" width="4" height="16"/>
+                <rect x="14" y="4" width="4" height="16"/>
+              </svg>
+              <span id="label-play" class="btn-label">Play</span>
+            </button>
+
+            <!-- Scrubber Slider -->
+            <div class="scrubber-wrapper">
+              <label for="timeline-scrubber" class="sr-only">Timeline Scrubber</label>
+              <input 
+                id="timeline-scrubber" 
+                type="range" 
+                min="0" 
+                max="1000" 
+                value="0" 
+                step="1"
+                aria-label="Timeline scrubber"
+              >
+              <div class="scrubber-track-fill" id="scrubber-fill"></div>
+            </div>
+
+            <!-- Time / Frame Readout -->
+            <div class="hud-readout" aria-live="off">
+              <span id="hud-current">0.00s</span>
+              <span class="hud-sep">/</span>
+              <span id="hud-total">0.00s</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scroll Indicator Hint (fades on scroll) -->
+        <div id="scroll-hint" class="scroll-hint" aria-hidden="true">
+          <div class="scroll-hint-pill">
+            <span class="pulsing-dot"></span>
+            <span class="scroll-hint-text">SCROLL TO CONTROL TIMELINE</span>
+            <svg class="bounce-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- End Frame Headings Overlay (from uploaded image specification) -->
+        <!-- Only headings shown separately as clickable text with zero word overflow -->
+        <div 
+          id="end-frame-overlay" 
+          class="end-frame-overlay" 
+          aria-label="Portfolio Portals Directory"
+          aria-hidden="true"
+        >
+          <div class="end-frame-container">
+            <div class="end-frame-header">
+              <span class="end-badge">05 // PLATFORM DIRECTORY</span>
+              <h2 class="end-title">Explore Vijayrajkumar</h2>
+            </div>
+
+            <!-- 4 Clickable Heading Cards from Uploaded Image -->
+            <div class="end-cards-grid">
+              
+              <!-- Card 1: About & Strategic Journey -->
+              <a href="/about/" class="end-card" aria-label="Navigate to About and Strategic Journey">
+                <div class="card-meta">
+                  <span class="card-category">01 // BACKGROUND &amp; PHILOSOPHY</span>
+                  <span class="card-arrow" aria-hidden="true">↗</span>
+                </div>
+                <h3 class="card-heading">About &amp; Strategic Journey</h3>
+                <span class="card-action">Open page &rarr;</span>
+              </a>
+
+              <!-- Card 2: Ventures & Case Studies -->
+              <a href="/ventures/" class="end-card" aria-label="Navigate to Ventures and Case Studies">
+                <div class="card-meta">
+                  <span class="card-category">02 // EXPERIENCE &amp; PLATFORMS</span>
+                  <span class="card-arrow" aria-hidden="true">↗</span>
+                </div>
+                <h3 class="card-heading">Ventures &amp; Case Studies</h3>
+                <span class="card-action">Open page &rarr;</span>
+              </a>
+
+              <!-- Card 3: Writing & Strategic Research -->
+              <a href="/writing/" class="end-card" aria-label="Navigate to Writing and Strategic Research">
+                <div class="card-meta">
+                  <span class="card-category">03 // THOUGHT LEADERSHIP</span>
+                  <span class="card-arrow" aria-hidden="true">↗</span>
+                </div>
+                <h3 class="card-heading">Writing &amp; Strategic Research</h3>
+                <span class="card-action">Open page &rarr;</span>
+              </a>
+
+              <!-- Card 4: Contact & Collaboration -->
+              <a href="/contact/" class="end-card" aria-label="Navigate to Contact and Collaboration">
+                <div class="card-meta">
+                  <span class="card-category">04 // DIRECT DISPATCH</span>
+                  <span class="card-arrow" aria-hidden="true">↗</span>
+                </div>
+                <h3 class="card-heading">Contact &amp; Collaboration</h3>
+                <span class="card-action">Open page &rarr;</span>
+              </a>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Content Section Following the Video to Demonstrate Seamless Page Continuation -->
+    <section class="subsequent-content" aria-label="Post-video information">
+      <div class="content-wrapper">
+        <div class="content-badge">SEAMLESS SCROLL CONTINUATION</div>
+        <h2 class="content-title">Normal Page Scrolling Continues</h2>
+        <p class="content-body">
+          After completing the scroll-controlled sequence, normal document flow continues uninterrupted. 
+          Scrolling back up immediately reverses the video frame-by-frame with zero lag.
+        </p>
+        <div class="footer-links">
+          <a href="#scroll-video-section" id="back-to-video" class="back-link">
+            &uarr; Back to interactive video sequence
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>&copy; 2026 Vijayrajkumar. Built with production-grade vanilla HTML, CSS &amp; JavaScript.</p>
+    </div>
+  </footer>
+
+  <!-- Application Script -->
+  <script src="js/app.js"></script>
+</body>
+</html>
