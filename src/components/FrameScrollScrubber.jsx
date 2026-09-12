@@ -27,8 +27,8 @@ export default function FrameScrollScrubber({ className = '' }) {
       img.onload = () => {
         count++;
         setLoadedCount(count);
-        if (count === 1) {
-          // Render first frame immediately once it arrives
+        if (i === 1) {
+          // Render frame 1 immediately
           renderFrame(0, imgs);
         }
         if (count >= TOTAL_FRAMES) {
