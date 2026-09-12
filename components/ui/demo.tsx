@@ -453,11 +453,16 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
   };
 
   const handleScrollDown = () => {
-    const portals = document.getElementById('portals');
-    if (portals) {
-      portals.scrollIntoView({ behavior: 'smooth' });
+    const videoSection = document.getElementById('video-scrubber');
+    if (videoSection) {
+      videoSection.scrollIntoView({ behavior: 'smooth' });
     } else {
-      window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+      const portals = document.getElementById('portals');
+      if (portals) {
+        portals.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+      }
     }
   };
 

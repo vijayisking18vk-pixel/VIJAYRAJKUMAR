@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import { ParallaxHero } from './components/ui/wilderness';
+import ScrollVideoScrubber from './components/ScrollVideoScrubber';
 import PagePortalsGrid from './components/PagePortalsGrid';
 import Footer from './components/Footer';
 import Particles from './components/react-bits/Particles';
@@ -49,7 +50,7 @@ export default function App() {
     return <ContactPage />;
   }
 
-  // Streamlined Homepage: Living Parallax Hero + Proof Strip + Section Directory Portals
+  // Streamlined Homepage: Living Parallax Hero + Frame-by-Frame Video Scrubber + Section Directory Portals
   return (
     <div className="relative min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] flex flex-col font-sans selection:bg-[var(--color-accent-primary)] selection:text-white overflow-x-hidden">
       {/* Global Ambient Interactive Particles Canvas Background */}
@@ -63,10 +64,14 @@ export default function App() {
         {/* 1. 3D Interactive Parallax Hero Centerpiece */}
         <ParallaxHero title="VIJAY" />
 
-        {/* 2. Directory Portals to Dedicated Pages (About, Ventures, Writing, Contact) */}
+        {/* 2. Scroll-Controlled Frame-by-Frame Video Experience */}
+        <section id="video-scrubber" aria-label="Interactive Video Timeline Scrubber">
+          <ScrollVideoScrubber videoSrc="/uploads/video.mp4" pixelsPerFrame={4} />
+        </section>
+
+        {/* 3. Directory Portals to Dedicated Pages (About, Ventures, Writing, Contact) */}
         <PagePortalsGrid />
       </main>
-
 
       {/* Footer */}
       <Footer />
