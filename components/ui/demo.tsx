@@ -298,7 +298,7 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
     }
   };
 
-  // Device orientation tilt handler
+  // Device orientation tilt handler with higher sensitivity
   const handleOrientation = (e: DeviceOrientationEvent) => {
     if (e.gamma === null && e.beta === null) return;
 
@@ -306,23 +306,23 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
 
     // gamma: left-to-right tilt in degrees [-90, 90]
     // Tilting left gives negative gamma; tilting right gives positive gamma.
-    // Clamp to [-35, 35] for comfortable handheld usage
+    // Clamp to [-45, 45] and normalize with higher responsiveness (full range at ~18deg)
     const gamma = e.gamma || 0;
-    const clampedGamma = Math.max(-35, Math.min(35, gamma));
-    const normX = clampedGamma / 25; // 1.0 reached at 25deg tilt
+    const clampedGamma = Math.max(-45, Math.min(45, gamma));
+    const normX = clampedGamma / 18;
 
     // beta: front-to-back tilt in degrees [-180, 180]
-    // In normal handheld portrait viewing, reference neutral beta is ~45deg
+    // Standard comfortable handheld viewing angle is ~45deg
+    // Tilting back (top moves away, angle > 45) -> positive delta -> moves scene down/up
+    // Tilting forward (top moves toward user, angle < 45) -> negative delta
     const beta = e.beta || 45;
-    const deltaBeta = Math.max(-30, Math.min(30, beta - 45));
-    const normY = deltaBeta / 20;
+    const deltaBeta = Math.max(-45, Math.min(45, beta - 45));
+    const normY = deltaBeta / 16;
 
-    // Movement: "WHEN TILTING MOVE THAT SIDE"
-    // Tilting right (normX > 0) moves the layers and scene to the right!
-    // Tilting left (normX < 0) moves to the left!
-    const travelX = normX * (window.innerWidth * 0.75);
-    const travelY = normY * (window.innerHeight * 0.4);
-    const rotateDeg = normX * 22;
+    // Higher sensitivity travel multipliers for mobile
+    const travelX = normX * (window.innerWidth * 1.15);
+    const travelY = normY * (window.innerHeight * 0.75);
+    const rotateDeg = normX * 32;
 
     targetX.current = travelX;
     targetY.current = travelY;
@@ -357,7 +357,7 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
       window.addEventListener('touchstart', handleFirstInteraction, { passive: true, once: true });
       window.addEventListener('click', handleFirstInteraction, { passive: true, once: true });
     } else if (typeof window !== 'undefined' && 'DeviceOrientationEvent' in window) {
-      // Standard browsers (Android, etc.) - listen immediately
+      // Standard browsers (Android Chrome, etc.) - listen immediately
       window.addEventListener('deviceorientation', handleOrientation, true);
       setGyroActive(true);
     }
@@ -378,11 +378,11 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
 
     // 60fps/120fps Hardware-Accelerated Physics Lerp Loop
     const animate = () => {
-      // 0.10 lerp factor gives ultra-smooth inertia with zero sensor jitter
-      currentX.current += (targetX.current - currentX.current) * 0.10;
-      currentY.current += (targetY.current - currentY.current) * 0.10;
-      currentRotate.current += (targetRotate.current - currentRotate.current) * 0.10;
-      currentCursorX.current += (targetCursorX.current - currentCursorX.current) * 0.10;
+      // 0.12 lerp factor gives snappy responsive inertia with smooth damping
+      currentX.current += (targetX.current - currentX.current) * 0.12;
+      currentY.current += (targetY.current - currentY.current) * 0.12;
+      currentRotate.current += (targetRotate.current - currentRotate.current) * 0.12;
+      currentCursorX.current += (targetCursorX.current - currentCursorX.current) * 0.12;
 
       updateLayers(
         currentCursorX.current,
@@ -424,13 +424,12 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
       const isInLeft = computedLeft < window.innerWidth / 2 ? 1 : -1;
       const zValue = (cursorPosition - computedLeft) * isInLeft * 0.1;
 
-      // When tilting right (xVal > 0), layer shifts to the right (+ xVal * speedX)
-      // When tilting left (xVal < 0), layer shifts to the left
+      // 3D parallax translation across X, Y, and Z
       el.style.transform = `perspective(2300px) translateZ(${
         zValue * speedZ
       }px) rotateY(${rotateDeg * rotation}deg) translateX(calc(-50% + ${
-        xVal * speedX * 1.35
-      }px)) translateY(calc(-50% + ${yVal * speedY * 1.25}px))`;
+        xVal * speedX * 1.55
+      }px)) translateY(calc(-50% + ${yVal * speedY * 1.55}px))`;
     });
 
     if (textRef.current) {
@@ -448,8 +447,8 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
       textRef.current.style.transform = `perspective(2300px) translateZ(${
         zValue * textSpeedZ
       }px) rotateY(${rotateDeg * textRotation}deg) translateX(calc(-50% + ${
-        xVal * textSpeedX * 1.35
-      }px)) translateY(calc(-50% + ${yVal * textSpeedY * 1.25}px))`;
+        xVal * textSpeedX * 1.45
+      }px)) translateY(calc(-50% + ${yVal * textSpeedY * 1.45}px))`;
     }
   };
 
@@ -497,30 +496,30 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
         />
       ))}
 
-      {/* Centered Dynamic Title */}
+      {/* Centered Dynamic Title - Perfectly aligned with zero horizontal overflow */}
       <div
         ref={textRef}
-        className="absolute z-[9] text-white text-center pointer-events-none select-none will-change-transform px-4"
+        className="absolute z-[9] text-white text-center pointer-events-none select-none will-change-transform w-full max-w-[92vw] sm:max-w-xl md:max-w-3xl lg:max-w-5xl px-3 sm:px-6"
         style={{
-          top: 'calc(50% - 110px)',
+          top: 'calc(50% - 100px)',
           left: '50%',
           transform: 'translate(-50%, -50%)',
         }}
       >
-        <h1 className="font-black text-[22vw] sm:text-[18vw] md:text-[14vw] lg:text-[18rem] leading-[0.8] tracking-widest uppercase drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)] opacity-95">
+        <h1 className="font-black text-[17vw] sm:text-[15vw] md:text-[12vw] lg:text-[15rem] leading-[0.85] tracking-wider sm:tracking-widest uppercase drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)] opacity-95 truncate">
           {title}
         </h1>
-        <p className="mt-4 text-xs sm:text-sm md:text-base uppercase tracking-[0.3em] sm:tracking-[0.35em] text-[#C9D6D3] font-mono font-medium drop-shadow">
-          Chief Operating Officer & Co-Founder
+        <p className="mt-3 sm:mt-4 text-[10px] sm:text-xs md:text-sm lg:text-base uppercase tracking-[0.18em] sm:tracking-[0.28em] md:tracking-[0.35em] text-[#C9D6D3] font-mono font-medium drop-shadow whitespace-normal leading-relaxed px-2">
+          Chief Operating Officer &amp; Co-Founder
         </p>
       </div>
 
       {/* Floating Exploration Hint & Quick Actions at bottom */}
-      <div className="absolute bottom-8 left-0 right-0 z-[105] flex flex-col items-center justify-center pointer-events-auto px-4">
+      <div className="absolute bottom-6 sm:bottom-8 left-0 right-0 z-[105] flex flex-col items-center justify-center pointer-events-auto px-4">
         {needsIosPermission ? (
           <button
             onClick={requestGyroPermission}
-            className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[var(--color-accent-primary)]/70 hover:bg-[var(--color-accent-primary)] active:scale-95 backdrop-blur-md border border-[var(--color-border)]/40 text-white text-xs font-mono tracking-wider shadow-2xl transition-all animate-pulse"
+            className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[var(--color-accent-primary)]/80 hover:bg-[var(--color-accent-primary)] active:scale-95 backdrop-blur-md border border-[var(--color-border)]/40 text-white text-xs font-mono tracking-wider shadow-2xl transition-all animate-pulse"
           >
             <span>📱</span>
             <span>Tap to Enable 3D Tilt Effect</span>
@@ -529,10 +528,10 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
           <button
             type="button"
             onClick={handleScrollDown}
-            className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-[var(--color-accent-primary)]/85 hover:bg-[var(--color-accent-primary)] active:scale-95 backdrop-blur-md border border-[var(--color-border)]/40 text-white text-xs font-mono tracking-wider shadow-2xl transition-all cursor-pointer group"
+            className="flex items-center gap-2.5 sm:gap-3 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[var(--color-accent-primary)]/85 hover:bg-[var(--color-accent-primary)] active:scale-95 backdrop-blur-md border border-[var(--color-border)]/40 text-white text-[11px] sm:text-xs font-mono tracking-wider shadow-2xl transition-all cursor-pointer group max-w-[90vw]"
           >
-            <span className="w-2 h-2 rounded-full bg-[#7E9490] animate-pulse" />
-            <span>
+            <span className="w-2 h-2 rounded-full bg-[#7E9490] animate-pulse shrink-0" />
+            <span className="truncate">
               {isMobile
                 ? '📱 Tilt phone to explore • Tap to scroll down ↓'
                 : 'Move cursor to explore depth • Scroll down ↓'}
