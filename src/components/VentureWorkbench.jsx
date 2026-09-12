@@ -1,10 +1,173 @@
-import React from 'react';
-import { Layers, ArrowUpRight, Zap, Code, Rocket, CheckCircle2, Users, AlertCircle, Award } from 'lucide-react';
-import PixelTransition from './react-bits/PixelTransition';
-import StackCard from './react-bits/StackCard';
-import ChromaGrid from './react-bits/ChromaGrid';
+import React, { useState } from 'react';
+import { Layers, ArrowUpRight, Zap, Code, Rocket, RotateCcw } from 'lucide-react';
 import FuzzyText from './react-bits/FuzzyText';
 import ElectricBorder from './react-bits/ElectricBorder';
+
+function FlipCard({ study, image, index }) {
+  const [isFlipped, setIsFlipped] = useState(false);
+  const Icon = study.icon;
+  const caseNum = String(index + 1).padStart(2, '0');
+
+  return (
+    <div
+      className="group cursor-pointer"
+      style={{ perspective: '1200px' }}
+      onClick={() => setIsFlipped((prev) => !prev)}
+    >
+      <div
+        className="relative w-full transition-transform duration-700 ease-in-out"
+        style={{
+          transformStyle: 'preserve-3d',
+          transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+          minHeight: '580px',
+        }}
+      >
+        {/* ====== FRONT FACE — Image ====== */}
+        <div
+          className="absolute inset-0 rounded-3xl overflow-hidden border-2 border-[#7A968B] shadow-lg"
+          style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
+        >
+          <img
+            src={image}
+            alt={study.name}
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+          {/* Bottom overlay info */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 text-white space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="bg-white/20 backdrop-blur-md text-white border border-white/30 px-3 py-1 rounded-full font-bold text-[11px]">
+                {study.badge}
+              </span>
+              <span className="font-mono text-[11px] text-white/70">Case Study {caseNum}</span>
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-bold tracking-tight leading-tight">
+              {study.name}
+            </h3>
+            <p className="text-xs text-white/80 font-medium leading-relaxed max-w-sm">
+              {study.category}
+            </p>
+            <div className="flex items-center space-x-2 text-[11px] text-white/60 font-medium pt-1">
+              <span className="inline-flex items-center space-x-1.5 bg-white/15 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/20">
+                <span>Tap to read case study</span>
+                <RotateCcw className="w-3 h-3" />
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* ====== BACK FACE — Text ====== */}
+        <div
+          className="absolute inset-0 rounded-3xl overflow-hidden bg-white border-2 border-[#7A968B] shadow-lg overflow-y-auto"
+          style={{
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
+            transform: 'rotateY(180deg)',
+          }}
+        >
+          <div className="p-6 sm:p-8 flex flex-col justify-between h-full space-y-5">
+            <div className="space-y-5">
+              {/* Header */}
+              <div className="flex items-center justify-between text-xs">
+                <span className="bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] px-3 py-1 rounded-full font-bold text-[11px]">
+                  {study.badge}
+                </span>
+                <span className="text-[#354E45] font-mono text-xs font-semibold">Case Study {caseNum}</span>
+              </div>
+
+              {/* Title + Role */}
+              <div>
+                <div className="flex items-center justify-between">
+                  <h3 className="text-2xl font-bold text-[#111815] tracking-tight">
+                    <FuzzyText>{study.name}</FuzzyText>
+                  </h3>
+                  <div className="w-9 h-9 bg-[#E2ECE7] border border-[#85A296] rounded-xl flex items-center justify-center shrink-0">
+                    <Icon className="w-4 h-4 text-[#203322]" />
+                  </div>
+                </div>
+                <div className="text-xs font-bold text-[#203322] mt-1">
+                  {study.role}
+                </div>
+                <div className="text-xs text-[#354E45] font-medium mt-0.5">
+                  {study.period} • {study.location}
+                </div>
+              </div>
+
+              {/* Case Study Q&A */}
+              <div className="space-y-3 pt-1 text-xs border-t border-[#7A968B]/40">
+                <div>
+                  <span className="font-bold text-[#111815] block mb-0.5">Problem Solved:</span>
+                  <p className="text-[#203028] leading-relaxed">{study.problem}</p>
+                </div>
+                <div>
+                  <span className="font-bold text-[#111815] block mb-0.5">Target User:</span>
+                  <p className="text-[#203028] leading-relaxed">{study.user}</p>
+                </div>
+                <div>
+                  <span className="font-bold text-[#111815] block mb-0.5">What I Personally Owned:</span>
+                  <p className="text-[#203028] leading-relaxed">{study.ownership}</p>
+                </div>
+                <div>
+                  <span className="font-bold text-[#111815] block mb-0.5">What Was Shipped:</span>
+                  <p className="text-[#203028] leading-relaxed">{study.shipped}</p>
+                </div>
+              </div>
+
+              {/* Tags */}
+              <div className="flex flex-wrap gap-1.5">
+                {study.tags.map((t, i) => (
+                  <span key={i} className="text-[11px] bg-[#E2ECE7] border border-[#85A296] px-2.5 py-1 rounded-md text-[#1B2F21] font-bold">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Footer links */}
+            <div className="pt-4 border-t border-[#7A968B]/40 flex flex-wrap items-center justify-between gap-3">
+              <a
+                href={study.caseStudyUrl}
+                className="text-xs font-bold text-[#203322] hover:underline"
+                onClick={(e) => e.stopPropagation()}
+              >
+                Read full case study →
+              </a>
+              <a
+                href={study.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <ElectricBorder className="py-2 px-4 text-xs">
+                  <span className="flex items-center space-x-1.5">
+                    <span>{study.linkLabel}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </span>
+                </ElectricBorder>
+              </a>
+            </div>
+
+            {/* Flip back hint */}
+            <button
+              className="self-center mt-2 inline-flex items-center space-x-1.5 text-[11px] text-[#354E45] font-semibold bg-[#E2ECE7] border border-[#85A296] px-3 py-1.5 rounded-full hover:bg-[#D0DDD5] transition-colors"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsFlipped(false);
+              }}
+            >
+              <RotateCcw className="w-3 h-3" />
+              <span>Flip back to image</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function VentureWorkbench() {
   const caseStudies = [
@@ -18,6 +181,9 @@ export default function VentureWorkbench() {
       badge: 'Product Hunt Launched',
       icon: Zap,
       url: 'https://www.ziggers.in/',
+      caseStudyUrl: '/ventures/ziggers/',
+      linkLabel: 'Visit live platform',
+      image: '/ventures/ziggers.jpg',
       problem: 'Informal temporary gig hiring in India relies on chaotic, untrusted WhatsApp groups with zero worker verification, rampant payment defaults, and no real-time coordination.',
       user: 'Event organizers, local business operators, warehouse logistics teams, and flexible gig workers in urban India.',
       ownership: 'I co-founded and helped shape a Chennai-first gig staffing marketplace for verified temporary workers. My work spans product direction, user flows, marketplace positioning, escrow milestone design, and launch marketing.',
@@ -36,6 +202,9 @@ export default function VentureWorkbench() {
       badge: 'Global Education Summit Showcase',
       icon: Code,
       url: 'https://www.loopmemory.in/',
+      caseStudyUrl: '/ventures/loopmemory/',
+      linkLabel: 'Explore LoopMemory',
+      image: '/ventures/loopmemory.jpg',
       problem: 'AI agents and multi-turn LLM tools fail at long-term execution because sessions lose persistent context, semantic state, and structured user memory graphs.',
       user: 'AI developers, knowledge workers, students, and engineering teams building autonomous agentic workflows.',
       ownership: 'Co-founded and drove product positioning, context-structuring architecture, developer adoption strategies, and ecosystem distribution across developer communities.',
@@ -54,6 +223,9 @@ export default function VentureWorkbench() {
       badge: 'Venture Studio Core',
       icon: Rocket,
       url: 'https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/',
+      caseStudyUrl: '/about/',
+      linkLabel: 'LinkedIn Studio',
+      image: '/ventures/unfounded.jpg',
       problem: 'Early-stage founders spend months over-engineering unvalidated software before testing real distribution, marketplace liquidity, or paying customer demand.',
       user: 'Early-stage founders, cross-functional engineering teams, and institutional co-building partners.',
       ownership: 'Co-founded the studio core in Chennai. I lead cross-venture validation sprints, rapid vibe coding prototypes, founder talent assembly, and investor ecosystem relationships.',
@@ -80,235 +252,20 @@ export default function VentureWorkbench() {
           </h2>
 
           <p className="text-base sm:text-lg text-[#203028] font-sans leading-relaxed max-w-3xl">
-            Detailed case studies of ventures I have co-founded, built, and launched. Each case study documents the core problem, target user, personal ownership, shipped deliverables, and verifiable evidence.
+            Detailed case studies of ventures I have co-founded, built, and launched. Each case study documents the core problem, target user, personal ownership, shipped deliverables, and verifiable evidence. <strong className="text-[#111815]">Click any card</strong> to flip and read the details.
           </p>
         </div>
 
-        {/* Deep Case Studies Grid */}
+        {/* Flip Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          
-          {/* Case Study 1: Ziggers -> PixelTransition */}
-          <PixelTransition className="p-8 flex flex-col justify-between space-y-8 h-full bg-white border-2 border-[#7A968B] rounded-3xl hover:border-[var(--color-accent-primary)] transition-all shadow-md">
-            <div className="space-y-6">
-              <div className="flex items-center justify-between text-xs">
-                <span className="bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] px-3 py-1 rounded-full font-bold text-[11px]">
-                  {caseStudies[0].badge}
-                </span>
-                <span className="text-[#354E45] font-mono text-xs font-semibold">Case Study 01</span>
-              </div>
-
-              <div>
-                <div className="flex items-center justify-between">
-                  <h3 className="text-2xl font-bold text-[#111815] tracking-tight">
-                    <FuzzyText>{caseStudies[0].name}</FuzzyText>
-                  </h3>
-                  <div className="w-9 h-9 bg-[#E2ECE7] border border-[#85A296] rounded-xl flex items-center justify-center">
-                    <Zap className="w-4 h-4 text-[#203322]" />
-                  </div>
-                </div>
-                <div className="text-xs font-bold text-[#203322] mt-1">
-                  {caseStudies[0].role}
-                </div>
-                <div className="text-xs text-[#354E45] font-medium mt-0.5">
-                  {caseStudies[0].period} • {caseStudies[0].location}
-                </div>
-              </div>
-
-              {/* Case Study Questions & Answers */}
-              <div className="space-y-4 pt-2 text-xs border-t border-[#7A968B]/40">
-                <div>
-                  <span className="font-bold text-[#111815] block mb-1">Problem Solved:</span>
-                  <p className="text-[#203028] leading-relaxed">{caseStudies[0].problem}</p>
-                </div>
-
-                <div>
-                  <span className="font-bold text-[#111815] block mb-1">Target User:</span>
-                  <p className="text-[#203028] leading-relaxed">{caseStudies[0].user}</p>
-                </div>
-
-                <div>
-                  <span className="font-bold text-[#111815] block mb-1">What I Personally Owned:</span>
-                  <p className="text-[#203028] leading-relaxed">{caseStudies[0].ownership}</p>
-                </div>
-
-                <div>
-                  <span className="font-bold text-[#111815] block mb-1">What Was Shipped:</span>
-                  <p className="text-[#203028] leading-relaxed">{caseStudies[0].shipped}</p>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap gap-1.5 pt-2">
-                {caseStudies[0].tags.map((t, i) => (
-                  <span key={i} className="text-[11px] bg-[#E2ECE7] border border-[#85A296] px-2.5 py-1 rounded-md text-[#1B2F21] font-bold">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="pt-6 border-t border-[var(--color-border)]/30 flex flex-wrap items-center justify-between gap-3">
-              <a href="/ventures/ziggers/" className="text-xs font-bold text-[var(--color-accent-primary)] hover:underline">
-                Read full case study →
-              </a>
-              <a href={caseStudies[0].url} target="_blank" rel="noopener noreferrer" className="inline-block">
-                <ElectricBorder className="py-2 px-4 text-xs">
-                  <span className="flex items-center space-x-1.5">
-                    <span>Visit live platform</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </span>
-                </ElectricBorder>
-              </a>
-            </div>
-          </PixelTransition>
-
-          {/* Case Study 2: LoopMemory -> StackCard */}
-          <StackCard className="p-8 flex flex-col justify-between space-y-8 h-full bg-white border-2 border-[#7A968B] rounded-3xl hover:border-[var(--color-accent-primary)] transition-all shadow-md">
-            <div className="space-y-6">
-              <div className="flex items-center justify-between text-xs">
-                <span className="bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] px-3 py-1 rounded-full font-bold text-[11px]">
-                  {caseStudies[1].badge}
-                </span>
-                <span className="text-[#354E45] font-mono text-xs font-semibold">Case Study 02</span>
-              </div>
-
-              <div>
-                <div className="flex items-center justify-between">
-                  <h3 className="text-2xl font-bold text-[#111815] tracking-tight">
-                    <FuzzyText>{caseStudies[1].name}</FuzzyText>
-                  </h3>
-                  <div className="w-9 h-9 bg-[#E2ECE7] border border-[#85A296] rounded-xl flex items-center justify-center">
-                    <Code className="w-4 h-4 text-[#203322]" />
-                  </div>
-                </div>
-                <div className="text-xs font-bold text-[#203322] mt-1">
-                  {caseStudies[1].role}
-                </div>
-                <div className="text-xs text-[#354E45] font-medium mt-0.5">
-                  {caseStudies[1].period} • {caseStudies[1].location}
-                </div>
-              </div>
-
-              {/* Case Study Questions & Answers */}
-              <div className="space-y-4 pt-2 text-xs border-t border-[#7A968B]/40">
-                <div>
-                  <span className="font-bold text-[#111815] block mb-1">Problem Solved:</span>
-                  <p className="text-[#203028] leading-relaxed">{caseStudies[1].problem}</p>
-                </div>
-
-                <div>
-                  <span className="font-bold text-[#111815] block mb-1">Target User:</span>
-                  <p className="text-[#203028] leading-relaxed">{caseStudies[1].user}</p>
-                </div>
-
-                <div>
-                  <span className="font-bold text-[#111815] block mb-1">What I Personally Owned:</span>
-                  <p className="text-[#203028] leading-relaxed">{caseStudies[1].ownership}</p>
-                </div>
-
-                <div>
-                  <span className="font-bold text-[#111815] block mb-1">What Was Shipped:</span>
-                  <p className="text-[#203028] leading-relaxed">{caseStudies[1].shipped}</p>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap gap-1.5 pt-2">
-                {caseStudies[1].tags.map((t, i) => (
-                  <span key={i} className="text-[11px] bg-[#E2ECE7] border border-[#85A296] px-2.5 py-1 rounded-md text-[#1B2F21] font-bold">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="pt-6 border-t border-[#7A968B]/40 flex flex-wrap items-center justify-between gap-3">
-              <a href="/ventures/loopmemory/" className="text-xs font-bold text-[var(--color-accent-primary)] hover:underline">
-                Read full case study →
-              </a>
-              <a href={caseStudies[1].url} target="_blank" rel="noopener noreferrer" className="inline-block">
-                <ElectricBorder className="py-2 px-4 text-xs">
-                  <span className="flex items-center space-x-1.5">
-                    <span>Explore LoopMemory</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </span>
-                </ElectricBorder>
-              </a>
-            </div>
-          </StackCard>
-
-          {/* Case Study 3: Unfounded -> ChromaGrid */}
-          <ChromaGrid className="p-8 flex flex-col justify-between space-y-8 h-full bg-white border-2 border-[#7A968B] rounded-3xl hover:border-[var(--color-accent-primary)] transition-all shadow-md">
-            <div className="space-y-6">
-              <div className="flex items-center justify-between text-xs">
-                <span className="bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] px-3 py-1 rounded-full font-bold text-[11px]">
-                  {caseStudies[2].badge}
-                </span>
-                <span className="text-[#354E45] font-mono text-xs font-semibold">Case Study 03</span>
-              </div>
-
-              <div>
-                <div className="flex items-center justify-between">
-                  <h3 className="text-2xl font-bold text-[#111815] tracking-tight">
-                    <FuzzyText>{caseStudies[2].name}</FuzzyText>
-                  </h3>
-                  <div className="w-9 h-9 bg-[#E2ECE7] border border-[#85A296] rounded-xl flex items-center justify-center">
-                    <Rocket className="w-4 h-4 text-[#203322]" />
-                  </div>
-                </div>
-                <div className="text-xs font-bold text-[#203322] mt-1">
-                  {caseStudies[2].role}
-                </div>
-                <div className="text-xs text-[#354E45] font-medium mt-0.5">
-                  {caseStudies[2].period} • {caseStudies[2].location}
-                </div>
-              </div>
-
-              {/* Case Study Questions & Answers */}
-              <div className="space-y-4 pt-2 text-xs border-t border-[#7A968B]/40">
-                <div>
-                  <span className="font-bold text-[#111815] block mb-1">Problem Solved:</span>
-                  <p className="text-[#203028] leading-relaxed">{caseStudies[2].problem}</p>
-                </div>
-
-                <div>
-                  <span className="font-bold text-[#111815] block mb-1">Target User:</span>
-                  <p className="text-[#203028] leading-relaxed">{caseStudies[2].user}</p>
-                </div>
-
-                <div>
-                  <span className="font-bold text-[#111815] block mb-1">What I Personally Owned:</span>
-                  <p className="text-[#203028] leading-relaxed">{caseStudies[2].ownership}</p>
-                </div>
-
-                <div>
-                  <span className="font-bold text-[#111815] block mb-1">What Was Shipped:</span>
-                  <p className="text-[#203028] leading-relaxed">{caseStudies[2].shipped}</p>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap gap-1.5 pt-2">
-                {caseStudies[2].tags.map((t, i) => (
-                  <span key={i} className="text-[11px] bg-[#E2ECE7] border border-[#85A296] px-2.5 py-1 rounded-md text-[#1B2F21] font-bold">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="pt-6 border-t border-[#7A968B]/40 flex flex-wrap items-center justify-between gap-3">
-              <a href="/about/" className="text-xs font-bold text-[var(--color-accent-primary)] hover:underline">
-                Read studio methodology →
-              </a>
-              <a href={caseStudies[2].url} target="_blank" rel="noopener noreferrer" className="inline-block">
-                <ElectricBorder className="py-2 px-4 text-xs">
-                  <span className="flex items-center space-x-1.5">
-                    <span>LinkedIn Studio</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </span>
-                </ElectricBorder>
-              </a>
-            </div>
-          </ChromaGrid>
-
+          {caseStudies.map((study, idx) => (
+            <FlipCard
+              key={study.id}
+              study={study}
+              image={study.image}
+              index={idx}
+            />
+          ))}
         </div>
 
       </div>
