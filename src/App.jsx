@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import { ParallaxHero } from './components/ui/wilderness';
-import FrameScrollScrubber from './components/FrameScrollScrubber';
 import PagePortalsGrid from './components/PagePortalsGrid';
 import Footer from './components/Footer';
 import Particles from './components/react-bits/Particles';
@@ -63,9 +62,6 @@ export default function App() {
       <main className="relative z-10 flex-grow">
         {/* 1. 3D Interactive Parallax Hero Centerpiece */}
         <ParallaxHero title="VIJAY" />
-
-        {/* 2. Full-Screen Cinematic Frame-by-Frame Scroll Section */}
-        <FrameScrollScrubber />
 
         {/* 3. Directory Portals to Dedicated Pages (About, Ventures, Writing, Contact) */}
         <PagePortalsGrid />
