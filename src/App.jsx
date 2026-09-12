@@ -1,21 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import SiteHeader from './components/SiteHeader';
-import Hero from './components/Hero';
-import ProfileDetailsGrid from './components/ProfileDetailsGrid';
-import VentureSection from './components/VentureSection';
-import EducationSection from './components/EducationSection';
-import ContactSection from './components/ContactSection';
-import SiteFooter from './components/SiteFooter';
-
-import {
-  nav,
-  hero,
-  profileDetails,
-  ventures,
-  education,
-  contact,
-  footerText,
-} from './data';
+import Header from './components/Header';
+import { ParallaxHero } from './components/ui/wilderness';
+import PagePortalsGrid from './components/PagePortalsGrid';
+import Footer from './components/Footer';
+import Particles from './components/react-bits/Particles';
 
 // Multi-page subpages
 import AboutPage from './pages/AboutPage';
@@ -61,23 +49,27 @@ export default function App() {
     return <ContactPage />;
   }
 
-  // Homepage: Clean Structural Component Hierarchy per Component Design Plan
+  // Streamlined Homepage: Living Parallax Hero + Proof Strip + Section Directory Portals
   return (
-    <div className="min-h-screen bg-[#F7F6F3] text-[#1F2421] flex flex-col font-sans selection:bg-[#2C3E2D] selection:text-white">
-      <SiteHeader homeLabel={nav.homeLabel} links={nav.links} activeHref={currentPath} />
-      <main className="flex-grow">
-        <Hero
-          headline={hero.headline}
-          subtext={hero.subtext}
-          primaryCta={{ label: 'Get in touch', href: '/contact/' }}
-          secondaryCta={{ label: 'See the ventures', href: '#ventures' }}
-        />
-        <ProfileDetailsGrid items={profileDetails} />
-        <VentureSection heading="Venture Case Studies" ventures={ventures} />
-        <EducationSection heading="Education & Strategic Background" items={education} />
-        <ContactSection {...contact} />
+    <div className="relative min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] flex flex-col font-sans selection:bg-[var(--color-accent-primary)] selection:text-white overflow-x-clip">
+      {/* Global Ambient Interactive Particles Canvas Background */}
+      <Particles particleCount={30} speed={0.3} particleColor="#2C3E2D" />
+
+      {/* Navigation Header */}
+      <Header />
+
+      {/* Main Content Flow: Living Centerpiece & Dedicated Portals */}
+      <main className="relative z-10 flex-grow">
+        {/* 1. 3D Interactive Parallax Hero Centerpiece */}
+        <ParallaxHero title="VIJAY" />
+
+        {/* 3. Directory Portals to Dedicated Pages (About, Ventures, Writing, Contact) */}
+        <PagePortalsGrid />
       </main>
-      <SiteFooter text={footerText} />
+
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
