@@ -22,7 +22,7 @@ function FlipCard({ study, image, index }) {
           minHeight: '580px',
         }}
       >
-        {/* ====== FRONT FACE — Image ====== */}
+        {/* ====== FRONT FACE — Image Only ====== */}
         <div
           className="absolute inset-0 rounded-3xl overflow-hidden border-2 border-[#7A968B] shadow-lg"
           style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
@@ -33,30 +33,6 @@ function FlipCard({ study, image, index }) {
             className="w-full h-full object-cover"
             loading="lazy"
           />
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-
-          {/* Bottom overlay info */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 text-white space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="bg-white/20 backdrop-blur-md text-white border border-white/30 px-3 py-1 rounded-full font-bold text-[11px]">
-                {study.badge}
-              </span>
-              <span className="font-mono text-[11px] text-white/70">Case Study {caseNum}</span>
-            </div>
-            <h3 className="text-2xl sm:text-3xl font-bold tracking-tight leading-tight">
-              {study.name}
-            </h3>
-            <p className="text-xs text-white/80 font-medium leading-relaxed max-w-sm">
-              {study.category}
-            </p>
-            <div className="flex items-center space-x-2 text-[11px] text-white/60 font-medium pt-1">
-              <span className="inline-flex items-center space-x-1.5 bg-white/15 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/20">
-                <span>Tap to read case study</span>
-                <RotateCcw className="w-3 h-3" />
-              </span>
-            </div>
-          </div>
         </div>
 
         {/* ====== BACK FACE — Text ====== */}
