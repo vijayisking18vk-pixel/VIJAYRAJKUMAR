@@ -90,8 +90,50 @@ const articles = [
   }
 ];
 
-export default function WritingPage() {
-  const [selectedArticle, setSelectedArticle] = useState(null);
+export default function WritingPage({ initialArticleId = null }) {
+  const [selectedArticle, setSelectedArticle] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const match = window.location.pathname.match(/\/writing\/([a-z0-9-]+)\/?/i);
+      const targetId = initialArticleId || (match ? match[1] : null);
+      if (targetId) {
+        return articles.find((a) => a.id === targetId) || null;
+      }
+    }
+    return null;
+  });
+
+  // Sync state with browser back/forward buttons
+  React.useEffect(() => {
+    const handlePop = () => {
+      const match = window.location.pathname.match(/\/writing\/([a-z0-9-]+)\/?/i);
+      if (match && match[1]) {
+        const found = articles.find((a) => a.id === match[1]);
+        setSelectedArticle(found || null);
+      } else {
+        setSelectedArticle(null);
+      }
+    };
+    window.addEventListener('popstate', handlePop);
+    return () => window.removeEventListener('popstate', handlePop);
+  }, []);
+
+  const openArticle = (art, e) => {
+    if (e && (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)) return; // Allow new tab
+    if (e) e.preventDefault();
+    setSelectedArticle(art);
+    if (typeof window !== 'undefined') {
+      window.history.pushState(null, '', `/writing/${art.id}/`);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const closeArticle = (e) => {
+    if (e) e.preventDefault();
+    setSelectedArticle(null);
+    if (typeof window !== 'undefined') {
+      window.history.pushState(null, '', '/writing/');
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-sans selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
@@ -103,7 +145,13 @@ export default function WritingPage() {
         <div className="flex items-center space-x-2 text-xs text-[var(--color-text-muted)] font-medium">
           <a href="/" className="hover:text-[var(--color-accent-primary)]">Home</a>
           <span>/</span>
-          <span className="text-[var(--color-text-primary)] font-semibold">Writing & Research</span>
+          <a href="/writing/" onClick={closeArticle} className="hover:text-[var(--color-accent-primary)]">Writing & Research</a>
+          {selectedArticle && (
+            <>
+              <span>/</span>
+              <span className="text-[var(--color-text-primary)] font-semibold truncate max-w-[200px]">{selectedArticle.title}</span>
+            </>
+          )}
         </div>
 
         {/* Page Header */}
@@ -125,12 +173,13 @@ export default function WritingPage() {
         {/* Article Reader Modal / Full View */}
         {selectedArticle ? (
           <article className="space-y-10 border-2 border-[#7A968B] bg-white p-8 sm:p-12 rounded-3xl shadow-md animate-in fade-in duration-200">
-            <button
-              onClick={() => setSelectedArticle(null)}
+            <a
+              href="/writing/"
+              onClick={closeArticle}
               className="text-xs font-bold text-[#203322] hover:underline flex items-center space-x-1"
             >
               <span>← Back to all articles</span>
-            </button>
+            </a>
 
             <div className="space-y-4 border-b border-[#7A968B]/30 pb-8">
               <span className="text-xs font-bold uppercase tracking-wider text-[#2A3E34]">
@@ -173,7 +222,7 @@ export default function WritingPage() {
 
             <div className="pt-6 border-t border-[#7A968B]/30 flex justify-between items-center">
               <button
-                onClick={() => setSelectedArticle(null)}
+                onClick={closeArticle}
                 className="px-5 py-2.5 bg-[#203322] text-white text-xs font-semibold rounded-full hover:bg-[#111815] transition-colors shadow-sm"
               >
                 Close Article
@@ -190,10 +239,11 @@ export default function WritingPage() {
           /* Articles List */
           <div className="space-y-8">
             {articles.map((art) => (
-              <div
+              <a
                 key={art.id}
-                onClick={() => setSelectedArticle(art)}
-                className="p-8 bg-white border-2 border-[#7A968B] hover:border-[#203322] rounded-2xl shadow-md transition-all cursor-pointer group space-y-4"
+                href={`/writing/${art.id}/`}
+                onClick={(e) => openArticle(art, e)}
+                className="block p-8 bg-white border-2 border-[#7A968B] hover:border-[#203322] rounded-2xl shadow-md transition-all cursor-pointer group space-y-4 no-underline text-inherit"
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <span className="text-xs font-bold uppercase tracking-wider text-[#2A3E34]">
@@ -228,7 +278,7 @@ export default function WritingPage() {
                     <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         )}

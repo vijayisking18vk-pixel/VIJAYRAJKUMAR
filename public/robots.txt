@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vijayrajkumar.vercel.app/sitemap.xml
+Sitemap: https://www.vijayrajkumar.in/sitemap.xml

@@ -9,12 +9,42 @@ import SocialLinks from './SocialLinks';
 export default function CollaborationDispatch() {
   const [submitted, setSubmitted] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [errorMessage, setErrorMessage] = useState('');
+  const [formData, setFormData] = useState({ name: '', email: '', message: '', botField: '' });
+  const mountTimeRef = React.useRef(Date.now());
 
   const directEmail = 'vijaykumarunfounded@gmail.com';
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setErrorMessage('');
+
+    // 1. Honeypot check: if bot filled this hidden field, fail silently
+    if (formData.botField) {
+      console.warn('Bot submission blocked via honeypot');
+      setSubmitted(true);
+      return;
+    }
+
+    // 2. Time-check validation: submission in under 1.5 seconds is automated
+    const timeElapsed = Date.now() - mountTimeRef.current;
+    if (timeElapsed < 1500) {
+      setErrorMessage('Please take a moment to review your message before submitting.');
+      return;
+    }
+
+    // 3. Email format regex validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email.trim())) {
+      setErrorMessage('Please enter a valid email address (e.g. name@domain.com).');
+      return;
+    }
+
+    if (!formData.name.trim() || !formData.message.trim()) {
+      setErrorMessage('Please fill in all required fields.');
+      return;
+    }
+
     setSubmitted(true);
   };
 
@@ -102,7 +132,8 @@ export default function CollaborationDispatch() {
                   type="button"
                   onClick={() => {
                     setSubmitted(false);
-                    setFormData({ name: '', email: '', message: '' });
+                    setFormData({ name: '', email: '', message: '', botField: '' });
+                    setErrorMessage('');
                   }}
                   className="mt-3 text-xs text-neutral-900 font-semibold underline"
                 >
@@ -111,6 +142,31 @@ export default function CollaborationDispatch() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4 font-sans text-xs">
+                {/* Accessible Error Alert */}
+                {errorMessage && (
+                  <div
+                    role="alert"
+                    aria-live="polite"
+                    className="p-3 bg-red-50 border border-red-300 text-red-800 rounded-xl text-xs font-medium"
+                  >
+                    {errorMessage}
+                  </div>
+                )}
+
+                {/* Anti-spam Honeypot (hidden from sighted users and screen readers) */}
+                <div style={{ display: 'none' }} aria-hidden="true">
+                  <label htmlFor="company_nickname">Do not fill this field</label>
+                  <input
+                    id="company_nickname"
+                    type="text"
+                    name="company_nickname"
+                    value={formData.botField}
+                    onChange={(e) => setFormData({ ...formData, botField: e.target.value })}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
                 <div className="space-y-1.5">
                   <label htmlFor="contact-name" className="block text-neutral-700 font-medium">
                     Your Name or Organization <span className="text-neutral-400">*</span>
@@ -162,9 +218,18 @@ export default function CollaborationDispatch() {
                   </SpecularButton>
                 </div>
 
-                <p className="text-[11px] text-neutral-400 text-center pt-1 font-medium">
-                  Your information is kept confidential and sent directly. No spam.
-                </p>
+                <div className="text-[11px] text-neutral-500 text-center pt-1 font-medium space-y-1">
+                  <p>Your information is kept confidential and sent directly. No spam.</p>
+                  <p>
+                    Or open your email client directly:{' '}
+                    <a
+                      href={`mailto:${directEmail}?subject=Collaboration%20Inquiry%20from%20Portfolio&body=Hi%20Vijay,%0D%0A%0D%0A`}
+                      className="underline font-bold text-[#203322]"
+                    >
+                      Compose Email ↗
+                    </a>
+                  </p>
+                </div>
               </form>
             )}
           </FluidGlass>

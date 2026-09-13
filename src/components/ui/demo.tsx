@@ -362,8 +362,13 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
       setGyroActive(true);
     }
 
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     // Mouse move handler for desktop
     const handleMouseMove = (e: MouseEvent) => {
+      if (prefersReducedMotion) return;
       const newXValue = e.clientX - window.innerWidth / 2;
       const newYValue = e.clientY - window.innerHeight / 2;
       const newRotateDegree = (newXValue / (window.innerWidth / 2)) * 20;
@@ -374,10 +379,13 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
       targetCursorX.current = e.clientX;
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    if (!prefersReducedMotion) {
+      window.addEventListener('mousemove', handleMouseMove);
+    }
 
     // 60fps/120fps Hardware-Accelerated Physics Lerp Loop
     const animate = () => {
+      if (prefersReducedMotion) return;
       // 0.12 lerp factor gives snappy responsive inertia with smooth damping
       currentX.current += (targetX.current - currentX.current) * 0.12;
       currentY.current += (targetY.current - currentY.current) * 0.12;

@@ -166,12 +166,12 @@ export default function ScrollVideoSection({ className = '' }) {
     drawFrame(currentFrameRef.current);
   }, [drawFrame]);
 
-  // Preload all 136 WebP frames
+  // Preload frames: prioritize first 8 frames immediately for LCP, stream remaining during idle
   useEffect(() => {
     let count = 0;
     const imgs = new Array(TOTAL_FRAMES);
 
-    for (let i = 1; i <= TOTAL_FRAMES; i++) {
+    const loadSingleFrame = (i) => {
       const img = new Image();
       const numStr = String(i).padStart(3, '0');
       img.src = `/frames/WhatsApp_Video_2026-09-13_at_4_33_24_AM_frames/frame_${numStr}.webp`;
@@ -181,7 +181,7 @@ export default function ScrollVideoSection({ className = '' }) {
       img.onload = () => {
         count++;
         loadedIndicesRef.current.add(frameIndex);
-        setLoadedCount(count);
+        setLoadedCount((prev) => prev + 1);
 
         if (frameIndex === 0 || frameIndex === currentFrameRef.current) {
           drawFrame(frameIndex);
@@ -190,19 +190,71 @@ export default function ScrollVideoSection({ className = '' }) {
 
       img.onerror = () => {
         count++;
-        setLoadedCount(count);
+        setLoadedCount((prev) => prev + 1);
       };
 
       imgs[frameIndex] = img;
+    };
+
+    // 1. Immediate priority batch: frames 1 to 8
+    const priorityCount = Math.min(8, TOTAL_FRAMES);
+    for (let i = 1; i <= priorityCount; i++) {
+      loadSingleFrame(i);
+    }
+
+    // 2. Idle stream remaining frames 9 to 136
+    let currentIndex = priorityCount + 1;
+    let idleHandle = null;
+
+    const streamRemaining = () => {
+      const batchSize = 6;
+      const end = Math.min(currentIndex + batchSize, TOTAL_FRAMES + 1);
+      for (let i = currentIndex; i < end; i++) {
+        loadSingleFrame(i);
+      }
+      currentIndex = end;
+
+      if (currentIndex <= TOTAL_FRAMES) {
+        if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+          idleHandle = window.requestIdleCallback(streamRemaining, { timeout: 1000 });
+        } else {
+          idleHandle = setTimeout(streamRemaining, 50);
+        }
+      }
+    };
+
+    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+      idleHandle = window.requestIdleCallback(streamRemaining, { timeout: 1000 });
+    } else {
+      idleHandle = setTimeout(streamRemaining, 100);
     }
 
     imagesRef.current = imgs;
+
+    return () => {
+      if (idleHandle) {
+        if (typeof window !== 'undefined' && 'cancelIdleCallback' in window) {
+          window.cancelIdleCallback(idleHandle);
+        } else {
+          clearTimeout(idleHandle);
+        }
+      }
+    };
   }, [drawFrame]);
 
-  // Set up GSAP ScrollTrigger pinning and scrub synchronization
+  // Set up GSAP ScrollTrigger pinning and scrub synchronization (bypassed if reduced-motion)
   useEffect(() => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
+
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      drawFrame(0);
+      return () => window.removeEventListener('resize', resizeCanvas);
+    }
 
     const ctx = gsap.context(() => {
       const trigger = ScrollTrigger.create({
@@ -243,15 +295,19 @@ export default function ScrollVideoSection({ className = '' }) {
     };
   }, [resizeCanvas, drawFrame]);
 
+  const prefersReducedMotion =
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   const loadPercent = Math.min(100, Math.round((loadedCount / TOTAL_FRAMES) * 100));
-  const isEndFrame = scrollProgress >= 0.75;
+  const isEndFrame = prefersReducedMotion || scrollProgress >= 0.75;
 
   return (
     <section
       id="scroll-video-section"
       ref={containerRef}
       className={`relative w-full bg-black ${className}`}
-      style={{ height: `${SCROLL_MULTIPLIER * 100}vh` }}
+      style={{ height: prefersReducedMotion ? '100vh' : `${SCROLL_MULTIPLIER * 100}vh` }}
     >
       {/* GSAP Pinned Viewport */}
       <div
@@ -315,10 +371,10 @@ export default function ScrollVideoSection({ className = '' }) {
             ))}
           </div>
 
-          {/* Center Video Frame: Native 502/848 ratio, razor-sharp on both desktop & mobile */}
+          {/* Center Video Frame: Native 502/848 ratio, clean borderless display */}
           <div
             ref={videoWrapperRef}
-            className="relative flex-shrink-0 h-[48vh] md:h-[78vh] lg:h-[82vh] max-h-[820px] aspect-[502/848] rounded-2xl md:rounded-3xl overflow-hidden border border-[#7A968B]/35 shadow-[0_25px_70px_rgba(0,0,0,0.9)] ring-1 ring-white/10 flex items-center justify-center transition-all duration-300"
+            className="relative flex-shrink-0 h-[48vh] md:h-[78vh] lg:h-[82vh] max-h-[820px] aspect-[502/848] rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_25px_70px_rgba(0,0,0,0.9)] flex items-center justify-center transition-all duration-300"
           >
             <canvas
               ref={mainCanvasRef}

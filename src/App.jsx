@@ -42,7 +42,7 @@ export default function App() {
   if (normalizedPath === '/ventures/loopmemory') {
     return <LoopMemoryPage />;
   }
-  if (normalizedPath === '/writing') {
+  if (normalizedPath === '/writing' || normalizedPath.startsWith('/writing/')) {
     return <WritingPage />;
   }
   if (normalizedPath === '/contact') {

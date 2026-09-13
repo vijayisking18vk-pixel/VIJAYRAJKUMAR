@@ -6,11 +6,32 @@
     { "source": "/ventures/ziggers/(.*)", "destination": "/ventures/ziggers/index.html" },
     { "source": "/ventures/loopmemory/(.*)", "destination": "/ventures/loopmemory/index.html" },
     { "source": "/ventures/(.*)", "destination": "/ventures/index.html" },
+    { "source": "/writing/gig-marketplace-chennai/(.*)", "destination": "/writing/gig-marketplace-chennai/index.html" },
+    { "source": "/writing/ai-persistent-context-architecture/(.*)", "destination": "/writing/ai-persistent-context-architecture/index.html" },
+    { "source": "/writing/geopolitics-defence-venture-building/(.*)", "destination": "/writing/geopolitics-defence-venture-building/index.html" },
     { "source": "/writing/(.*)", "destination": "/writing/index.html" },
     { "source": "/contact/(.*)", "destination": "/contact/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/frames/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
     {
       "source": "/(.*)",
       "headers": [

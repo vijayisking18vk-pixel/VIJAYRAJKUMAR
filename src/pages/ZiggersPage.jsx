@@ -83,6 +83,35 @@ export default function ZiggersPage() {
 
         </div>
 
+        {/* Quantified Proof & Operational Outcomes */}
+        <section className="space-y-4">
+          <h2 className="text-xl font-bold text-[#111815]">
+            Quantified Operational Proof & Outcomes
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div className="p-5 bg-white border-2 border-[#7A968B] rounded-2xl shadow-sm text-center space-y-1">
+              <div className="text-2xl sm:text-3xl font-black text-[#203322]">&lt; 5%</div>
+              <div className="text-xs font-bold text-[#111815]">Worker No-Show Rate</div>
+              <p className="text-[11px] text-[#2A3E34]">Down from 45% on unorganized WhatsApp channels via geo-fencing</p>
+            </div>
+            <div className="p-5 bg-white border-2 border-[#7A968B] rounded-2xl shadow-sm text-center space-y-1">
+              <div className="text-2xl sm:text-3xl font-black text-[#203322]">&lt; 2 Hrs</div>
+              <div className="text-xs font-bold text-[#111815]">Settlement Time</div>
+              <p className="text-[11px] text-[#2A3E34]">Escrow-backed instant shift payout vs. standard 15-30 day delays</p>
+            </div>
+            <div className="p-5 bg-white border-2 border-[#7A968B] rounded-2xl shadow-sm text-center space-y-1">
+              <div className="text-2xl sm:text-3xl font-black text-[#203322]">100%</div>
+              <div className="text-xs font-bold text-[#111815]">Identity Verification</div>
+              <p className="text-[11px] text-[#2A3E34]">Government ID checks completely eliminating proxy labor substitution</p>
+            </div>
+            <div className="p-5 bg-white border-2 border-[#7A968B] rounded-2xl shadow-sm text-center space-y-1">
+              <div className="text-2xl sm:text-3xl font-black text-[#203322]">48 Hrs</div>
+              <div className="text-xs font-bold text-[#111815]">Matching SLA</div>
+              <p className="text-[11px] text-[#2A3E34]">From event organizer shift request to full verified roster confirmation</p>
+            </div>
+          </div>
+        </section>
+
         {/* Verifiable Milestones */}
         <section className="p-6 sm:p-8 bg-white border-2 border-[#7A968B] rounded-2xl shadow-md space-y-4">
           <h2 className="text-xl font-bold text-[#111815]">

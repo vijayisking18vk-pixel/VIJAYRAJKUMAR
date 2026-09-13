@@ -20,8 +20,24 @@ const routes = [
     path: 'about',
     title: 'About | Chief Operating Officer & Venture Builder in Chennai',
     description: 'Learn about Vijayrajkumar, Chief Operating Officer and co-founder at Unfounded, Ziggers, and LoopMemory. Background in Defence and Strategic Studies (SRMIST) and Hindi Literature.',
-    canonical: 'https://vijayrajkumar.vercel.app/about/',
+    canonical: 'https://www.vijayrajkumar.in/about/',
     heading: 'About Vijayrajkumar',
+    jsonLd: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "About Vijayrajkumar",
+      "url": "https://www.vijayrajkumar.in/about/",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Vijayrajkumar",
+        "jobTitle": "Chief Operating Officer and Co-Founder",
+        "worksFor": [
+          { "@type": "Organization", "name": "Unfounded", "url": "https://www.unfounded.in/" },
+          { "@type": "Organization", "name": "Ziggers", "url": "https://www.ziggers.in/" },
+          { "@type": "Organization", "name": "LoopMemory", "url": "https://www.loopmemory.in/" }
+        ]
+      }
+    }),
     content: `
       <div class="max-w-4xl mx-auto px-6 py-16 space-y-12 font-sans">
         <nav class="text-xs text-neutral-500 mb-6"><a href="/">Home</a> / <span>About</span></nav>
@@ -67,8 +83,18 @@ const routes = [
     path: 'ventures',
     title: 'Ventures & Case Studies | Chief Operating Officer & Builder',
     description: 'Explore ventures co-founded and operated by Vijayrajkumar in Chennai: Ziggers (local gig marketplace), LoopMemory (AI context engine), and Unfounded Venture Studio.',
-    canonical: 'https://vijayrajkumar.vercel.app/ventures/',
+    canonical: 'https://www.vijayrajkumar.in/ventures/',
     heading: 'Ventures & Case Studies',
+    jsonLd: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Ventures & Case Studies | Vijayrajkumar",
+      "url": "https://www.vijayrajkumar.in/ventures/",
+      "hasPart": [
+        { "@type": "SoftwareApplication", "name": "Ziggers", "url": "https://www.ziggers.in/" },
+        { "@type": "SoftwareApplication", "name": "LoopMemory", "url": "https://www.loopmemory.in/" }
+      ]
+    }),
     content: `
       <div class="max-w-6xl mx-auto px-6 py-16 space-y-12 font-sans">
         <nav class="text-xs text-neutral-500 mb-6"><a href="/">Home</a> / <span>Ventures</span></nav>
@@ -107,8 +133,18 @@ const routes = [
     path: 'ventures/ziggers',
     title: 'Ziggers Case Study | Vijayrajkumar · Co-Founder & Product Direction',
     description: 'Read the comprehensive case study on Ziggers: a Chennai-first gig staffing marketplace co-founded by Vijayrajkumar. Solving informal WhatsApp hiring with milestone escrow.',
-    canonical: 'https://vijayrajkumar.vercel.app/ventures/ziggers/',
+    canonical: 'https://www.vijayrajkumar.in/ventures/ziggers/',
     heading: 'Ziggers Case Study',
+    jsonLd: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Ziggers",
+      "operatingSystem": "Web",
+      "applicationCategory": "BusinessApplication",
+      "description": "A Chennai-first gig staffing marketplace replacing informal WhatsApp hiring with verified workers, real-time tracking, and milestone-based escrow payments.",
+      "url": "https://www.ziggers.in/",
+      "author": { "@type": "Person", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/" }
+    }),
     content: `
       <div class="max-w-4xl mx-auto px-6 py-16 space-y-12 font-sans">
         <nav class="text-xs text-neutral-500 mb-6"><a href="/">Home</a> / <a href="/#ventures">Ventures</a> / <span>Ziggers</span></nav>
@@ -149,8 +185,18 @@ const routes = [
     path: 'ventures/loopmemory',
     title: 'LoopMemory Case Study | Chief Operating Officer & Context Architecture',
     description: 'Read the comprehensive case study on LoopMemory: persistent context and cognitive memory engine for AI agents co-founded and operated by Vijayrajkumar. Featured at India Global Education Summit.',
-    canonical: 'https://vijayrajkumar.vercel.app/ventures/loopmemory/',
+    canonical: 'https://www.vijayrajkumar.in/ventures/loopmemory/',
     heading: 'LoopMemory Case Study',
+    jsonLd: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "LoopMemory",
+      "operatingSystem": "Web",
+      "applicationCategory": "DeveloperApplication",
+      "description": "Persistent context and cognitive memory engine for AI agents and developer workflows.",
+      "url": "https://www.loopmemory.in/",
+      "author": { "@type": "Person", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/" }
+    }),
     content: `
       <div class="max-w-4xl mx-auto px-6 py-16 space-y-12 font-sans">
         <nav class="text-xs text-neutral-500 mb-6"><a href="/">Home</a> / <a href="/#ventures">Ventures</a> / <span>LoopMemory</span></nav>
@@ -191,8 +237,15 @@ const routes = [
     path: 'writing',
     title: 'Writing & Strategic Research | Vijayrajkumar',
     description: 'Thought leadership and essays by Vijayrajkumar on local gig marketplaces, persistent context memory for AI agents, and applying defence doctrines to startup building.',
-    canonical: 'https://vijayrajkumar.vercel.app/writing/',
+    canonical: 'https://www.vijayrajkumar.in/writing/',
     heading: 'Writing & Strategic Research',
+    jsonLd: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Writing & Strategic Research | Vijayrajkumar",
+      "url": "https://www.vijayrajkumar.in/writing/",
+      "author": { "@type": "Person", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/" }
+    }),
     content: `
       <div class="max-w-4xl mx-auto px-6 py-16 space-y-12 font-sans">
         <nav class="text-xs text-neutral-500 mb-6"><a href="/">Home</a> / <span>Writing</span></nav>
@@ -202,23 +255,26 @@ const routes = [
         <div class="space-y-8 pt-6 border-t border-neutral-200">
           <article class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-3">
             <span class="text-xs uppercase font-bold text-neutral-500">Marketplace Mechanics & Labor Ops</span>
-            <h2 class="text-2xl font-bold text-neutral-950">Building a Local Gig Marketplace in Chennai: Lessons Beyond WhatsApp Groups</h2>
+            <h2 class="text-2xl font-bold text-neutral-950"><a href="/writing/gig-marketplace-chennai/">Building a Local Gig Marketplace in Chennai: Lessons Beyond WhatsApp Groups</a></h2>
             <p class="text-xs text-neutral-500">By COO & Co-Founder, Ziggers • Feb 2026 • 6 min read</p>
             <p class="text-sm text-neutral-600 leading-relaxed">Why informal WhatsApp hiring collapses at scale in Indian tier-1 cities, how milestone-based escrow resolves worker skepticism, and the operational playbook for building two-sided liquidity without cash burn.</p>
+            <div><a href="/writing/gig-marketplace-chennai/" class="font-bold text-xs underline text-neutral-950">Read complete essay →</a></div>
           </article>
 
           <article class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-3">
             <span class="text-xs uppercase font-bold text-neutral-500">AI Infrastructure & Cognitive Systems</span>
-            <h2 class="text-2xl font-bold text-neutral-950">Designing Persistent Context & Memory Architecture for AI Agents</h2>
+            <h2 class="text-2xl font-bold text-neutral-950"><a href="/writing/ai-persistent-context-architecture/">Designing Persistent Context & Memory Architecture for AI Agents</a></h2>
             <p class="text-xs text-neutral-500">By COO & Co-Founder, LoopMemory • Jan 2026 • 8 min read</p>
             <p class="text-sm text-neutral-600 leading-relaxed">The technical and cognitive design challenges of multi-session AI agents: why dumping chat histories into large prompt windows causes context rot, and how hierarchical memory graphs solve long-term agent reasoning.</p>
+            <div><a href="/writing/ai-persistent-context-architecture/" class="font-bold text-xs underline text-neutral-950">Read complete essay →</a></div>
           </article>
 
           <article class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-3">
             <span class="text-xs uppercase font-bold text-neutral-500">Strategy, Game Theory & Operations</span>
-            <h2 class="text-2xl font-bold text-neutral-950">From Geopolitics and Defence Strategy to Startup Venture Studios</h2>
+            <h2 class="text-2xl font-bold text-neutral-950"><a href="/writing/geopolitics-defence-venture-building/">From Geopolitics and Defence Strategy to Startup Venture Studios</a></h2>
             <p class="text-xs text-neutral-500">By COO & Co-Founder, Unfounded • Dec 2025 • 7 min read</p>
             <p class="text-sm text-neutral-600 leading-relaxed">How academic frameworks in international security, intelligence doctrine, and deterrence strategy directly translate into early-stage startup execution, competitive defensibility, and rapid vibe coding.</p>
+            <div><a href="/writing/geopolitics-defence-venture-building/" class="font-bold text-xs underline text-neutral-950">Read complete essay →</a></div>
           </article>
         </div>
       </div>
@@ -228,8 +284,20 @@ const routes = [
     path: 'contact',
     title: 'Contact & Collaboration | Chief Operating Officer · Chennai, India',
     description: 'Get in touch with Vijayrajkumar. Chief Operating Officer and co-founder at Unfounded, Ziggers, and LoopMemory. Open to venture partnerships, operational collaboration, and speaking.',
-    canonical: 'https://vijayrajkumar.vercel.app/contact/',
+    canonical: 'https://www.vijayrajkumar.in/contact/',
     heading: 'Contact Me',
+    jsonLd: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contact Vijayrajkumar",
+      "url": "https://www.vijayrajkumar.in/contact/",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Vijayrajkumar",
+        "email": "mailto:vijaykumarunfounded@gmail.com",
+        "homeLocation": { "@type": "Place", "name": "Chennai, Tamil Nadu, India" }
+      }
+    }),
     content: `
       <div class="max-w-4xl mx-auto px-6 py-16 space-y-12 font-sans">
         <nav class="text-xs text-neutral-500 mb-6"><a href="/">Home</a> / <span>Contact</span></nav>
@@ -247,6 +315,111 @@ const routes = [
             <a href="https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/" target="_blank" rel="noopener noreferrer" class="underline text-neutral-950">LinkedIn ↗</a>
           </div>
         </div>
+      </div>
+    `
+  },
+  // ==========================================
+  // Individual Writing Article Routes (Crawlable permanent URLs)
+  // ==========================================
+  {
+    path: 'writing/gig-marketplace-chennai',
+    title: 'Building a Local Gig Marketplace in Chennai | Vijayrajkumar',
+    description: 'Why informal WhatsApp hiring collapses at scale in Indian tier-1 cities, how milestone-based escrow resolves worker skepticism, and the operational playbook for two-sided liquidity.',
+    canonical: 'https://www.vijayrajkumar.in/writing/gig-marketplace-chennai/',
+    heading: 'Building a Local Gig Marketplace in Chennai',
+    jsonLd: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Building a Local Gig Marketplace in Chennai: Lessons Beyond WhatsApp Groups",
+      "author": { "@type": "Person", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/" },
+      "datePublished": "2026-02-01",
+      "dateModified": "2026-09-13",
+      "publisher": { "@type": "Organization", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/" },
+      "url": "https://www.vijayrajkumar.in/writing/gig-marketplace-chennai/",
+      "mainEntityOfPage": "https://www.vijayrajkumar.in/writing/gig-marketplace-chennai/",
+      "description": "Why informal WhatsApp hiring collapses at scale in Indian tier-1 cities, how milestone-based escrow resolves worker skepticism, and the operational playbook for two-sided liquidity.",
+      "keywords": ["gig marketplace", "Chennai", "escrow payments", "WhatsApp hiring", "staffing"]
+    }),
+    content: `
+      <div class="max-w-4xl mx-auto px-6 py-16 space-y-12 font-sans">
+        <nav class="text-xs text-neutral-500 mb-6"><a href="/">Home</a> / <a href="/writing/">Writing</a> / <span>Gig Marketplace Chennai</span></nav>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-neutral-950">Building a Local Gig Marketplace in Chennai: Lessons Beyond WhatsApp Groups</h1>
+        <p class="text-xs text-neutral-500">By COO & Co-Founder, Ziggers • February 2026 • 6 min read</p>
+        <p class="text-lg text-neutral-600 leading-relaxed">Why informal WhatsApp hiring collapses at scale in Indian tier-1 cities, how milestone-based escrow resolves worker skepticism, and the operational playbook for building two-sided liquidity without cash burn.</p>
+        <section class="space-y-6 pt-6 border-t border-neutral-200">
+          <div class="space-y-3"><h2 class="text-2xl font-bold text-neutral-950">The Fragmented Reality of Urban Gig Hiring</h2><p class="text-neutral-700 leading-relaxed">Walk into any event venue, logistics warehouse, or catering setup in Chennai, and the labor force was almost certainly coordinated through an unmonitored WhatsApp group. While WhatsApp is zero-friction to start, it possesses zero accountability. Employers post shift timings and rates; workers RSVP with thumbs-up emojis; on the day of the event, up to 45% fail to show up.</p></div>
+          <div class="space-y-3"><h2 class="text-2xl font-bold text-neutral-950">The Mechanics of Verified Escrow</h2><p class="text-neutral-700 leading-relaxed">When building Ziggers, our first realization was that neither party trusted the other. Employers feared paying for workers who would leave midway; workers feared not getting paid after completing their shift. We structured the platform around geo-fenced check-ins and escrow locks: the employer deposits the shift wage into escrow upfront, and the worker receives payout upon verified supervisor sign-off.</p></div>
+          <div class="space-y-3"><h2 class="text-2xl font-bold text-neutral-950">Bootstrapping Liquidity in Chennai</h2><p class="text-neutral-700 leading-relaxed">Rather than spending capital on Facebook or Google ads, we went directly on-site to university campuses and vocational centers across Chennai. By engaging high-intent students seeking flexible weekend earnings and guaranteeing same-day payout settlements, we generated organic marketplace density.</p></div>
+        </section>
+        <div class="pt-4"><a href="/writing/" class="text-xs font-bold underline text-neutral-950">← Back to all articles</a></div>
+      </div>
+    `
+  },
+  {
+    path: 'writing/ai-persistent-context-architecture',
+    title: 'Designing Persistent Context & Memory Architecture for AI Agents | Vijayrajkumar',
+    description: 'The technical and cognitive design challenges of multi-session AI agents: why dumping chat histories causes context rot, and how hierarchical memory graphs solve long-term agent reasoning.',
+    canonical: 'https://www.vijayrajkumar.in/writing/ai-persistent-context-architecture/',
+    heading: 'Persistent Context & Memory Architecture for AI Agents',
+    jsonLd: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Designing Persistent Context & Memory Architecture for AI Agents",
+      "author": { "@type": "Person", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/" },
+      "datePublished": "2026-01-01",
+      "dateModified": "2026-09-13",
+      "publisher": { "@type": "Organization", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/" },
+      "url": "https://www.vijayrajkumar.in/writing/ai-persistent-context-architecture/",
+      "mainEntityOfPage": "https://www.vijayrajkumar.in/writing/ai-persistent-context-architecture/",
+      "description": "The technical and cognitive design challenges of multi-session AI agents: why dumping chat histories causes context rot, and how hierarchical memory graphs solve long-term agent reasoning.",
+      "keywords": ["AI agents", "persistent memory", "context architecture", "knowledge graph", "LLM"]
+    }),
+    content: `
+      <div class="max-w-4xl mx-auto px-6 py-16 space-y-12 font-sans">
+        <nav class="text-xs text-neutral-500 mb-6"><a href="/">Home</a> / <a href="/writing/">Writing</a> / <span>AI Persistent Context</span></nav>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-neutral-950">Designing Persistent Context & Memory Architecture for AI Agents</h1>
+        <p class="text-xs text-neutral-500">By COO & Co-Founder, LoopMemory • January 2026 • 8 min read</p>
+        <p class="text-lg text-neutral-600 leading-relaxed">The technical and cognitive design challenges of multi-session AI agents: why dumping chat histories into large prompt windows causes context rot, and how hierarchical memory graphs solve long-term agent reasoning.</p>
+        <section class="space-y-6 pt-6 border-t border-neutral-200">
+          <div class="space-y-3"><h2 class="text-2xl font-bold text-neutral-950">The Fallacy of the 1-Million Token Prompt</h2><p class="text-neutral-700 leading-relaxed">With model providers expanding context windows, many developers assumed the memory problem was solved: just feed the entire chat history back into the LLM on every turn. In practice, this creates severe latency, massive cost penalties, and attention degradation. Agents get confused by outdated user instructions from three days prior.</p></div>
+          <div class="space-y-3"><h2 class="text-2xl font-bold text-neutral-950">Hierarchical Memory Decomposition</h2><p class="text-neutral-700 leading-relaxed">At LoopMemory, we architected a tripartite memory model: Working Memory (active prompt context), Episodic Memory (raw chronological turn logs), and Semantic Graph Memory (extracted entities, preferences, and verified beliefs). Raw conversational turns pass through an extraction pipeline that updates a developer-queried knowledge graph.</p></div>
+          <div class="space-y-3"><h2 class="text-2xl font-bold text-neutral-950">Decay, Pruning, and Relevance Scoring</h2><p class="text-neutral-700 leading-relaxed">Human brains forget for a reason. AI agents similarly require deterministic forgetting curves. By scoring memories based on recency, retrieval frequency, and semantic relevance, LoopMemory surfaces only the high-signal context an agent needs to execute its next tool call.</p></div>
+        </section>
+        <div class="pt-4"><a href="/writing/" class="text-xs font-bold underline text-neutral-950">← Back to all articles</a></div>
+      </div>
+    `
+  },
+  {
+    path: 'writing/geopolitics-defence-venture-building',
+    title: 'From Geopolitics and Defence Strategy to Startup Venture Studios | Vijayrajkumar',
+    description: 'How academic frameworks in international security, intelligence doctrine, and deterrence strategy directly translate into early-stage startup execution and competitive defensibility.',
+    canonical: 'https://www.vijayrajkumar.in/writing/geopolitics-defence-venture-building/',
+    heading: 'From Geopolitics to Venture Studios',
+    jsonLd: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "From Geopolitics and Defence Strategy to Startup Venture Studios",
+      "author": { "@type": "Person", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/" },
+      "datePublished": "2025-12-01",
+      "dateModified": "2026-09-13",
+      "publisher": { "@type": "Organization", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/" },
+      "url": "https://www.vijayrajkumar.in/writing/geopolitics-defence-venture-building/",
+      "mainEntityOfPage": "https://www.vijayrajkumar.in/writing/geopolitics-defence-venture-building/",
+      "description": "How academic frameworks in international security, intelligence doctrine, and deterrence strategy directly translate into early-stage startup execution and competitive defensibility.",
+      "keywords": ["geopolitics", "defence strategy", "venture building", "OODA loop", "startup"]
+    }),
+    content: `
+      <div class="max-w-4xl mx-auto px-6 py-16 space-y-12 font-sans">
+        <nav class="text-xs text-neutral-500 mb-6"><a href="/">Home</a> / <a href="/writing/">Writing</a> / <span>Geopolitics & Venture Building</span></nav>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-neutral-950">From Geopolitics and Defence Strategy to Startup Venture Studios</h1>
+        <p class="text-xs text-neutral-500">By COO & Co-Founder, Unfounded • December 2025 • 7 min read</p>
+        <p class="text-lg text-neutral-600 leading-relaxed">How academic frameworks in international security, intelligence doctrine, and deterrence strategy directly translate into early-stage startup execution, competitive defensibility, and rapid vibe coding.</p>
+        <section class="space-y-6 pt-6 border-t border-neutral-200">
+          <div class="space-y-3"><h2 class="text-2xl font-bold text-neutral-950">Asymmetric Advantage in Early-Stage Building</h2><p class="text-neutral-700 leading-relaxed">During my studies in Defence and Strategic Studies at SRMIST, one principle stood out repeatedly: smaller actors never defeat established powers by matching their conventional armor. They win through asymmetric speed, decentralized operational autonomy, and unconventional maneuvering. In startup terms, this is why a 2-person studio using vibe coding tools can out-iterate an enterprise engineering department with 50 managers.</p></div>
+          <div class="space-y-3"><h2 class="text-2xl font-bold text-neutral-950">OODA Loops in Venture Studios</h2><p class="text-neutral-700 leading-relaxed">John Boyd's OODA Loop (Observe, Orient, Decide, Act) is the ultimate operating framework for venture building. At Unfounded, we run rapid cycles: observe user friction in the market, orient using historical patterns and system mechanics, decide on a minimal prototype, and act by deploying working code within 48 hours.</p></div>
+          <div class="space-y-3"><h2 class="text-2xl font-bold text-neutral-950">Language, Narrative, and Cultural Cohesion</h2><p class="text-neutral-700 leading-relaxed">Pairing defence strategy with an MA in Hindi Literature taught me that systems are governed by the stories people believe. Whether convincing an investor at a pitchfest, onboarding the first 100 gig workers, or aligning a co-founding team, strategic narrative is the catalyst that transforms raw code into a living institution.</p></div>
+        </section>
+        <div class="pt-4"><a href="/writing/" class="text-xs font-bold underline text-neutral-950">← Back to all articles</a></div>
       </div>
     `
   }
@@ -303,6 +476,14 @@ routes.forEach((route) => {
     /<div id="root">[\s\S]*?<\/div>/,
     `<div id="root">${route.content}</div>`
   );
+
+  // Inject page-specific JSON-LD structured data if present
+  if (route.jsonLd) {
+    pageHtml = pageHtml.replace(
+      '</head>',
+      `<script type="application/ld+json">${route.jsonLd}</script>\n  </head>`
+    );
+  }
 
   const outputPath = path.join(targetDir, 'index.html');
   fs.writeFileSync(outputPath, pageHtml, 'utf8');
