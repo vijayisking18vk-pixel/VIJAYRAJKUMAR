@@ -12,8 +12,8 @@
      1. Global Configuration
      ========================================================================== */
   const CONFIG = {
-    // Mode: 'frames' (default, using extracted WhatsApp video frames) or 'video' (/uploads/video.mp4)
-    mode: 'frames',
+    // Mode: 'video' (default, using /uploads/video.mp4) or 'frames' (using extracted WhatsApp video frames)
+    mode: 'video',
 
     // Frame Sequence Configuration
     frames: {
