@@ -453,9 +453,9 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
   };
 
   const handleScrollDown = () => {
-    const storySection = document.getElementById('cinematic-story');
-    if (storySection) {
-      storySection.scrollIntoView({ behavior: 'smooth' });
+    const videoSection = document.getElementById('scroll-video-section') || document.getElementById('cinematic-story');
+    if (videoSection) {
+      videoSection.scrollIntoView({ behavior: 'smooth' });
     } else {
       const portals = document.getElementById('portals');
       if (portals) {
