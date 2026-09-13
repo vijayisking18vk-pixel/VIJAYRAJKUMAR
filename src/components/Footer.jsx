@@ -40,6 +40,7 @@ export default function Footer() {
             <ul className="space-y-1.5">
               <li><a href="/" className="hover:text-[var(--color-accent-primary)] transition-colors">Home</a></li>
               <li><a href="/about/" className="hover:text-[var(--color-accent-primary)] transition-colors">About & Bio</a></li>
+              <li><a href="/events/" className="hover:text-[var(--color-accent-primary)] transition-colors">Events & Summits</a></li>
               <li><a href="/#journey" className="hover:text-[var(--color-accent-primary)] transition-colors">Education & Journey</a></li>
             </ul>
           </div>

@@ -234,6 +234,57 @@ const routes = [
     `
   },
   {
+    path: 'events',
+    title: 'Events, Summits & Keynotes | Vijayrajkumar',
+    description: 'Explore events, keynote showcases, and builder sprints attended by Vijayrajkumar: India Global Education Summit, Kazakhstan-India Forum, SaaSathoN SSN, and Startup Pitchfest Kanyakumari.',
+    canonical: 'https://www.vijayrajkumar.in/events/',
+    heading: 'Events & Summits',
+    jsonLd: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Events & Summits | Vijayrajkumar",
+      "url": "https://www.vijayrajkumar.in/events/",
+      "author": { "@type": "Person", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/" }
+    }),
+    content: `
+      <div class="max-w-6xl mx-auto px-6 py-16 space-y-12 font-sans">
+        <nav class="text-xs text-neutral-500 mb-6"><a href="/">Home</a> / <span>Overview</span> / <span>Events</span></nav>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-neutral-950">Events, Summits & Builder Sprints</h1>
+        <p class="text-lg text-neutral-600 leading-relaxed max-w-3xl">Firsthand photo records and verified milestones from global summits, international delegations, 36-hour builder sprints, and startup pitchfest finals representing Unfounded, Ziggers, and LoopMemory.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-neutral-200">
+          <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-3">
+            <span class="text-xs font-mono font-semibold text-neutral-500 uppercase">Kalaivaanar Arangam, Chennai · Feb 2026</span>
+            <h2 class="text-2xl font-bold text-neutral-950">India Global Education Summit</h2>
+            <p class="text-sm text-neutral-600">Represented Unfounded and showcased LoopMemory cognitive memory architecture to international delegations and education leaders.</p>
+            <div><a href="/ventures/loopmemory/" class="font-bold text-xs underline text-neutral-950">View LoopMemory Case Study →</a></div>
+          </div>
+
+          <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-3">
+            <span class="text-xs font-mono font-semibold text-neutral-500 uppercase">Chennai International Centre · Jan 2026</span>
+            <h2 class="text-2xl font-bold text-neutral-950">Kazakhstan - India Innovation Forum</h2>
+            <p class="text-sm text-neutral-600">Participated in bilateral innovation dialogues connecting Central Asian venture corridors with South Indian startup ecosystems.</p>
+            <div><a href="/about/" class="font-bold text-xs underline text-neutral-950">About Founder Background →</a></div>
+          </div>
+
+          <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-3">
+            <span class="text-xs font-mono font-semibold text-neutral-500 uppercase">SSN College of Engineering · Jan 2026</span>
+            <h2 class="text-2xl font-bold text-neutral-950">SaaSathoN '26 @ SSN College</h2>
+            <p class="text-sm text-neutral-600">Intensive 36-hour sprint pressure-testing LoopMemory under multi-agent traffic and shipping developer API endpoints.</p>
+            <div><a href="/ventures/loopmemory/" class="font-bold text-xs underline text-neutral-950">View LoopMemory Case Study →</a></div>
+          </div>
+
+          <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-3">
+            <span class="text-xs font-mono font-semibold text-neutral-500 uppercase">Kanyakumari, Tamil Nadu · 2026</span>
+            <h2 class="text-2xl font-bold text-neutral-950">Startup Pitchfest 2026 Finals</h2>
+            <p class="text-sm text-neutral-600">Pitched Ziggers gig marketplace platform to venture capital funds, angel syndicates, and government incubators as a top state finalist.</p>
+            <div><a href="/ventures/ziggers/" class="font-bold text-xs underline text-neutral-950">View Ziggers Case Study →</a></div>
+          </div>
+        </div>
+      </div>
+    `
+  },
+  {
     path: 'writing',
     title: 'Writing & Strategic Research | Vijayrajkumar',
     description: 'Thought leadership and essays by Vijayrajkumar on local gig marketplaces, persistent context memory for AI agents, and applying defence doctrines to startup building.',

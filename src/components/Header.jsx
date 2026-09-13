@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Compass, Layers, BookOpen, Send, Menu, X } from 'lucide-react';
+import { Compass, Layers, BookOpen, Send, Calendar, Menu, X } from 'lucide-react';
 import GradientText from './react-bits/GradientText';
 import StarBorder from './react-bits/StarBorder';
 
@@ -9,6 +9,7 @@ export default function Header({ activeSection, setActiveSection }) {
   const navItems = [
     { href: '/about/', label: 'About', icon: Compass },
     { href: '/ventures/', label: 'Ventures', icon: Layers },
+    { href: '/events/', label: 'Events', icon: Calendar },
     { href: '/writing/', label: 'Writing', icon: BookOpen },
     { href: '/contact/', label: 'Contact', icon: Send }
   ];

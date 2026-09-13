@@ -12,6 +12,7 @@ import ZiggersPage from './pages/ZiggersPage';
 import LoopMemoryPage from './pages/LoopMemoryPage';
 import WritingPage from './pages/WritingPage';
 import ContactPage from './pages/ContactPage';
+import EventsPage from './pages/EventsPage';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(
@@ -41,6 +42,9 @@ export default function App() {
   }
   if (normalizedPath === '/ventures/loopmemory') {
     return <LoopMemoryPage />;
+  }
+  if (normalizedPath === '/events') {
+    return <EventsPage />;
   }
   if (normalizedPath === '/writing' || normalizedPath.startsWith('/writing/')) {
     return <WritingPage />;
