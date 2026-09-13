@@ -79,64 +79,7 @@
           <p>Reduced motion is active. Scroll-driven animation has been paused. Use manual controls below.</p>
         </div>
 
-        <!-- Floating HUD Controls (Configurable via CONFIG.enableControls) -->
-        <div id="controls-hud" class="controls-hud" role="region" aria-label="Video playback controls">
-          <div class="hud-inner">
-            <!-- Reset Button -->
-            <button id="btn-reset" class="hud-btn" type="button" aria-label="Reset video to beginning">
-              <svg class="hud-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
-                <path d="M3 3v5h5"/>
-              </svg>
-              <span class="btn-label">Reset</span>
-            </button>
 
-            <!-- Play / Pause Button -->
-            <button id="btn-play" class="hud-btn" type="button" aria-label="Play or pause animation">
-              <svg id="icon-play" class="hud-icon" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"/>
-              </svg>
-              <svg id="icon-pause" class="hud-icon hidden" viewBox="0 0 24 24" fill="currentColor">
-                <rect x="6" y="4" width="4" height="16"/>
-                <rect x="14" y="4" width="4" height="16"/>
-              </svg>
-              <span id="label-play" class="btn-label">Play</span>
-            </button>
-
-            <!-- Scrubber Slider -->
-            <div class="scrubber-wrapper">
-              <label for="timeline-scrubber" class="sr-only">Timeline Scrubber</label>
-              <input 
-                id="timeline-scrubber" 
-                type="range" 
-                min="0" 
-                max="1000" 
-                value="0" 
-                step="1"
-                aria-label="Timeline scrubber"
-              >
-              <div class="scrubber-track-fill" id="scrubber-fill"></div>
-            </div>
-
-            <!-- Time / Frame Readout -->
-            <div class="hud-readout" aria-live="off">
-              <span id="hud-current">0.00s</span>
-              <span class="hud-sep">/</span>
-              <span id="hud-total">0.00s</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Scroll Indicator Hint (fades on scroll) -->
-        <div id="scroll-hint" class="scroll-hint" aria-hidden="true">
-          <div class="scroll-hint-pill">
-            <span class="pulsing-dot"></span>
-            <span class="scroll-hint-text">SCROLL TO CONTROL TIMELINE</span>
-            <svg class="bounce-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M12 5v14M19 12l-7 7-7-7"/>
-            </svg>
-          </div>
-        </div>
 
         <!-- End Frame Headings Overlay (from uploaded image specification) -->
         <!-- Only headings shown separately as clickable text with zero word overflow -->

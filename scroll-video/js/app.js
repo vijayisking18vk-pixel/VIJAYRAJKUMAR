@@ -12,8 +12,8 @@
      1. Global Configuration
      ========================================================================== */
   const CONFIG = {
-    // Mode: 'video' (default, using /uploads/video.mp4) or 'frames' (using extracted WhatsApp video frames)
-    mode: 'video',
+    // Mode: 'frames' (using extracted WhatsApp video frames) or 'video'
+    mode: 'frames',
 
     // Frame Sequence Configuration
     frames: {
@@ -32,7 +32,7 @@
     scrollMultiplier: 5,
 
     // Enable / Disable Floating HUD Controls
-    enableControls: true,
+    enableControls: false,
 
     // Threshold (0.0 to 1.0) to reveal the end-frame clickable headings
     endFrameThreshold: 0.84,

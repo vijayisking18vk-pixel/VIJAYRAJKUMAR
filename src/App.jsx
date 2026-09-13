@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import { ParallaxHero } from './components/ui/wilderness';
 import ScrollVideoSection from './components/ScrollVideoSection';
-import PagePortalsGrid from './components/PagePortalsGrid';
 import Footer from './components/Footer';
 import Particles from './components/react-bits/Particles';
 
@@ -66,9 +65,6 @@ export default function App() {
 
         {/* 2. Full-Screen Cinematic Scroll-Driven Video & Frame Progression */}
         <ScrollVideoSection />
-
-        {/* 3. Directory Portals to Dedicated Pages (About, Ventures, Writing, Contact) */}
-        <PagePortalsGrid />
       </main>
 
 
