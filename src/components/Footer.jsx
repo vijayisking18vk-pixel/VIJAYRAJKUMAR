@@ -17,7 +17,7 @@ export default function Footer() {
           <span className="mx-2 text-[var(--color-text-muted)]">•</span>
           <span className="mx-4">Chief Operating Officer @ Unfounded</span>
           <span className="mx-2 text-[var(--color-text-muted)]">•</span>
-          <span className="mx-4">Chief Operating Officer @ Zigger</span>
+          <span className="mx-4">Chief Operating Officer @ Ziggers</span>
           <span className="mx-2 text-[var(--color-text-muted)]">•</span>
           <span className="mx-4">Chief Operating Officer @ LoopMemory</span>
           <span className="mx-2 text-[var(--color-text-muted)]">•</span>
@@ -39,9 +39,10 @@ export default function Footer() {
             <span className="font-bold text-[var(--color-accent-primary)] uppercase tracking-wider text-[11px] block">Overview</span>
             <ul className="space-y-1.5">
               <li><a href="/" className="hover:text-[var(--color-accent-primary)] transition-colors">Home</a></li>
-              <li><a href="/about/" className="hover:text-[var(--color-accent-primary)] transition-colors">About & Bio</a></li>
-              <li><a href="/events/" className="hover:text-[var(--color-accent-primary)] transition-colors">Events & Summits</a></li>
-              <li><a href="/#journey" className="hover:text-[var(--color-accent-primary)] transition-colors">Education & Journey</a></li>
+              <li><a href="/vijayrajkumar/" className="hover:text-[var(--color-accent-primary)] transition-colors font-semibold">Executive Profile</a></li>
+              <li><a href="/about/" className="hover:text-[var(--color-accent-primary)] transition-colors">About &amp; Bio</a></li>
+              <li><a href="/events/" className="hover:text-[var(--color-accent-primary)] transition-colors">Events &amp; Summits</a></li>
+              <li><a href="/#journey" className="hover:text-[var(--color-accent-primary)] transition-colors">Education &amp; Journey</a></li>
             </ul>
           </div>
 
@@ -57,8 +58,8 @@ export default function Footer() {
           <div className="space-y-2">
             <span className="font-bold text-[var(--color-accent-primary)] uppercase tracking-wider text-[11px] block">Thought Leadership</span>
             <ul className="space-y-1.5">
-              <li><a href="/writing/" className="hover:text-[var(--color-accent-primary)] transition-colors">All Writing & Essays</a></li>
-              <li><a href="/#skills" className="hover:text-[var(--color-accent-primary)] transition-colors">Ecosystem & Skills</a></li>
+              <li><a href="/writing/" className="hover:text-[var(--color-accent-primary)] transition-colors">All Writing &amp; Essays</a></li>
+              <li><a href="/#skills" className="hover:text-[var(--color-accent-primary)] transition-colors">Ecosystem &amp; Skills</a></li>
             </ul>
           </div>
 
@@ -83,7 +84,7 @@ export default function Footer() {
               <span>Active Timeline: <CountUp from={2016} to={2026} duration={1.5} suffix="" /></span>
             </div>
             <p className="text-[var(--color-text-muted)] text-xs">
-              Chief Operating Officer & Co-Founder @ Unfounded • Zigger • LoopMemory | Chennai, Tamil Nadu, India
+              Chief Operating Officer &amp; Co-Founder @ Unfounded • Ziggers • LoopMemory | Chennai, Tamil Nadu, India
             </p>
           </div>
 

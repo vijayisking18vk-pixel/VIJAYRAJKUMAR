@@ -103,16 +103,22 @@ export default function EventsPage() {
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#111815] leading-tight">
-            Events, Summits & Builder Sprints
+            Vijayrajkumar — Events, Summits &amp; Builder Sprints
           </h1>
 
           <p className="text-lg text-[#1D2B24] leading-relaxed max-w-3xl font-medium">
-            Firsthand photo records and verified milestones from global summits, international delegations, 36-hour builder sprints, and startup pitchfest finals where I represented Unfounded, Ziggers, and LoopMemory.
+            Firsthand photo records and verified milestones from global summits, international delegations, 36-hour builder sprints, and startup pitchfest finals where Vijayrajkumar represented Unfounded, Ziggers, and LoopMemory.
           </p>
 
-          <div className="pt-1 flex items-center space-x-2 text-xs text-[#2A3E34] font-semibold">
-            <Sparkles className="w-3.5 h-3.5 text-[#203322]" />
-            <span>Interactive physics: Hover and move cursor over event cards to experience dynamic liquid decay displacement</span>
+          <div className="pt-1 flex flex-wrap items-center gap-4 text-xs text-[#2A3E34] font-semibold">
+            <div className="flex items-center space-x-2">
+              <Sparkles className="w-3.5 h-3.5 text-[#203322]" />
+              <span>Interactive physics: Hover over event cards to experience dynamic liquid displacement</span>
+            </div>
+            <span className="text-[#85A296]">•</span>
+            <a href="/vijayrajkumar/" className="font-bold text-[#203322] hover:underline">
+              Executive Profile &amp; Bio →
+            </a>
           </div>
         </div>
 

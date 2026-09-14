@@ -27,11 +27,11 @@ export default function ZiggersPage() {
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#111815] leading-tight">
-            Ziggers — Local Gig-Economy & Staffing Marketplace
+            Ziggers — Chennai Gig Marketplace and Temporary Staffing Platform
           </h1>
 
           <p className="text-lg text-[#1D2B24] leading-relaxed max-w-3xl font-medium">
-            A Chennai-first gig staffing marketplace built to replace informal WhatsApp hiring with verified workers, real-time tracking, and milestone-based escrow payments.
+            Co-founded by Vijayrajkumar. A Chennai-first gig staffing marketplace built to replace informal WhatsApp hiring with verified workers, real-time tracking, and milestone-based escrow payments.
           </p>
 
           <div className="pt-2 flex flex-wrap items-center gap-4">
@@ -45,8 +45,12 @@ export default function ZiggersPage() {
               <ArrowUpRight className="w-4 h-4" />
             </a>
             <span className="text-xs text-[#2A3E34] font-semibold">
-              Chief Operating Officer & Co-Founder · Live in Production
+              Vijayrajkumar · Chief Operating Officer &amp; Co-Founder · Live in Production
             </span>
+            <span className="text-[#85A296]">•</span>
+            <a href="/vijayrajkumar/" className="text-xs font-bold text-[#203322] hover:underline">
+              Operator Dossier →
+            </a>
           </div>
         </div>
 
@@ -68,9 +72,9 @@ export default function ZiggersPage() {
           </div>
 
           <div className="p-6 bg-white border-2 border-[#7A968B] hover:border-[#203322] rounded-2xl space-y-2 shadow-md transition-all">
-            <h2 className="text-base font-bold text-[#111815]">3. What I Personally Owned</h2>
+            <h2 className="text-base font-bold text-[#111815]">3. What Vijayrajkumar Personally Owned</h2>
             <p className="text-[#1D2B24] leading-relaxed">
-              As Co-Founder, I shaped product direction, user onboarding flows, marketplace matching rules, and the milestone escrow payment logic. I led go-to-market positioning, offline student community outreach across Chennai colleges, and the Product Hunt launch.
+              As Chief Operating Officer &amp; Co-Founder, Vijayrajkumar shaped product direction, user onboarding flows, marketplace matching rules, and the milestone escrow payment logic. He led go-to-market positioning, offline student community outreach across Chennai colleges, and the Product Hunt launch.
             </p>
           </div>
 

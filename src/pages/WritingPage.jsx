@@ -10,7 +10,8 @@ const articles = [
     category: 'Marketplace Mechanics & Labor Ops',
     date: 'February 2026',
     readTime: '6 min read',
-    author: 'COO & Co-Founder, Ziggers',
+    author: 'Vijayrajkumar',
+    authorRole: 'COO & Co-Founder, Ziggers',
     summary: 'Why informal WhatsApp hiring collapses at scale in Indian tier-1 cities, how milestone-based escrow resolves worker skepticism, and the operational playbook for building two-sided liquidity without cash burn.',
     takeaways: [
       'WhatsApp lacks escrow, resulting in 40%+ worker no-show rates and employer wage withholding.',
@@ -38,7 +39,8 @@ const articles = [
     category: 'AI Infrastructure & Cognitive Systems',
     date: 'January 2026',
     readTime: '8 min read',
-    author: 'COO & Co-Founder, LoopMemory',
+    author: 'Vijayrajkumar',
+    authorRole: 'COO & Co-Founder, LoopMemory',
     summary: 'The technical and cognitive design challenges of multi-session AI agents: why dumping chat histories into large prompt windows causes context rot, and how hierarchical memory graphs solve long-term agent reasoning.',
     takeaways: [
       'Large context windows do not equal comprehension; attention decay degrades reasoning over lengthy prompts.',
@@ -66,7 +68,8 @@ const articles = [
     category: 'Strategy, Game Theory & Operations',
     date: 'December 2025',
     readTime: '7 min read',
-    author: 'COO & Co-Founder, Unfounded',
+    author: 'Vijayrajkumar',
+    authorRole: 'COO & Co-Founder, Unfounded',
     summary: 'How academic frameworks in international security, intelligence doctrine, and deterrence strategy directly translate into early-stage startup execution, competitive defensibility, and rapid vibe coding.',
     takeaways: [
       'Startup competition is asymmetric warfare; small nimble teams must exploit incumbents\' rigid coordination costs.',
@@ -162,12 +165,19 @@ export default function WritingPage({ initialArticleId = null }) {
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#111815] leading-tight">
-            Writing, Engineering & Venture Strategy
+            Vijayrajkumar — Writing, Engineering &amp; Venture Strategy
           </h1>
 
           <p className="text-lg text-[#1D2B24] leading-relaxed max-w-3xl font-medium">
-            First-party perspectives on building marketplace infrastructure in India, architecting cognitive AI memory layers, and applying strategic defence doctrines to startup venture incubation.
+            First-party perspectives by Vijayrajkumar on building marketplace infrastructure in India, architecting cognitive AI memory layers, and applying strategic defence doctrines to startup venture incubation.
           </p>
+
+          <div className="pt-1 flex items-center space-x-2 text-xs font-semibold text-[#203322]">
+            <a href="/vijayrajkumar/" className="hover:underline flex items-center space-x-1">
+              <User className="w-3.5 h-3.5" />
+              <span>About the Author: Vijayrajkumar (Executive Profile) →</span>
+            </a>
+          </div>
         </div>
 
         {/* Article Reader Modal / Full View */}
@@ -189,7 +199,12 @@ export default function WritingPage({ initialArticleId = null }) {
                 {selectedArticle.title}
               </h2>
               <div className="flex flex-wrap items-center gap-4 text-xs text-[#2A3E34] font-medium">
-                <span className="font-bold text-[#203322]">{selectedArticle.author}</span>
+                <a href="/vijayrajkumar/" className="font-bold text-[#203322] hover:underline flex items-center space-x-1">
+                  <User className="w-3.5 h-3.5" />
+                  <span>{selectedArticle.author}</span>
+                </a>
+                <span>•</span>
+                <span className="font-semibold text-[#354E45]">{selectedArticle.authorRole}</span>
                 <span>•</span>
                 <span>{selectedArticle.date}</span>
                 <span>•</span>
@@ -218,6 +233,23 @@ export default function WritingPage({ initialArticleId = null }) {
                   <p className="text-[#1D2B24] leading-relaxed font-normal">{section.body}</p>
                 </div>
               ))}
+            </div>
+
+            {/* Author Attribution Box */}
+            <div className="p-6 bg-[#E2ECE7] border-2 border-[#85A296] rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="space-y-1">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#354E45]">About the Author</span>
+                <h4 className="text-base font-bold text-[#111815]">Vijayrajkumar</h4>
+                <p className="text-xs text-[#1D2B24] max-w-xl font-normal leading-relaxed">
+                  Chief Operating Officer &amp; Co-Founder at Unfounded, Ziggers, and LoopMemory. Operating at the intersection of gig marketplaces and AI context infrastructure in Chennai, India.
+                </p>
+              </div>
+              <a
+                href="/vijayrajkumar/"
+                className="shrink-0 px-4 py-2 bg-[#203322] text-white text-xs font-bold rounded-full hover:bg-[#111815] transition-colors shadow-sm"
+              >
+                Executive Profile →
+              </a>
             </div>
 
             <div className="pt-6 border-t border-[#7A968B]/30 flex justify-between items-center">
@@ -271,7 +303,7 @@ export default function WritingPage({ initialArticleId = null }) {
 
                 <div className="pt-2 flex items-center justify-between">
                   <span className="text-xs font-bold text-[#203322]">
-                    {art.author}
+                    {art.author} · {art.authorRole}
                   </span>
                   <span className="inline-flex items-center space-x-1 text-xs font-bold text-[#203322] group-hover:translate-x-1 transition-transform">
                     <span>Read complete essay</span>

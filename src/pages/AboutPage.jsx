@@ -65,16 +65,23 @@ export default function AboutPage() {
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[var(--color-text-primary)] leading-tight">
-            Chief Operating Officer & Venture Builder
+            Vijayrajkumar — Chief Operating Officer &amp; Venture Builder
           </h1>
 
           <p className="text-lg text-[#203028] leading-relaxed max-w-3xl">
-            Based on-site in Chennai, Tamil Nadu. Building marketplaces and AI cognitive infrastructure as Chief Operating Officer & Co-founder at Unfounded, Ziggers, and LoopMemory.
+            Based on-site in Chennai, Tamil Nadu. Building marketplaces and AI cognitive infrastructure as Chief Operating Officer &amp; Co-founder at Unfounded, Ziggers, and LoopMemory.
           </p>
 
-          <div className="flex items-center space-x-2 text-xs text-[#354E45] font-semibold pt-1">
-            <MapPin className="w-3.5 h-3.5 text-[#203322]" />
-            <span>Chennai, Tamil Nadu, India · On-site</span>
+          <div className="flex flex-wrap items-center gap-4 pt-1">
+            <div className="flex items-center space-x-2 text-xs text-[#354E45] font-semibold">
+              <MapPin className="w-3.5 h-3.5 text-[#203322]" />
+              <span>Chennai, Tamil Nadu, India · On-site</span>
+            </div>
+            <span className="text-[#85A296]">•</span>
+            <a href="/vijayrajkumar/" className="inline-flex items-center space-x-1 text-xs font-bold text-[#203322] hover:underline">
+              <span>View full executive dossier &amp; credentials</span>
+              <ArrowRight className="w-3 h-3" />
+            </a>
           </div>
         </div>
 

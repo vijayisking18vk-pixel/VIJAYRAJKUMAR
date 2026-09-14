@@ -13,6 +13,8 @@ import LoopMemoryPage from './pages/LoopMemoryPage';
 import WritingPage from './pages/WritingPage';
 import ContactPage from './pages/ContactPage';
 import EventsPage from './pages/EventsPage';
+import ProfilePage from './pages/ProfilePage';
+import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(
@@ -31,6 +33,9 @@ export default function App() {
   // Route matching
   const normalizedPath = currentPath.toLowerCase().replace(/\/+$/, '');
 
+  if (normalizedPath === '/vijayrajkumar') {
+    return <ProfilePage />;
+  }
   if (normalizedPath === '/about') {
     return <AboutPage />;
   }
@@ -51,6 +56,9 @@ export default function App() {
   }
   if (normalizedPath === '/contact') {
     return <ContactPage />;
+  }
+  if (normalizedPath !== '' && normalizedPath !== '/') {
+    return <NotFoundPage />;
   }
 
   // Streamlined Homepage: Living Parallax Hero + Proof Strip + Section Directory Portals

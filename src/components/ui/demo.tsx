@@ -519,8 +519,12 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
           transform: 'translate(-50%, -50%)',
         }}
       >
-        <h1 className="font-black text-[17vw] sm:text-[15vw] md:text-[12vw] lg:text-[15rem] leading-[0.85] tracking-wider sm:tracking-widest uppercase drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)] opacity-95 truncate">
-          {title}
+        <h1
+          className="font-black text-[17vw] sm:text-[15vw] md:text-[12vw] lg:text-[15rem] leading-[0.85] tracking-wider sm:tracking-widest uppercase drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)] opacity-95 truncate"
+          aria-label="Vijayrajkumar — Chief Operating Officer and Venture Builder in Chennai"
+        >
+          <span className="sr-only">Vijayrajkumar — Chief Operating Officer and Venture Builder in Chennai</span>
+          <span aria-hidden="true">{title}</span>
         </h1>
         <p className="mt-3 sm:mt-4 text-[10px] sm:text-xs md:text-sm lg:text-base uppercase tracking-[0.18em] sm:tracking-[0.28em] md:tracking-[0.35em] text-[#C9D6D3] font-mono font-medium drop-shadow whitespace-normal leading-relaxed px-2">
           Chief Operating Officer &amp; Co-Founder

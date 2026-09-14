@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Compass, Layers, BookOpen, Send, Calendar, Menu, X } from 'lucide-react';
+import { Compass, Layers, BookOpen, Send, Calendar, Menu, X, User } from 'lucide-react';
 import GradientText from './react-bits/GradientText';
 import StarBorder from './react-bits/StarBorder';
 
@@ -7,6 +7,7 @@ export default function Header({ activeSection, setActiveSection }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
+    { href: '/vijayrajkumar/', label: 'Profile', icon: User },
     { href: '/about/', label: 'About', icon: Compass },
     { href: '/ventures/', label: 'Ventures', icon: Layers },
     { href: '/events/', label: 'Events', icon: Calendar },

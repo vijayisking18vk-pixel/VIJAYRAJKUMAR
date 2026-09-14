@@ -25,11 +25,11 @@ export default function VenturesPage() {
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[var(--color-text-primary)] leading-tight">
-            Ventures, Marketplaces & AI Systems
+            Vijayrajkumar — Ventures, Marketplaces &amp; AI Systems
           </h1>
 
           <p className="text-lg text-[#383838] leading-relaxed max-w-3xl">
-            Detailed case studies of ventures co-founded and operated by me. Each study outlines the systemic problem, target audience, personal ownership, deliverables shipped, and verifiable evidence.
+            Detailed case studies of ventures co-founded and operated by Vijayrajkumar. Each study outlines the systemic problem, target audience, personal ownership, deliverables shipped, and verifiable evidence.
           </p>
 
           <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-semibold">

@@ -27,11 +27,11 @@ export default function LoopMemoryPage() {
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#111815] leading-tight">
-            LoopMemory — Persistent Context & Memory for AI Agents
+            LoopMemory — Persistent Memory and Context Architecture for AI Agents
           </h1>
 
           <p className="text-lg text-[#1D2B24] leading-relaxed max-w-3xl font-medium">
-            A developer-focused context and cognitive architecture engine that solves LLM context loss across sessions, synthesizes dynamic knowledge graphs, and reduces token overhead.
+            Co-founded by Vijayrajkumar. A developer-focused context and cognitive architecture engine that solves LLM context loss across sessions, synthesizes dynamic knowledge graphs, and reduces token overhead.
           </p>
 
           <div className="pt-2 flex flex-wrap items-center gap-4">
@@ -45,8 +45,12 @@ export default function LoopMemoryPage() {
               <ArrowUpRight className="w-4 h-4" />
             </a>
             <span className="text-xs text-[#2A3E34] font-semibold">
-              Chief Operating Officer & Co-Founder · Available for Developers
+              Vijayrajkumar · Chief Operating Officer &amp; Co-Founder · Available for Developers
             </span>
+            <span className="text-[#85A296]">•</span>
+            <a href="/vijayrajkumar/" className="text-xs font-bold text-[#203322] hover:underline">
+              Operator Dossier →
+            </a>
           </div>
         </div>
 
@@ -76,10 +80,10 @@ export default function LoopMemoryPage() {
           <div className="p-6 bg-white border-2 border-[#7A968B] hover:border-[#203322] rounded-2xl space-y-2 shadow-md transition-all">
             <div className="flex items-center space-x-2 text-[#203322] font-bold">
               <Sparkles className="w-4 h-4 text-[#203322]" />
-              <h2 className="text-base text-[#111815]">3. What I Personally Owned</h2>
+              <h2 className="text-base text-[#111815]">3. What Vijayrajkumar Personally Owned</h2>
             </div>
             <p className="text-[#1D2B24] leading-relaxed">
-              As Co-Founder, I spearheaded the core context-structuring architecture, conceptualizing how short-term episodic conversational memory transforms into long-term semantic knowledge graphs. I directed developer positioning, API ergonomics, and industry delegation outreach.
+              As Chief Operating Officer &amp; Co-Founder, Vijayrajkumar spearheaded the core context-structuring architecture, conceptualizing how short-term episodic conversational memory transforms into long-term semantic knowledge graphs. He directed developer positioning, API ergonomics, and industry delegation outreach.
             </p>
           </div>
 

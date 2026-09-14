@@ -27,11 +27,11 @@ export default function ContactPage() {
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#111815] leading-tight">
-            Start a Conversation with Me
+            Vijayrajkumar — Contact &amp; Venture Collaboration
           </h1>
 
           <p className="text-lg text-[#1D2B24] leading-relaxed max-w-3xl font-medium">
-            I usually respond within two working days. Reach out regarding venture partnerships, product and growth collaboration, startup ecosystems, or speaking and research opportunities.
+            Direct communication channel with Vijayrajkumar. I usually respond within two working days. Reach out regarding venture partnerships, operational execution, product growth, startup ecosystems, or speaking and research opportunities.
           </p>
 
           <div className="flex flex-wrap items-center gap-6 text-xs text-[#2A3E34] font-medium pt-2">
@@ -46,6 +46,11 @@ export default function ContactPage() {
             <div className="flex items-center space-x-1.5">
               <Mail className="w-4 h-4 text-[#203322]" />
               <span>Email: <a href="mailto:vijaykumarunfounded@gmail.com" className="font-bold text-[#203322] hover:underline">vijaykumarunfounded@gmail.com</a></span>
+            </div>
+            <div className="flex items-center space-x-1.5">
+              <a href="/vijayrajkumar/" className="font-bold text-[#203322] hover:underline">
+                Operator Profile →
+              </a>
             </div>
           </div>
         </div>
