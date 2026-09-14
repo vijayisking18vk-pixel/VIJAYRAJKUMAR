@@ -145,59 +145,38 @@ export default function WritingPage({ initialArticleId = null }) {
       <main className="flex-grow max-w-4xl mx-auto px-6 py-16 lg:py-24 space-y-16">
         
         {/* Breadcrumbs */}
-        <div className="flex items-center space-x-2 text-xs text-[var(--color-text-muted)] font-medium">
+        <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs text-[var(--color-text-muted)] font-medium">
           <a href="/" className="hover:text-[var(--color-accent-primary)]">Home</a>
           <span>/</span>
-          <a href="/writing/" onClick={closeArticle} className="hover:text-[var(--color-accent-primary)]">Writing & Research</a>
-          {selectedArticle && (
+          {selectedArticle ? (
             <>
+              <a href="/writing/" onClick={closeArticle} className="hover:text-[var(--color-accent-primary)]">Writing</a>
               <span>/</span>
-              <span className="text-[var(--color-text-primary)] font-semibold truncate max-w-[200px]">{selectedArticle.title}</span>
+              <span className="text-[var(--color-text-primary)] font-semibold truncate max-w-[280px]">{selectedArticle.title}</span>
             </>
+          ) : (
+            <span className="text-[var(--color-text-primary)] font-semibold">Writing &amp; Research</span>
           )}
-        </div>
+        </nav>
 
-        {/* Page Header */}
-        <div className="space-y-4 border-b border-[#7A968B]/40 pb-10">
-          <div className="inline-flex items-center space-x-2 bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] text-xs px-3.5 py-1 rounded-full font-bold shadow-sm">
-            <BookOpen className="w-3.5 h-3.5 text-[#1B2F21]" />
-            <span>Articles & Strategic Insights</span>
-          </div>
-
-          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#111815] leading-tight">
-            Vijayrajkumar — Writing, Engineering &amp; Venture Strategy
-          </h1>
-
-          <p className="text-lg text-[#1D2B24] leading-relaxed max-w-3xl font-medium">
-            First-party perspectives by Vijayrajkumar on building marketplace infrastructure in India, architecting cognitive AI memory layers, and applying strategic defence doctrines to startup venture incubation.
-          </p>
-
-          <div className="pt-1 flex items-center space-x-2 text-xs font-semibold text-[#203322]">
-            <a href="/vijayrajkumar/" className="hover:underline flex items-center space-x-1">
-              <User className="w-3.5 h-3.5" />
-              <span>About the Author: Vijayrajkumar (Executive Profile) →</span>
-            </a>
-          </div>
-        </div>
-
-        {/* Article Reader Modal / Full View */}
+        {/* Article Reader (Article-First View) */}
         {selectedArticle ? (
           <article className="space-y-10 border-2 border-[#7A968B] bg-white p-8 sm:p-12 rounded-3xl shadow-md animate-in fade-in duration-200">
             <a
               href="/writing/"
               onClick={closeArticle}
-              className="text-xs font-bold text-[#203322] hover:underline flex items-center space-x-1"
+              className="text-xs font-bold text-[#203322] hover:underline inline-flex items-center space-x-1"
             >
-              <span>← Back to all articles</span>
+              <span>← Back to all essays</span>
             </a>
 
             <div className="space-y-4 border-b border-[#7A968B]/30 pb-8">
               <span className="text-xs font-bold uppercase tracking-wider text-[#2A3E34]">
                 {selectedArticle.category}
               </span>
-              <h2 className="text-2xl sm:text-4xl font-bold text-[#111815] leading-tight">
+              <h1 className="text-2xl sm:text-4xl font-bold text-[#111815] leading-tight">
                 {selectedArticle.title}
-              </h2>
+              </h1>
               <div className="flex flex-wrap items-center gap-4 text-xs text-[#2A3E34] font-medium">
                 <a href="/vijayrajkumar/" className="font-bold text-[#203322] hover:underline flex items-center space-x-1">
                   <User className="w-3.5 h-3.5" />
@@ -214,7 +193,7 @@ export default function WritingPage({ initialArticleId = null }) {
 
             {/* Key Takeaways */}
             <div className="bg-[#E2ECE7] border-2 border-[#85A296] rounded-2xl p-6 space-y-3">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-[#111815]">Key Takeaways</h3>
+              <h2 className="text-sm font-bold uppercase tracking-wider text-[#111815]">Key Takeaways</h2>
               <ul className="space-y-2 text-sm text-[#1D2B24]">
                 {selectedArticle.takeaways.map((item, idx) => (
                   <li key={idx} className="flex items-start space-x-2">
@@ -229,19 +208,19 @@ export default function WritingPage({ initialArticleId = null }) {
             <div className="space-y-8 text-[#1D2B24] leading-relaxed text-base">
               {selectedArticle.sections.map((section, idx) => (
                 <div key={idx} className="space-y-3">
-                  <h3 className="text-xl font-bold text-[#111815]">{section.heading}</h3>
+                  <h2 className="text-xl font-bold text-[#111815]">{section.heading}</h2>
                   <p className="text-[#1D2B24] leading-relaxed font-normal">{section.body}</p>
                 </div>
               ))}
             </div>
 
-            {/* Author Attribution Box */}
+            {/* Single Compact Author Bio (~45 words) */}
             <div className="p-6 bg-[#E2ECE7] border-2 border-[#85A296] rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="space-y-1">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#354E45]">About the Author</span>
-                <h4 className="text-base font-bold text-[#111815]">Vijayrajkumar</h4>
+                <h3 className="text-base font-bold text-[#111815]">Vijayrajkumar</h3>
                 <p className="text-xs text-[#1D2B24] max-w-xl font-normal leading-relaxed">
-                  Chief Operating Officer &amp; Co-Founder at Unfounded, Ziggers, and LoopMemory. Operating at the intersection of gig marketplaces and AI context infrastructure in Chennai, India.
+                  Vijayrajkumar is a Chennai-based Chief Operating Officer &amp; Co-Founder at Unfounded, Ziggers, and LoopMemory, operating across gig-economy marketplace mechanics and persistent AI context infrastructure.
                 </p>
               </div>
               <a
@@ -268,8 +247,25 @@ export default function WritingPage({ initialArticleId = null }) {
             </div>
           </article>
         ) : (
-          /* Articles List */
-          <div className="space-y-8">
+          /* Writing Index View */
+          <div className="space-y-12">
+            <div className="space-y-4 border-b border-[#7A968B]/40 pb-10">
+              <div className="inline-flex items-center space-x-2 bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] text-xs px-3.5 py-1 rounded-full font-bold shadow-sm">
+                <BookOpen className="w-3.5 h-3.5 text-[#1B2F21]" />
+                <span>Articles &amp; Strategic Insights</span>
+              </div>
+
+              <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#111815] leading-tight">
+                Vijayrajkumar — Writing &amp; Strategic Research
+              </h1>
+
+              <p className="text-lg text-[#1D2B24] leading-relaxed max-w-3xl font-medium">
+                First-party essays on building urban gig marketplaces in India, architecting cognitive AI memory layers, and applying strategic defence doctrines to startup venture incubation.
+              </p>
+            </div>
+
+            {/* Articles List */}
+            <div className="space-y-6">
             {articles.map((art) => (
               <a
                 key={art.id}
@@ -313,7 +309,8 @@ export default function WritingPage({ initialArticleId = null }) {
               </a>
             ))}
           </div>
-        )}
+        </div>
+      )}
 
       </main>
 

@@ -13,19 +13,17 @@ export default function Footer() {
       {/* Repeating Ribbon Seal with LetterGlitch */}
       <div className="bg-[var(--color-surface)]/20 text-[var(--color-text-primary)] py-3 text-xs font-semibold tracking-wider overflow-hidden select-none border-b border-[var(--color-border)]/30">
         <LetterGlitch>
-          <span className="mx-4">Vijayrajkumar</span>
+          <span className="mx-4">Venture Studio Operations</span>
           <span className="mx-2 text-[var(--color-text-muted)]">•</span>
-          <span className="mx-4">Chief Operating Officer @ Unfounded</span>
+          <span className="mx-4">Gig-Economy Marketplaces</span>
           <span className="mx-2 text-[var(--color-text-muted)]">•</span>
-          <span className="mx-4">Chief Operating Officer @ Ziggers</span>
+          <span className="mx-4">Autonomous AI Memory Architecture</span>
           <span className="mx-2 text-[var(--color-text-muted)]">•</span>
-          <span className="mx-4">Chief Operating Officer @ LoopMemory</span>
+          <span className="mx-4">Systems Strategy &amp; Game Theory</span>
           <span className="mx-2 text-[var(--color-text-muted)]">•</span>
-          <span className="mx-4">SRMIST (Defence & Strategy)</span>
+          <span className="mx-4">Milestone Escrow Infrastructure</span>
           <span className="mx-2 text-[var(--color-text-muted)]">•</span>
-          <span className="mx-4">Dakshina Bharat Hindi Prachar Sabha (MA Hindi)</span>
-          <span className="mx-2 text-[var(--color-text-muted)]">•</span>
-          <span className="mx-4">Chennai · On-site</span>
+          <span className="mx-4">Chennai, Tamil Nadu, India</span>
           <span className="mx-2 text-[var(--color-text-muted)]">•</span>
         </LetterGlitch>
       </div>
@@ -42,7 +40,6 @@ export default function Footer() {
               <li><a href="/vijayrajkumar/" className="hover:text-[var(--color-accent-primary)] transition-colors font-semibold">Executive Profile</a></li>
               <li><a href="/about/" className="hover:text-[var(--color-accent-primary)] transition-colors">About &amp; Bio</a></li>
               <li><a href="/events/" className="hover:text-[var(--color-accent-primary)] transition-colors">Events &amp; Summits</a></li>
-              <li><a href="/#journey" className="hover:text-[var(--color-accent-primary)] transition-colors">Education &amp; Journey</a></li>
             </ul>
           </div>
 
@@ -51,7 +48,7 @@ export default function Footer() {
             <ul className="space-y-1.5">
               <li><a href="/ventures/ziggers/" className="hover:text-[var(--color-accent-primary)] transition-colors">Ziggers Case Study</a></li>
               <li><a href="/ventures/loopmemory/" className="hover:text-[var(--color-accent-primary)] transition-colors">LoopMemory Case Study</a></li>
-              <li><a href="/#ventures" className="hover:text-[var(--color-accent-primary)] transition-colors">Unfounded Studio</a></li>
+              <li><a href="/ventures/" className="hover:text-[var(--color-accent-primary)] transition-colors">All Ventures</a></li>
             </ul>
           </div>
 
@@ -59,7 +56,7 @@ export default function Footer() {
             <span className="font-bold text-[var(--color-accent-primary)] uppercase tracking-wider text-[11px] block">Thought Leadership</span>
             <ul className="space-y-1.5">
               <li><a href="/writing/" className="hover:text-[var(--color-accent-primary)] transition-colors">All Writing &amp; Essays</a></li>
-              <li><a href="/#skills" className="hover:text-[var(--color-accent-primary)] transition-colors">Ecosystem &amp; Skills</a></li>
+              <li><a href="/about/" className="hover:text-[var(--color-accent-primary)] transition-colors">Academic Credentials</a></li>
             </ul>
           </div>
 
@@ -78,13 +75,11 @@ export default function Footer() {
         {/* Bottom copyright & top anchor */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="space-y-1 text-center sm:text-left">
-            <div className="font-bold text-[var(--color-text-primary)] text-sm tracking-tight flex items-center space-x-2">
-              <span>Vijayrajkumar</span>
-              <span>·</span>
-              <span>Active Timeline: <CountUp from={2016} to={2026} duration={1.5} suffix="" /></span>
+            <div className="font-bold text-[var(--color-text-primary)] text-sm tracking-tight">
+              Vijayrajkumar
             </div>
             <p className="text-[var(--color-text-muted)] text-xs">
-              Chief Operating Officer &amp; Co-Founder @ Unfounded • Ziggers • LoopMemory | Chennai, Tamil Nadu, India
+              Chief Operating Officer &amp; Co-Founder @ Unfounded • Ziggers • LoopMemory · Chennai, Tamil Nadu, India
             </p>
           </div>
 
