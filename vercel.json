@@ -1,6 +1,30 @@
 {
   "cleanUrls": true,
   "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "vijayrajkumar.vercel.app"
+        }
+      ],
+      "destination": "https://www.vijayrajkumar.in/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "vijayrajkumar.in"
+        }
+      ],
+      "destination": "https://www.vijayrajkumar.in/$1",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     { "source": "/about/(.*)", "destination": "/about/index.html" },
     { "source": "/ventures/ziggers/(.*)", "destination": "/ventures/ziggers/index.html" },
