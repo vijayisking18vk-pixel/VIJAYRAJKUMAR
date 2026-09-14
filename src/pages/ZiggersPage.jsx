@@ -48,8 +48,8 @@ export default function ZiggersPage() {
               Vijayrajkumar · Chief Operating Officer &amp; Co-Founder · Live in Production
             </span>
             <span className="text-[#85A296]">•</span>
-            <a href="/vijayrajkumar/" className="text-xs font-bold text-[#203322] hover:underline">
-              Operator Dossier →
+            <a href="/about/" className="text-xs font-bold text-[#203322] hover:underline">
+              About Vijayrajkumar →
             </a>
           </div>
         </div>

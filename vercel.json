@@ -23,10 +23,19 @@
       ],
       "destination": "https://www.vijayrajkumar.in/$1",
       "permanent": true
+    },
+    {
+      "source": "/vijayrajkumar",
+      "destination": "/about/",
+      "permanent": true
+    },
+    {
+      "source": "/vijayrajkumar/(.*)",
+      "destination": "/about/",
+      "permanent": true
     }
   ],
   "rewrites": [
-    { "source": "/vijayrajkumar/(.*)", "destination": "/vijayrajkumar/index.html" },
     { "source": "/about/(.*)", "destination": "/about/index.html" },
     { "source": "/ventures/ziggers/(.*)", "destination": "/ventures/ziggers/index.html" },
     { "source": "/ventures/loopmemory/(.*)", "destination": "/ventures/loopmemory/index.html" },

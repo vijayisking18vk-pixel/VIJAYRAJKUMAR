@@ -17,185 +17,6 @@ const templateHtml = fs.readFileSync(templateHtmlPath, 'utf8');
 
 const routes = [
   {
-    path: 'vijayrajkumar',
-    title: 'Vijayrajkumar | Chief Operating Officer & Venture Builder · Executive Profile',
-    description: 'Executive profile and overview hub for Vijayrajkumar (Vijayrajkumar R). Chief Operating Officer and Co-Founder across Unfounded, Ziggers, and LoopMemory in Chennai, India.',
-    canonical: 'https://www.vijayrajkumar.in/vijayrajkumar/',
-    heading: 'Vijayrajkumar',
-    jsonLd: JSON.stringify({
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "ProfilePage",
-          "@id": "https://www.vijayrajkumar.in/vijayrajkumar/#profile",
-          "url": "https://www.vijayrajkumar.in/vijayrajkumar/",
-          "name": "Vijayrajkumar | Chief Operating Officer & Venture Builder · Executive Profile",
-          "isPartOf": { "@id": "https://www.vijayrajkumar.in/#website" },
-          "mainEntity": { "@id": "https://www.vijayrajkumar.in/#person" },
-          "dateModified": "2026-09-14"
-        },
-        {
-          "@type": "Person",
-          "@id": "https://www.vijayrajkumar.in/#person",
-          "name": "Vijayrajkumar",
-          "alternateName": "Vijayrajkumar R",
-          "url": "https://www.vijayrajkumar.in/vijayrajkumar/",
-          "description": "Chennai-based Chief Operating Officer and venture builder working across gig marketplaces, AI memory infrastructure, operations, and strategic research.",
-          "jobTitle": "Chief Operating Officer and Co-Founder",
-          "image": "https://www.vijayrajkumar.in/vijayrajkumar-poster.jpg",
-          "homeLocation": {
-            "@type": "Place",
-            "name": "Chennai, Tamil Nadu, India"
-          },
-          "email": "mailto:vijaykumarunfounded@gmail.com",
-          "sameAs": [
-            "https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/",
-            "https://x.com/bigboy00106926",
-            "https://www.instagram.com/vijayrajkumar_5405/",
-            "https://www.facebook.com/profile.php?id=61580836342430",
-            "https://www.ziggers.in/",
-            "https://www.loopmemory.in/",
-            "https://github.com/vijayisking18vk-pixel"
-          ],
-          "worksFor": [
-            { "@type": "Organization", "name": "Unfounded", "url": "https://www.unfounded.in/" },
-            { "@type": "Organization", "name": "Ziggers", "url": "https://www.ziggers.in/" },
-            { "@type": "Organization", "name": "LoopMemory", "url": "https://www.loopmemory.in/" }
-          ],
-          "knowsAbout": [
-            "Venture building",
-            "Product marketing",
-            "Gig marketplaces",
-            "AI memory infrastructure",
-            "Defence and strategic studies",
-            "Hindi literature"
-          ]
-        },
-        {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.vijayrajkumar.in/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Executive Profile",
-              "item": "https://www.vijayrajkumar.in/vijayrajkumar/"
-            }
-          ]
-        }
-      ]
-    }),
-    content: `
-      <div class="max-w-4xl mx-auto px-6 py-16 space-y-12 font-sans">
-        <nav class="text-xs text-neutral-500 mb-6"><a href="/">Home</a> / <span>Executive Profile</span></nav>
-        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-neutral-950">Vijayrajkumar</h1>
-        <p class="text-sm font-mono font-semibold uppercase tracking-wider text-neutral-700">Chief Operating Officer &amp; Co-Founder · Chennai, Tamil Nadu, India</p>
-        <p class="text-lg text-neutral-700 leading-relaxed">Chennai-based Chief Operating Officer and venture builder operating across gig marketplaces, operational execution, and AI context infrastructure. Serving as Chief Operating Officer &amp; Co-Founder across Unfounded, Ziggers, and LoopMemory.</p>
-
-        <section class="space-y-4 pt-6 border-t border-neutral-200">
-          <h2 class="text-2xl font-bold text-neutral-950">Current Roles</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div class="p-5 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-2">
-              <span class="text-xs font-bold text-neutral-600">Venture Studio Core</span>
-              <h3 class="text-lg font-bold text-neutral-950"><a href="/about/">Unfounded</a></h3>
-              <p class="text-xs text-neutral-600">Chief Operating Officer &amp; Co-Founder</p>
-              <p class="text-xs text-neutral-700">Incubating parallel tech ventures through rapid prototyping and go-to-market execution.</p>
-            </div>
-            <div class="p-5 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-2">
-              <span class="text-xs font-bold text-neutral-600">Local Gig Marketplace</span>
-              <h3 class="text-lg font-bold text-neutral-950"><a href="/ventures/ziggers/">Ziggers</a></h3>
-              <p class="text-xs text-neutral-600">Chief Operating Officer &amp; Co-Founder</p>
-              <p class="text-xs text-neutral-700">Replacing informal WhatsApp hiring with geo-fenced worker check-ins and escrow settlements.</p>
-            </div>
-            <div class="p-5 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-2">
-              <span class="text-xs font-bold text-neutral-600">AI Memory Layer</span>
-              <h3 class="text-lg font-bold text-neutral-950"><a href="/ventures/loopmemory/">LoopMemory</a></h3>
-              <p class="text-xs text-neutral-600">Chief Operating Officer &amp; Co-Founder</p>
-              <p class="text-xs text-neutral-700">Persistent cognitive context and memory architecture for autonomous AI agents.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="space-y-4 pt-6 border-t border-neutral-200">
-          <h2 class="text-2xl font-bold text-neutral-950">Key Proof Points</h2>
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-            <div class="p-4 bg-neutral-50 border border-neutral-200 rounded-2xl">
-              <div class="text-2xl font-black text-neutral-950">&lt; 5%</div>
-              <div class="text-xs font-bold text-neutral-800">Worker No-Show Rate</div>
-              <p class="text-[11px] text-neutral-600">Ziggers geo-fencing</p>
-            </div>
-            <div class="p-4 bg-neutral-50 border border-neutral-200 rounded-2xl">
-              <div class="text-2xl font-black text-neutral-950">&lt; 2 Hrs</div>
-              <div class="text-xs font-bold text-neutral-800">Settlement Time</div>
-              <p class="text-[11px] text-neutral-600">Automated shift escrow</p>
-            </div>
-            <div class="p-4 bg-neutral-50 border border-neutral-200 rounded-2xl">
-              <div class="text-2xl font-black text-neutral-950">68%</div>
-              <div class="text-xs font-bold text-neutral-800">Prompt Token Savings</div>
-              <p class="text-[11px] text-neutral-600">LoopMemory context triples</p>
-            </div>
-            <div class="p-4 bg-neutral-50 border border-neutral-200 rounded-2xl">
-              <div class="text-2xl font-black text-neutral-950">&lt; 80ms</div>
-              <div class="text-xs font-bold text-neutral-800">Retrieval Latency</div>
-              <p class="text-[11px] text-neutral-600">Semantic graph lookup</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="space-y-4 pt-6 border-t border-neutral-200">
-          <h2 class="text-2xl font-bold text-neutral-950">Academic Credentials</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="p-5 bg-neutral-50 border border-neutral-200 rounded-2xl">
-              <span class="text-xs text-neutral-500 font-medium">2023–2026</span>
-              <h3 class="text-base font-bold text-neutral-950">B.Sc. in Defence &amp; Strategic Studies</h3>
-              <p class="text-xs font-semibold text-neutral-700">SRM Institute of Science and Technology (SRMIST)</p>
-              <p class="text-xs text-neutral-600 mt-1">Geopolitics, deterrence theory, game theory, and strategic systems.</p>
-            </div>
-            <div class="p-5 bg-neutral-50 border border-neutral-200 rounded-2xl">
-              <span class="text-xs text-neutral-500 font-medium">2016–2021</span>
-              <h3 class="text-base font-bold text-neutral-950">Master of Arts (MA) in Hindi Literature</h3>
-              <p class="text-xs font-semibold text-neutral-700">Dakshina Bharat Hindi Prachar Sabha</p>
-              <p class="text-xs text-neutral-600 mt-1">Linguistics, literary history, dialectic analysis, and cross-cultural communication.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="space-y-4 pt-6 border-t border-neutral-200">
-          <h2 class="text-2xl font-bold text-neutral-950">Explore Dedicated Portals</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-            <div class="p-5 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-1">
-              <h3 class="font-bold text-neutral-950"><a href="/about/" class="underline">About &amp; Strategic Journey →</a></h3>
-              <p class="text-xs text-neutral-600">Personal narrative, philosophy, and strategic competencies.</p>
-            </div>
-            <div class="p-5 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-1">
-              <h3 class="font-bold text-neutral-950"><a href="/ventures/" class="underline">Ventures &amp; Deep Dives →</a></h3>
-              <p class="text-xs text-neutral-600">Case studies: <a href="/ventures/ziggers/" class="underline font-semibold">Ziggers</a> · <a href="/ventures/loopmemory/" class="underline font-semibold">LoopMemory</a></p>
-            </div>
-            <div class="p-5 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-1">
-              <h3 class="font-bold text-neutral-950"><a href="/events/" class="underline">Events &amp; Summits →</a></h3>
-              <p class="text-xs text-neutral-600">Global Education Summit, Kazakhstan-India Forum, and SaaSathoN SSN.</p>
-            </div>
-            <div class="p-5 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-1">
-              <h3 class="font-bold text-neutral-950"><a href="/writing/" class="underline">Writing &amp; Research →</a></h3>
-              <p class="text-xs text-neutral-600">First-party essays on gig marketplaces, AI memory, and defence strategy.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="space-y-3 pt-6 border-t border-neutral-200">
-          <h2 class="text-2xl font-bold text-neutral-950">Direct Communication</h2>
-          <p class="text-sm text-neutral-700">Direct inquiries: <a href="mailto:vijaykumarunfounded@gmail.com" class="underline font-bold text-neutral-950">vijaykumarunfounded@gmail.com</a> · Chennai, Tamil Nadu, India (On-site)</p>
-          <p class="text-sm text-neutral-700"><a href="/contact/" class="underline font-bold text-neutral-950">Open Collaboration Dispatch Portal →</a></p>
-        </section>
-      </div>
-    `
-  },
-  {
     path: 'about',
     title: 'About Vijayrajkumar | Chief Operating Officer & Venture Builder in Chennai',
     description: 'Learn about Vijayrajkumar, Chief Operating Officer and co-founder at Unfounded, Ziggers, and LoopMemory. Background in Defence and Strategic Studies (SRMIST) and Hindi Literature.',
@@ -258,7 +79,7 @@ const routes = [
         </section>
 
         <div class="pt-4">
-          <a href="/vijayrajkumar/" class="font-bold underline text-neutral-950">View Executive Profile Hub →</a>
+          <a href="/ventures/" class="font-bold underline text-neutral-950">Explore Ventures &amp; Case Studies →</a>
         </div>
       </div>
     `
@@ -327,7 +148,7 @@ const routes = [
       "applicationCategory": "BusinessApplication",
       "description": "A Chennai-first gig staffing marketplace replacing informal WhatsApp hiring with verified workers, real-time tracking, and milestone-based escrow payments.",
       "url": "https://www.ziggers.in/",
-      "author": { "@type": "Person", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/vijayrajkumar/" }
+      "author": { "@type": "Person", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/about/" }
     }),
     content: `
       <div class="max-w-4xl mx-auto px-6 py-16 space-y-12 font-sans">
@@ -379,7 +200,7 @@ const routes = [
       "applicationCategory": "DeveloperApplication",
       "description": "Persistent context and cognitive memory engine for AI agents and developer workflows.",
       "url": "https://www.loopmemory.in/",
-      "author": { "@type": "Person", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/vijayrajkumar/" }
+      "author": { "@type": "Person", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/about/" }
     }),
     content: `
       <div class="max-w-4xl mx-auto px-6 py-16 space-y-12 font-sans">
@@ -428,7 +249,7 @@ const routes = [
       "@type": "CollectionPage",
       "name": "Events & Summits | Vijayrajkumar",
       "url": "https://www.vijayrajkumar.in/events/",
-      "author": { "@type": "Person", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/vijayrajkumar/" }
+      "author": { "@type": "Person", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/about/" }
     }),
     content: `
       <div class="max-w-6xl mx-auto px-6 py-16 space-y-12 font-sans">
@@ -479,7 +300,7 @@ const routes = [
       "@type": "CollectionPage",
       "name": "Writing & Strategic Research | Vijayrajkumar",
       "url": "https://www.vijayrajkumar.in/writing/",
-      "author": { "@type": "Person", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/vijayrajkumar/" }
+      "author": { "@type": "Person", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/about/" }
     }),
     content: `
       <div class="max-w-4xl mx-auto px-6 py-16 space-y-12 font-sans">
@@ -566,7 +387,7 @@ const routes = [
       "@context": "https://schema.org",
       "@type": "BlogPosting",
       "headline": "Building a Local Gig Marketplace in Chennai: Lessons Beyond WhatsApp Groups",
-      "author": { "@type": "Person", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/vijayrajkumar/" },
+      "author": { "@type": "Person", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/about/" },
       "datePublished": "2026-02-01",
       "dateModified": "2026-09-14",
       "publisher": { "@type": "Organization", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/" },
@@ -581,7 +402,7 @@ const routes = [
         <div class="space-y-3 border-b border-neutral-200 pb-6">
           <span class="text-xs font-bold uppercase tracking-wider text-neutral-600">Marketplace Mechanics &amp; Labor Ops</span>
           <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-950">Building a Local Gig Marketplace in Chennai: Lessons Beyond WhatsApp Groups</h1>
-          <p class="text-xs text-neutral-600">By <a href="/vijayrajkumar/" class="font-bold underline text-neutral-950">Vijayrajkumar</a> (COO &amp; Co-Founder, Ziggers) • February 2026 • 6 min read</p>
+          <p class="text-xs text-neutral-600">By <a href="/about/" class="font-bold underline text-neutral-950">Vijayrajkumar</a> (COO &amp; Co-Founder, Ziggers) • February 2026 • 6 min read</p>
         </div>
 
         <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-2">
@@ -605,7 +426,7 @@ const routes = [
             <h3 class="text-base font-bold text-neutral-950">Vijayrajkumar</h3>
             <p class="text-xs text-neutral-700 max-w-xl">Vijayrajkumar is a Chennai-based Chief Operating Officer &amp; Co-Founder at Unfounded, Ziggers, and LoopMemory, operating across gig-economy marketplace mechanics and persistent AI context infrastructure.</p>
           </div>
-          <a href="/vijayrajkumar/" class="shrink-0 px-4 py-2 bg-neutral-900 text-white text-xs font-bold rounded-full hover:bg-neutral-800 transition-colors">Executive Profile →</a>
+          <a href="/about/" class="shrink-0 px-4 py-2 bg-neutral-900 text-white text-xs font-bold rounded-full hover:bg-neutral-800 transition-colors">About Vijayrajkumar →</a>
         </div>
 
         <div class="pt-4"><a href="/writing/" class="text-xs font-bold underline text-neutral-950">← Back to all essays</a></div>
@@ -622,7 +443,7 @@ const routes = [
       "@context": "https://schema.org",
       "@type": "BlogPosting",
       "headline": "Designing Persistent Context & Memory Architecture for AI Agents",
-      "author": { "@type": "Person", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/vijayrajkumar/" },
+      "author": { "@type": "Person", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/about/" },
       "datePublished": "2026-01-01",
       "dateModified": "2026-09-14",
       "publisher": { "@type": "Organization", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/" },
@@ -637,7 +458,7 @@ const routes = [
         <div class="space-y-3 border-b border-neutral-200 pb-6">
           <span class="text-xs font-bold uppercase tracking-wider text-neutral-600">AI Infrastructure &amp; Cognitive Systems</span>
           <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-950">Designing Persistent Context &amp; Memory Architecture for AI Agents</h1>
-          <p class="text-xs text-neutral-600">By <a href="/vijayrajkumar/" class="font-bold underline text-neutral-950">Vijayrajkumar</a> (COO &amp; Co-Founder, LoopMemory) • January 2026 • 8 min read</p>
+          <p class="text-xs text-neutral-600">By <a href="/about/" class="font-bold underline text-neutral-950">Vijayrajkumar</a> (COO &amp; Co-Founder, LoopMemory) • January 2026 • 8 min read</p>
         </div>
 
         <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-2">
@@ -661,7 +482,7 @@ const routes = [
             <h3 class="text-base font-bold text-neutral-950">Vijayrajkumar</h3>
             <p class="text-xs text-neutral-700 max-w-xl">Vijayrajkumar is a Chennai-based Chief Operating Officer &amp; Co-Founder at Unfounded, Ziggers, and LoopMemory, operating across gig-economy marketplace mechanics and persistent AI context infrastructure.</p>
           </div>
-          <a href="/vijayrajkumar/" class="shrink-0 px-4 py-2 bg-neutral-900 text-white text-xs font-bold rounded-full hover:bg-neutral-800 transition-colors">Executive Profile →</a>
+          <a href="/about/" class="shrink-0 px-4 py-2 bg-neutral-900 text-white text-xs font-bold rounded-full hover:bg-neutral-800 transition-colors">About Vijayrajkumar →</a>
         </div>
 
         <div class="pt-4"><a href="/writing/" class="text-xs font-bold underline text-neutral-950">← Back to all essays</a></div>
@@ -678,7 +499,7 @@ const routes = [
       "@context": "https://schema.org",
       "@type": "BlogPosting",
       "headline": "From Geopolitics and Defence Strategy to Startup Venture Studios",
-      "author": { "@type": "Person", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/vijayrajkumar/" },
+      "author": { "@type": "Person", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/about/" },
       "datePublished": "2025-12-01",
       "dateModified": "2026-09-14",
       "publisher": { "@type": "Organization", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/" },
@@ -693,7 +514,7 @@ const routes = [
         <div class="space-y-3 border-b border-neutral-200 pb-6">
           <span class="text-xs font-bold uppercase tracking-wider text-neutral-600">Strategy, Game Theory &amp; Operations</span>
           <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-950">From Geopolitics and Defence Strategy to Startup Venture Studios</h1>
-          <p class="text-xs text-neutral-600">By <a href="/vijayrajkumar/" class="font-bold underline text-neutral-950">Vijayrajkumar</a> (COO &amp; Co-Founder, Unfounded) • December 2025 • 7 min read</p>
+          <p class="text-xs text-neutral-600">By <a href="/about/" class="font-bold underline text-neutral-950">Vijayrajkumar</a> (COO &amp; Co-Founder, Unfounded) • December 2025 • 7 min read</p>
         </div>
 
         <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-2">
@@ -717,7 +538,7 @@ const routes = [
             <h3 class="text-base font-bold text-neutral-950">Vijayrajkumar</h3>
             <p class="text-xs text-neutral-700 max-w-xl">Vijayrajkumar is a Chennai-based Chief Operating Officer &amp; Co-Founder at Unfounded, Ziggers, and LoopMemory, operating across gig-economy marketplace mechanics and persistent AI context infrastructure.</p>
           </div>
-          <a href="/vijayrajkumar/" class="shrink-0 px-4 py-2 bg-neutral-900 text-white text-xs font-bold rounded-full hover:bg-neutral-800 transition-colors">Executive Profile →</a>
+          <a href="/about/" class="shrink-0 px-4 py-2 bg-neutral-900 text-white text-xs font-bold rounded-full hover:bg-neutral-800 transition-colors">About Vijayrajkumar →</a>
         </div>
 
         <div class="pt-4"><a href="/writing/" class="text-xs font-bold underline text-neutral-950">← Back to all essays</a></div>
@@ -801,11 +622,11 @@ routes.forEach((route) => {
 // Generate 404.html
 let notFoundHtml = templateHtml
   .replace(/<title>.*?<\/title>/, `<title>404: Page Not Found | Vijayrajkumar</title>`)
-  .replace(/<meta name="description" content=".*?" \/>/, `<meta name="description" content="The requested page could not be found. Return to Vijayrajkumar homepage or executive profile." />`)
+  .replace(/<meta name="description" content=".*?" \/>/, `<meta name="description" content="The requested page could not be found. Return to Vijayrajkumar homepage or about page." />`)
   .replace(/<link rel="canonical" href=".*?" \/>/, `<link rel="canonical" href="https://www.vijayrajkumar.in/404" />`)
   .replace(
     /<div id="root">[\s\S]*?<\/div>/,
-    `<div id="root"><div class="max-w-xl mx-auto px-6 py-24 text-center font-sans space-y-4"><h1 class="text-4xl font-bold text-neutral-950">404 - Page Not Found</h1><p class="text-neutral-600">The requested page could not be found within the Vijayrajkumar site.</p><div class="pt-4 flex justify-center gap-4 text-xs font-semibold"><a href="/" class="underline text-neutral-950">Home</a> · <a href="/vijayrajkumar/" class="underline text-neutral-950">Executive Profile</a> · <a href="/ventures/" class="underline text-neutral-950">Ventures</a> · <a href="/writing/" class="underline text-neutral-950">Writing</a></div></div></div>`
+    `<div id="root"><div class="max-w-xl mx-auto px-6 py-24 text-center font-sans space-y-4"><h1 class="text-4xl font-bold text-neutral-950">404 - Page Not Found</h1><p class="text-neutral-600">The requested page could not be found within the Vijayrajkumar site.</p><div class="pt-4 flex justify-center gap-4 text-xs font-semibold"><a href="/" class="underline text-neutral-950">Home</a> · <a href="/about/" class="underline text-neutral-950">About</a> · <a href="/ventures/" class="underline text-neutral-950">Ventures</a> · <a href="/writing/" class="underline text-neutral-950">Writing</a></div></div></div>`
   );
 
 fs.writeFileSync(path.join(distDir, '404.html'), notFoundHtml, 'utf8');

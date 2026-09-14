@@ -31,10 +31,10 @@ export default function NotFoundPage() {
             <span>Return to Homepage</span>
           </a>
           <a
-            href="/vijayrajkumar/"
+            href="/about/"
             className="inline-flex items-center space-x-2 px-6 py-3 bg-white border-2 border-[#7A968B] text-[#111815] font-semibold rounded-full hover:border-[#203322] transition-colors text-xs shadow-sm"
           >
-            <span>Executive Profile</span>
+            <span>About &amp; Journey</span>
           </a>
         </div>
 

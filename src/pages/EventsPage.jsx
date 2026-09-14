@@ -116,8 +116,8 @@ export default function EventsPage() {
               <span>Interactive physics: Hover over event cards to experience dynamic liquid displacement</span>
             </div>
             <span className="text-[#85A296]">•</span>
-            <a href="/vijayrajkumar/" className="font-bold text-[#203322] hover:underline">
-              Executive Profile &amp; Bio →
+            <a href="/about/" className="font-bold text-[#203322] hover:underline">
+              About Vijayrajkumar →
             </a>
           </div>
         </div>

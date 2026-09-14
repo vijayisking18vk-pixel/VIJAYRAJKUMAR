@@ -78,8 +78,8 @@ export default function AboutPage() {
               <span>Chennai, Tamil Nadu, India · On-site</span>
             </div>
             <span className="text-[#85A296]">•</span>
-            <a href="/vijayrajkumar/" className="inline-flex items-center space-x-1 text-xs font-bold text-[#203322] hover:underline">
-              <span>View full executive dossier &amp; credentials</span>
+            <a href="/ventures/" className="inline-flex items-center space-x-1 text-xs font-bold text-[#203322] hover:underline">
+              <span>Explore Ventures &amp; Case Studies</span>
               <ArrowRight className="w-3 h-3" />
             </a>
           </div>

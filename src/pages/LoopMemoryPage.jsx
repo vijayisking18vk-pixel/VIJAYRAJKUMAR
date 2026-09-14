@@ -48,8 +48,8 @@ export default function LoopMemoryPage() {
               Vijayrajkumar · Chief Operating Officer &amp; Co-Founder · Available for Developers
             </span>
             <span className="text-[#85A296]">•</span>
-            <a href="/vijayrajkumar/" className="text-xs font-bold text-[#203322] hover:underline">
-              Operator Dossier →
+            <a href="/about/" className="text-xs font-bold text-[#203322] hover:underline">
+              About Vijayrajkumar →
             </a>
           </div>
         </div>

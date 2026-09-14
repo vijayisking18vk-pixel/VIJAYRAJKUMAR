@@ -178,7 +178,7 @@ export default function WritingPage({ initialArticleId = null }) {
                 {selectedArticle.title}
               </h1>
               <div className="flex flex-wrap items-center gap-4 text-xs text-[#2A3E34] font-medium">
-                <a href="/vijayrajkumar/" className="font-bold text-[#203322] hover:underline flex items-center space-x-1">
+                <a href="/about/" className="font-bold text-[#203322] hover:underline flex items-center space-x-1">
                   <User className="w-3.5 h-3.5" />
                   <span>{selectedArticle.author}</span>
                 </a>
@@ -224,10 +224,10 @@ export default function WritingPage({ initialArticleId = null }) {
                 </p>
               </div>
               <a
-                href="/vijayrajkumar/"
+                href="/about/"
                 className="shrink-0 px-4 py-2 bg-[#203322] text-white text-xs font-bold rounded-full hover:bg-[#111815] transition-colors shadow-sm"
               >
-                Executive Profile →
+                About Vijayrajkumar →
               </a>
             </div>
 

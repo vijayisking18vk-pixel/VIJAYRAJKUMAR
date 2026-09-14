@@ -13,7 +13,6 @@ import LoopMemoryPage from './pages/LoopMemoryPage';
 import WritingPage from './pages/WritingPage';
 import ContactPage from './pages/ContactPage';
 import EventsPage from './pages/EventsPage';
-import ProfilePage from './pages/ProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
@@ -34,7 +33,10 @@ export default function App() {
   const normalizedPath = currentPath.toLowerCase().replace(/\/+$/, '');
 
   if (normalizedPath === '/vijayrajkumar') {
-    return <ProfilePage />;
+    if (typeof window !== 'undefined') {
+      window.history.replaceState(null, '', '/about/');
+    }
+    return <AboutPage />;
   }
   if (normalizedPath === '/about') {
     return <AboutPage />;

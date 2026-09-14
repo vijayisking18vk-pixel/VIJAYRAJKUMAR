@@ -37,7 +37,6 @@ export default function Footer() {
             <span className="font-bold text-[var(--color-accent-primary)] uppercase tracking-wider text-[11px] block">Overview</span>
             <ul className="space-y-1.5">
               <li><a href="/" className="hover:text-[var(--color-accent-primary)] transition-colors">Home</a></li>
-              <li><a href="/vijayrajkumar/" className="hover:text-[var(--color-accent-primary)] transition-colors font-semibold">Executive Profile</a></li>
               <li><a href="/about/" className="hover:text-[var(--color-accent-primary)] transition-colors">About &amp; Bio</a></li>
               <li><a href="/events/" className="hover:text-[var(--color-accent-primary)] transition-colors">Events &amp; Summits</a></li>
             </ul>

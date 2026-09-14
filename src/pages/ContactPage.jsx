@@ -48,8 +48,8 @@ export default function ContactPage() {
               <span>Email: <a href="mailto:vijaykumarunfounded@gmail.com" className="font-bold text-[#203322] hover:underline">vijaykumarunfounded@gmail.com</a></span>
             </div>
             <div className="flex items-center space-x-1.5">
-              <a href="/vijayrajkumar/" className="font-bold text-[#203322] hover:underline">
-                Operator Profile →
+              <a href="/about/" className="font-bold text-[#203322] hover:underline">
+                About Vijayrajkumar →
               </a>
             </div>
           </div>
