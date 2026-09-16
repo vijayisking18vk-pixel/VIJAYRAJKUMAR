@@ -232,7 +232,7 @@ export default function ScrollVideoSection({ className = '' }) {
       }
     };
 
-    // IntersectionObserver with 500px root margin
+    // IntersectionObserver with 50px root margin (only when section actually enters viewport)
     let observer = null;
     if (typeof window !== 'undefined' && 'IntersectionObserver' in window && containerRef.current) {
       observer = new IntersectionObserver(
@@ -242,14 +242,15 @@ export default function ScrollVideoSection({ className = '' }) {
             if (observer) observer.disconnect();
           }
         },
-        { rootMargin: '500px 0px' }
+        { rootMargin: '50px 0px' }
       );
       observer.observe(containerRef.current);
     }
 
-    // Fallback: trigger when user scrolls past 80px
+    // Fallback: trigger only when user scrolls past 70% of the hero towards this section
     const handleScroll = () => {
-      if (window.scrollY > 80) {
+      const triggerY = (window.innerHeight || 800) * 0.7;
+      if (window.scrollY > triggerY) {
         startLoading();
         window.removeEventListener('scroll', handleScroll);
       }
