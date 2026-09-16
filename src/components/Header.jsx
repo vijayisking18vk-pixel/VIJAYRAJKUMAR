@@ -20,7 +20,7 @@ export default function Header({ activeSection, setActiveSection }) {
         
         {/* Brand Title linking to Home - Only Name */}
         <a href="/" className="flex items-center space-x-2.5 group">
-          <span className="w-2 h-2 bg-[var(--color-accent-primary)] rounded-full animate-pulse"></span>
+          <span className="w-2 h-2 bg-[var(--color-accent-primary)] rounded-full animate-pulse transform-gpu"></span>
           <GradientText className="font-sans font-bold text-base tracking-tight text-[var(--color-text-primary)] group-hover:opacity-85 transition-opacity">
             Vijayrajkumar
           </GradientText>

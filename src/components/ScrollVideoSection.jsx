@@ -166,10 +166,12 @@ export default function ScrollVideoSection({ className = '' }) {
     drawFrame(currentFrameRef.current);
   }, [drawFrame]);
 
-  // Preload frames: prioritize first 8 frames immediately for LCP, stream remaining during idle
+  // Preload frames only when user scrolls or approaches the section (deferred off critical path)
   useEffect(() => {
-    let count = 0;
+    let started = false;
+    let idleHandle = null;
     const imgs = new Array(TOTAL_FRAMES);
+    imagesRef.current = imgs;
 
     const loadSingleFrame = (i) => {
       const img = new Image();
@@ -179,7 +181,6 @@ export default function ScrollVideoSection({ className = '' }) {
       const frameIndex = i - 1;
 
       img.onload = () => {
-        count++;
         loadedIndicesRef.current.add(frameIndex);
         setLoadedCount((prev) => prev + 1);
 
@@ -189,49 +190,75 @@ export default function ScrollVideoSection({ className = '' }) {
       };
 
       img.onerror = () => {
-        count++;
         setLoadedCount((prev) => prev + 1);
       };
 
       imgs[frameIndex] = img;
     };
 
-    // 1. Immediate priority batch: frames 1 to 8
-    const priorityCount = Math.min(8, TOTAL_FRAMES);
-    for (let i = 1; i <= priorityCount; i++) {
-      loadSingleFrame(i);
-    }
+    const startLoading = () => {
+      if (started) return;
+      started = true;
 
-    // 2. Idle stream remaining frames 9 to 136
-    let currentIndex = priorityCount + 1;
-    let idleHandle = null;
-
-    const streamRemaining = () => {
-      const batchSize = 6;
-      const end = Math.min(currentIndex + batchSize, TOTAL_FRAMES + 1);
-      for (let i = currentIndex; i < end; i++) {
+      // 1. Initial priority batch: first 6 frames
+      const priorityCount = Math.min(6, TOTAL_FRAMES);
+      for (let i = 1; i <= priorityCount; i++) {
         loadSingleFrame(i);
       }
-      currentIndex = end;
 
-      if (currentIndex <= TOTAL_FRAMES) {
-        if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
-          idleHandle = window.requestIdleCallback(streamRemaining, { timeout: 1000 });
-        } else {
-          idleHandle = setTimeout(streamRemaining, 50);
+      // 2. Stream remaining frames in idle slices
+      let currentIndex = priorityCount + 1;
+      const streamRemaining = () => {
+        const batchSize = 6;
+        const end = Math.min(currentIndex + batchSize, TOTAL_FRAMES + 1);
+        for (let i = currentIndex; i < end; i++) {
+          loadSingleFrame(i);
         }
+        currentIndex = end;
+
+        if (currentIndex <= TOTAL_FRAMES) {
+          if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+            idleHandle = window.requestIdleCallback(streamRemaining, { timeout: 1500 });
+          } else {
+            idleHandle = setTimeout(streamRemaining, 80);
+          }
+        }
+      };
+
+      if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+        idleHandle = window.requestIdleCallback(streamRemaining, { timeout: 1500 });
+      } else {
+        idleHandle = setTimeout(streamRemaining, 100);
       }
     };
 
-    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
-      idleHandle = window.requestIdleCallback(streamRemaining, { timeout: 1000 });
-    } else {
-      idleHandle = setTimeout(streamRemaining, 100);
+    // IntersectionObserver with 500px root margin
+    let observer = null;
+    if (typeof window !== 'undefined' && 'IntersectionObserver' in window && containerRef.current) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) {
+            startLoading();
+            if (observer) observer.disconnect();
+          }
+        },
+        { rootMargin: '500px 0px' }
+      );
+      observer.observe(containerRef.current);
     }
 
-    imagesRef.current = imgs;
+    // Fallback: trigger when user scrolls past 80px
+    const handleScroll = () => {
+      if (window.scrollY > 80) {
+        startLoading();
+        window.removeEventListener('scroll', handleScroll);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
+      if (observer) observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
       if (idleHandle) {
         if (typeof window !== 'undefined' && 'cancelIdleCallback' in window) {
           window.cancelIdleCallback(idleHandle);

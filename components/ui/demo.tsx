@@ -24,7 +24,7 @@ export interface ParallaxHeroProps {
 
 export const defaultLayers: ParallaxLayer[] = [
   {
-    src: 'https://cdn.21st.dev/assets/mirror/bf/bfb8ca258f591d2b7388d05d79ac2332b695867281627c1bc8c7165ca6429a6d.png',
+    src: '/parallax/layer_01_bg.webp',
     alt: 'background',
     speedX: 0.03,
     speedY: 0.038,
@@ -37,7 +37,7 @@ export const defaultLayers: ParallaxLayer[] = [
     width: '3200px',
   },
   {
-    src: 'https://cdn.21st.dev/assets/mirror/c8/c878e14d1f8e481f6f70b31fb01de352338db5353f5b8852a241062bb251b558.png',
+    src: '/parallax/layer_02_fog7.webp',
     alt: 'fog-7',
     speedX: 0.27,
     speedY: 0.32,
@@ -50,7 +50,7 @@ export const defaultLayers: ParallaxLayer[] = [
     width: '1900px',
   },
   {
-    src: 'https://cdn.21st.dev/assets/mirror/e9/e94a2247aa54feee12cd1580a7c3abf97d6f55bbe7e50006d8dda6e4dffbe921.png',
+    src: '/parallax/layer_03_mountain10.webp',
     alt: 'mountain-10',
     speedX: 0.095,
     speedY: 0.005,
@@ -63,7 +63,7 @@ export const defaultLayers: ParallaxLayer[] = [
     width: '1200px',
   },
   {
-    src: 'https://cdn.21st.dev/assets/mirror/99/9955626de3f10d97d27b7b89f7be180c02e1700f288db28e0c6824142871523f.png',
+    src: '/parallax/layer_04_fog6.webp',
     alt: 'fog-6',
     speedX: 0.25,
     speedY: 0.28,
@@ -77,7 +77,7 @@ export const defaultLayers: ParallaxLayer[] = [
     className: 'opacity-30',
   },
   {
-    src: 'https://cdn.21st.dev/assets/mirror/dd/dd999609be149c46fcb65fce4d267cad8d5651b0c31901b399054da5146cb46e.png',
+    src: '/parallax/layer_05_mountain9.webp',
     alt: 'mountain-9',
     speedX: 0.125,
     speedY: 0.155,
@@ -90,7 +90,7 @@ export const defaultLayers: ParallaxLayer[] = [
     width: '670px',
   },
   {
-    src: 'https://cdn.21st.dev/assets/mirror/d5/d579e64ddeb3a32d04dff5391980b827eb4d6d4aafa2cc3231e2cbe02d66a7c7.png',
+    src: '/parallax/layer_06_fog5.webp',
     alt: 'fog-5',
     speedX: 0.16,
     speedY: 0.105,
@@ -103,7 +103,7 @@ export const defaultLayers: ParallaxLayer[] = [
     width: '650px',
   },
   {
-    src: 'https://cdn.21st.dev/assets/mirror/b7/b74be54427fd5b9568571ba97684bc8a4334d366a3f3b32c353d31fd1501c09b.png',
+    src: '/parallax/layer_07_mountain7.webp',
     alt: 'mountain-7',
     speedX: 0.1,
     speedY: 0.1,
@@ -116,7 +116,7 @@ export const defaultLayers: ParallaxLayer[] = [
     width: '738px',
   },
   {
-    src: 'https://cdn.21st.dev/assets/mirror/ed/edf306a4225b6188283aa94ecec1553b2e0855038a3acaed402001f38c64af1d.png',
+    src: '/parallax/layer_08_mountain6.webp',
     alt: 'mountain-6',
     speedX: 0.065,
     speedY: 0.05,
@@ -129,7 +129,7 @@ export const defaultLayers: ParallaxLayer[] = [
     width: '408px',
   },
   {
-    src: 'https://cdn.21st.dev/assets/mirror/8d/8d12582b7eac71f981eca3a8bb19157fb57fc4b05c14f9ef80fd029e5fecfab5.png',
+    src: '/parallax/layer_09_fog4.webp',
     alt: 'fog-4',
     speedX: 0.135,
     speedY: 0.1,
@@ -143,7 +143,7 @@ export const defaultLayers: ParallaxLayer[] = [
     className: 'opacity-50',
   },
   {
-    src: 'https://cdn.21st.dev/assets/mirror/9c/9c1a1b7f4b165011788c27d440d920e407d70f148cbc9a01eacfecb49126efcb.png',
+    src: '/parallax/layer_10_mountain5.webp',
     alt: 'mountain-5',
     speedX: 0.08,
     speedY: 0.05,
@@ -156,7 +156,7 @@ export const defaultLayers: ParallaxLayer[] = [
     width: '725px',
   },
   {
-    src: 'https://cdn.21st.dev/assets/mirror/0e/0e7888cc6d1732222b5c1f38b925cf1ecdb7fec02fd1193dd1cfef280a453c5a.png',
+    src: '/parallax/layer_11_fog3.webp',
     alt: 'fog-3',
     speedX: 0.11,
     speedY: 0.018,
@@ -169,7 +169,7 @@ export const defaultLayers: ParallaxLayer[] = [
     width: '1600px',
   },
   {
-    src: 'https://cdn.21st.dev/assets/mirror/fa/fa0946f924ad025b207616cfe20ce022bcccd22ac9db4038a584ace23b7d9721.png',
+    src: '/parallax/layer_12_mountain4.webp',
     alt: 'mountain-4',
     speedX: 0.059,
     speedY: 0.024,
@@ -182,7 +182,7 @@ export const defaultLayers: ParallaxLayer[] = [
     width: '1100px',
   },
   {
-    src: 'https://cdn.21st.dev/assets/mirror/90/90863919566208c1eb7a78136d1dd493dd402f4d5a5efe2fc890a288a6b07449.png',
+    src: '/parallax/layer_13_mountain3.webp',
     alt: 'mountain-3',
     speedX: 0.04,
     speedY: 0.018,
@@ -195,7 +195,7 @@ export const defaultLayers: ParallaxLayer[] = [
     width: '630px',
   },
   {
-    src: 'https://cdn.21st.dev/assets/mirror/b2/b2d0ba5c7f17d038a04475b8f36563aea22cfee00983db3b5477f1ac4c9a5097.png',
+    src: '/parallax/layer_14_fog2.webp',
     alt: 'fog-2',
     speedX: 0.15,
     speedY: 0.0115,
@@ -208,7 +208,7 @@ export const defaultLayers: ParallaxLayer[] = [
     width: '1100px',
   },
   {
-    src: 'https://cdn.21st.dev/assets/mirror/c4/c4ae700b3a0070eae9f3c005a17572ae68fcb8373d322f279d28c5bf19cd501d.png',
+    src: '/parallax/layer_15_mountain2.webp',
     alt: 'mountain-2',
     speedX: 0.0235,
     speedY: 0.013,
@@ -221,7 +221,7 @@ export const defaultLayers: ParallaxLayer[] = [
     width: '800px',
   },
   {
-    src: 'https://cdn.21st.dev/assets/mirror/41/414097ad4507410ac1dc884afcc92bb3f4f45763fd17b2986bf82dd43c31da97.png',
+    src: '/parallax/layer_16_mountain1.webp',
     alt: 'mountain-1',
     speedX: 0.027,
     speedY: 0.018,
@@ -234,7 +234,7 @@ export const defaultLayers: ParallaxLayer[] = [
     width: '1100px',
   },
   {
-    src: 'https://cdn.21st.dev/assets/mirror/aa/aa8ace86d9779fcccce3a1a28b8ac0cb86336b5980706659f2c8889c3daaf5a1.png',
+    src: '/parallax/layer_17_fog1.webp',
     alt: 'fog-1',
     speedX: 0.12,
     speedY: 0.01,
@@ -362,8 +362,13 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
       setGyroActive(true);
     }
 
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     // Mouse move handler for desktop
     const handleMouseMove = (e: MouseEvent) => {
+      if (prefersReducedMotion) return;
       const newXValue = e.clientX - window.innerWidth / 2;
       const newYValue = e.clientY - window.innerHeight / 2;
       const newRotateDegree = (newXValue / (window.innerWidth / 2)) * 20;
@@ -374,10 +379,13 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
       targetCursorX.current = e.clientX;
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    if (!prefersReducedMotion) {
+      window.addEventListener('mousemove', handleMouseMove);
+    }
 
     // 60fps/120fps Hardware-Accelerated Physics Lerp Loop
     const animate = () => {
+      if (prefersReducedMotion) return;
       // 0.12 lerp factor gives snappy responsive inertia with smooth damping
       currentX.current += (targetX.current - currentX.current) * 0.12;
       currentY.current += (targetY.current - currentY.current) * 0.12;
@@ -453,9 +461,9 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
   };
 
   const handleScrollDown = () => {
-    const storySection = document.getElementById('cinematic-story');
-    if (storySection) {
-      storySection.scrollIntoView({ behavior: 'smooth' });
+    const videoSection = document.getElementById('scroll-video-section') || document.getElementById('cinematic-story');
+    if (videoSection) {
+      videoSection.scrollIntoView({ behavior: 'smooth' });
     } else {
       const portals = document.getElementById('portals');
       if (portals) {
@@ -487,6 +495,8 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
           }}
           src={layer.src}
           alt={layer.alt}
+          fetchPriority={index === 0 ? "high" : "low"}
+          decoding={index === 0 ? "sync" : "async"}
           className={cn(
             'absolute pointer-events-none select-none max-w-none will-change-transform',
             layer.className
@@ -511,8 +521,12 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
           transform: 'translate(-50%, -50%)',
         }}
       >
-        <h1 className="font-black text-[17vw] sm:text-[15vw] md:text-[12vw] lg:text-[15rem] leading-[0.85] tracking-wider sm:tracking-widest uppercase drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)] opacity-95 truncate">
-          {title}
+        <h1
+          className="font-black text-[17vw] sm:text-[15vw] md:text-[12vw] lg:text-[15rem] leading-[0.85] tracking-wider sm:tracking-widest uppercase drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)] opacity-95 truncate"
+          aria-label="Vijayrajkumar — Chief Operating Officer and Venture Builder in Chennai"
+        >
+          <span className="sr-only">Vijayrajkumar — Chief Operating Officer and Venture Builder in Chennai</span>
+          <span aria-hidden="true">{title}</span>
         </h1>
         <p className="mt-3 sm:mt-4 text-[10px] sm:text-xs md:text-sm lg:text-base uppercase tracking-[0.18em] sm:tracking-[0.28em] md:tracking-[0.35em] text-[#C9D6D3] font-mono font-medium drop-shadow whitespace-normal leading-relaxed px-2">
           Chief Operating Officer &amp; Co-Founder
@@ -524,7 +538,7 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
         {needsIosPermission ? (
           <button
             onClick={requestGyroPermission}
-            className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[var(--color-accent-primary)]/80 hover:bg-[var(--color-accent-primary)] active:scale-95 backdrop-blur-md border border-[var(--color-border)]/40 text-white text-xs font-mono tracking-wider shadow-2xl transition-all animate-pulse"
+            className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[var(--color-accent-primary)]/80 hover:bg-[var(--color-accent-primary)] active:scale-95 backdrop-blur-md border border-[var(--color-border)]/40 text-white text-xs font-mono tracking-wider shadow-2xl transition-colors animate-pulse transform-gpu"
           >
             <span>📱</span>
             <span>Tap to Enable 3D Tilt Effect</span>
@@ -533,9 +547,9 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
           <button
             type="button"
             onClick={handleScrollDown}
-            className="flex items-center gap-2.5 sm:gap-3 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[var(--color-accent-primary)]/85 hover:bg-[var(--color-accent-primary)] active:scale-95 backdrop-blur-md border border-[var(--color-border)]/40 text-white text-[11px] sm:text-xs font-mono tracking-wider shadow-2xl transition-all cursor-pointer group max-w-[90vw]"
+            className="flex items-center gap-2.5 sm:gap-3 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[var(--color-accent-primary)]/85 hover:bg-[var(--color-accent-primary)] active:scale-95 backdrop-blur-md border border-[var(--color-border)]/40 text-white text-[11px] sm:text-xs font-mono tracking-wider shadow-2xl transition-colors cursor-pointer group max-w-[90vw] transform-gpu"
           >
-            <span className="w-2 h-2 rounded-full bg-[#7E9490] animate-pulse shrink-0" />
+            <span className="w-2 h-2 rounded-full bg-[#7E9490] animate-pulse shrink-0 transform-gpu" />
             <span className="truncate">
               {isMobile
                 ? '📱 Tilt phone to explore • Tap to scroll down ↓'

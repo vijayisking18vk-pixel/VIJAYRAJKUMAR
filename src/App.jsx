@@ -1,19 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import Header from './components/Header';
 import { ParallaxHero } from './components/ui/wilderness';
 import ScrollVideoSection from './components/ScrollVideoSection';
 import Footer from './components/Footer';
 import Particles from './components/react-bits/Particles';
 
-// Multi-page subpages
-import AboutPage from './pages/AboutPage';
-import VenturesPage from './pages/VenturesPage';
-import ZiggersPage from './pages/ZiggersPage';
-import LoopMemoryPage from './pages/LoopMemoryPage';
-import WritingPage from './pages/WritingPage';
-import ContactPage from './pages/ContactPage';
-import EventsPage from './pages/EventsPage';
-import NotFoundPage from './pages/NotFoundPage';
+// Code-split multi-page subpages (lazy loaded on demand)
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const VenturesPage = lazy(() => import('./pages/VenturesPage'));
+const ZiggersPage = lazy(() => import('./pages/ZiggersPage'));
+const LoopMemoryPage = lazy(() => import('./pages/LoopMemoryPage'));
+const WritingPage = lazy(() => import('./pages/WritingPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const EventsPage = lazy(() => import('./pages/EventsPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+
+const PageFallback = () => (
+  <div className="min-h-screen bg-[var(--color-background)] flex items-center justify-center">
+    <div className="w-6 h-6 border-2 border-[var(--color-accent-primary)] border-t-transparent rounded-full animate-spin" />
+  </div>
+);
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(
@@ -36,31 +42,67 @@ export default function App() {
     if (typeof window !== 'undefined') {
       window.history.replaceState(null, '', '/about/');
     }
-    return <AboutPage />;
+    return (
+      <Suspense fallback={<PageFallback />}>
+        <AboutPage />
+      </Suspense>
+    );
   }
   if (normalizedPath === '/about') {
-    return <AboutPage />;
+    return (
+      <Suspense fallback={<PageFallback />}>
+        <AboutPage />
+      </Suspense>
+    );
   }
   if (normalizedPath === '/ventures') {
-    return <VenturesPage />;
+    return (
+      <Suspense fallback={<PageFallback />}>
+        <VenturesPage />
+      </Suspense>
+    );
   }
   if (normalizedPath === '/ventures/ziggers') {
-    return <ZiggersPage />;
+    return (
+      <Suspense fallback={<PageFallback />}>
+        <ZiggersPage />
+      </Suspense>
+    );
   }
   if (normalizedPath === '/ventures/loopmemory') {
-    return <LoopMemoryPage />;
+    return (
+      <Suspense fallback={<PageFallback />}>
+        <LoopMemoryPage />
+      </Suspense>
+    );
   }
   if (normalizedPath === '/events') {
-    return <EventsPage />;
+    return (
+      <Suspense fallback={<PageFallback />}>
+        <EventsPage />
+      </Suspense>
+    );
   }
   if (normalizedPath === '/writing' || normalizedPath.startsWith('/writing/')) {
-    return <WritingPage />;
+    return (
+      <Suspense fallback={<PageFallback />}>
+        <WritingPage />
+      </Suspense>
+    );
   }
   if (normalizedPath === '/contact') {
-    return <ContactPage />;
+    return (
+      <Suspense fallback={<PageFallback />}>
+        <ContactPage />
+      </Suspense>
+    );
   }
   if (normalizedPath !== '' && normalizedPath !== '/') {
-    return <NotFoundPage />;
+    return (
+      <Suspense fallback={<PageFallback />}>
+        <NotFoundPage />
+      </Suspense>
+    );
   }
 
   // Streamlined Homepage: Living Parallax Hero + Proof Strip + Section Directory Portals

@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
-    <link rel="preload" as="image" href="/frames/WhatsApp_Video_2026-09-13_at_4_33_24_AM_frames/frame_001.webp" type="image/webp" />
+    <!-- Preload Hero Largest Contentful Paint (LCP) Image -->
+    <link rel="preload" as="image" href="/parallax/layer_01_bg.webp" type="image/webp" fetchpriority="high" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#2C3E2D" />
     
@@ -36,10 +37,14 @@
     <meta name="twitter:description" content="Chennai-based Chief Operating Officer and venture builder working across gig marketplaces, AI memory infrastructure, operations, and strategic research." />
     <meta name="twitter:image" content="https://www.vijayrajkumar.in/vijayrajkumar-poster.jpg" />
 
-    <!-- Google Fonts: Plus Jakarta Sans, Poppins, JetBrains Mono -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Asynchronous Non-Render-Blocking Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" />
+    </noscript>
 
     <!-- JSON-LD Structured Data for Search & Answer Engines (AEO/GEO) -->
     <script type="application/ld+json">
