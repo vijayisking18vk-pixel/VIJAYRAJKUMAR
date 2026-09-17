@@ -43,6 +43,8 @@
     { "source": "/writing/gig-marketplace-chennai/(.*)", "destination": "/writing/gig-marketplace-chennai/index.html" },
     { "source": "/writing/ai-persistent-context-architecture/(.*)", "destination": "/writing/ai-persistent-context-architecture/index.html" },
     { "source": "/writing/geopolitics-defence-venture-building/(.*)", "destination": "/writing/geopolitics-defence-venture-building/index.html" },
+    { "source": "/writing/catering-workers-in-chennai/(.*)", "destination": "/writing/catering-workers-in-chennai/index.html" },
+    { "source": "/catering-workers-in-chennai/(.*)", "destination": "/catering-workers-in-chennai/index.html" },
     { "source": "/writing/(.*)", "destination": "/writing/index.html" },
     { "source": "/events/(.*)", "destination": "/events/index.html" },
     { "source": "/contact/(.*)", "destination": "/contact/index.html" },

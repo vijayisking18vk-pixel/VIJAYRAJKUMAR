@@ -90,6 +90,13 @@ export default function App() {
       </Suspense>
     );
   }
+  if (normalizedPath === '/catering-workers-in-chennai') {
+    return (
+      <Suspense fallback={<PageFallback />}>
+        <WritingPage initialArticleId="catering-workers-in-chennai" />
+      </Suspense>
+    );
+  }
   if (normalizedPath === '/contact') {
     return (
       <Suspense fallback={<PageFallback />}>
