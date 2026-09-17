@@ -310,6 +310,14 @@ const routes = [
 
         <div class="space-y-8 pt-6 border-t border-neutral-200">
           <article class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-3">
+            <span class="text-xs uppercase font-bold text-neutral-500">Local Gig Economy &amp; Event Staffing</span>
+            <h2 class="text-2xl font-bold text-neutral-950"><a href="/writing/catering-workers-in-chennai/">Catering Workers in Chennai: Where to Hire Verified Workers and Get Catering Jobs in Chennai</a></h2>
+            <p class="text-xs text-neutral-500">By Vijayrajkumar (COO &amp; Co-Founder, Ziggers) • Sep 2026 • 9 min read</p>
+            <p class="text-sm text-neutral-600 leading-relaxed">Looking for catering workers in Chennai or catering jobs in Chennai? Learn where freshers, daily-wage workers and experienced staff can find verified shifts, and where event hosts can hire reliable catering workers.</p>
+            <div><a href="/writing/catering-workers-in-chennai/" class="font-bold text-xs underline text-neutral-950">Read complete essay →</a></div>
+          </article>
+
+          <article class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-3">
             <span class="text-xs uppercase font-bold text-neutral-500">Marketplace Mechanics &amp; Labor Ops</span>
             <h2 class="text-2xl font-bold text-neutral-950"><a href="/writing/gig-marketplace-chennai/">Building a Local Gig Marketplace in Chennai: Lessons Beyond WhatsApp Groups</a></h2>
             <p class="text-xs text-neutral-500">By Vijayrajkumar (COO &amp; Co-Founder, Ziggers) • Feb 2026 • 6 min read</p>
@@ -331,14 +339,6 @@ const routes = [
             <p class="text-xs text-neutral-500">By Vijayrajkumar (COO &amp; Co-Founder, Unfounded) • Dec 2025 • 7 min read</p>
             <p class="text-sm text-neutral-600 leading-relaxed">How academic frameworks in international security, intelligence doctrine, and deterrence strategy directly translate into early-stage startup execution, competitive defensibility, and rapid vibe coding.</p>
             <div><a href="/writing/geopolitics-defence-venture-building/" class="font-bold text-xs underline text-neutral-950">Read complete essay →</a></div>
-          </article>
-
-          <article class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-3">
-            <span class="text-xs uppercase font-bold text-neutral-500">Local Gig Economy &amp; Event Staffing</span>
-            <h2 class="text-2xl font-bold text-neutral-950"><a href="/writing/catering-workers-in-chennai/">Catering Workers in Chennai: Where to Hire Verified Workers and Get Catering Jobs in Chennai</a></h2>
-            <p class="text-xs text-neutral-500">By Vijayrajkumar (COO &amp; Co-Founder, Ziggers) • Mar 2026 • 9 min read</p>
-            <p class="text-sm text-neutral-600 leading-relaxed">Looking for catering workers in Chennai or catering jobs in Chennai? Learn where freshers, daily-wage workers and experienced staff can find verified shifts, and where event hosts can hire reliable catering workers.</p>
-            <div><a href="/writing/catering-workers-in-chennai/" class="font-bold text-xs underline text-neutral-950">Read complete essay →</a></div>
           </article>
         </div>
       </div>
@@ -567,7 +567,7 @@ const routes = [
           "headline": "Catering Workers in Chennai: Where to Hire Verified Workers and Get Catering Jobs in Chennai",
           "name": "Catering Workers in Chennai: Verified Jobs and Reliable Staff for Events",
           "author": { "@type": "Person", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/about/" },
-          "datePublished": "2026-03-01",
+          "datePublished": "2026-09-17",
           "dateModified": "2026-09-17",
           "publisher": { "@type": "Organization", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/" },
           "url": "https://www.vijayrajkumar.in/writing/catering-workers-in-chennai/",
@@ -636,7 +636,7 @@ const routes = [
         <div class="space-y-3 border-b border-neutral-200 pb-6">
           <span class="text-xs font-bold uppercase tracking-wider text-neutral-600">Local Gig Economy &amp; Event Staffing</span>
           <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-950">Catering Workers in Chennai: Where to Hire Verified Workers and Get Catering Jobs in Chennai</h1>
-          <p class="text-xs text-neutral-600">By <a href="/about/" class="font-bold underline text-neutral-950">Vijayrajkumar</a> (COO &amp; Co-Founder, Ziggers) • March 2026 • 9 min read</p>
+          <p class="text-xs text-neutral-600">By <a href="/about/" class="font-bold underline text-neutral-950">Vijayrajkumar</a> (COO &amp; Co-Founder, Ziggers) • September 2026 • 9 min read</p>
         </div>
 
         <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-2">
@@ -855,7 +855,7 @@ const routes = [
           "headline": "Catering Workers in Chennai: Where to Hire Verified Workers and Get Catering Jobs in Chennai",
           "name": "Catering Workers in Chennai: Verified Jobs and Reliable Staff for Events",
           "author": { "@type": "Person", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/about/" },
-          "datePublished": "2026-03-01",
+          "datePublished": "2026-09-17",
           "dateModified": "2026-09-17",
           "publisher": { "@type": "Organization", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/" },
           "url": "https://www.vijayrajkumar.in/catering-workers-in-chennai/",
@@ -924,7 +924,7 @@ const routes = [
         <div class="space-y-3 border-b border-neutral-200 pb-6">
           <span class="text-xs font-bold uppercase tracking-wider text-neutral-600">Local Gig Economy &amp; Event Staffing</span>
           <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-950">Catering Workers in Chennai: Where to Hire Verified Workers and Get Catering Jobs in Chennai</h1>
-          <p class="text-xs text-neutral-600">By <a href="/about/" class="font-bold underline text-neutral-950">Vijayrajkumar</a> (COO &amp; Co-Founder, Ziggers) • March 2026 • 9 min read</p>
+          <p class="text-xs text-neutral-600">By <a href="/about/" class="font-bold underline text-neutral-950">Vijayrajkumar</a> (COO &amp; Co-Founder, Ziggers) • September 2026 • 9 min read</p>
         </div>
 
         <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-2">
