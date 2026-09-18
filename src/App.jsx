@@ -90,6 +90,16 @@ export default function App() {
       </Suspense>
     );
   }
+  if (normalizedPath === '/startup-builder-venture-builder-india') {
+    if (typeof window !== 'undefined') {
+      window.history.replaceState(null, '', '/writing/startup-builder-venture-builder-india/');
+    }
+    return (
+      <Suspense fallback={<PageFallback />}>
+        <WritingPage initialArticleId="startup-builder-venture-builder-india" />
+      </Suspense>
+    );
+  }
   if (normalizedPath === '/catering-workers-in-chennai') {
     if (typeof window !== 'undefined') {
       window.history.replaceState(null, '', '/writing/catering-workers-in-chennai/');

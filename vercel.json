@@ -43,6 +43,16 @@
       "source": "/catering-workers-in-chennai/(.*)",
       "destination": "/writing/catering-workers-in-chennai/",
       "permanent": true
+    },
+    {
+      "source": "/startup-builder-venture-builder-india",
+      "destination": "/writing/startup-builder-venture-builder-india/",
+      "permanent": true
+    },
+    {
+      "source": "/startup-builder-venture-builder-india/(.*)",
+      "destination": "/writing/startup-builder-venture-builder-india/",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -50,6 +60,7 @@
     { "source": "/ventures/ziggers/(.*)", "destination": "/ventures/ziggers/index.html" },
     { "source": "/ventures/loopmemory/(.*)", "destination": "/ventures/loopmemory/index.html" },
     { "source": "/ventures/(.*)", "destination": "/ventures/index.html" },
+    { "source": "/writing/startup-builder-venture-builder-india/(.*)", "destination": "/writing/startup-builder-venture-builder-india/index.html" },
     { "source": "/writing/gig-marketplace-chennai/(.*)", "destination": "/writing/gig-marketplace-chennai/index.html" },
     { "source": "/writing/ai-persistent-context-architecture/(.*)", "destination": "/writing/ai-persistent-context-architecture/index.html" },
     { "source": "/writing/geopolitics-defence-venture-building/(.*)", "destination": "/writing/geopolitics-defence-venture-building/index.html" },
