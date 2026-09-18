@@ -91,6 +91,9 @@ export default function App() {
     );
   }
   if (normalizedPath === '/catering-workers-in-chennai') {
+    if (typeof window !== 'undefined') {
+      window.history.replaceState(null, '', '/writing/catering-workers-in-chennai/');
+    }
     return (
       <Suspense fallback={<PageFallback />}>
         <WritingPage initialArticleId="catering-workers-in-chennai" />
