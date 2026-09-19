@@ -45,11 +45,20 @@
     <!-- Google Fonts: Asynchronous Non-Render-Blocking Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" media="print" onload="this.media='all'" />
     <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" />
     </noscript>
+
+    <!-- Google tag (gtag.js) - Asynchronous & Non-Render-Blocking -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N1EX55F46N"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N1EX55F46N');
+    </script>
 
     <!-- JSON-LD Structured Data for Search & Answer Engines (AEO/GEO) -->
     <script type="application/ld+json">
@@ -129,7 +138,11 @@
             "@type": "Place",
             "name": "Chennai, Tamil Nadu, India"
           },
-          "email": "mailto:vijaykumarunfounded@gmail.com",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Venture Collaboration",
+            "url": "https://www.vijayrajkumar.in/contact/"
+          },
           "sameAs": [
             "https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/",
             "https://x.com/bigboy00106926",
@@ -245,7 +258,7 @@
           <section id="contact">
             <h2>Contact & Collaboration</h2>
             <p>I usually respond within two working days. Contact me about venture partnerships, operational collaboration, product growth, startup ecosystems, or speaking and research opportunities.</p>
-            <p>Email: <a href="mailto:vijaykumarunfounded@gmail.com">vijaykumarunfounded@gmail.com</a></p>
+            <p>Direct Inquiries: <a href="/contact/" class="underline font-bold">Contact &amp; Collaboration Dispatch</a> (or direct email: vijaykumarunfounded [at] gmail.com)</p>
           </section>
         </article>
       </main>

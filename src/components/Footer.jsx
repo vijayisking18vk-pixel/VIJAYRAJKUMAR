@@ -63,7 +63,18 @@ export default function Footer() {
             <span className="font-bold text-[var(--color-accent-primary)] uppercase tracking-wider text-[11px] block">Connect</span>
             <ul className="space-y-1.5">
               <li><a href="/contact/" className="hover:text-[var(--color-accent-primary)] transition-colors">Start a Conversation</a></li>
-              <li><a href="mailto:vijaykumarunfounded@gmail.com" className="hover:text-[var(--color-accent-primary)] transition-colors">vijaykumarunfounded@gmail.com</a></li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    window.location.href = ['mailto:', 'vijaykumarunfounded', '@', 'gmail.com'].join('');
+                  }}
+                  className="hover:text-[var(--color-accent-primary)] transition-colors text-left cursor-pointer bg-transparent border-none p-0 text-inherit font-inherit"
+                  title="Click to open direct email"
+                >
+                  <span className="font-mono text-xs">vijaykumarunfounded [at] gmail.com</span>
+                </button>
+              </li>
             </ul>
             <div className="pt-2">
               <SocialLinks compact={true} />

@@ -14,6 +14,7 @@ export interface ParallaxLayer {
   initialTop: string;
   initialLeft: string;
   width: string;
+  deferred?: boolean;
 }
 
 export interface ParallaxHeroProps {
@@ -48,6 +49,7 @@ export const defaultLayers: ParallaxLayer[] = [
     initialTop: 'calc(50% - 100px)',
     initialLeft: 'calc(50% + 300px)',
     width: '1900px',
+    deferred: true,
   },
   {
     src: '/parallax/layer_03_mountain10.webp',
@@ -75,6 +77,7 @@ export const defaultLayers: ParallaxLayer[] = [
     initialLeft: 'calc(50%)',
     width: '2200px',
     className: 'opacity-30',
+    deferred: true,
   },
   {
     src: '/parallax/layer_05_mountain9.webp',
@@ -101,6 +104,7 @@ export const defaultLayers: ParallaxLayer[] = [
     initialTop: 'calc(50% + 360px)',
     initialLeft: 'calc(50% + 40px)',
     width: '650px',
+    deferred: true,
   },
   {
     src: '/parallax/layer_07_mountain7.webp',
@@ -127,6 +131,7 @@ export const defaultLayers: ParallaxLayer[] = [
     initialTop: 'calc(50% + 120px)',
     initialLeft: 'calc(50% + 590px)',
     width: '408px',
+    deferred: true,
   },
   {
     src: '/parallax/layer_09_fog4.webp',
@@ -141,6 +146,7 @@ export const defaultLayers: ParallaxLayer[] = [
     initialLeft: 'calc(50% + 460px)',
     width: '590px',
     className: 'opacity-50',
+    deferred: true,
   },
   {
     src: '/parallax/layer_10_mountain5.webp',
@@ -167,6 +173,7 @@ export const defaultLayers: ParallaxLayer[] = [
     initialTop: 'calc(50% + 210px)',
     initialLeft: 'calc(50% + 5px)',
     width: '1600px',
+    deferred: true,
   },
   {
     src: '/parallax/layer_12_mountain4.webp',
@@ -193,6 +200,7 @@ export const defaultLayers: ParallaxLayer[] = [
     initialTop: 'calc(50% - 20px)',
     initialLeft: 'calc(50% + 750px)',
     width: '630px',
+    deferred: true,
   },
   {
     src: '/parallax/layer_14_fog2.webp',
@@ -206,6 +214,7 @@ export const defaultLayers: ParallaxLayer[] = [
     initialTop: 'calc(50% - 20px)',
     initialLeft: 'calc(50% + 698px)',
     width: '1100px',
+    deferred: true,
   },
   {
     src: '/parallax/layer_15_mountain2.webp',
@@ -274,6 +283,21 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
   const [isMobile, setIsMobile] = useState(false);
   const [gyroActive, setGyroActive] = useState(false);
   const [needsIosPermission, setNeedsIosPermission] = useState(false);
+  const [loadSecondaryLayers, setLoadSecondaryLayers] = useState(false);
+
+  // Progressive atmospheric layer loading to keep initial HTTP requests < 20
+  useEffect(() => {
+    const loadRemaining = () => setLoadSecondaryLayers(true);
+    if (typeof window !== 'undefined') {
+      if ('requestIdleCallback' in window) {
+        const handle = (window as any).requestIdleCallback(loadRemaining, { timeout: 1200 });
+        return () => (window as any).cancelIdleCallback(handle);
+      } else {
+        const timer = setTimeout(loadRemaining, 800);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, []);
 
   // Request iOS Gyroscope Permission
   const requestGyroPermission = async () => {
@@ -487,29 +511,32 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
       <div className="absolute inset-0 z-[100] pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_45%,rgba(0,0,0,0.75)_100%)]" />
 
       {/* Parallax Layers - Hardware accelerated without CSS transition lag */}
-      {layers.map((layer, index) => (
-        <img
-          key={index}
-          ref={(el) => {
-            if (el) layerRefs.current[index] = el;
-          }}
-          src={layer.src}
-          alt={layer.alt}
-          fetchPriority={index === 0 ? "high" : "low"}
-          decoding={index === 0 ? "sync" : "async"}
-          className={cn(
-            'absolute pointer-events-none select-none max-w-none will-change-transform',
-            layer.className
-          )}
-          style={{
-            width: layer.width,
-            top: layer.initialTop,
-            left: layer.initialLeft,
-            zIndex: layer.zIndex,
-            transform: 'translate(-50%, -50%)',
-          }}
-        />
-      ))}
+      {layers.map((layer, index) => {
+        if (layer.deferred && !loadSecondaryLayers) return null;
+        return (
+          <img
+            key={index}
+            ref={(el) => {
+              if (el) layerRefs.current[index] = el;
+            }}
+            src={layer.src}
+            alt={layer.alt}
+            fetchPriority={index === 0 ? "high" : "low"}
+            decoding={index === 0 ? "sync" : "async"}
+            className={cn(
+              'absolute pointer-events-none select-none max-w-none will-change-transform transition-opacity duration-700',
+              layer.className
+            )}
+            style={{
+              width: layer.width,
+              top: layer.initialTop,
+              left: layer.initialLeft,
+              zIndex: layer.zIndex,
+              transform: 'translate(-50%, -50%)',
+            }}
+          />
+        );
+      })}
 
       {/* Centered Dynamic Title - Perfectly aligned with zero horizontal overflow */}
       <div

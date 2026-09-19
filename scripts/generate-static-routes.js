@@ -366,8 +366,12 @@ const routes = [
       "mainEntity": {
         "@type": "Person",
         "name": "Vijayrajkumar",
-        "email": "mailto:vijaykumarunfounded@gmail.com",
-        "homeLocation": { "@type": "Place", "name": "Chennai, Tamil Nadu, India" }
+        "homeLocation": { "@type": "Place", "name": "Chennai, Tamil Nadu, India" },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Venture Collaboration",
+          "url": "https://www.vijayrajkumar.in/contact/"
+        }
       }
     }),
     content: `
@@ -379,7 +383,7 @@ const routes = [
         <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-3 text-sm">
           <p><strong>Base:</strong> Chennai, Tamil Nadu, India (On-site)</p>
           <p><strong>Response Commitment:</strong> Within 2 business days</p>
-          <p><strong>Direct Email:</strong> <a href="mailto:vijaykumarunfounded@gmail.com" class="underline font-bold text-neutral-950">vijaykumarunfounded@gmail.com</a></p>
+          <p><strong>Direct Email:</strong> <span class="font-mono font-bold text-neutral-950">vijaykumarunfounded [at] gmail.com</span> (Direct dispatch via this page)</p>
           <div class="pt-2 flex flex-wrap gap-4 text-xs font-semibold">
             <a href="https://x.com/bigboy00106926" target="_blank" rel="noopener noreferrer" class="underline text-neutral-950">X (Twitter) ↗</a>
             <a href="https://www.instagram.com/vijayrajkumar_5405/" target="_blank" rel="noopener noreferrer" class="underline text-neutral-950">Instagram ↗</a>
@@ -470,7 +474,7 @@ const routes = [
               "name": "How can founders contact Vijayrajkumar?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Founders can use the contact and venture collaboration page (/contact/) or email vijaykumarunfounded@gmail.com. A useful enquiry includes the problem, target user, current stage and the specific operating support required."
+                "text": "Founders can use the contact and venture collaboration page (/contact/). A useful enquiry includes the problem, target user, current stage and the specific operating support required."
               }
             }
           ]
@@ -655,7 +659,7 @@ const routes = [
           <div class="space-y-3">
             <h2 class="text-2xl font-bold text-neutral-950">Work with a Chennai-Based Startup and Venture Builder</h2>
             <p class="text-neutral-700 leading-relaxed">If you are building a gig marketplace, an AI infrastructure product or another early-stage venture that needs hands-on operating support, Vijayrajkumar can discuss a possible collaboration.</p>
-            <p class="text-neutral-700 leading-relaxed">Send a brief through the <a href="/contact/" class="underline font-bold text-neutral-950">contact and venture collaboration page</a> or email <a href="mailto:vijaykumarunfounded@gmail.com" class="underline font-bold text-neutral-950">vijaykumarunfounded@gmail.com</a>. Include your startup's problem, target customer, current stage and the kind of support you need. Vijayrajkumar is based in Chennai, Tamil Nadu, India, and states that collaboration enquiries are usually answered within two working days.</p>
+            <p class="text-neutral-700 leading-relaxed">Send a brief through the <a href="/contact/" class="underline font-bold text-neutral-950">contact and venture collaboration page</a>. Include your startup's problem, target customer, current stage and the kind of support you need. Vijayrajkumar is based in Chennai, Tamil Nadu, India, and states that collaboration enquiries are usually answered within two working days.</p>
             <div class="p-4 bg-neutral-100 border-l-4 border-neutral-900 rounded-r-xl text-sm font-semibold text-neutral-950">
               Build the right first version, validate the right market and create the operating system for the next stage of growth.
             </div>
@@ -686,7 +690,7 @@ const routes = [
               </div>
               <div class="p-4 bg-neutral-100 rounded-xl">
                 <h4 class="font-bold text-neutral-950">How can founders contact Vijayrajkumar?</h4>
-                <p class="text-sm text-neutral-700 mt-1">Founders can use the contact and venture collaboration page (<a href="/contact/" class="underline font-semibold">/contact/</a>) or email <a href="mailto:vijaykumarunfounded@gmail.com" class="underline font-semibold">vijaykumarunfounded@gmail.com</a>. A useful enquiry includes the problem, target user, current stage and the specific operating support required.</p>
+                <p class="text-sm text-neutral-700 mt-1">Founders can use the contact and venture collaboration page (<a href="/contact/" class="underline font-semibold">/contact/</a>). A useful enquiry includes the problem, target user, current stage and the specific operating support required.</p>
               </div>
             </div>
           </div>

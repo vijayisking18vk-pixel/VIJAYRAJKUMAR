@@ -1,0 +1,4 @@
+# ads.txt for vijayrajkumar.in
+# https://iabtechlab.com/ads-txt/
+# This website does not sell or authorize digital programmatic advertising.
+contact=mailto:vijaykumarunfounded@gmail.com

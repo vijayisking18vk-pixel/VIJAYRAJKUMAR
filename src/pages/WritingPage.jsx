@@ -178,7 +178,7 @@ const articles = [
         heading: 'Work with a Chennai-Based Startup and Venture Builder',
         paragraphs: [
           'If you are building a gig marketplace, an AI infrastructure product or another early-stage venture that needs hands-on operating support, Vijayrajkumar can discuss a possible collaboration.',
-          'Send a brief through the contact and venture collaboration page or email vijaykumarunfounded@gmail.com. Include your startup’s problem, target customer, current stage and the kind of support you need. Vijayrajkumar is based in Chennai, Tamil Nadu, India, and states that collaboration enquiries are usually answered within two working days.'
+          'Send a brief through the contact and venture collaboration page (/contact/). Include your startup’s problem, target customer, current stage and the kind of support you need. Vijayrajkumar is based in Chennai, Tamil Nadu, India, and states that collaboration enquiries are usually answered within two working days.'
         ],
         callout: 'Build the right first version, validate the right market and create the operating system for the next stage of growth.'
       },
@@ -207,7 +207,7 @@ const articles = [
           },
           {
             question: 'How can founders contact Vijayrajkumar?',
-            answer: 'Founders can use the contact and venture collaboration page (/contact/) or email vijaykumarunfounded@gmail.com. A useful enquiry includes the problem, target user, current stage and the specific operating support required.'
+            answer: 'Founders can use the contact and venture collaboration page (/contact/). A useful enquiry includes the problem, target user, current stage and the specific operating support required.'
           }
         ]
       },
