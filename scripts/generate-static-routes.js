@@ -19,7 +19,7 @@ const routes = [
   {
     path: 'about',
     title: 'About Vijayrajkumar | COO & Venture Builder in Chennai',
-    description: 'Learn about Vijayrajkumar, Chief Operating Officer and co-founder at Unfounded, Ziggers, and LoopMemory. Background in Defence and Strategic Studies (SRMIST) and Hindi Literature.',
+    description: 'Learn about Vijayrajkumar, COO & co-founder at Unfounded, Ziggers, and LoopMemory. Background in Defence and Strategic Studies and Hindi Literature.',
     canonical: 'https://www.vijayrajkumar.in/about/',
     heading: 'About Vijayrajkumar',
     jsonLd: JSON.stringify({
@@ -87,7 +87,7 @@ const routes = [
   {
     path: 'ventures',
     title: 'Ventures & Case Studies | Vijayrajkumar · COO & Builder',
-    description: 'Explore ventures co-founded and operated by Vijayrajkumar in Chennai: Ziggers (local gig marketplace), LoopMemory (AI context engine), and Unfounded Venture Studio.',
+    description: 'Explore ventures operated by Vijayrajkumar in Chennai: Ziggers gig marketplace, LoopMemory AI context engine, and Unfounded Venture Studio.',
     canonical: 'https://www.vijayrajkumar.in/ventures/',
     heading: 'Ventures & Case Studies',
     jsonLd: JSON.stringify({
@@ -137,7 +137,7 @@ const routes = [
   {
     path: 'ventures/ziggers',
     title: 'Ziggers Case Study | Vijayrajkumar · Co-Founder & COO',
-    description: 'Read the comprehensive case study on Ziggers: a Chennai-first gig staffing marketplace co-founded by Vijayrajkumar. Solving informal WhatsApp hiring with milestone escrow.',
+    description: 'Case study on Ziggers: Chennai gig marketplace co-founded by Vijayrajkumar. Solving informal WhatsApp hiring with verified staff and milestone escrow.',
     canonical: 'https://www.vijayrajkumar.in/ventures/ziggers/',
     heading: 'Ziggers Case Study',
     jsonLd: JSON.stringify({
@@ -189,7 +189,7 @@ const routes = [
   {
     path: 'ventures/loopmemory',
     title: 'LoopMemory Case Study: AI Agent Memory | Vijayrajkumar',
-    description: 'Read the comprehensive case study on LoopMemory: persistent context and cognitive memory engine for AI agents co-founded and operated by Vijayrajkumar. Featured at India Global Education Summit.',
+    description: 'Case study on LoopMemory: persistent context and cognitive memory engine for AI agents, co-founded by Vijayrajkumar. Eliminating agent context rot.',
     canonical: 'https://www.vijayrajkumar.in/ventures/loopmemory/',
     heading: 'LoopMemory Case Study',
     jsonLd: JSON.stringify({
@@ -241,7 +241,7 @@ const routes = [
   {
     path: 'events',
     title: 'Events, Summits & Keynotes | Vijayrajkumar',
-    description: 'Explore events, keynote showcases, and builder sprints attended by Vijayrajkumar: India Global Education Summit, Kazakhstan-India Forum, SaaSathoN SSN, and Startup Pitchfest Kanyakumari.',
+    description: 'Keynote showcases and builder summits attended by Vijayrajkumar: India Global Education Summit, Kazakhstan-India Forum, SaaSathoN, and Pitchfest.',
     canonical: 'https://www.vijayrajkumar.in/events/',
     heading: 'Events & Summits',
     jsonLd: JSON.stringify({
@@ -292,7 +292,7 @@ const routes = [
   {
     path: 'writing',
     title: 'Writing & Strategic Research | Vijayrajkumar',
-    description: 'Thought leadership and essays by Vijayrajkumar on local gig marketplaces, persistent context memory for AI agents, and applying defence doctrines to startup building.',
+    description: 'Essays and research by Vijayrajkumar on local gig marketplaces, persistent AI agent memory architectures, and defence doctrines for startup scaling.',
     canonical: 'https://www.vijayrajkumar.in/writing/',
     heading: 'Writing & Strategic Research',
     jsonLd: JSON.stringify({
@@ -355,7 +355,7 @@ const routes = [
   {
     path: 'contact',
     title: 'Contact & Collaboration | Vijayrajkumar · COO, Chennai',
-    description: 'Get in touch with Vijayrajkumar. Chief Operating Officer and co-founder at Unfounded, Ziggers, and LoopMemory. Open to venture partnerships, operational collaboration, and speaking.',
+    description: 'Contact Vijayrajkumar, COO & co-founder at Unfounded, Ziggers, and LoopMemory. Available for venture partnerships, operational advisory, and speaking.',
     canonical: 'https://www.vijayrajkumar.in/contact/',
     heading: 'Contact Me',
     jsonLd: JSON.stringify({
@@ -396,7 +396,7 @@ const routes = [
   {
     path: 'writing/startup-builder-venture-builder-india',
     title: 'Startup Builder & Venture Builder in India | Vijayrajkumar',
-    description: 'Looking for a startup builder or venture builder in India? Learn how studio, accelerator and fractional COO models work, who they suit, and how Vijayrajkumar helps founders.',
+    description: 'Guide to startup and venture builders in India. Learn studio, accelerator, and fractional COO models with Vijayrajkumar for marketplace and AI ventures.',
     canonical: 'https://www.vijayrajkumar.in/writing/startup-builder-venture-builder-india/',
     heading: 'Startup Builder and Venture Builder in India',
     jsonLd: JSON.stringify({
@@ -412,7 +412,7 @@ const routes = [
           "publisher": { "@type": "Organization", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/" },
           "url": "https://www.vijayrajkumar.in/writing/startup-builder-venture-builder-india/",
           "mainEntityOfPage": "https://www.vijayrajkumar.in/writing/startup-builder-venture-builder-india/",
-          "description": "Looking for a startup builder or venture builder in India? Learn how studio, accelerator and fractional COO models work, who they suit, and how Vijayrajkumar helps founders.",
+          "description": "Guide to startup and venture builders in India. Learn studio, accelerator, and fractional COO models with Vijayrajkumar for marketplace and AI ventures.",
           "about": [
             "Startup builder",
             "Venture builder",
@@ -720,7 +720,7 @@ const routes = [
   {
     path: 'writing/gig-marketplace-chennai',
     title: 'Local Gig Marketplace in Chennai | Vijayrajkumar',
-    description: 'Why informal WhatsApp hiring collapses at scale in Indian tier-1 cities, how milestone-based escrow resolves worker skepticism, and the operational playbook for two-sided liquidity.',
+    description: 'Why informal WhatsApp hiring fails at scale in Indian cities, how milestone escrow builds trust, and the operational playbook for marketplace liquidity.',
     canonical: 'https://www.vijayrajkumar.in/writing/gig-marketplace-chennai/',
     heading: 'Building a Local Gig Marketplace in Chennai',
     jsonLd: JSON.stringify({
@@ -733,7 +733,7 @@ const routes = [
       "publisher": { "@type": "Organization", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/" },
       "url": "https://www.vijayrajkumar.in/writing/gig-marketplace-chennai/",
       "mainEntityOfPage": "https://www.vijayrajkumar.in/writing/gig-marketplace-chennai/",
-      "description": "Why informal WhatsApp hiring collapses at scale in Indian tier-1 cities, how milestone-based escrow resolves worker skepticism, and the operational playbook for two-sided liquidity.",
+      "description": "Why informal WhatsApp hiring fails at scale in Indian cities, how milestone escrow builds trust, and the operational playbook for marketplace liquidity.",
       "keywords": ["gig marketplace", "Chennai", "escrow payments", "WhatsApp hiring", "staffing", "Vijayrajkumar"]
     }),
     content: `
@@ -776,7 +776,7 @@ const routes = [
   {
     path: 'writing/ai-persistent-context-architecture',
     title: 'Persistent Context & Memory for AI Agents | Vijayrajkumar',
-    description: 'The technical and cognitive design challenges of multi-session AI agents: why dumping chat histories causes context rot, and how hierarchical memory graphs solve long-term agent reasoning.',
+    description: 'Why dumping chat histories causes agent context rot, and how hierarchical memory graphs solve long-term reasoning in multi-session AI workflows.',
     canonical: 'https://www.vijayrajkumar.in/writing/ai-persistent-context-architecture/',
     heading: 'Persistent Context & Memory Architecture for AI Agents',
     jsonLd: JSON.stringify({
@@ -789,7 +789,7 @@ const routes = [
       "publisher": { "@type": "Organization", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/" },
       "url": "https://www.vijayrajkumar.in/writing/ai-persistent-context-architecture/",
       "mainEntityOfPage": "https://www.vijayrajkumar.in/writing/ai-persistent-context-architecture/",
-      "description": "The technical and cognitive design challenges of multi-session AI agents: why dumping chat histories causes context rot, and how hierarchical memory graphs solve long-term agent reasoning.",
+      "description": "Why dumping chat histories causes agent context rot, and how hierarchical memory graphs solve long-term reasoning in multi-session AI workflows.",
       "keywords": ["AI agents", "persistent memory", "context architecture", "knowledge graph", "LLM", "Vijayrajkumar"]
     }),
     content: `
@@ -832,7 +832,7 @@ const routes = [
   {
     path: 'writing/geopolitics-defence-venture-building',
     title: 'Geopolitics & Defence to Venture Studios | Vijayrajkumar',
-    description: 'How academic frameworks in international security, intelligence doctrine, and deterrence strategy directly translate into early-stage startup execution and competitive defensibility.',
+    description: 'How academic frameworks in international security and deterrence strategy translate directly into early-stage startup execution and defensibility.',
     canonical: 'https://www.vijayrajkumar.in/writing/geopolitics-defence-venture-building/',
     heading: 'From Geopolitics to Venture Studios',
     jsonLd: JSON.stringify({
@@ -845,7 +845,7 @@ const routes = [
       "publisher": { "@type": "Organization", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/" },
       "url": "https://www.vijayrajkumar.in/writing/geopolitics-defence-venture-building/",
       "mainEntityOfPage": "https://www.vijayrajkumar.in/writing/geopolitics-defence-venture-building/",
-      "description": "How academic frameworks in international security, intelligence doctrine, and deterrence strategy directly translate into early-stage startup execution and competitive defensibility.",
+      "description": "How academic frameworks in international security and deterrence strategy translate directly into early-stage startup execution and defensibility.",
       "keywords": ["geopolitics", "defence strategy", "venture building", "OODA loop", "startup", "Vijayrajkumar"]
     }),
     content: `
@@ -888,7 +888,7 @@ const routes = [
   {
     path: 'writing/catering-workers-in-chennai',
     title: 'Catering Workers in Chennai: Jobs & Staff | Vijayrajkumar',
-    description: 'Looking for catering workers in Chennai or catering jobs in Chennai? Learn where freshers, daily-wage workers and experienced staff can find verified shifts, and where event hosts can hire reliable catering workers.',
+    description: 'Guide to catering workers and jobs in Chennai: verified shifts for freshers and daily-wage staff, and reliable event hiring via Ziggers marketplace.',
     canonical: 'https://www.vijayrajkumar.in/writing/catering-workers-in-chennai/',
     heading: 'Catering Workers in Chennai',
     jsonLd: JSON.stringify({
@@ -904,7 +904,7 @@ const routes = [
           "publisher": { "@type": "Organization", "name": "Vijayrajkumar", "url": "https://www.vijayrajkumar.in/" },
           "url": "https://www.vijayrajkumar.in/writing/catering-workers-in-chennai/",
           "mainEntityOfPage": "https://www.vijayrajkumar.in/writing/catering-workers-in-chennai/",
-          "description": "Looking for catering workers in Chennai or catering jobs in Chennai? Learn where freshers, daily-wage workers and experienced staff can find verified shifts, and where event hosts can hire reliable catering workers.",
+          "description": "Guide to catering workers and jobs in Chennai: verified shifts for freshers and daily-wage staff, and reliable event hiring via Ziggers marketplace.",
           "keywords": ["catering workers in chennai", "catering jobs in chennai", "daily payment catering jobs in chennai", "catering jobs in chennai for freshers", "marriage catering jobs in chennai", "hire catering staff chennai", "Ziggers", "Vijayrajkumar"]
         },
         {

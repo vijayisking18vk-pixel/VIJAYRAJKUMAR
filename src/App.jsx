@@ -2,6 +2,7 @@ import React, { useState, useEffect, lazy, Suspense } from 'react';
 import Header from './components/Header';
 import { ParallaxHero } from './components/ui/wilderness';
 import ScrollVideoSection from './components/ScrollVideoSection';
+import HomeFAQSection from './components/HomeFAQSection';
 import Footer from './components/Footer';
 import Particles from './components/react-bits/Particles';
 
@@ -141,6 +142,9 @@ export default function App() {
 
         {/* 2. Full-Screen Cinematic Scroll-Driven Video & Frame Progression */}
         <ScrollVideoSection />
+
+        {/* 3. AEO/GEO Executive Summary & Question Knowledge Hub */}
+        <HomeFAQSection />
       </main>
 
 

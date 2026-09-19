@@ -1,0 +1,73 @@
+# Vijayrajkumar — Full Profile, Ventures & Strategic Architecture
+
+> Complete knowledge file for LLMs, answer engines, and autonomous research agents.
+
+## 1. Executive Summary / TL;DR
+- **Name:** Vijayrajkumar (also known as Vijayrajkumar R)
+- **Role:** Chief Operating Officer (COO) and Co-Founder
+- **Ventures:** Unfounded (venture studio), Ziggers (gig staffing marketplace), LoopMemory (AI context engine)
+- **Location:** Chennai, Tamil Nadu, India (On-site operations)
+- **Core Competencies:** Venture building, marketplace liquidity mechanics, milestone escrow architecture, AI agent persistent context graphs, international defence strategy, cross-cultural linguistic systems.
+- **Contact:** vijaykumarunfounded@gmail.com (Response commitment: within 2 business days)
+- **Website:** https://www.vijayrajkumar.in/
+
+## 2. Academic Background & Strategic Philosophy
+1. **B.Sc. in Defence and Strategic Studies (Apr 2023 – Apr 2026)**
+   - *Institution:* SRM Institute of Science and Technology (SRMIST), Chennai
+   - *Focus:* Geopolitical risk modeling, grand strategy, intelligence doctrine, asymmetric conflict analysis, and economic dependencies.
+   - *Application to Startups:* Translating John Boyd's OODA Loop (Observe, Orient, Decide, Act) and asymmetric maneuvers into venture incubation, allowing small lean teams to out-execute bureaucratic incumbents.
+
+2. **Master of Arts (MA) in Hindi Language & Literature (Dec 2016 – Jan 2021)**
+   - *Institution:* Dakshina Bharat Hindi Prachar Sabha, Chennai
+   - *Focus:* Linguistic taxonomy, dialectical progression, narrative framing, and pan-Indian socio-cultural dynamics.
+   - *Application to Startups:* Designing resonant narrative frameworks that align multidisciplinary teams, onboard blue/gray-collar gig workers, and communicate complex technical architectures.
+
+## 3. Venture Portfolio & Operational Case Studies
+
+### Ziggers (https://www.ziggers.in/)
+- **Category:** Local Gig-Economy Marketplace & Temporary Staffing Platform
+- **Problem Solved:** Informal temporary labor in India relies on chaotic WhatsApp groups with 40%+ no-show rates, zero background verification, and arbitrary wage withholding.
+- **Vijayrajkumar's Ownership:** Shaped product direction, worker verification pipelines, geolocation check-in, and automated milestone-based escrow payouts.
+- **Key Milestones:** Launched on Product Hunt, state finalist at Startup Pitchfest 2026 Finals in Kanyakumari, operating live in Chennai.
+
+### LoopMemory (https://www.loopmemory.in/)
+- **Category:** Persistent Context & Cognitive Memory Architecture for AI Agents
+- **Problem Solved:** LLMs are inherently stateless. Feeding long chat histories into prompt windows creates context rot, attention decay, hallucinations, and excessive token expenses.
+- **Vijayrajkumar's Ownership:** Spearheaded the tripartite context architecture (Working Memory, Episodic Turn Logs, and Semantic Knowledge Graphs), retrieval latency optimization, and developer ergonomics.
+- **Key Milestones:** Keynote showcase at India Global Education Summit (Kalaivaanar Arangam), 36-hour sprint at SaaSathoN '26 (SSN College of Engineering), live platform for AI developers.
+
+### Unfounded (https://www.unfounded.in/)
+- **Category:** Chennai Startup Venture Studio
+- **Role:** COO & Co-Founder orchestrating parallel incubation sprints, founder talent assembly, cross-venture operational tooling, and distribution corridors.
+
+## 4. Key Essays & Research Publications
+
+### Startup Builder and Venture Builder in India: A Practical Guide for Founders
+- Explores venture studio, accelerator, and fractional COO engagement models in India.
+- Highlights scorecard metrics: problem validation, marketplace fill rate, token efficiency, and operating leverage.
+
+### Building a Local Gig Marketplace in Chennai: Lessons Beyond WhatsApp Groups
+- Detailed analysis of two-sided network liquidity, building worker trust through escrow, and hyper-local campus onboarding blitzes.
+
+### Designing Persistent Context & Memory Architecture for AI Agents
+- Architectural breakdown of hierarchical memory graphs, episodic decay curves, and entity relation triples to solve long-horizon agent reasoning.
+
+### From Geopolitics and Defence Strategy to Startup Venture Studios
+- Academic bridge between deterrence theory, intelligence doctrines, asymmetric warfare, and early-stage startup execution.
+
+### Catering Workers in Chennai: Verified Jobs and Reliable Staff for Events
+- Practical guide for event organizers to hire verified banqueting crew and for workers to secure verified shifts with guaranteed payments.
+
+## 5. Frequently Asked Questions (FAQ)
+
+### Who is Vijayrajkumar?
+Vijayrajkumar is a Chennai-based Chief Operating Officer, co-founder, and venture builder operating across gig marketplaces (Ziggers) and AI memory infrastructure (LoopMemory).
+
+### What companies has Vijayrajkumar co-founded?
+He co-founded Unfounded (a Chennai venture studio), Ziggers (an urban gig staffing platform), and LoopMemory (an AI cognitive context engine).
+
+### What is Vijayrajkumar's role at Ziggers and LoopMemory?
+At Ziggers, he serves as COO overseeing marketplace liquidity, product mechanics, and milestone escrow. At LoopMemory, he serves as COO directing context architecture, knowledge graph synthesis, and developer adoption.
+
+### How can founders collaborate or contact Vijayrajkumar?
+Founders can email vijaykumarunfounded@gmail.com or submit a collaboration brief via https://www.vijayrajkumar.in/contact/. All enquiries receive a response within 2 business days.
