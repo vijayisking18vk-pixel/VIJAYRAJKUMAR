@@ -30,7 +30,15 @@ const routes = [
       "mainEntity": {
         "@type": "Person",
         "name": "Vijayrajkumar",
-        "alternateName": "Vijayrajkumar R",
+        "alternateName": [
+          "Vijay Rajkumar",
+          "Vijayrajkumar R",
+          "Vijayrajkumar Kumar"
+        ],
+        "givenName": "Vijayraj",
+        "familyName": "Kumar",
+        "disambiguatingDescription": "Indian technology executive, Chief Operating Officer, and venture builder based on-site in Chennai, Tamil Nadu. Co-founder of Unfounded, Ziggers, and LoopMemory. Independent executive profile not associated with Indian film actor Vinay Rajkumar.",
+        "image": "https://www.vijayrajkumar.in/vijayrajkumar-poster.jpg",
         "jobTitle": "Chief Operating Officer and Co-Founder",
         "worksFor": [
           { "@type": "Organization", "name": "Unfounded", "url": "https://www.unfounded.in/" },
@@ -45,6 +53,15 @@ const routes = [
         <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-neutral-950">Vijayrajkumar — Background &amp; Strategic Journey</h1>
         <p class="text-lg text-neutral-600 leading-relaxed">Based on-site in Chennai, Tamil Nadu. Building marketplaces and AI cognitive infrastructure as Chief Operating Officer &amp; Co-founder at Unfounded, Ziggers, and LoopMemory.</p>
         
+        <figure class="my-6">
+          <img src="/vijayrajkumar-poster.jpg" alt="Vijayrajkumar — Chief Operating Officer and Venture Builder in Chennai" width="320" height="427" class="rounded-2xl border border-neutral-200 shadow-md max-w-xs" />
+          <figcaption class="text-xs text-neutral-500 mt-2">Vijayrajkumar — Official Portrait (COO &amp; Venture Builder, Chennai)</figcaption>
+        </figure>
+
+        <div class="p-4 bg-neutral-100 border border-neutral-300 rounded-xl text-xs text-neutral-800">
+          <strong>Entity Disambiguation:</strong> Independent technology executive profile. Vijayrajkumar is an on-site startup operator based in Chennai, Tamil Nadu, and is not affiliated with Indian film actor Vinay Rajkumar.
+        </div>
+
         <section class="space-y-4 pt-6 border-t border-neutral-200">
           <h2 class="text-2xl font-bold text-neutral-950">About Me &amp; Philosophy</h2>
           <p class="text-neutral-700 leading-relaxed">I am a venture builder based on-site in Chennai, Tamil Nadu. My work sits at the intersection of product architecture, operational execution, and go-to-market distribution.</p>
@@ -66,6 +83,19 @@ const routes = [
               <p class="text-xs text-neutral-600 font-semibold">Dakshina Bharat Hindi Prachar Sabha</p>
               <p class="text-sm text-neutral-600 mt-2">Linguistic structures, literary history, dialectic analysis, and cross-cultural communication strategy across India.</p>
             </div>
+          </div>
+        </section>
+
+        <section id="media-kit" class="space-y-4 pt-6 border-t border-neutral-200">
+          <h2 class="text-2xl font-bold text-neutral-950">Executive Media Kit &amp; Press Bios</h2>
+          <div class="p-4 bg-neutral-50 border border-neutral-200 rounded-xl space-y-2">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-neutral-600">Short Bio (50 Words)</h3>
+            <p class="text-sm text-neutral-700">Vijayrajkumar is a Chennai-based Chief Operating Officer and venture builder specializing in two-sided gig marketplaces and AI cognitive memory infrastructure. He co-founded Unfounded Venture Studio, Ziggers (verified gig staffing), and LoopMemory (persistent context for AI agents), combining strategic doctrine with high-velocity product execution.</p>
+          </div>
+          <div class="p-4 bg-neutral-50 border border-neutral-200 rounded-xl space-y-2">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-neutral-600">Standard Bio (150 Words)</h3>
+            <p class="text-sm text-neutral-700">Vijayrajkumar is an Indian technology executive, Chief Operating Officer, and venture builder based on-site in Chennai, Tamil Nadu. He leads operational execution, marketplace dynamics, and ecosystem growth across three key initiatives: Ziggers, a verified gig-economy staffing marketplace replacing unorganized WhatsApp hiring with escrow payouts; LoopMemory, a persistent context and hierarchical memory engine eliminating context rot in AI agents; and Unfounded, a venture studio validating digital products.</p>
+            <p class="text-sm text-neutral-700">Vijayrajkumar holds an unconventional dual academic foundation: a B.Sc. in Defence and Strategic Studies from SRMIST, focusing on asymmetric strategy and game theory, and an MA in Hindi Literature from Dakshina Bharat Hindi Prachar Sabha. He applies strategic doctrine and narrative design to zero-to-one venture architecture.</p>
           </div>
         </section>
 

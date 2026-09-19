@@ -26,13 +26,13 @@ if (descMatch) {
   allGood = false;
 }
 
-// Check date tags
-const hasPubTime = indexHtml.includes('article:published_time');
-const hasModTime = indexHtml.includes('article:modified_time');
+// Check profile & date tags
+const hasProfileUser = indexHtml.includes('profile:username');
 const hasOgTime = indexHtml.includes('og:updated_time');
-console.log(`[${hasPubTime ? 'PASS' : 'FAIL'}] article:published_time`);
-console.log(`[${hasModTime ? 'PASS' : 'FAIL'}] article:modified_time`);
+const hasDateMod = indexHtml.includes('dateModified');
+console.log(`[${hasProfileUser ? 'PASS' : 'FAIL'}] profile:username`);
 console.log(`[${hasOgTime ? 'PASS' : 'FAIL'}] og:updated_time`);
+console.log(`[${hasDateMod ? 'PASS' : 'FAIL'}] dateModified in JSON-LD`);
 
 // Check FAQPage schema
 const hasFaqPage = indexHtml.includes('"@type": "FAQPage"') || indexHtml.includes('"@type":"FAQPage"');

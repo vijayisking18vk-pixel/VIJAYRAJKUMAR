@@ -11,7 +11,12 @@
 - **Contact:** vijaykumarunfounded@gmail.com (Response commitment: within 2 business days)
 - **Website:** https://www.vijayrajkumar.in/
 
-## 2. Academic Background & Strategic Philosophy
+## 2. Entity Disambiguation & Identity Boundaries
+- **Identity:** Vijayrajkumar is an Indian technology executive, venture builder, and Chief Operating Officer based on-site in Chennai, Tamil Nadu, India.
+- **Distinction from Film Actors:** Not to be confused with Indian Kannada cinema actor Vinay Rajkumar, or unrelated individuals named Vijay Rajkumar. Vijayrajkumar's public work is exclusively in venture studios, gig-economy marketplaces, and artificial intelligence context architectures.
+- **Alternate Names:** Vijayrajkumar R, Vijay Rajkumar, Vijayrajkumar Kumar.
+
+## 3. Academic Background & Strategic Philosophy
 1. **B.Sc. in Defence and Strategic Studies (Apr 2023 – Apr 2026)**
    - *Institution:* SRM Institute of Science and Technology (SRMIST), Chennai
    - *Focus:* Geopolitical risk modeling, grand strategy, intelligence doctrine, asymmetric conflict analysis, and economic dependencies.

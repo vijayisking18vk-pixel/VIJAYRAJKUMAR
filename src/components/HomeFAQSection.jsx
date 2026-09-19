@@ -30,7 +30,7 @@ const FAQ_ITEMS = [
 ];
 
 export default function HomeFAQSection() {
-  const [openIndices, setOpenIndices] = useState({ 0: true, 1: true });
+  const [openIndices, setOpenIndices] = useState({ 0: true, 1: true, 2: true, 3: true, 4: true });
 
   const toggleIndex = (index) => {
     setOpenIndices((prev) => ({
@@ -56,27 +56,54 @@ export default function HomeFAQSection() {
               <Sparkles className="w-5 h-5" />
             </span>
             <span className="font-mono text-xs uppercase tracking-widest text-[#85A296] font-semibold">
-              Fast Fact Sheet // Answer Engine Summary
+              Executive Profile // Leadership Track Record
             </span>
           </div>
           <div className="flex items-center gap-2 text-xs font-mono text-[#85A296]/80">
             <Clock className="w-3.5 h-3.5" />
             <span>Last Updated:</span>
-            <time dateTime="2026-09-18" className="text-white font-medium">
-              September 18, 2026
+            <time dateTime="2026-09-19" className="text-white font-medium">
+              September 19, 2026
             </time>
           </div>
         </div>
 
-        <div className="mt-6 space-y-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
-            TL;DR: Key Takeaways &amp; Executive Summary
-          </h2>
-          <p className="text-base sm:text-lg text-[#BAC7C0] leading-relaxed">
-            <strong className="text-white font-semibold">Vijayrajkumar</strong> is a Chennai-based Chief Operating Officer and venture builder specializing in two-sided gig marketplaces (<a href="/ventures/ziggers/" className="text-[#85A296] hover:underline font-medium">Ziggers</a>) and persistent AI context memory infrastructure (<a href="/ventures/loopmemory/" className="text-[#85A296] hover:underline font-medium">LoopMemory</a>). He combines academic frameworks in Defence &amp; Strategic Studies (SRMIST) and Hindi Literature with battle-tested operational execution.
-          </p>
+        <div className="mt-6 space-y-6">
+          <div className="flex flex-col md:flex-row gap-6 items-start">
+            <div className="w-full md:w-48 shrink-0">
+              <div className="relative rounded-2xl overflow-hidden border border-[#7A968B]/40 shadow-lg bg-[#0B130E]">
+                <img
+                  src="/vijayrajkumar-poster.jpg"
+                  alt="Vijayrajkumar — Chief Operating Officer and Venture Builder in Chennai"
+                  width="400"
+                  height="533"
+                  className="w-full h-auto object-cover"
+                  loading="eager"
+                  fetchPriority="high"
+                />
+                <div className="p-2.5 bg-[#0B130E]/90 text-center border-t border-[#7A968B]/20">
+                  <span className="text-[11px] font-mono text-[#85A296] uppercase tracking-wider block font-semibold">
+                    Vijayrajkumar
+                  </span>
+                  <span className="text-[10px] text-[#BAC7C0]">COO &amp; Venture Builder</span>
+                </div>
+              </div>
+            </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+            <div className="flex-1 space-y-4">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
+                TL;DR: Key Takeaways &amp; Executive Summary
+              </h2>
+              <p className="text-base sm:text-lg text-[#BAC7C0] leading-relaxed">
+                <strong className="text-white font-semibold">Vijayrajkumar</strong> is a Chennai-based Chief Operating Officer and venture builder specializing in two-sided gig marketplaces (<a href="/ventures/ziggers/" className="text-[#85A296] hover:underline font-medium">Ziggers</a>) and persistent AI context memory infrastructure (<a href="/ventures/loopmemory/" className="text-[#85A296] hover:underline font-medium">LoopMemory</a>). He combines academic frameworks in Defence &amp; Strategic Studies (SRMIST) and Hindi Literature with battle-tested operational execution.
+              </p>
+              <div className="p-3.5 rounded-xl bg-[#1A2A22]/60 border border-[#85A296]/30 text-xs text-[#BAC7C0]">
+                <strong className="text-[#85A296]">Entity Disambiguation:</strong> Independent technology executive profile. Vijayrajkumar is an on-site startup operator based in Chennai, Tamil Nadu, and is not affiliated with Indian film actor Vinay Rajkumar.
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
             <div className="bg-[#0B130E]/60 border border-[#7A968B]/20 rounded-2xl p-4">
               <div className="flex items-center gap-2 text-[#85A296] text-xs font-mono uppercase mb-1">
                 <CheckCircle2 className="w-4 h-4" /> Core Role
@@ -108,13 +135,13 @@ export default function HomeFAQSection() {
       <section id="faq" className="space-y-6">
         <div className="text-center sm:text-left space-y-2 mb-8">
           <span className="font-mono text-xs uppercase tracking-widest text-[#85A296] font-semibold">
-            Direct Knowledge Extraction
+            Executive Q&amp;A // Verified Profile Details
           </span>
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
             Frequently Asked Questions About Vijayrajkumar
           </h2>
           <p className="text-sm text-[#BAC7C0]">
-            Authoritative answers formatted for search queries, answer engines, and generative AI synthesis.
+            Verified facts and direct answers on background, active ventures, and executive advisory.
           </p>
         </div>
 
