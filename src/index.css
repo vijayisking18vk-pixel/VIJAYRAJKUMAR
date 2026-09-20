@@ -80,25 +80,25 @@
   /* 🎨 Official GTA San Andreas Typography Color Theme */
   --gta-text-fill: #F0E8D0;
   --gta-text-fill-warm: #EDE4C8;
-  --gta-text-fill-light: #FFFFFF;
+  --gta-text-fill-light: #F5EFDD;
   --gta-text-outline: #0A0A0A;
   --gta-text-shadow: #1A1A1A;
   --gta-text-shadow-soft: rgba(0, 0, 0, 0.5);
 
   --gta-sky-top: #8FADA0;
   --gta-sky-mid: #B7C2A8;
-  --gta-sky-low: #E8E5D8;
-  --gta-sky-horizon: #F4EEDC;
-  --gta-silhouette: #3F4D42;
+  --gta-sky-low: #D9D8B0;
+  --gta-sky-horizon: #E8DFB8;
+  --gta-silhouette: #7C8873;
 
-  /* Crisp, high-contrast application canvas */
+  /* App Canvas Variables */
   --color-background: #F7F4EB;
   --color-background-start: #F7F4EB;
   --color-background-end: #EDE8D8;
   --color-text-primary: #0A0A0A;
   --color-accent-primary: #1C2E24;
-  --color-accent-secondary: #3F4D42;
-  --color-text-muted: #2E3830;
+  --color-accent-secondary: #7C8873;
+  --color-text-muted: #3D4A3E;
   --color-surface: #FFFFFF;
   --color-border: #D8D2C2;
 }
@@ -153,7 +153,7 @@
   p {
     font-family: "Futura LT", "Futura", "Plus Jakarta Sans", sans-serif;
     @apply leading-relaxed;
-    color: var(--gta-text-outline);
+    color: inherit;
   }
 }
 
