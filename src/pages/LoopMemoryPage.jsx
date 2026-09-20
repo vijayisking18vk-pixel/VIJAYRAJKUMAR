@@ -44,11 +44,11 @@ export default function LoopMemoryPage() {
               <span>Visit live platform (loopmemory.in)</span>
               <ArrowUpRight className="w-4 h-4" />
             </a>
-            <span className="text-xs text-[var(--gta-silhouette)] font-diploma tracking-wide capitalize">
+            <span className="text-xs font-bank uppercase tracking-wider font-bold text-[var(--color-accent-primary)]">
               Vijayrajkumar · Chief Operating Officer &amp; Co-Founder · Available for Developers
             </span>
-            <span className="text-[#85A296]">•</span>
-            <a href="/about/" className="text-xs font-bank uppercase tracking-wider text-[var(--color-accent-primary)] hover:underline">
+            <span className="text-[var(--gta-silhouette)]">•</span>
+            <a href="/about/" className="text-xs font-bank uppercase tracking-wider text-[var(--color-accent-primary)] hover:underline font-bold">
               About Vijayrajkumar →
             </a>
           </div>
@@ -60,7 +60,7 @@ export default function LoopMemoryPage() {
           <div className="p-6 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] hover:border-[var(--color-accent-primary)] rounded-2xl space-y-2 shadow-md transition-all">
             <div className="flex items-center space-x-2 text-[var(--color-accent-primary)] font-bold">
               <Brain className="w-4 h-4 text-[var(--color-accent-primary)]" />
-              <h2 className="text-lg font-beckett tracking-wide text-[var(--gta-text-outline)]">1. The Problem</h2>
+              <h2 className="text-lg font-futura font-bold tracking-wide text-[var(--gta-text-outline)]">1. The Problem</h2>
             </div>
             <p className="text-[var(--gta-text-outline)] font-futura leading-relaxed">
               Standard Large Language Models are stateless by design. When deploying AI agents or multi-turn conversational tools, context is either lost between sessions or shoved entirely into the prompt window — causing context rot, hallucinatory drift, and ballooning API costs.
@@ -70,7 +70,7 @@ export default function LoopMemoryPage() {
           <div className="p-6 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] hover:border-[var(--color-accent-primary)] rounded-2xl space-y-2 shadow-md transition-all">
             <div className="flex items-center space-x-2 text-[var(--color-accent-primary)] font-bold">
               <Database className="w-4 h-4 text-[var(--color-accent-primary)]" />
-              <h2 className="text-lg font-beckett tracking-wide text-[var(--gta-text-outline)]">2. The Target User</h2>
+              <h2 className="text-lg font-futura font-bold tracking-wide text-[var(--gta-text-outline)]">2. The Target User</h2>
             </div>
             <p className="text-[var(--gta-text-outline)] font-futura leading-relaxed">
               AI software developers, enterprise engineers, and founders deploying agentic workflows, long-horizon customer assistants, or personal knowledge agents requiring cross-session recall.
@@ -80,7 +80,7 @@ export default function LoopMemoryPage() {
           <div className="p-6 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] hover:border-[var(--color-accent-primary)] rounded-2xl space-y-2 shadow-md transition-all">
             <div className="flex items-center space-x-2 text-[var(--color-accent-primary)] font-bold">
               <Sparkles className="w-4 h-4 text-[var(--color-accent-primary)]" />
-              <h2 className="text-lg font-beckett tracking-wide text-[var(--gta-text-outline)]">3. What Vijayrajkumar Personally Owned</h2>
+              <h2 className="text-lg font-futura font-bold tracking-wide text-[var(--gta-text-outline)]">3. What Vijayrajkumar Personally Owned</h2>
             </div>
             <p className="text-[var(--gta-text-outline)] font-futura leading-relaxed">
               As Chief Operating Officer &amp; Co-Founder, Vijayrajkumar spearheaded the core context-structuring architecture, conceptualizing how short-term episodic conversational memory transforms into long-term semantic knowledge graphs. He directed developer positioning, API ergonomics, and industry delegation outreach.
@@ -90,7 +90,7 @@ export default function LoopMemoryPage() {
           <div className="p-6 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] hover:border-[var(--color-accent-primary)] rounded-2xl space-y-2 shadow-md transition-all">
             <div className="flex items-center space-x-2 text-[var(--color-accent-primary)] font-bold">
               <Cpu className="w-4 h-4 text-[var(--color-accent-primary)]" />
-              <h2 className="text-lg font-beckett tracking-wide text-[var(--gta-text-outline)]">4. Deliverables Shipped</h2>
+              <h2 className="text-lg font-futura font-bold tracking-wide text-[var(--gta-text-outline)]">4. Deliverables Shipped</h2>
             </div>
             <p className="text-[var(--gta-text-outline)] font-futura leading-relaxed">
               Engineered memory structuring endpoints, vector indexing with semantic retrieval, entity relationship clustering, and an intuitive developer dashboard for inspecting agent cognitive state and memory decay.
@@ -101,29 +101,29 @@ export default function LoopMemoryPage() {
 
         {/* Quantified Architectural Proof & Benchmarks */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-beckett tracking-wide text-[var(--gta-text-outline)]">
+          <h2 className="text-2xl font-pricedown uppercase tracking-wide text-[var(--gta-text-outline)]">
             Architectural Benchmarks &amp; Measured Outcomes
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <div className="p-5 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] rounded-2xl shadow-sm text-center space-y-1">
               <div className="text-3xl sm:text-4xl font-pricedown text-[var(--color-accent-primary)] tracking-wider">68%</div>
-              <div className="text-xs font-bank uppercase tracking-wider text-[var(--gta-text-outline)]">Prompt Token Savings</div>
-              <p className="text-[11px] font-futura text-[var(--gta-silhouette)]">Replaces raw chat dump with semantic entity triples in prompt payload</p>
+              <div className="text-xs font-bank uppercase tracking-wider text-[var(--gta-text-outline)] font-bold">Prompt Token Savings</div>
+              <p className="text-[11px] font-futura text-[var(--color-text-muted)] font-medium">Replaces raw chat dump with semantic entity triples in prompt payload</p>
             </div>
             <div className="p-5 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] rounded-2xl shadow-sm text-center space-y-1">
               <div className="text-3xl sm:text-4xl font-pricedown text-[var(--color-accent-primary)] tracking-wider">&lt; 80ms</div>
-              <div className="text-xs font-bank uppercase tracking-wider text-[var(--gta-text-outline)]">Retrieval Latency</div>
-              <p className="text-[11px] font-futura text-[var(--gta-silhouette)]">Sub-second semantic graph traversal across 50,000+ indexed facts</p>
+              <div className="text-xs font-bank uppercase tracking-wider text-[var(--gta-text-outline)] font-bold">Retrieval Latency</div>
+              <p className="text-[11px] font-futura text-[var(--color-text-muted)] font-medium">Sub-second semantic graph traversal across 50,000+ indexed facts</p>
             </div>
             <div className="p-5 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] rounded-2xl shadow-sm text-center space-y-1">
               <div className="text-3xl sm:text-4xl font-pricedown text-[var(--color-accent-primary)] tracking-wider">Zero</div>
-              <div className="text-xs font-bank uppercase tracking-wider text-[var(--gta-text-outline)]">Context Rot Rate</div>
-              <p className="text-[11px] font-futura text-[var(--gta-silhouette)]">Eliminates catastrophic forgetting in 50+ turn agent interactions</p>
+              <div className="text-xs font-bank uppercase tracking-wider text-[var(--gta-text-outline)] font-bold">Context Rot Rate</div>
+              <p className="text-[11px] font-futura text-[var(--color-text-muted)] font-medium">Eliminates catastrophic forgetting in 50+ turn agent interactions</p>
             </div>
             <div className="p-5 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] rounded-2xl shadow-sm text-center space-y-1">
               <div className="text-3xl sm:text-4xl font-pricedown text-[var(--color-accent-primary)] tracking-wider">100%</div>
-              <div className="text-xs font-bank uppercase tracking-wider text-[var(--gta-text-outline)]">Lossless State</div>
-              <p className="text-[11px] font-futura text-[var(--gta-silhouette)]">Persistent relational graph stored at rest for indefinite agent longevity</p>
+              <div className="text-xs font-bank uppercase tracking-wider text-[var(--gta-text-outline)] font-bold">Lossless State</div>
+              <p className="text-[11px] font-futura text-[var(--color-text-muted)] font-medium">Persistent relational graph stored at rest for indefinite agent longevity</p>
             </div>
           </div>
         </section>

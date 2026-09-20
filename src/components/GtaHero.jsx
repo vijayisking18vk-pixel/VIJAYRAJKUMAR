@@ -50,7 +50,7 @@ export default function GtaHero() {
       </div>
 
       {/* Hero Visual Poster: Mobile (First Image) vs Desktop (Second Image) */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 py-16 sm:py-20 flex items-center justify-center">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-14 sm:py-16 flex items-center justify-center">
         <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border-2 sm:border-4 border-[var(--gta-text-outline)] shadow-[0_20px_60px_rgba(10,10,10,0.85)] bg-[var(--gta-text-outline)] max-w-full">
           <picture className="block w-full h-full">
             {/* Desktop Screen: Landscape Widescreen (1024x576, 16:9) */}
@@ -83,21 +83,21 @@ export default function GtaHero() {
               fetchPriority="high"
               loading="eager"
               decoding="sync"
-              className="w-full h-auto max-h-[75vh] sm:max-h-[80vh] lg:max-h-[82vh] object-contain mx-auto block transform-gpu hover:scale-[1.01] transition-transform duration-500"
+              className="w-full h-auto max-h-[60vh] sm:max-h-[68vh] object-contain mx-auto block transform-gpu hover:scale-[1.01] transition-transform duration-500"
             />
           </picture>
         </div>
       </div>
 
       {/* Bottom GTA HUD Scroll Action Button */}
-      <div className="absolute bottom-4 sm:bottom-6 left-0 right-0 z-20 flex flex-col items-center justify-center px-4">
+      <div className="relative z-20 pb-8 flex flex-col items-center justify-center px-4">
         <button
           type="button"
           onClick={handleScrollDown}
-          className="flex items-center gap-2.5 sm:gap-3 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[var(--gta-text-outline)]/90 hover:bg-[var(--gta-text-outline)] active:scale-95 backdrop-blur-md border border-[var(--gta-silhouette)] text-[var(--gta-text-fill)] text-[10px] sm:text-xs font-bank uppercase tracking-wider font-bold shadow-2xl transition-all cursor-pointer group"
+          className="flex items-center gap-2.5 sm:gap-3 px-6 py-3 rounded-full bg-[var(--gta-text-outline)] hover:bg-[#1A1A1A] active:scale-95 border-2 border-[var(--gta-silhouette)] text-[var(--gta-text-fill)] text-xs font-bank uppercase tracking-wider font-bold shadow-2xl transition-all cursor-pointer group"
           aria-label="Scroll down to explore case studies and portals"
         >
-          <span className="w-2 h-2 rounded-full bg-[var(--gta-sky-top)] animate-pulse shrink-0" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[var(--gta-sky-top)] animate-pulse shrink-0" />
           <span className="group-hover:text-[var(--gta-text-fill-warm)] transition-colors">
             Explore Portals &amp; Ventures ↓
           </span>

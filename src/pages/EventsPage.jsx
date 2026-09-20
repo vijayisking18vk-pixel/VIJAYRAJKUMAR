@@ -155,18 +155,18 @@ export default function EventsPage() {
               {/* Event Metadata & Verified Takeaways */}
               <div className="space-y-4 flex-grow flex flex-col justify-between">
                 <div className="space-y-3">
-                  <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-bank uppercase tracking-wider text-[var(--gta-silhouette)] border-b border-[var(--gta-silhouette)]/30 pb-3">
+                  <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-bank uppercase tracking-wider text-[var(--color-text-muted)] border-b border-[var(--gta-silhouette)]/30 pb-3 font-semibold">
                     <span className="flex items-center space-x-1.5 font-bold text-[var(--gta-text-outline)]">
                       <MapPin className="w-3.5 h-3.5 text-[var(--color-accent-primary)] shrink-0" />
                       <span>{evt.venue}</span>
                     </span>
-                    <span className="flex items-center space-x-1 text-[var(--gta-silhouette)]">
+                    <span className="flex items-center space-x-1 text-[var(--color-text-muted)]">
                       <Calendar className="w-3.5 h-3.5 text-[var(--color-accent-primary)] shrink-0" />
                       <span>{evt.date}</span>
                     </span>
                   </div>
 
-                  <h3 className="text-2xl sm:text-3xl font-beckett font-bold text-[var(--gta-text-outline)] leading-snug">
+                  <h3 className="text-xl sm:text-2xl font-futura font-bold text-[var(--gta-text-outline)] leading-snug">
                     {evt.title}
                   </h3>
 
@@ -175,7 +175,7 @@ export default function EventsPage() {
                   </p>
 
                   <div className="space-y-1.5 pt-1">
-                    <span className="text-xs font-bank uppercase tracking-widest text-[var(--gta-silhouette)] font-bold block">
+                    <span className="text-xs font-bank uppercase tracking-widest text-[var(--color-accent-primary)] font-bold block">
                       Key Highlights:
                     </span>
                     <ul className="space-y-1 text-xs text-[var(--gta-text-outline)] font-futura">

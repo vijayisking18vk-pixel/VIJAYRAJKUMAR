@@ -114,9 +114,9 @@ export default function AboutPage() {
               <div className="w-10 h-10 bg-[var(--gta-sky-low)] border border-[var(--gta-silhouette)] rounded-xl flex items-center justify-center">
                 <Shield className="w-5 h-5 text-[var(--color-accent-primary)]" />
               </div>
-              <span className="text-xs text-[var(--gta-silhouette)] font-bank uppercase tracking-wider block">Apr 2023 – Apr 2026</span>
-              <h3 className="text-lg font-beckett text-[var(--gta-text-outline)] tracking-wide">B.Sc. in Defence &amp; Strategic Studies</h3>
-              <p className="text-xs text-[var(--color-accent-primary)] font-diploma tracking-wide">SRM Institute of Science and Technology (SRMIST)</p>
+              <span className="text-xs text-[var(--color-text-muted)] font-bank uppercase tracking-wider block font-bold">Apr 2023 – Apr 2026</span>
+              <h3 className="text-lg font-futura font-bold text-[var(--gta-text-outline)] tracking-wide">B.Sc. in Defence &amp; Strategic Studies</h3>
+              <p className="text-xs text-[var(--color-accent-primary)] font-bank uppercase font-bold tracking-wider">SRM Institute of Science and Technology (SRMIST)</p>
               <p className="text-sm text-[var(--gta-text-outline)] font-futura leading-relaxed pt-1">
                 Rigorous study of international security, geopolitics, grand strategy, conflict resolution, deterrence theory, and global economic interdependencies.
               </p>
@@ -126,9 +126,9 @@ export default function AboutPage() {
               <div className="w-10 h-10 bg-[var(--gta-sky-low)] border border-[var(--gta-silhouette)] rounded-xl flex items-center justify-center">
                 <BookOpen className="w-5 h-5 text-[var(--color-accent-primary)]" />
               </div>
-              <span className="text-xs text-[var(--gta-silhouette)] font-bank uppercase tracking-wider block">Dec 2016 – Jan 2021</span>
-              <h3 className="text-lg font-beckett text-[var(--gta-text-outline)] tracking-wide">Master of Arts (MA) in Hindi Literature</h3>
-              <p className="text-xs text-[var(--color-accent-primary)] font-diploma tracking-wide">Dakshina Bharat Hindi Prachar Sabha</p>
+              <span className="text-xs text-[var(--color-text-muted)] font-bank uppercase tracking-wider block font-bold">Dec 2016 – Jan 2021</span>
+              <h3 className="text-lg font-futura font-bold text-[var(--gta-text-outline)] tracking-wide">Master of Arts (MA) in Hindi Literature</h3>
+              <p className="text-xs text-[var(--color-accent-primary)] font-bank uppercase font-bold tracking-wider">Dakshina Bharat Hindi Prachar Sabha</p>
               <p className="text-sm text-[var(--gta-text-outline)] font-futura leading-relaxed pt-1">
                 Linguistic morphology, literary history, dialectic analysis, and cross-cultural communication strategy across India.
               </p>
@@ -164,14 +164,14 @@ export default function AboutPage() {
             {events.map((ev, idx) => (
               <div key={idx} className="p-6 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] hover:border-[var(--color-accent-primary)] rounded-2xl space-y-3 shadow-md transition-all">
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="text-xs font-bank uppercase tracking-wider px-3 py-1 bg-[var(--gta-sky-low)] border border-[var(--gta-silhouette)] rounded-full text-[var(--gta-text-outline)]">
+                  <span className="text-xs font-bank uppercase tracking-wider px-3 py-1 bg-[var(--gta-sky-low)] border border-[var(--gta-silhouette)] rounded-full text-[var(--gta-text-outline)] font-bold">
                     {ev.tag}
                   </span>
-                  <span className="text-xs text-[var(--gta-silhouette)] font-bank uppercase tracking-wider">{ev.location}</span>
+                  <span className="text-xs text-[var(--color-text-muted)] font-bank uppercase tracking-wider font-semibold">{ev.location}</span>
                 </div>
-                <h3 className="text-lg font-beckett tracking-wide text-[var(--gta-text-outline)]">{ev.title}</h3>
+                <h3 className="text-lg font-futura font-bold tracking-wide text-[var(--gta-text-outline)]">{ev.title}</h3>
                 <p className="text-sm text-[var(--gta-text-outline)] font-futura leading-relaxed">{ev.detail}</p>
-                <div className="text-xs font-bank uppercase tracking-wider text-[var(--color-accent-primary)] pt-1">
+                <div className="text-xs font-bank uppercase tracking-wider text-[var(--color-accent-primary)] pt-1 font-bold">
                   {ev.badge}
                 </div>
               </div>
@@ -183,7 +183,7 @@ export default function AboutPage() {
         <section id="media-kit" className="space-y-8 border-t border-[var(--color-border)]/60 pt-10">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
-              <div className="inline-flex items-center space-x-2 bg-[var(--gta-sky-low)] text-[var(--gta-text-outline)] border border-[var(--gta-silhouette)] text-xs px-3 py-1 rounded-full font-bank uppercase tracking-wider mb-2">
+              <div className="inline-flex items-center space-x-2 bg-[var(--gta-sky-low)] text-[var(--gta-text-outline)] border border-[var(--gta-silhouette)] text-xs px-3 py-1 rounded-full font-bank uppercase tracking-wider mb-2 font-bold">
                 <span>Official Verification &amp; Press Assets</span>
               </div>
               <h2 className="text-2xl font-beckett tracking-wide text-[var(--color-text-primary)]">
@@ -193,7 +193,7 @@ export default function AboutPage() {
             <a
               href="/vijayrajkumar-poster.jpg"
               download="vijayrajkumar-official-portrait.jpg"
-              className="inline-flex items-center gap-1.5 text-xs font-bank uppercase tracking-wider px-4 py-2 bg-[var(--gta-text-outline)] text-[var(--gta-text-fill)] rounded-xl hover:bg-[var(--gta-silhouette)] transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-bank uppercase tracking-wider px-4 py-2 bg-[var(--gta-text-outline)] text-[var(--gta-text-fill)] rounded-xl hover:bg-[var(--gta-text-shadow)] transition-colors font-bold"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Download Official Portrait (HD)</span>
@@ -201,8 +201,8 @@ export default function AboutPage() {
           </div>
 
           {/* Disambiguation Banner */}
-          <div className="p-4 bg-[var(--gta-sky-low)]/80 border-2 border-[var(--gta-silhouette)] rounded-2xl text-xs sm:text-sm text-[var(--gta-text-outline)] space-y-1 font-futura">
-            <strong className="block font-bank uppercase tracking-wider">Official Entity Disambiguation Note:</strong>
+          <div className="p-4 bg-[var(--gta-sky-low)]/90 border-2 border-[var(--gta-silhouette)] rounded-2xl text-xs sm:text-sm text-[var(--gta-text-outline)] space-y-1 font-futura">
+            <strong className="block font-bank uppercase tracking-wider font-bold">Official Entity Disambiguation Note:</strong>
             <p>
               Vijayrajkumar is an Indian technology executive, venture builder, and Chief Operating Officer based on-site in Chennai, Tamil Nadu, India. Co-founder of Unfounded, Ziggers, and LoopMemory. This is an independent executive identity and profile; he has no affiliation with Indian film actor Vinay Rajkumar or other persons of similar names.
             </p>
@@ -221,13 +221,13 @@ export default function AboutPage() {
               />
               <div>
                 <h3 className="font-pricedown text-lg tracking-wider uppercase text-[var(--gta-text-outline)]">VIJAYRAJKUMAR</h3>
-                <p className="text-xs font-diploma text-[var(--gta-silhouette)] tracking-wide">COO &amp; Venture Builder · Chennai</p>
+                <p className="text-xs font-bank uppercase tracking-wider font-bold text-[var(--color-accent-primary)]">COO &amp; Venture Builder · Chennai</p>
               </div>
               <a
                 href="/vijayrajkumar-poster.jpg"
                 target="_blank"
                 rel="noreferrer"
-                className="text-xs font-bank uppercase tracking-wider text-[var(--color-accent-primary)] hover:underline inline-flex items-center gap-1 mt-1"
+                className="text-xs font-bank uppercase tracking-wider text-[var(--color-accent-primary)] hover:underline inline-flex items-center gap-1 mt-1 font-bold"
               >
                 <span>View Full Resolution</span>
                 <ExternalLink className="w-3 h-3" />
@@ -238,7 +238,7 @@ export default function AboutPage() {
             <div className="md:col-span-2 space-y-4">
               <div className="p-5 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] rounded-2xl space-y-2 shadow-md">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-xs font-bank uppercase tracking-wider text-[var(--gta-silhouette)]">
+                  <h3 className="text-xs font-bank uppercase tracking-wider text-[var(--color-accent-primary)] font-bold">
                     Short Bio (50 Words — Event Guides &amp; Introductions)
                   </h3>
                 </div>
@@ -249,7 +249,7 @@ export default function AboutPage() {
 
               <div className="p-5 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] rounded-2xl space-y-2 shadow-md">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-xs font-bank uppercase tracking-wider text-[var(--gta-silhouette)]">
+                  <h3 className="text-xs font-bank uppercase tracking-wider text-[var(--color-accent-primary)] font-bold">
                     Standard Bio (150 Words — Press &amp; Panel Profiles)
                   </h3>
                 </div>
@@ -265,18 +265,18 @@ export default function AboutPage() {
 
           {/* Speaking & Keynote Topics */}
           <div className="p-6 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] rounded-2xl space-y-3 shadow-md">
-            <h3 className="text-base font-beckett tracking-wide text-[var(--gta-text-outline)]">Speaking &amp; Press Topics</h3>
+            <h3 className="text-base font-futura font-bold tracking-wide text-[var(--gta-text-outline)]">Speaking &amp; Press Topics</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 font-futura">
-              <div className="p-3 bg-[var(--gta-sky-low)]/50 rounded-xl text-xs sm:text-sm font-medium text-[var(--gta-text-outline)]">
+              <div className="p-3 bg-[var(--gta-sky-low)]/80 rounded-xl text-xs sm:text-sm font-medium text-[var(--gta-text-outline)]">
                 • <strong>AI Persistent Context:</strong> Hierarchical semantic graphs vs prompt stuffing
               </div>
-              <div className="p-3 bg-[var(--gta-sky-low)]/50 rounded-xl text-xs sm:text-sm font-medium text-[var(--gta-text-outline)]">
+              <div className="p-3 bg-[var(--gta-sky-low)]/80 rounded-xl text-xs sm:text-sm font-medium text-[var(--gta-text-outline)]">
                 • <strong>Marketplace Liquidity:</strong> Migrating blue-collar gig workflows from WhatsApp to escrow
               </div>
-              <div className="p-3 bg-[var(--gta-sky-low)]/50 rounded-xl text-xs sm:text-sm font-medium text-[var(--gta-text-outline)]">
+              <div className="p-3 bg-[var(--gta-sky-low)]/80 rounded-xl text-xs sm:text-sm font-medium text-[var(--gta-text-outline)]">
                 • <strong>Grand Strategy in Startups:</strong> Applying military doctrine &amp; OODA loops to product sprints
               </div>
-              <div className="p-3 bg-[var(--gta-sky-low)]/50 rounded-xl text-xs sm:text-sm font-medium text-[var(--gta-text-outline)]">
+              <div className="p-3 bg-[var(--gta-sky-low)]/80 rounded-xl text-xs sm:text-sm font-medium text-[var(--gta-text-outline)]">
                 • <strong>Venture Studios in India:</strong> Parallel incubation models for tier-1 tech ecosystems
               </div>
             </div>

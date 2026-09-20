@@ -34,7 +34,7 @@ export default function Footer() {
         {/* Navigation Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-xs border-b border-[var(--color-border)]/30 pb-8">
           <div className="space-y-2">
-            <span className="font-beckett text-sm text-[var(--color-accent-primary)] uppercase tracking-wider block">Overview</span>
+            <span className="font-bank text-xs font-bold text-[var(--gta-text-outline)] uppercase tracking-wider block">Overview</span>
             <ul className="space-y-1.5 font-bank uppercase tracking-wider text-xs">
               <li><a href="/" className="hover:text-[var(--color-accent-primary)] transition-colors">Home</a></li>
               <li><a href="/about/" className="hover:text-[var(--color-accent-primary)] transition-colors">About &amp; Bio</a></li>
@@ -43,7 +43,7 @@ export default function Footer() {
           </div>
 
           <div className="space-y-2">
-            <span className="font-beckett text-sm text-[var(--color-accent-primary)] uppercase tracking-wider block">Ventures</span>
+            <span className="font-bank text-xs font-bold text-[var(--gta-text-outline)] uppercase tracking-wider block">Ventures</span>
             <ul className="space-y-1.5 font-bank uppercase tracking-wider text-xs">
               <li><a href="/ventures/ziggers/" className="hover:text-[var(--color-accent-primary)] transition-colors">Ziggers Case Study</a></li>
               <li><a href="/ventures/loopmemory/" className="hover:text-[var(--color-accent-primary)] transition-colors">LoopMemory Case Study</a></li>
@@ -52,7 +52,7 @@ export default function Footer() {
           </div>
 
           <div className="space-y-2">
-            <span className="font-beckett text-sm text-[var(--color-accent-primary)] uppercase tracking-wider block">Thought Leadership</span>
+            <span className="font-bank text-xs font-bold text-[var(--gta-text-outline)] uppercase tracking-wider block">Thought Leadership</span>
             <ul className="space-y-1.5 font-bank uppercase tracking-wider text-xs">
               <li><a href="/writing/" className="hover:text-[var(--color-accent-primary)] transition-colors">All Writing &amp; Essays</a></li>
               <li><a href="/about/" className="hover:text-[var(--color-accent-primary)] transition-colors">Academic Credentials</a></li>
@@ -60,7 +60,7 @@ export default function Footer() {
           </div>
 
           <div className="space-y-2">
-            <span className="font-beckett text-sm text-[var(--color-accent-primary)] uppercase tracking-wider block">Connect</span>
+            <span className="font-bank text-xs font-bold text-[var(--gta-text-outline)] uppercase tracking-wider block">Connect</span>
             <ul className="space-y-1.5 font-bank uppercase tracking-wider text-xs">
               <li><a href="/contact/" className="hover:text-[var(--color-accent-primary)] transition-colors">Start a Conversation</a></li>
               <li>

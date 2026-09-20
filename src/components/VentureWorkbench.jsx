@@ -48,10 +48,10 @@ function FlipCard({ study, image, index }) {
             <div className="space-y-5">
               {/* Header */}
               <div className="flex items-center justify-between text-xs">
-                <span className="bg-[var(--gta-sky-low)] text-[var(--gta-text-outline)] border border-[var(--gta-silhouette)] px-3 py-1 rounded-full font-bank uppercase tracking-wider text-[10px]">
+                <span className="bg-[var(--gta-sky-low)] text-[var(--gta-text-outline)] border border-[var(--gta-silhouette)] px-3 py-1 rounded-full font-bank uppercase tracking-wider text-[10px] font-bold">
                   {study.badge}
                 </span>
-                <span className="text-[var(--gta-silhouette)] font-bank uppercase text-xs font-semibold">Case Study {caseNum}</span>
+                <span className="text-[var(--color-text-muted)] font-bank uppercase text-xs font-bold">Case Study {caseNum}</span>
               </div>
 
               {/* Title + Role */}
@@ -64,10 +64,10 @@ function FlipCard({ study, image, index }) {
                     <Icon className="w-4 h-4 text-[var(--color-accent-primary)]" />
                   </div>
                 </div>
-                <div className="text-xs font-diploma tracking-wide text-[var(--color-accent-primary)] mt-1">
+                <div className="text-xs font-bank uppercase tracking-wider font-bold text-[var(--color-accent-primary)] mt-1">
                   {study.role}
                 </div>
-                <div className="text-xs font-bank uppercase text-[var(--gta-silhouette)] font-medium mt-0.5">
+                <div className="text-xs font-bank uppercase text-[var(--color-text-muted)] font-bold mt-0.5">
                   {study.period} • {study.location}
                 </div>
               </div>

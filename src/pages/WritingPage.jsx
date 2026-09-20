@@ -694,7 +694,7 @@ export default function WritingPage({ initialArticleId = null }) {
               {selectedArticle.sections.map((section, idx) => (
                 <section key={idx} className="space-y-4">
                   {section.heading && (
-                    <h2 className="text-2xl sm:text-3xl font-beckett font-bold text-[var(--gta-text-outline)]">{section.heading}</h2>
+                    <h2 className="text-xl sm:text-2xl font-futura font-bold text-[var(--gta-text-outline)] tracking-tight">{section.heading}</h2>
                   )}
                   {section.callout && (
                     <div className="p-5 bg-[var(--gta-sky-low)] border-l-4 border-[var(--color-accent-primary)] rounded-r-2xl my-4 text-sm sm:text-base text-[var(--gta-text-outline)] font-medium leading-relaxed">
@@ -753,7 +753,7 @@ export default function WritingPage({ initialArticleId = null }) {
                     <div className="space-y-6 pt-2">
                       {section.subsections.map((sub, sIdx) => (
                         <div key={sIdx} className="space-y-3 p-5 sm:p-6 bg-[var(--gta-sky-horizon)] border border-[var(--gta-silhouette)] rounded-2xl">
-                          <h3 className="text-xl sm:text-2xl font-beckett font-bold text-[var(--gta-text-outline)]">{sub.heading}</h3>
+                          <h3 className="text-lg sm:text-xl font-futura font-bold text-[var(--gta-text-outline)]">{sub.heading}</h3>
                           {sub.paragraphs && sub.paragraphs.map((p, spIdx) => (
                             <p key={spIdx} className="text-[var(--gta-text-outline)] leading-relaxed text-sm sm:text-base font-futura">{p}</p>
                           ))}

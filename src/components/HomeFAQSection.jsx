@@ -91,41 +91,41 @@ export default function HomeFAQSection() {
             </div>
 
             <div className="flex-1 space-y-4">
-              <h2 className="text-2xl sm:text-3xl font-beckett gta-heading text-[var(--gta-text-fill)] tracking-wide leading-snug">
+              <h2 className="text-2xl sm:text-3xl font-pricedown uppercase text-[var(--gta-text-fill)] tracking-wider leading-snug">
                 TL;DR: Key Takeaways &amp; Executive Summary
               </h2>
-              <p className="text-base sm:text-lg text-[#BAC7C0] leading-relaxed font-futura">
-                <strong className="text-[var(--gta-text-fill)] font-semibold">Vijayrajkumar</strong> is a Chennai-based Chief Operating Officer and venture builder specializing in two-sided gig marketplaces (<a href="/ventures/ziggers/" className="text-[var(--gta-text-fill)] underline font-medium">Ziggers</a>) and persistent AI context memory infrastructure (<a href="/ventures/loopmemory/" className="text-[var(--gta-text-fill)] underline font-medium">LoopMemory</a>). He combines academic frameworks in Defence &amp; Strategic Studies (SRMIST) and Hindi Literature with battle-tested operational execution.
+              <p className="text-base sm:text-lg text-[var(--gta-text-fill-warm)] leading-relaxed font-futura">
+                <strong className="text-white font-bold">Vijayrajkumar</strong> is a Chennai-based Chief Operating Officer and venture builder specializing in two-sided gig marketplaces (<a href="/ventures/ziggers/" className="text-[var(--gta-text-fill)] underline font-bold">Ziggers</a>) and persistent AI context memory infrastructure (<a href="/ventures/loopmemory/" className="text-[var(--gta-text-fill)] underline font-bold">LoopMemory</a>). He combines academic frameworks in Defence &amp; Strategic Studies (SRMIST) and Hindi Literature with battle-tested operational execution.
               </p>
-              <div className="p-3.5 rounded-xl bg-[#1A2A22]/60 border border-[#85A296]/30 text-xs text-[#BAC7C0] font-futura">
-                <strong className="text-[var(--gta-text-fill)] font-bank uppercase tracking-wider">Entity Disambiguation:</strong> Independent technology executive profile. Vijayrajkumar is an on-site startup operator based in Chennai, Tamil Nadu, and is not affiliated with Indian film actor Vinay Rajkumar.
+              <div className="p-3.5 rounded-xl bg-[#1A2A22]/90 border border-[var(--gta-silhouette)] text-xs text-[var(--gta-text-fill-warm)] font-futura">
+                <strong className="text-white font-bank uppercase tracking-wider">Entity Disambiguation:</strong> Independent technology executive profile. Vijayrajkumar is an on-site startup operator based in Chennai, Tamil Nadu, and is not affiliated with Indian film actor Vinay Rajkumar.
               </div>
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-            <div className="bg-[#0B130E]/60 border border-[#7A968B]/20 rounded-2xl p-4">
-              <div className="flex items-center gap-2 text-[#85A296] text-xs font-bank uppercase tracking-wider mb-1">
+            <div className="bg-[#0B130E]/90 border border-[var(--gta-silhouette)]/60 rounded-2xl p-4">
+              <div className="flex items-center gap-2 text-[var(--gta-sky-mid)] text-xs font-bank uppercase tracking-wider mb-1 font-bold">
                 <CheckCircle2 className="w-4 h-4" /> Core Role
               </div>
-              <p className="text-sm font-semibold text-white font-futura">Chief Operating Officer &amp; Co-Founder</p>
-              <p className="text-xs text-[#BAC7C0] mt-1 font-bank uppercase tracking-wider">Unfounded · Ziggers · LoopMemory</p>
+              <p className="text-sm font-bold text-white font-futura">Chief Operating Officer &amp; Co-Founder</p>
+              <p className="text-xs text-[var(--gta-text-fill-warm)] mt-1 font-bank uppercase tracking-wider">Unfounded · Ziggers · LoopMemory</p>
             </div>
 
-            <div className="bg-[#0B130E]/60 border border-[#7A968B]/20 rounded-2xl p-4">
-              <div className="flex items-center gap-2 text-[#85A296] text-xs font-bank uppercase tracking-wider mb-1">
+            <div className="bg-[#0B130E]/90 border border-[var(--gta-silhouette)]/60 rounded-2xl p-4">
+              <div className="flex items-center gap-2 text-[var(--gta-sky-mid)] text-xs font-bank uppercase tracking-wider mb-1 font-bold">
                 <CheckCircle2 className="w-4 h-4" /> Operating Base
               </div>
-              <p className="text-sm font-semibold text-white font-futura">Chennai, Tamil Nadu, India</p>
-              <p className="text-xs text-[#BAC7C0] mt-1 font-bank uppercase tracking-wider">On-site execution &amp; ecosystem building</p>
+              <p className="text-sm font-bold text-white font-futura">Chennai, Tamil Nadu, India</p>
+              <p className="text-xs text-[var(--gta-text-fill-warm)] mt-1 font-bank uppercase tracking-wider">On-site execution &amp; ecosystem building</p>
             </div>
 
-            <div className="bg-[#0B130E]/60 border border-[#7A968B]/20 rounded-2xl p-4">
-              <div className="flex items-center gap-2 text-[#85A296] text-xs font-bank uppercase tracking-wider mb-1">
+            <div className="bg-[#0B130E]/90 border border-[var(--gta-silhouette)]/60 rounded-2xl p-4">
+              <div className="flex items-center gap-2 text-[var(--gta-sky-mid)] text-xs font-bank uppercase tracking-wider mb-1 font-bold">
                 <CheckCircle2 className="w-4 h-4" /> Primary Domains
               </div>
-              <p className="text-sm font-semibold text-white font-futura">Gig Economy &amp; AI Infrastructure</p>
-              <p className="text-xs text-[#BAC7C0] mt-1 font-bank uppercase tracking-wider">Marketplace liquidity &amp; cognitive graphs</p>
+              <p className="text-sm font-bold text-white font-futura">Gig Economy &amp; AI Infrastructure</p>
+              <p className="text-xs text-[var(--gta-text-fill-warm)] mt-1 font-bank uppercase tracking-wider">Marketplace liquidity &amp; cognitive graphs</p>
             </div>
           </div>
         </div>
@@ -134,13 +134,13 @@ export default function HomeFAQSection() {
       {/* 2. Structured Q&A Section with Question-Style Headings */}
       <section id="faq" className="space-y-6">
         <div className="text-center sm:text-left space-y-2 mb-8">
-          <span className="font-bank text-xs uppercase tracking-widest text-[var(--gta-text-fill)] font-bold">
+          <span className="font-bank text-xs uppercase tracking-widest text-[var(--gta-text-outline)] font-bold">
             Executive Q&amp;A // Verified Profile Details
           </span>
-          <h2 className="text-2xl sm:text-3xl font-beckett gta-heading text-[var(--gta-text-fill)] tracking-wide">
+          <h2 className="text-2xl sm:text-3xl font-pricedown uppercase text-[var(--gta-text-outline)] tracking-wider">
             Frequently Asked Questions About Vijayrajkumar
           </h2>
-          <p className="text-sm text-[var(--gta-text-fill-warm)] font-futura">
+          <p className="text-sm text-[var(--color-text-muted)] font-futura">
             Verified facts and direct answers on background, active ventures, and executive advisory.
           </p>
         </div>
@@ -151,15 +151,15 @@ export default function HomeFAQSection() {
             return (
               <article 
                 key={idx} 
-                className="bg-[#121C17]/85 border border-[#7A968B]/30 rounded-2xl overflow-hidden transition-all duration-200 hover:border-[#85A296]/60"
+                className="bg-[#121C17] border border-[var(--gta-silhouette)]/60 rounded-2xl overflow-hidden transition-all duration-200 hover:border-[var(--gta-sky-mid)]"
               >
                 <button
                   type="button"
                   onClick={() => toggleIndex(idx)}
-                  className="w-full px-6 py-5 flex items-center justify-between gap-4 text-left transition-colors hover:bg-[#1A2A22]/50"
+                  className="w-full px-6 py-5 flex items-center justify-between gap-4 text-left transition-colors hover:bg-[#1A2A22]"
                   aria-expanded={isOpen}
                 >
-                  <h3 className="text-base sm:text-lg font-beckett text-[var(--gta-text-fill)] tracking-wide">
+                  <h3 className="text-base sm:text-lg font-futura font-bold text-[var(--gta-text-fill)] tracking-wide">
                     {item.question}
                   </h3>
                   <ChevronDown
@@ -169,7 +169,7 @@ export default function HomeFAQSection() {
                   />
                 </button>
                 {isOpen && (
-                  <div className="px-6 pb-6 pt-1 text-sm sm:text-base text-[#DDE8E2] leading-relaxed border-t border-[#7A968B]/15 font-futura">
+                  <div className="px-6 pb-6 pt-2 text-sm sm:text-base text-[var(--gta-text-fill-warm)] leading-relaxed border-t border-[var(--gta-silhouette)]/30 font-futura">
                     <p>{item.answer}</p>
                   </div>
                 )}
