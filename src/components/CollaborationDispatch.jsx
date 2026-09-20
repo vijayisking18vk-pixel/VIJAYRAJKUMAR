@@ -61,33 +61,33 @@ export default function CollaborationDispatch() {
   ];
 
   return (
-    <section id="dispatch" className="w-full bg-[var(--color-background)] text-[var(--color-text-primary)] py-24 lg:py-32 px-6 sm:px-12 border-t border-[var(--color-border)]/40 font-sans">
+    <section id="dispatch" className="w-full bg-[var(--color-background)] text-[var(--color-text-primary)] py-24 lg:py-32 px-6 sm:px-12 border-t border-[var(--color-border)]/40 font-futura">
       <div className="max-w-6xl mx-auto space-y-16 lg:space-y-20">
         
         {/* Section Header */}
         <div className="space-y-5 border-b border-[var(--color-border)]/60 pb-10">
-          <div className="inline-flex items-center space-x-2 bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] font-sans text-xs px-3.5 py-1.5 rounded-full font-bold">
+          <div className="inline-flex items-center space-x-2 bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] font-bank uppercase text-xs px-3.5 py-1.5 rounded-full font-bold tracking-wider">
             <Send className="w-3.5 h-3.5 shrink-0 text-[#203322]" />
             <span>04 // Contact & Collaboration</span>
           </div>
 
-          <div className="text-3xl sm:text-5xl lg:text-6xl font-bold font-sans tracking-tight text-[var(--color-text-primary)] leading-tight">
+          <div className="text-3xl sm:text-5xl lg:text-6xl font-bold font-pricedown tracking-wide text-[var(--color-text-primary)] leading-tight">
             <TrueFocus sentence="Let's build together" manualMode={false} blurAmount={3} />
           </div>
 
           {/* Explicit Contact Promise Box - High Contrast Card */}
           <div className="p-6 bg-white border-2 border-[#7A968B] rounded-2xl max-w-3xl space-y-3 shadow-md">
-            <p className="text-sm sm:text-base text-[#111815] font-semibold leading-relaxed">
+            <p className="text-sm sm:text-base text-[#111815] font-semibold leading-relaxed font-futura">
               "I usually respond within two working days. Contact me about venture partnerships, product and growth collaboration, startup ecosystems, or speaking and research opportunities."
             </p>
-            <div className="flex flex-wrap items-center gap-3 pt-1 text-xs text-[#354E45]">
+            <div className="flex flex-wrap items-center gap-3 pt-1 text-xs font-bank uppercase tracking-wider text-[#354E45]">
               <span className="flex items-center space-x-1.5 font-bold text-[#111815]">
                 <Mail className="w-3.5 h-3.5 text-[#203322]" />
                 <span>Direct email:</span>
               </span>
               <a
                 href={`mailto:${directEmail}`}
-                className="font-bold text-[#203322] underline hover:text-[#111815]"
+                className="font-bold text-[#203322] underline hover:text-[#111815] lowercase"
               >
                 {directEmail}
               </a>
@@ -117,15 +117,15 @@ export default function CollaborationDispatch() {
           
           {/* Dispatch Brief Form */}
           <FluidGlass className="space-y-6">
-            <h3 className="text-xl font-bold font-sans text-neutral-950 border-b border-neutral-100 pb-4">
+            <h3 className="text-2xl font-bold font-beckett text-neutral-950 border-b border-neutral-100 pb-4">
               Send a collaboration message
             </h3>
 
             {submitted ? (
-              <div className="p-8 border border-neutral-200 bg-neutral-50 rounded-2xl text-center space-y-3">
+              <div className="p-8 border border-neutral-200 bg-neutral-50 rounded-2xl text-center space-y-3 font-futura">
                 <CheckCircle className="w-10 h-10 mx-auto text-neutral-900" />
-                <div className="text-lg font-bold text-neutral-950">Message Sent Successfully</div>
-                <p className="text-xs text-neutral-600 font-medium leading-relaxed">
+                <div className="text-2xl font-pricedown font-bold text-neutral-950 tracking-wide">Message Sent Successfully</div>
+                <p className="text-xs text-neutral-600 font-medium leading-relaxed font-futura">
                   Thank you for reaching out! Your brief has been transmitted directly to Vijayrajkumar. You will receive a response within two working days.
                 </p>
                 <button
@@ -135,19 +135,19 @@ export default function CollaborationDispatch() {
                     setFormData({ name: '', email: '', message: '', botField: '' });
                     setErrorMessage('');
                   }}
-                  className="mt-3 text-xs text-neutral-900 font-semibold underline"
+                  className="mt-3 text-xs font-bank uppercase tracking-wider text-neutral-900 font-bold underline"
                 >
                   Send another message
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4 font-sans text-xs">
+              <form onSubmit={handleSubmit} className="space-y-4 font-futura text-xs">
                 {/* Accessible Error Alert */}
                 {errorMessage && (
                   <div
                     role="alert"
                     aria-live="polite"
-                    className="p-3 bg-red-50 border border-red-300 text-red-800 rounded-xl text-xs font-medium"
+                    className="p-3 bg-red-50 border border-red-300 text-red-800 rounded-xl text-xs font-medium font-futura"
                   >
                     {errorMessage}
                   </div>
@@ -168,7 +168,7 @@ export default function CollaborationDispatch() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="contact-name" className="block text-neutral-700 font-medium">
+                  <label htmlFor="contact-name" className="block text-neutral-700 font-bank uppercase tracking-wider text-xs font-bold">
                     Your Name or Organization <span className="text-neutral-400">*</span>
                   </label>
                   <input
@@ -178,12 +178,12 @@ export default function CollaborationDispatch() {
                     placeholder="e.g. Founder, Investor, Co-builder"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full bg-white/75 border border-[var(--color-border)]/70 rounded-xl p-3.5 text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] focus:bg-white focus:border-[var(--color-accent-primary)] outline-none transition-all text-xs"
+                    className="w-full bg-white/75 border border-[var(--color-border)]/70 rounded-xl p-3.5 text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] focus:bg-white focus:border-[var(--color-accent-primary)] outline-none transition-all text-xs font-futura"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="contact-email" className="block text-[var(--color-text-primary)] font-medium">
+                  <label htmlFor="contact-email" className="block text-[var(--color-text-primary)] font-bank uppercase tracking-wider text-xs font-bold">
                     Contact Email Address <span className="text-[var(--color-text-muted)]">*</span>
                   </label>
                   <input
@@ -193,12 +193,12 @@ export default function CollaborationDispatch() {
                     placeholder="name@organization.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-white/75 border border-[var(--color-border)]/70 rounded-xl p-3.5 text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] focus:bg-white focus:border-[var(--color-accent-primary)] outline-none transition-all text-xs"
+                    className="w-full bg-white/75 border border-[var(--color-border)]/70 rounded-xl p-3.5 text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] focus:bg-white focus:border-[var(--color-accent-primary)] outline-none transition-all text-xs font-futura"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="contact-message" className="block text-[var(--color-text-primary)] font-medium">
+                  <label htmlFor="contact-message" className="block text-[var(--color-text-primary)] font-bank uppercase tracking-wider text-xs font-bold">
                     Brief Details & Context <span className="text-[var(--color-text-muted)]">*</span>
                   </label>
                   <textarea
@@ -208,17 +208,17 @@ export default function CollaborationDispatch() {
                     placeholder="Venture partnership inquiry, product collaboration, or startup ecosystem project..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full bg-white/75 border border-[var(--color-border)]/70 rounded-xl p-3.5 text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] focus:bg-white focus:border-[var(--color-accent-primary)] outline-none transition-all text-xs resize-none"
+                    className="w-full bg-white/75 border border-[var(--color-border)]/70 rounded-xl p-3.5 text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] focus:bg-white focus:border-[var(--color-accent-primary)] outline-none transition-all text-xs resize-none font-futura"
                   ></textarea>
                 </div>
 
                 <div className="w-full pt-1">
-                  <SpecularButton type="submit" className="w-full">
+                  <SpecularButton type="submit" className="w-full font-bank uppercase tracking-wider font-bold">
                     Send Collaboration Message
                   </SpecularButton>
                 </div>
 
-                <div className="text-[11px] text-neutral-500 text-center pt-1 font-medium space-y-1">
+                <div className="text-[11px] text-neutral-500 text-center pt-1 font-futura space-y-1">
                   <p>Your information is kept confidential and sent directly. No spam.</p>
                   <p>
                     Or open your email client directly:{' '}
@@ -235,52 +235,52 @@ export default function CollaborationDispatch() {
           </FluidGlass>
 
           {/* Contact Details & Links Card */}
-          <div className="space-y-8 flex flex-col justify-between p-8 bg-white border-2 border-[#7A968B] rounded-3xl shadow-md">
+          <div className="space-y-8 flex flex-col justify-between p-8 bg-white border-2 border-[#7A968B] rounded-3xl shadow-md font-futura">
             <div className="space-y-6">
               
               {/* Location */}
               <div className="space-y-1.5">
-                <span className="text-xs text-[#354E45] font-bold uppercase tracking-wider block">Base & Location</span>
+                <span className="text-xs text-[#354E45] font-bank uppercase tracking-widest font-bold block">Base & Location</span>
                 <div className="text-lg font-bold text-[#111815] flex items-center space-x-2">
                   <MapPin className="w-4 h-4 text-[#203322] shrink-0" />
-                  <span>Chennai, Tamil Nadu, India · On-site</span>
+                  <span className="font-bank uppercase text-sm tracking-wider">Chennai, Tamil Nadu, India · On-site</span>
                 </div>
               </div>
 
               {/* Roles */}
               <div className="space-y-1.5">
-                <span className="text-xs text-[#354E45] font-bold uppercase tracking-wider block">Co-Founder Positions</span>
-                <div className="text-base font-bold text-[#111815]">
+                <span className="text-xs text-[#354E45] font-bank uppercase tracking-widest font-bold block">Co-Founder Positions</span>
+                <div className="text-base font-bold text-[#111815] font-bank uppercase tracking-wider">
                   Unfounded • Ziggers • LoopMemory
                 </div>
-                <div className="text-xs text-[#354E45] font-medium">
+                <div className="text-xs text-[#354E45] font-medium font-futura">
                   Full-time (Jun 2025 – Present) · Vibe coding & product marketing
                 </div>
               </div>
 
               {/* Education 1: SRMIST */}
               <div className="space-y-1.5">
-                <span className="text-xs text-[#354E45] font-bold uppercase tracking-wider block">Education // Defence & Strategic Studies</span>
+                <span className="text-xs text-[#354E45] font-bank uppercase tracking-widest font-bold block">Education // Defence & Strategic Studies</span>
                 <a
                   href="https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/details/education/edit/forms/1193197386/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-bold text-[#111815] flex items-center space-x-2 hover:text-[#203322] hover:underline leading-snug"
+                  className="text-base font-bold text-[#111815] flex items-center space-x-2 hover:text-[#203322] hover:underline leading-snug font-diploma"
                 >
                   <GraduationCap className="w-4 h-4 text-[#203322] shrink-0" />
-                  <span>SRMIST — B.Sc. Defence & Strategic Studies (2023–2026)</span>
+                  <span>SRMIST — B.Sc. Defence &amp; Strategic Studies (2023–2026)</span>
                   <ArrowUpRight className="w-3.5 h-3.5 shrink-0 text-[#203322]" />
                 </a>
               </div>
 
               {/* Education 2: Hindi MA */}
               <div className="space-y-1.5">
-                <span className="text-xs text-[#354E45] font-bold uppercase tracking-wider block">Education // Hindi Literature</span>
+                <span className="text-xs text-[#354E45] font-bank uppercase tracking-widest font-bold block">Education // Hindi Literature</span>
                 <a
                   href="https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/details/education/edit/forms/1193198586/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-bold text-[#111815] flex items-center space-x-2 hover:text-[#203322] hover:underline leading-snug"
+                  className="text-base font-bold text-[#111815] flex items-center space-x-2 hover:text-[#203322] hover:underline leading-snug font-diploma"
                 >
                   <BookOpen className="w-4 h-4 text-[#203322] shrink-0" />
                   <span>Dakshina Bharat Hindi Prachar Sabha — MA Hindi (2016–2021)</span>
@@ -291,12 +291,12 @@ export default function CollaborationDispatch() {
             </div>
 
             <div className="space-y-3 pt-2 border-t border-[#7A968B]/30">
-              <span className="text-xs text-[#354E45] font-bold uppercase tracking-wider block">Direct Venture Platforms</span>
+              <span className="text-xs text-[#354E45] font-bank uppercase tracking-widest font-bold block">Direct Venture Platforms</span>
               <BounceCards links={directLinks} />
             </div>
 
             <div className="space-y-3 pt-4 border-t border-[#7A968B]/30">
-              <span className="text-xs text-[#354E45] font-bold uppercase tracking-wider block">Social & Professional Channels</span>
+              <span className="text-xs text-[#354E45] font-bank uppercase tracking-widest font-bold block">Social & Professional Channels</span>
               <SocialLinks compact={false} />
             </div>
 

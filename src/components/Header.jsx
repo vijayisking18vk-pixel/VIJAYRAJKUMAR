@@ -18,15 +18,15 @@ export default function Header({ activeSection, setActiveSection }) {
     <header className="sticky top-0 z-40 w-full bg-[var(--color-background)]/85 backdrop-blur-md border-b border-[var(--color-border)]/40 font-sans text-xs select-none">
       <div className="max-w-6xl mx-auto px-6 lg:px-12 py-4 flex items-center justify-between">
         
-        {/* Brand Title linking to Home - Only Name */}
+        {/* Brand Title linking to Home - GTA Pricedown Logo */}
         <a href="/" className="flex items-center space-x-2.5 group">
-          <span className="w-2 h-2 bg-[var(--color-accent-primary)] rounded-full animate-pulse transform-gpu"></span>
-          <GradientText className="font-sans font-bold text-base tracking-tight text-[var(--color-text-primary)] group-hover:opacity-85 transition-opacity">
-            Vijayrajkumar
+          <span className="w-2.5 h-2.5 bg-[var(--color-accent-primary)] rounded-full animate-pulse transform-gpu"></span>
+          <GradientText className="font-pricedown text-lg sm:text-xl tracking-wider uppercase text-[var(--color-text-primary)] group-hover:opacity-85 transition-opacity">
+            VIJAYRAJKUMAR
           </GradientText>
         </a>
 
-        {/* Desktop Navigation Items */}
+        {/* Desktop Navigation Items - GTA Bank Gothic Menu Items */}
         <nav className="hidden md:flex items-center space-x-7">
           {navItems.map((item) => {
             const Icon = item.icon;
@@ -34,7 +34,7 @@ export default function Header({ activeSection, setActiveSection }) {
               <a
                 key={item.label}
                 href={item.href}
-                className="flex items-center space-x-1.5 text-[#383838] hover:text-[var(--color-accent-primary)] font-medium transition-colors text-xs py-1"
+                className="flex items-center space-x-1.5 text-[#203028] hover:text-[var(--color-accent-primary)] font-bank uppercase tracking-wider transition-colors text-xs py-1"
               >
                 <Icon className="w-3.5 h-3.5 shrink-0 text-[var(--color-text-muted)]" />
                 <span>{item.label}</span>
@@ -50,9 +50,9 @@ export default function Header({ activeSection, setActiveSection }) {
             href="https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex"
+            className="hidden sm:inline-flex font-bank uppercase tracking-wider text-xs"
           >
-            <span>LinkedIn profile ↗</span>
+            <span>LinkedIn Profile ↗</span>
           </StarBorder>
 
           <button
@@ -76,7 +76,7 @@ export default function Header({ activeSection, setActiveSection }) {
                 key={item.label}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center space-x-2 text-sm text-[var(--color-text-primary)] hover:text-[var(--color-accent-primary)] font-medium py-2"
+                className="flex items-center space-x-2 text-xs font-bank uppercase tracking-wider text-[var(--color-text-primary)] hover:text-[var(--color-accent-primary)] py-2"
               >
                 <Icon className="w-4 h-4 text-[var(--color-text-muted)]" />
                 <span>{item.label}</span>
@@ -88,9 +88,9 @@ export default function Header({ activeSection, setActiveSection }) {
               href="https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-semibold text-[var(--color-accent-primary)] hover:underline block py-1"
+              className="text-xs font-bank uppercase tracking-wider text-[var(--color-accent-primary)] hover:underline block py-1"
             >
-              LinkedIn profile ↗
+              LinkedIn Profile ↗
             </a>
           </div>
         </div>

@@ -31,10 +31,19 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'Poppins', 'sans-serif'],
-        display: ['"Plus Jakarta Sans"', 'Poppins', 'sans-serif'],
-        poster: ['"Plus Jakarta Sans"', 'Poppins', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace']
+        sans: ['"Futura LT"', '"Plus Jakarta Sans"', 'sans-serif'],
+        body: ['"Futura LT"', '"Plus Jakarta Sans"', 'sans-serif'],
+        pricedown: ['"Pricedown"', 'Impact', 'sans-serif'],
+        display: ['"Pricedown"', 'Impact', 'sans-serif'],
+        diploma: ['"Diploma"', 'serif'],
+        beckett: ['"Beckett"', 'Georgia', 'serif'],
+        heading: ['"Beckett"', 'Georgia', 'serif'],
+        bank: ['"Bank Gothic"', 'monospace', 'sans-serif'],
+        hud: ['"Bank Gothic"', 'monospace', 'sans-serif'],
+        futura: ['"Futura LT"', 'sans-serif'],
+        'futura-condensed': ['"Futura LT Condensed"', 'sans-serif'],
+        mono: ['"Bank Gothic"', '"JetBrains Mono"', 'monospace'],
+        poster: ['"Pricedown"', 'Impact', 'sans-serif']
       },
       boxShadow: {
         'card-clean': '0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03)',

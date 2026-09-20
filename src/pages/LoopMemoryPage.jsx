@@ -21,34 +21,34 @@ export default function LoopMemoryPage() {
 
         {/* Hero Header */}
         <div className="space-y-4 border-b border-[#7A968B]/40 pb-10">
-          <div className="inline-flex items-center space-x-2 bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] text-xs px-3.5 py-1 rounded-full font-bold shadow-sm">
+          <div className="inline-flex items-center space-x-2 bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] text-xs px-3.5 py-1 rounded-full font-bank uppercase tracking-wider shadow-sm">
             <Cpu className="w-3.5 h-3.5 text-[#1B2F21]" />
             <span>AI Infrastructure Case Study · IGES Showcase</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#111815] leading-tight">
-            LoopMemory — Persistent Memory and Context Architecture for AI Agents
+          <h1 className="text-3xl sm:text-5xl font-pricedown tracking-wider uppercase text-[#111815] leading-tight">
+            LoopMemory — Persistent Memory &amp; Context Architecture for AI Agents
           </h1>
 
-          <p className="text-lg text-[#1D2B24] leading-relaxed max-w-3xl font-medium">
+          <p className="text-lg text-[#1D2B24] font-futura leading-relaxed max-w-3xl">
             Co-founded by Vijayrajkumar. A developer-focused context and cognitive architecture engine that solves LLM context loss across sessions, synthesizes dynamic knowledge graphs, and reduces token overhead.
           </p>
 
-          <div className="pt-2 flex flex-wrap items-center gap-4">
+          <div className="pt-2 flex flex-wrap items-center gap-4 font-bank uppercase text-xs">
             <a
               href="https://www.loopmemory.in/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 px-6 py-3 bg-[#203322] text-white font-semibold rounded-full hover:bg-[#111815] transition-colors text-xs shadow-md"
+              className="inline-flex items-center space-x-2 px-6 py-3 bg-[#203322] text-white font-bank uppercase tracking-wider rounded-full hover:bg-[#111815] transition-colors text-xs shadow-md"
             >
               <span>Visit live platform (loopmemory.in)</span>
               <ArrowUpRight className="w-4 h-4" />
             </a>
-            <span className="text-xs text-[#2A3E34] font-semibold">
+            <span className="text-xs text-[#2A3E34] font-diploma tracking-wide capitalize">
               Vijayrajkumar · Chief Operating Officer &amp; Co-Founder · Available for Developers
             </span>
             <span className="text-[#85A296]">•</span>
-            <a href="/about/" className="text-xs font-bold text-[#203322] hover:underline">
+            <a href="/about/" className="text-xs font-bank uppercase tracking-wider text-[#203322] hover:underline">
               About Vijayrajkumar →
             </a>
           </div>
@@ -60,9 +60,9 @@ export default function LoopMemoryPage() {
           <div className="p-6 bg-white border-2 border-[#7A968B] hover:border-[#203322] rounded-2xl space-y-2 shadow-md transition-all">
             <div className="flex items-center space-x-2 text-[#203322] font-bold">
               <Brain className="w-4 h-4 text-[#203322]" />
-              <h2 className="text-base text-[#111815]">1. The Problem</h2>
+              <h2 className="text-lg font-beckett tracking-wide text-[#111815]">1. The Problem</h2>
             </div>
-            <p className="text-[#1D2B24] leading-relaxed">
+            <p className="text-[#1D2B24] font-futura leading-relaxed">
               Standard Large Language Models are stateless by design. When deploying AI agents or multi-turn conversational tools, context is either lost between sessions or shoved entirely into the prompt window — causing context rot, hallucinatory drift, and ballooning API costs.
             </p>
           </div>
@@ -70,9 +70,9 @@ export default function LoopMemoryPage() {
           <div className="p-6 bg-white border-2 border-[#7A968B] hover:border-[#203322] rounded-2xl space-y-2 shadow-md transition-all">
             <div className="flex items-center space-x-2 text-[#203322] font-bold">
               <Database className="w-4 h-4 text-[#203322]" />
-              <h2 className="text-base text-[#111815]">2. The Target User</h2>
+              <h2 className="text-lg font-beckett tracking-wide text-[#111815]">2. The Target User</h2>
             </div>
-            <p className="text-[#1D2B24] leading-relaxed">
+            <p className="text-[#1D2B24] font-futura leading-relaxed">
               AI software developers, enterprise engineers, and founders deploying agentic workflows, long-horizon customer assistants, or personal knowledge agents requiring cross-session recall.
             </p>
           </div>
@@ -80,9 +80,9 @@ export default function LoopMemoryPage() {
           <div className="p-6 bg-white border-2 border-[#7A968B] hover:border-[#203322] rounded-2xl space-y-2 shadow-md transition-all">
             <div className="flex items-center space-x-2 text-[#203322] font-bold">
               <Sparkles className="w-4 h-4 text-[#203322]" />
-              <h2 className="text-base text-[#111815]">3. What Vijayrajkumar Personally Owned</h2>
+              <h2 className="text-lg font-beckett tracking-wide text-[#111815]">3. What Vijayrajkumar Personally Owned</h2>
             </div>
-            <p className="text-[#1D2B24] leading-relaxed">
+            <p className="text-[#1D2B24] font-futura leading-relaxed">
               As Chief Operating Officer &amp; Co-Founder, Vijayrajkumar spearheaded the core context-structuring architecture, conceptualizing how short-term episodic conversational memory transforms into long-term semantic knowledge graphs. He directed developer positioning, API ergonomics, and industry delegation outreach.
             </p>
           </div>
@@ -90,9 +90,9 @@ export default function LoopMemoryPage() {
           <div className="p-6 bg-white border-2 border-[#7A968B] hover:border-[#203322] rounded-2xl space-y-2 shadow-md transition-all">
             <div className="flex items-center space-x-2 text-[#203322] font-bold">
               <Cpu className="w-4 h-4 text-[#203322]" />
-              <h2 className="text-base text-[#111815]">4. Deliverables Shipped</h2>
+              <h2 className="text-lg font-beckett tracking-wide text-[#111815]">4. Deliverables Shipped</h2>
             </div>
-            <p className="text-[#1D2B24] leading-relaxed">
+            <p className="text-[#1D2B24] font-futura leading-relaxed">
               Engineered memory structuring endpoints, vector indexing with semantic retrieval, entity relationship clustering, and an intuitive developer dashboard for inspecting agent cognitive state and memory decay.
             </p>
           </div>
@@ -101,29 +101,29 @@ export default function LoopMemoryPage() {
 
         {/* Quantified Architectural Proof & Benchmarks */}
         <section className="space-y-4">
-          <h2 className="text-xl font-bold text-[#111815]">
-            Architectural Benchmarks & Measured Outcomes
+          <h2 className="text-2xl font-beckett tracking-wide text-[#111815]">
+            Architectural Benchmarks &amp; Measured Outcomes
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <div className="p-5 bg-white border-2 border-[#7A968B] rounded-2xl shadow-sm text-center space-y-1">
-              <div className="text-2xl sm:text-3xl font-black text-[#203322]">68%</div>
-              <div className="text-xs font-bold text-[#111815]">Prompt Token Savings</div>
-              <p className="text-[11px] text-[#2A3E34]">Replaces raw chat dump with semantic entity triples in prompt payload</p>
+              <div className="text-3xl sm:text-4xl font-pricedown text-[#203322] tracking-wider">68%</div>
+              <div className="text-xs font-bank uppercase tracking-wider text-[#111815]">Prompt Token Savings</div>
+              <p className="text-[11px] font-futura text-[#2A3E34]">Replaces raw chat dump with semantic entity triples in prompt payload</p>
             </div>
             <div className="p-5 bg-white border-2 border-[#7A968B] rounded-2xl shadow-sm text-center space-y-1">
-              <div className="text-2xl sm:text-3xl font-black text-[#203322]">&lt; 80ms</div>
-              <div className="text-xs font-bold text-[#111815]">Retrieval Latency</div>
-              <p className="text-[11px] text-[#2A3E34]">Sub-second semantic graph traversal across 50,000+ indexed facts</p>
+              <div className="text-3xl sm:text-4xl font-pricedown text-[#203322] tracking-wider">&lt; 80ms</div>
+              <div className="text-xs font-bank uppercase tracking-wider text-[#111815]">Retrieval Latency</div>
+              <p className="text-[11px] font-futura text-[#2A3E34]">Sub-second semantic graph traversal across 50,000+ indexed facts</p>
             </div>
             <div className="p-5 bg-white border-2 border-[#7A968B] rounded-2xl shadow-sm text-center space-y-1">
-              <div className="text-2xl sm:text-3xl font-black text-[#203322]">Zero</div>
-              <div className="text-xs font-bold text-[#111815]">Context Rot Rate</div>
-              <p className="text-[11px] text-[#2A3E34]">Temporal decay curves prevent obsolete session instructions from polluting decisions</p>
+              <div className="text-3xl sm:text-4xl font-pricedown text-[#203322] tracking-wider">Zero</div>
+              <div className="text-xs font-bank uppercase tracking-wider text-[#111815]">Context Rot Rate</div>
+              <p className="text-[11px] font-futura text-[#2A3E34]">Eliminates catastrophic forgetting in 50+ turn agent interactions</p>
             </div>
             <div className="p-5 bg-white border-2 border-[#7A968B] rounded-2xl shadow-sm text-center space-y-1">
-              <div className="text-2xl sm:text-3xl font-black text-[#203322]">36 Hrs</div>
-              <div className="text-xs font-bold text-[#111815]">Sprint Validation</div>
-              <p className="text-[11px] text-[#2A3E34]">Battle-tested in high-concurrency multi-agent sprint at SaaSathoN &apos;26</p>
+              <div className="text-3xl sm:text-4xl font-pricedown text-[#203322] tracking-wider">100%</div>
+              <div className="text-xs font-bank uppercase tracking-wider text-[#111815]">Lossless State</div>
+              <p className="text-[11px] font-futura text-[#2A3E34]">Persistent relational graph stored at rest for indefinite agent longevity</p>
             </div>
           </div>
         </section>

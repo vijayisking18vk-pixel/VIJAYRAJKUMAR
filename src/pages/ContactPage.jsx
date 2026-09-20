@@ -7,34 +7,34 @@ import { Mail, MessageSquare, Clock, MapPin, CheckCircle2, Share2 } from 'lucide
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-sans selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
+    <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-futura selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
       <Header />
 
       <main className="flex-grow max-w-4xl mx-auto px-6 py-16 lg:py-24 space-y-16">
         
         {/* Breadcrumb */}
-        <div className="flex items-center space-x-2 text-xs text-[var(--color-text-muted)] font-medium">
+        <div className="flex items-center space-x-2 text-xs font-bank uppercase tracking-wider text-[var(--color-text-muted)] font-medium">
           <a href="/" className="hover:text-[var(--color-accent-primary)] transition-colors">Home</a>
           <span>/</span>
-          <span className="text-[var(--color-text-primary)] font-semibold">Contact & Collaboration</span>
+          <span className="text-[var(--color-text-primary)] font-bold">Contact & Collaboration</span>
         </div>
 
         {/* Header Block */}
         <div className="space-y-4 border-b border-[#7A968B]/40 pb-10">
-          <div className="inline-flex items-center space-x-2 bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] text-xs px-3.5 py-1 rounded-full font-bold shadow-sm">
+          <div className="inline-flex items-center space-x-2 bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] text-xs px-3.5 py-1 rounded-full font-bank uppercase tracking-wider font-bold shadow-sm">
             <MessageSquare className="w-3.5 h-3.5 text-[#1B2F21]" />
             <span>Direct Communication Channel</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#111815] leading-tight">
+          <h1 className="text-4xl sm:text-6xl font-pricedown font-bold tracking-wide text-[#111815] leading-tight">
             Vijayrajkumar — Contact &amp; Venture Collaboration
           </h1>
 
-          <p className="text-lg text-[#1D2B24] leading-relaxed max-w-3xl font-medium">
+          <p className="text-lg text-[#1D2B24] leading-relaxed max-w-3xl font-futura">
             Direct communication channel with Vijayrajkumar. I usually respond within two working days. Reach out regarding venture partnerships, operational execution, product growth, startup ecosystems, or speaking and research opportunities.
           </p>
 
-          <div className="flex flex-wrap items-center gap-6 text-xs text-[#2A3E34] font-medium pt-2">
+          <div className="flex flex-wrap items-center gap-6 text-xs font-bank uppercase tracking-wider text-[#2A3E34] pt-2">
             <div className="flex items-center space-x-1.5">
               <Clock className="w-4 h-4 text-[#203322]" />
               <span>Response promise: &lt; 48 hours</span>
@@ -58,11 +58,11 @@ export default function ContactPage() {
         {/* Contextual Guidance */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm">
           <div className="p-6 bg-white border-2 border-[#7A968B] rounded-2xl space-y-2 shadow-md">
-            <h2 className="font-bold text-[#111815] flex items-center space-x-2">
+            <h2 className="font-bold font-beckett text-xl text-[#111815] flex items-center space-x-2">
               <CheckCircle2 className="w-4 h-4 text-[#203322]" />
               <span>What I Prioritize</span>
             </h2>
-            <ul className="text-[#1D2B24] space-y-1.5 text-xs leading-relaxed pt-1 font-medium">
+            <ul className="text-[#1D2B24] space-y-1.5 text-xs leading-relaxed pt-1 font-futura">
               <li>• Early-stage co-founding & studio venture partnerships</li>
               <li>• Marketplace architecture & product-led growth strategy</li>
               <li>• AI context/memory infrastructure implementations</li>
@@ -71,11 +71,11 @@ export default function ContactPage() {
           </div>
 
           <div className="p-6 bg-white border-2 border-[#7A968B] rounded-2xl space-y-2 shadow-md">
-            <h2 className="font-bold text-[#111815] flex items-center space-x-2">
+            <h2 className="font-bold font-beckett text-xl text-[#111815] flex items-center space-x-2">
               <CheckCircle2 className="w-4 h-4 text-[#203322]" />
               <span>What to Expect</span>
             </h2>
-            <p className="text-[#1D2B24] text-xs leading-relaxed pt-1 font-medium">
+            <p className="text-[#1D2B24] text-xs leading-relaxed pt-1 font-futura">
               Direct communication without intermediary screening. If you share a brief with clear problem definitions and goals, we can schedule an introductory sync or meet in person across Chennai.
             </p>
           </div>
@@ -83,7 +83,7 @@ export default function ContactPage() {
 
         {/* Social & Professional Channels */}
         <div className="space-y-4 pt-2">
-          <div className="flex items-center space-x-2 text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">
+          <div className="flex items-center space-x-2 text-xs font-bank uppercase tracking-widest text-[var(--color-text-muted)]">
             <Share2 className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
             <span>Direct Social & Network Profiles</span>
           </div>

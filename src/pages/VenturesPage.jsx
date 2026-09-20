@@ -19,20 +19,20 @@ export default function VenturesPage() {
 
         {/* Ventures Hero Header */}
         <div className="space-y-4 border-b border-[var(--color-border)]/40 pb-10">
-          <div className="inline-flex items-center space-x-2 bg-[var(--color-surface)]/30 text-[var(--color-accent-primary)] border border-[var(--color-border)]/40 text-xs px-3 py-1 rounded-full font-semibold">
+          <div className="inline-flex items-center space-x-2 bg-[var(--color-surface)]/30 text-[var(--color-accent-primary)] border border-[var(--color-border)]/40 text-xs px-3 py-1 rounded-full font-bank uppercase tracking-wider">
             <Layers className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
-            <span>Chief Operating Officer & Co-Founder Portfolios</span>
+            <span>Chief Operating Officer &amp; Co-Founder Portfolios</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[var(--color-text-primary)] leading-tight">
-            Vijayrajkumar — Ventures, Marketplaces &amp; AI Systems
+          <h1 className="text-3xl sm:text-5xl font-pricedown tracking-wider uppercase text-[var(--color-text-primary)] leading-tight">
+            VIJAYRAJKUMAR — Ventures, Marketplaces &amp; AI Systems
           </h1>
 
-          <p className="text-lg text-[#383838] leading-relaxed max-w-3xl">
+          <p className="text-lg text-[#383838] font-futura leading-relaxed max-w-3xl">
             Detailed case studies of ventures co-founded and operated by Vijayrajkumar. Each study outlines the systemic problem, target audience, personal ownership, deliverables shipped, and verifiable evidence.
           </p>
 
-          <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-semibold">
+          <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-bank uppercase tracking-wider">
             <a href="/ventures/ziggers/" className="inline-flex items-center space-x-1 text-[var(--color-accent-primary)] hover:underline">
               <span>Deep dive: Ziggers Case Study</span>
               <ArrowRight className="w-3.5 h-3.5" />

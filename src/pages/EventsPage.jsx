@@ -81,36 +81,36 @@ const EVENTS_DATA = [
 
 export default function EventsPage() {
   return (
-    <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-sans selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
+    <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-futura selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
       <Header />
 
       <main className="flex-grow max-w-6xl mx-auto px-6 lg:px-12 py-16 space-y-16">
         
         {/* Breadcrumb Navigation */}
-        <div className="flex items-center space-x-2 text-xs text-[var(--color-text-muted)] font-medium">
+        <div className="flex items-center space-x-2 text-xs font-bank uppercase tracking-wider text-[var(--color-text-muted)] font-medium">
           <a href="/" className="hover:text-[var(--color-accent-primary)]">Home</a>
           <span>/</span>
           <span className="text-[var(--color-text-muted)]">Overview</span>
           <span>/</span>
-          <span className="text-[var(--color-text-primary)] font-semibold">Events & Summits</span>
+          <span className="text-[var(--color-text-primary)] font-bold">Events & Summits</span>
         </div>
 
         {/* Page Header */}
         <div className="space-y-4 border-b border-[#7A968B]/40 pb-10">
-          <div className="inline-flex items-center space-x-2 bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] text-xs px-3.5 py-1 rounded-full font-bold shadow-sm">
+          <div className="inline-flex items-center space-x-2 bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] text-xs px-3.5 py-1 rounded-full font-bank uppercase tracking-wider font-bold shadow-sm">
             <Calendar className="w-3.5 h-3.5 text-[#1B2F21]" />
             <span>Summits, Hackathons & Keynotes</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#111815] leading-tight">
+          <h1 className="text-4xl sm:text-6xl font-pricedown font-bold tracking-wide text-[#111815] leading-tight">
             Vijayrajkumar — Events, Summits &amp; Builder Sprints
           </h1>
 
-          <p className="text-lg text-[#1D2B24] leading-relaxed max-w-3xl font-medium">
+          <p className="text-lg text-[#1D2B24] leading-relaxed max-w-3xl font-futura">
             Firsthand photo records and verified milestones from global summits, international delegations, 36-hour builder sprints, and startup pitchfest finals where Vijayrajkumar represented Unfounded, Ziggers, and LoopMemory.
           </p>
 
-          <div className="pt-1 flex flex-wrap items-center gap-4 text-xs text-[#2A3E34] font-semibold">
+          <div className="pt-1 flex flex-wrap items-center gap-4 text-xs font-bank uppercase tracking-wider text-[#2A3E34]">
             <div className="flex items-center space-x-2">
               <Sparkles className="w-3.5 h-3.5 text-[#203322]" />
               <span>Interactive physics: Hover over event cards to experience dynamic liquid displacement</span>
@@ -142,10 +142,10 @@ export default function EventsPage() {
                   movementBound={45}
                 >
                   <div className="text-white drop-shadow-[0_6px_16px_rgba(0,0,0,0.95)]">
-                    <span className="text-[10px] uppercase font-mono tracking-widest text-[#98B5A9] font-bold block mb-1">
+                    <span className="text-[10px] uppercase font-bank tracking-widest text-[#98B5A9] font-bold block mb-1">
                       {evt.category}
                     </span>
-                    <h2 className="text-lg sm:text-xl font-black text-white leading-tight">
+                    <h2 className="text-2xl sm:text-3xl font-pricedown font-bold text-white leading-tight tracking-wide">
                       {evt.title}
                     </h2>
                   </div>
@@ -155,7 +155,7 @@ export default function EventsPage() {
               {/* Event Metadata & Verified Takeaways */}
               <div className="space-y-4 flex-grow flex flex-col justify-between">
                 <div className="space-y-3">
-                  <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-[#2A3E34] font-medium border-b border-[#7A968B]/30 pb-3">
+                  <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-bank uppercase tracking-wider text-[#2A3E34] border-b border-[#7A968B]/30 pb-3">
                     <span className="flex items-center space-x-1.5 font-bold text-[#111815]">
                       <MapPin className="w-3.5 h-3.5 text-[#203322] shrink-0" />
                       <span>{evt.venue}</span>
@@ -166,19 +166,19 @@ export default function EventsPage() {
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-[#111815] leading-snug">
+                  <h3 className="text-2xl sm:text-3xl font-beckett font-bold text-[#111815] leading-snug">
                     {evt.title}
                   </h3>
 
-                  <p className="text-sm text-[#1D2B24] leading-relaxed">
+                  <p className="text-sm text-[#1D2B24] leading-relaxed font-futura">
                     {evt.summary}
                   </p>
 
                   <div className="space-y-1.5 pt-1">
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#2A3E34] block">
+                    <span className="text-xs font-bank uppercase tracking-widest text-[#2A3E34] font-bold block">
                       Key Highlights:
                     </span>
-                    <ul className="space-y-1 text-xs text-[#1D2B24]">
+                    <ul className="space-y-1 text-xs text-[#1D2B24] font-futura">
                       {evt.takeaways.map((highlight, idx) => (
                         <li key={idx} className="flex items-start space-x-2">
                           <CheckCircle2 className="w-3.5 h-3.5 text-[#203322] shrink-0 mt-0.5" />
@@ -189,14 +189,14 @@ export default function EventsPage() {
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-[#7A968B]/30 flex items-center justify-between">
-                  <span className="text-xs font-bold text-[#203322] inline-flex items-center space-x-1">
+                <div className="pt-4 border-t border-[#7A968B]/30 flex items-center justify-between font-bank uppercase tracking-wider text-xs">
+                  <span className="font-bold text-[#203322] inline-flex items-center space-x-1">
                     <Award className="w-3.5 h-3.5 text-[#203322]" />
                     <span>{evt.role}</span>
                   </span>
                   <a
                     href={evt.ventureLink}
-                    className="inline-flex items-center space-x-1 text-xs font-bold text-[#203322] hover:underline"
+                    className="inline-flex items-center space-x-1 font-bold text-[#203322] hover:underline"
                   >
                     <span>View Case Study</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />

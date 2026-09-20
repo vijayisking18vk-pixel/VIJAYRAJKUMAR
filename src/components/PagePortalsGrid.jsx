@@ -43,19 +43,19 @@ export default function PagePortalsGrid() {
   ];
 
   return (
-    <section id="portals" className="w-full bg-[var(--color-background)] text-[var(--color-text-primary)] py-20 px-6 sm:px-12 border-t border-[var(--color-border)]/40 font-sans">
+    <section id="portals" className="w-full bg-[var(--color-background)] text-[var(--color-text-primary)] py-20 px-6 sm:px-12 border-t border-[var(--color-border)]/40 font-futura">
       <div className="max-w-6xl mx-auto space-y-12">
         
         {/* Header */}
         <div className="space-y-3 max-w-2xl">
-          <div className="inline-flex items-center space-x-2 bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] text-xs px-3.5 py-1.5 rounded-full font-bold">
+          <div className="inline-flex items-center space-x-2 bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] text-xs px-3.5 py-1.5 rounded-full font-bank uppercase tracking-wider font-bold shadow-sm">
             <Layers className="w-3.5 h-3.5 text-[#203322]" />
             <span>Explore the Platform</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-[var(--color-text-primary)]">
-            Dedicated sections & portfolios
+          <h2 className="text-3xl sm:text-5xl font-pricedown font-bold tracking-wide text-[var(--color-text-primary)]">
+            Dedicated sections &amp; portfolios
           </h2>
-          <p className="text-sm sm:text-base text-[#203028] leading-relaxed">
+          <p className="text-sm sm:text-base text-[#203028] leading-relaxed font-futura">
             Navigate directly to detailed case studies, background credentials, strategic writing, or the collaboration dispatch.
           </p>
         </div>
@@ -73,7 +73,7 @@ export default function PagePortalsGrid() {
                 <SpotlightCard className="p-8 h-full flex flex-col justify-between space-y-6 hover:border-[var(--color-accent-primary)] transition-all rounded-3xl bg-white border-2 border-[#7A968B] shadow-md">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs uppercase tracking-wider font-bold text-[#354E45]">
+                      <span className="text-xs font-bank uppercase tracking-widest font-bold text-[#354E45]">
                         {portal.category}
                       </span>
                       <div className="w-8 h-8 rounded-full bg-[#E2ECE7] border border-[#85A296] flex items-center justify-center text-[#1B2F21] group-hover:bg-[#203322] group-hover:text-white transition-colors">
@@ -82,10 +82,10 @@ export default function PagePortalsGrid() {
                     </div>
 
                     <div className="space-y-2">
-                      <h3 className="text-xl sm:text-2xl font-bold text-[#111815] group-hover:text-[#203322] transition-colors">
+                      <h3 className="text-2xl sm:text-3xl font-beckett font-bold text-[#111815] group-hover:text-[#203322] transition-colors">
                         {portal.title}
                       </h3>
-                      <p className="text-sm text-[#203028] leading-relaxed">
+                      <p className="text-sm text-[#203028] leading-relaxed font-futura">
                         {portal.description}
                       </p>
                     </div>
@@ -96,14 +96,14 @@ export default function PagePortalsGrid() {
                       {portal.highlights.map((h, i) => (
                         <span
                           key={i}
-                          className="text-[11px] bg-[#E2ECE7] border border-[#85A296] text-[#1B2F21] px-2.5 py-1 rounded-md font-bold"
+                          className="text-[11px] bg-[#E2ECE7] border border-[#85A296] text-[#1B2F21] px-2.5 py-1 rounded-md font-bank uppercase tracking-wider font-bold"
                         >
                           {h}
                         </span>
                       ))}
                     </div>
 
-                    <div className="flex items-center justify-between text-xs pt-1">
+                    <div className="flex items-center justify-between text-xs pt-1 font-bank uppercase tracking-wider">
                       <span className="font-bold text-[#1B2F21] bg-[#E2ECE7] px-2.5 py-1 rounded-full border border-[#85A296]">
                         {portal.badge}
                       </span>

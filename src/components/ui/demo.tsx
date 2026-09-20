@@ -549,13 +549,13 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
         }}
       >
         <h1
-          className="font-black text-[17vw] sm:text-[15vw] md:text-[12vw] lg:text-[15rem] leading-[0.85] tracking-wider sm:tracking-widest uppercase drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)] opacity-95 truncate"
+          className="font-pricedown font-black text-[18vw] sm:text-[16vw] md:text-[13vw] lg:text-[16rem] leading-[0.85] tracking-wider sm:tracking-widest uppercase drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)] opacity-95 truncate"
           aria-label="Vijayrajkumar — Chief Operating Officer and Venture Builder in Chennai"
         >
           <span className="sr-only">Vijayrajkumar — Chief Operating Officer and Venture Builder in Chennai</span>
           <span aria-hidden="true">{title}</span>
         </h1>
-        <p className="mt-3 sm:mt-4 text-[10px] sm:text-xs md:text-sm lg:text-base uppercase tracking-[0.18em] sm:tracking-[0.28em] md:tracking-[0.35em] text-[#C9D6D3] font-mono font-medium drop-shadow whitespace-normal leading-relaxed px-2">
+        <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base lg:text-lg tracking-wider text-[#DDE8E2] font-diploma drop-shadow whitespace-normal leading-relaxed px-2">
           Chief Operating Officer &amp; Co-Founder
         </p>
       </div>
@@ -565,7 +565,7 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
         {needsIosPermission ? (
           <button
             onClick={requestGyroPermission}
-            className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[var(--color-accent-primary)]/80 hover:bg-[var(--color-accent-primary)] active:scale-95 backdrop-blur-md border border-[var(--color-border)]/40 text-white text-xs font-mono tracking-wider shadow-2xl transition-colors animate-pulse transform-gpu"
+            className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[var(--color-accent-primary)]/80 hover:bg-[var(--color-accent-primary)] active:scale-95 backdrop-blur-md border border-[var(--color-border)]/40 text-white text-xs font-bank uppercase tracking-wider shadow-2xl transition-colors animate-pulse transform-gpu"
           >
             <span>📱</span>
             <span>Tap to Enable 3D Tilt Effect</span>
@@ -574,7 +574,7 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
           <button
             type="button"
             onClick={handleScrollDown}
-            className="flex items-center gap-2.5 sm:gap-3 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[var(--color-accent-primary)]/85 hover:bg-[var(--color-accent-primary)] active:scale-95 backdrop-blur-md border border-[var(--color-border)]/40 text-white text-[11px] sm:text-xs font-mono tracking-wider shadow-2xl transition-colors cursor-pointer group max-w-[90vw] transform-gpu"
+            className="flex items-center gap-2.5 sm:gap-3 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[var(--color-accent-primary)]/85 hover:bg-[var(--color-accent-primary)] active:scale-95 backdrop-blur-md border border-[var(--color-border)]/40 text-white text-[10px] sm:text-xs font-bank uppercase tracking-wider shadow-2xl transition-colors cursor-pointer group max-w-[90vw] transform-gpu"
           >
             <span className="w-2 h-2 rounded-full bg-[#7E9490] animate-pulse shrink-0 transform-gpu" />
             <span className="truncate">

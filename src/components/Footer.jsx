@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <footer className="w-full bg-[var(--color-background)] text-[var(--color-text-primary)] border-t border-[var(--color-border)]/40 overflow-hidden font-sans relative z-10">
       {/* Repeating Ribbon Seal with LetterGlitch */}
-      <div className="bg-[var(--color-surface)]/20 text-[var(--color-text-primary)] py-3 text-xs font-semibold tracking-wider overflow-hidden select-none border-b border-[var(--color-border)]/30">
+      <div className="bg-[var(--color-surface)]/20 text-[var(--color-text-primary)] py-3 text-xs font-bank uppercase tracking-wider overflow-hidden select-none border-b border-[var(--color-border)]/30">
         <LetterGlitch>
           <span className="mx-4">Venture Studio Operations</span>
           <span className="mx-2 text-[var(--color-text-muted)]">•</span>
@@ -34,8 +34,8 @@ export default function Footer() {
         {/* Navigation Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-xs border-b border-[var(--color-border)]/30 pb-8">
           <div className="space-y-2">
-            <span className="font-bold text-[var(--color-accent-primary)] uppercase tracking-wider text-[11px] block">Overview</span>
-            <ul className="space-y-1.5">
+            <span className="font-beckett text-sm text-[var(--color-accent-primary)] uppercase tracking-wider block">Overview</span>
+            <ul className="space-y-1.5 font-bank uppercase tracking-wider text-xs">
               <li><a href="/" className="hover:text-[var(--color-accent-primary)] transition-colors">Home</a></li>
               <li><a href="/about/" className="hover:text-[var(--color-accent-primary)] transition-colors">About &amp; Bio</a></li>
               <li><a href="/events/" className="hover:text-[var(--color-accent-primary)] transition-colors">Events &amp; Summits</a></li>
@@ -43,8 +43,8 @@ export default function Footer() {
           </div>
 
           <div className="space-y-2">
-            <span className="font-bold text-[var(--color-accent-primary)] uppercase tracking-wider text-[11px] block">Ventures</span>
-            <ul className="space-y-1.5">
+            <span className="font-beckett text-sm text-[var(--color-accent-primary)] uppercase tracking-wider block">Ventures</span>
+            <ul className="space-y-1.5 font-bank uppercase tracking-wider text-xs">
               <li><a href="/ventures/ziggers/" className="hover:text-[var(--color-accent-primary)] transition-colors">Ziggers Case Study</a></li>
               <li><a href="/ventures/loopmemory/" className="hover:text-[var(--color-accent-primary)] transition-colors">LoopMemory Case Study</a></li>
               <li><a href="/ventures/" className="hover:text-[var(--color-accent-primary)] transition-colors">All Ventures</a></li>
@@ -52,16 +52,16 @@ export default function Footer() {
           </div>
 
           <div className="space-y-2">
-            <span className="font-bold text-[var(--color-accent-primary)] uppercase tracking-wider text-[11px] block">Thought Leadership</span>
-            <ul className="space-y-1.5">
+            <span className="font-beckett text-sm text-[var(--color-accent-primary)] uppercase tracking-wider block">Thought Leadership</span>
+            <ul className="space-y-1.5 font-bank uppercase tracking-wider text-xs">
               <li><a href="/writing/" className="hover:text-[var(--color-accent-primary)] transition-colors">All Writing &amp; Essays</a></li>
               <li><a href="/about/" className="hover:text-[var(--color-accent-primary)] transition-colors">Academic Credentials</a></li>
             </ul>
           </div>
 
           <div className="space-y-2">
-            <span className="font-bold text-[var(--color-accent-primary)] uppercase tracking-wider text-[11px] block">Connect</span>
-            <ul className="space-y-1.5">
+            <span className="font-beckett text-sm text-[var(--color-accent-primary)] uppercase tracking-wider block">Connect</span>
+            <ul className="space-y-1.5 font-bank uppercase tracking-wider text-xs">
               <li><a href="/contact/" className="hover:text-[var(--color-accent-primary)] transition-colors">Start a Conversation</a></li>
               <li>
                 <button
@@ -72,7 +72,7 @@ export default function Footer() {
                   className="hover:text-[var(--color-accent-primary)] transition-colors text-left cursor-pointer bg-transparent border-none p-0 text-inherit font-inherit"
                   title="Click to open direct email"
                 >
-                  <span className="font-mono text-xs">vijaykumarunfounded [at] gmail.com</span>
+                  <span className="font-bank text-xs lowercase">vijaykumarunfounded [at] gmail.com</span>
                 </button>
               </li>
             </ul>
@@ -85,21 +85,21 @@ export default function Footer() {
         {/* Bottom copyright & top anchor */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="space-y-1 text-center sm:text-left">
-            <div className="font-bold text-[var(--color-text-primary)] text-sm tracking-tight">
-              Vijayrajkumar
+            <div className="font-pricedown text-lg tracking-wider uppercase text-[var(--color-text-primary)]">
+              VIJAYRAJKUMAR
             </div>
-            <p className="text-[var(--color-text-muted)] text-xs">
+            <p className="font-diploma text-xs text-[var(--color-text-muted)]">
               Chief Operating Officer &amp; Co-Founder @ Unfounded • Ziggers • LoopMemory · Chennai, Tamil Nadu, India
             </p>
           </div>
 
-          <div className="flex items-center space-x-4">
-            <a href="/sitemap.xml" className="text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors text-xs">
+          <div className="flex items-center space-x-4 font-bank uppercase tracking-wider text-xs">
+            <a href="/sitemap.xml" className="text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors">
               Sitemap.xml
             </a>
             <button
               onClick={scrollToTop}
-              className="px-4 py-2 bg-[var(--color-accent-primary)] text-white font-medium rounded-full hover:bg-[#1E2C1F] transition-colors shadow-sm text-xs"
+              className="px-4 py-2 bg-[var(--color-accent-primary)] text-white font-bank uppercase tracking-wider rounded-full hover:bg-[#1E2C1F] transition-colors shadow-sm text-xs"
             >
               Top ↑
             </button>

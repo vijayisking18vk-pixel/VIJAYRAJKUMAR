@@ -2,6 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ==========================================================================
+   GTA: SAN ANDREAS TYPOGRAPHY BREAKDOWN SYSTEM
+   Usage                             Font                Typical Appearance
+   -------------------------------------------------------------------------
+   GRAND THEFT AUTO logo             Pricedown           Large iconic GTA logo lettering
+   SAN ANDREAS title                 Diploma Regular     Gothic / Western blackletter-style title
+   Menu headings                     Beckett Regular     Rough, Western/gang-style display font
+   Menu items                        Bank Gothic         Condensed, technical uppercase
+   Radio station / HUD labels        Bank Gothic         Narrow uppercase
+   Mission title                     Pricedown           Large stylized GTA lettering
+   Mission Passed / Wasted / Busted  Pricedown           Large display text
+   Location / vehicle text           Beckett / Bank      Stylized location labels
+   Subtitles                         Futura LT Bold      Clean bold sans-serif
+   Opening-credit title              Beckett Regular     Display/gangster aesthetic
+   Opening-credit text               Futura Round Cond   Condensed clean text
+   End-credit text                   Futura LT Bold      Clean bold sans-serif
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Pricedown';
+  font-style: normal;
+  font-weight: 400 900;
+  src: url('/fonts/pricedown.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Diploma';
+  font-style: normal;
+  font-weight: 400 700;
+  src: url('/fonts/diploma.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Beckett';
+  font-style: normal;
+  font-weight: 400 700;
+  src: url('/fonts/beckett.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bank Gothic';
+  font-style: normal;
+  font-weight: 400 700;
+  src: url('/fonts/bankgothic.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Futura LT';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/futuralt-regular.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Futura LT';
+  font-style: normal;
+  font-weight: 700 900;
+  src: url('/fonts/futuralt-bold.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Futura LT Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/futuralt-condensed.woff') format('woff');
+  font-display: swap;
+}
+
 :root {
   --color-background: #ACC2B9;        /* sage mist background extracted from uploaded reference image */
   --color-background-start: #98ACA5;  /* subtle top tone */
@@ -24,7 +98,7 @@
     background-image: linear-gradient(180deg, #98ACA5 0%, #ACC2B9 30%, #B4CBC2 70%, #BED5CC 100%);
     background-attachment: fixed;
     color: var(--color-text-primary);
-    font-family: "Plus Jakarta Sans", Poppins, sans-serif;
+    font-family: "Futura LT", "Futura", "Plus Jakarta Sans", sans-serif;
     @apply antialiased leading-relaxed;
   }
 
@@ -33,18 +107,80 @@
     color: #FFFFFF;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  /* GTA: San Andreas Typography Hierarchy across standard HTML tags */
+  h1 {
+    font-family: "Pricedown", Impact, sans-serif;
+    letter-spacing: 0.04em;
     color: var(--color-text-primary);
-    @apply font-sans font-bold tracking-tight;
+  }
+
+  h2 {
+    font-family: "Beckett", Georgia, serif;
+    letter-spacing: 0.02em;
+    color: var(--color-text-primary);
+  }
+
+  h3 {
+    font-family: "Beckett", Georgia, serif;
+    letter-spacing: 0.02em;
+    color: var(--color-text-primary);
+  }
+
+  h4, h5, h6 {
+    font-family: "Bank Gothic", monospace, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-primary);
   }
 
   p {
+    font-family: "Futura LT", "Futura", "Plus Jakarta Sans", sans-serif;
     @apply leading-relaxed;
     color: #2D3E38;
   }
 }
 
 @layer utilities {
+  /* Explicit GTA Typography utility classes */
+  .font-gta-pricedown, .font-pricedown {
+    font-family: 'Pricedown', Impact, sans-serif;
+  }
+  .font-gta-diploma, .font-diploma {
+    font-family: 'Diploma', serif;
+  }
+  .font-gta-beckett, .font-beckett {
+    font-family: 'Beckett', Georgia, serif;
+  }
+  .font-gta-bank, .font-bank {
+    font-family: 'Bank Gothic', monospace, sans-serif;
+  }
+  .font-gta-futura, .font-futura {
+    font-family: 'Futura LT', 'Futura', sans-serif;
+  }
+  .font-gta-futura-condensed, .font-futura-condensed {
+    font-family: 'Futura LT Condensed', 'Futura LT', sans-serif;
+  }
+
+  /* GTA Presets */
+  .gta-hud-label {
+    font-family: 'Bank Gothic', monospace, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .gta-sub-gothic {
+    font-family: 'Diploma', serif;
+    letter-spacing: 0.02em;
+  }
+  .gta-mission-title {
+    font-family: 'Pricedown', Impact, sans-serif;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .gta-menu-item {
+    font-family: 'Bank Gothic', monospace, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
   .bg-radial-eye-glow {
     background: radial-gradient(circle at 48% 38%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.3) 25%, transparent 60%);
   }
