@@ -1,6 +1,6 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import Header from './components/Header';
-import { ParallaxHero } from './components/ui/wilderness';
+import GtaHero from './components/GtaHero';
 import ScrollVideoSection from './components/ScrollVideoSection';
 import HomeFAQSection from './components/HomeFAQSection';
 import Footer from './components/Footer';
@@ -126,9 +126,9 @@ export default function App() {
     );
   }
 
-  // Streamlined Homepage: Living Parallax Hero + Proof Strip + Section Directory Portals
+  // Streamlined Homepage: GTA Hero + Proof Strip + Section Directory Portals
   return (
-    <div className="relative min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] flex flex-col font-sans selection:bg-[var(--color-accent-primary)] selection:text-white overflow-x-clip">
+    <div className="relative min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] flex flex-col font-futura selection:bg-[var(--color-accent-primary)] selection:text-white overflow-x-clip">
       {/* Global Ambient Interactive Particles Canvas Background */}
       <Particles particleCount={30} speed={0.3} particleColor="#2C3E2D" />
 
@@ -137,8 +137,8 @@ export default function App() {
 
       {/* Main Content Flow: Living Centerpiece & Dedicated Portals */}
       <main className="relative z-10 flex-grow">
-        {/* 1. 3D Interactive Parallax Hero Centerpiece */}
-        <ParallaxHero title="VIJAY" />
+        {/* 1. Authentic GTA San Andreas Artwork Hero (Mobile Portrait & Desktop Landscape) */}
+        <GtaHero />
 
         {/* 2. Full-Screen Cinematic Scroll-Driven Video & Frame Progression */}
         <ScrollVideoSection />
