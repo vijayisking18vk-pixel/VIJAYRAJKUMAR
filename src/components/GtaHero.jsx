@@ -35,15 +35,15 @@ export default function GtaHero() {
 
       {/* Top HUD Telemetry Ribbon */}
       <div className="absolute top-4 sm:top-6 left-4 right-4 z-20 flex items-center justify-between pointer-events-none max-w-7xl mx-auto">
-        <div className="flex items-center space-x-2 bg-black/75 backdrop-blur-md border border-[#85A296]/50 px-3 sm:px-4 py-1.5 rounded-full shadow-lg">
-          <span className="w-2 h-2 rounded-full bg-[#85A296] animate-ping" />
-          <span className="font-bank uppercase text-[10px] sm:text-xs tracking-widest text-[#DDE8E2] font-bold">
+        <div className="flex items-center space-x-2 bg-[var(--gta-text-outline)]/85 backdrop-blur-md border border-[var(--gta-silhouette)] px-3 sm:px-4 py-1.5 rounded-full shadow-lg">
+          <span className="w-2 h-2 rounded-full bg-[var(--gta-sky-top)] animate-ping" />
+          <span className="font-bank uppercase text-[10px] sm:text-xs tracking-widest text-[var(--gta-text-fill)] font-bold">
             CHENNAI, IN // MISSION: ACTIVE
           </span>
         </div>
 
-        <div className="hidden sm:flex items-center space-x-2 bg-black/75 backdrop-blur-md border border-[#85A296]/50 px-3 sm:px-4 py-1.5 rounded-full shadow-lg">
-          <span className="font-bank uppercase text-[10px] sm:text-xs tracking-widest text-[#A6BFB3] font-bold">
+        <div className="hidden sm:flex items-center space-x-2 bg-[var(--gta-text-outline)]/85 backdrop-blur-md border border-[var(--gta-silhouette)] px-3 sm:px-4 py-1.5 rounded-full shadow-lg">
+          <span className="font-bank uppercase text-[10px] sm:text-xs tracking-widest text-[var(--gta-text-fill-warm)] font-bold">
             UNFOUNDED // STUDIO OPS
           </span>
         </div>
@@ -51,7 +51,7 @@ export default function GtaHero() {
 
       {/* Hero Visual Poster: Mobile (First Image) vs Desktop (Second Image) */}
       <div className="relative z-10 w-full max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 py-16 sm:py-20 flex items-center justify-center">
-        <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border-2 sm:border-4 border-[#000000] shadow-[0_20px_60px_rgba(0,0,0,0.85)] bg-black max-w-full">
+        <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border-2 sm:border-4 border-[var(--gta-text-outline)] shadow-[0_20px_60px_rgba(10,10,10,0.85)] bg-[var(--gta-text-outline)] max-w-full">
           <picture className="block w-full h-full">
             {/* Desktop Screen: Landscape Widescreen (1024x576, 16:9) */}
             <source
@@ -94,11 +94,11 @@ export default function GtaHero() {
         <button
           type="button"
           onClick={handleScrollDown}
-          className="flex items-center gap-2.5 sm:gap-3 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-black/85 hover:bg-black active:scale-95 backdrop-blur-md border border-[#85A296] text-white text-[10px] sm:text-xs font-bank uppercase tracking-wider shadow-2xl transition-all cursor-pointer group"
+          className="flex items-center gap-2.5 sm:gap-3 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[var(--gta-text-outline)]/90 hover:bg-[var(--gta-text-outline)] active:scale-95 backdrop-blur-md border border-[var(--gta-silhouette)] text-[var(--gta-text-fill)] text-[10px] sm:text-xs font-bank uppercase tracking-wider font-bold shadow-2xl transition-all cursor-pointer group"
           aria-label="Scroll down to explore case studies and portals"
         >
-          <span className="w-2 h-2 rounded-full bg-[#85A296] animate-pulse shrink-0" />
-          <span className="group-hover:text-[#DDE8E2] transition-colors">
+          <span className="w-2 h-2 rounded-full bg-[var(--gta-sky-top)] animate-pulse shrink-0" />
+          <span className="group-hover:text-[var(--gta-text-fill-warm)] transition-colors">
             Explore Portals &amp; Ventures ↓
           </span>
         </button>

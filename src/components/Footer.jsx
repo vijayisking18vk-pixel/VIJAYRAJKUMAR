@@ -85,21 +85,21 @@ export default function Footer() {
         {/* Bottom copyright & top anchor */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="space-y-1 text-center sm:text-left">
-            <div className="font-pricedown text-lg tracking-wider uppercase text-[var(--color-text-primary)]">
+            <div className="gta-lettering font-pricedown text-2xl tracking-wider uppercase">
               VIJAYRAJKUMAR
             </div>
-            <p className="font-diploma text-xs text-[var(--color-text-muted)]">
+            <p className="font-diploma text-xs text-[var(--gta-text-outline)] font-bold">
               Chief Operating Officer &amp; Co-Founder @ Unfounded • Ziggers • LoopMemory · Chennai, Tamil Nadu, India
             </p>
           </div>
 
           <div className="flex items-center space-x-4 font-bank uppercase tracking-wider text-xs">
-            <a href="/sitemap.xml" className="text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors">
+            <a href="/sitemap.xml" className="text-[var(--gta-text-outline)] hover:underline transition-colors font-bold">
               Sitemap.xml
             </a>
             <button
               onClick={scrollToTop}
-              className="px-4 py-2 bg-[var(--color-accent-primary)] text-white font-bank uppercase tracking-wider rounded-full hover:bg-[#1E2C1F] transition-colors shadow-sm text-xs"
+              className="px-4 py-2 bg-[var(--gta-text-outline)] text-[var(--gta-text-fill)] font-bank uppercase tracking-wider rounded-full hover:bg-[var(--gta-text-shadow)] transition-colors shadow-sm text-xs font-bold"
             >
               Top ↑
             </button>

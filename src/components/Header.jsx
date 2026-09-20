@@ -20,10 +20,10 @@ export default function Header({ activeSection, setActiveSection }) {
         
         {/* Brand Title linking to Home - GTA Pricedown Logo */}
         <a href="/" className="flex items-center space-x-2.5 group">
-          <span className="w-2.5 h-2.5 bg-[var(--color-accent-primary)] rounded-full animate-pulse transform-gpu"></span>
-          <GradientText className="font-pricedown text-lg sm:text-xl tracking-wider uppercase text-[var(--color-text-primary)] group-hover:opacity-85 transition-opacity">
+          <span className="w-2.5 h-2.5 bg-[var(--gta-text-outline)] rounded-full animate-pulse transform-gpu"></span>
+          <span className="gta-lettering font-pricedown text-xl sm:text-2xl tracking-wider uppercase group-hover:scale-105 transition-transform">
             VIJAYRAJKUMAR
-          </GradientText>
+          </span>
         </a>
 
         {/* Desktop Navigation Items - GTA Bank Gothic Menu Items */}
@@ -34,9 +34,9 @@ export default function Header({ activeSection, setActiveSection }) {
               <a
                 key={item.label}
                 href={item.href}
-                className="flex items-center space-x-1.5 text-[#203028] hover:text-[var(--color-accent-primary)] font-bank uppercase tracking-wider transition-colors text-xs py-1"
+                className="flex items-center space-x-1.5 text-[var(--gta-text-outline)] hover:text-[#1C2E24] font-bank uppercase tracking-wider font-bold transition-colors text-xs py-1"
               >
-                <Icon className="w-3.5 h-3.5 shrink-0 text-[var(--color-text-muted)]" />
+                <Icon className="w-3.5 h-3.5 shrink-0 text-[var(--gta-silhouette)]" />
                 <span>{item.label}</span>
               </a>
             );
@@ -50,7 +50,7 @@ export default function Header({ activeSection, setActiveSection }) {
             href="https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex font-bank uppercase tracking-wider text-xs"
+            className="hidden sm:inline-flex font-bank uppercase tracking-wider text-xs font-bold"
           >
             <span>LinkedIn Profile ↗</span>
           </StarBorder>

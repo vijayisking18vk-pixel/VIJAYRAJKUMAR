@@ -77,15 +77,30 @@
 }
 
 :root {
-  --color-background: #ACC2B9;        /* sage mist background extracted from uploaded reference image */
-  --color-background-start: #98ACA5;  /* subtle top tone */
-  --color-background-end: #BED5CC;    /* subtle bottom tone */
-  --color-text-primary: #111815;      /* very dark charcoal for maximum contrast */
-  --color-accent-primary: #203322;    /* deep forest green — primary brand accent */
-  --color-accent-secondary: #426055;  /* slate teal accent */
-  --color-text-muted: #354E45;        /* dark muted forest gray — crisp contrast against sage */
-  --color-surface: #DDE8E2;           /* prominent visible badge & tag pill background */
-  --color-border: #739084;            /* crisp, prominent visible borders */
+  /* 🎨 Official GTA San Andreas Typography Color Theme */
+  --gta-text-fill: #F0E8D0;
+  --gta-text-fill-warm: #EDE4C8;
+  --gta-text-fill-light: #F5EFDD;
+  --gta-text-outline: #0A0A0A;
+  --gta-text-shadow: #1A1A1A;
+  --gta-text-shadow-soft: rgba(0, 0, 0, 0.5);
+
+  --gta-sky-top: #8FADA0;
+  --gta-sky-mid: #B7C2A8;
+  --gta-sky-low: #D9D8B0;
+  --gta-sky-horizon: #E8DFB8;
+  --gta-silhouette: #7C8873;
+
+  /* App Theme Variables harmonized with GTA palette */
+  --color-background: var(--gta-sky-top);
+  --color-background-start: var(--gta-sky-top);
+  --color-background-end: var(--gta-sky-horizon);
+  --color-text-primary: var(--gta-text-outline);
+  --color-accent-primary: #1C2E24;
+  --color-accent-secondary: var(--gta-silhouette);
+  --color-text-muted: #3D4A3E;
+  --color-surface: var(--gta-sky-low);
+  --color-border: var(--gta-silhouette);
 }
 
 @layer base {
@@ -94,8 +109,8 @@
   }
 
   body {
-    background-color: var(--color-background);
-    background-image: linear-gradient(180deg, #98ACA5 0%, #ACC2B9 30%, #B4CBC2 70%, #BED5CC 100%);
+    background-color: var(--gta-sky-top);
+    background-image: linear-gradient(180deg, var(--gta-sky-top) 0%, var(--gta-sky-mid) 35%, var(--gta-sky-low) 70%, var(--gta-sky-horizon) 100%);
     background-attachment: fixed;
     color: var(--color-text-primary);
     font-family: "Futura LT", "Futura", "Plus Jakarta Sans", sans-serif;
@@ -104,39 +119,62 @@
 
   ::selection {
     background-color: var(--color-accent-primary);
-    color: #FFFFFF;
+    color: var(--gta-text-fill);
   }
 
   /* GTA: San Andreas Typography Hierarchy across standard HTML tags */
   h1 {
     font-family: "Pricedown", Impact, sans-serif;
     letter-spacing: 0.04em;
-    color: var(--color-text-primary);
+    color: var(--gta-text-fill);
+    -webkit-text-stroke: 1.5px var(--gta-text-outline);
+    text-shadow:
+      -1.5px -1.5px 0 var(--gta-text-outline),
+       1.5px -1.5px 0 var(--gta-text-outline),
+      -1.5px  1.5px 0 var(--gta-text-outline),
+       1.5px  1.5px 0 var(--gta-text-outline),
+       0px    3px 0 var(--gta-text-shadow),
+       2px    4px 6px rgba(0, 0, 0, 0.45);
   }
 
   h2 {
     font-family: "Beckett", Georgia, serif;
     letter-spacing: 0.02em;
-    color: var(--color-text-primary);
+    color: var(--gta-text-fill);
+    -webkit-text-stroke: 1px var(--gta-text-outline);
+    text-shadow:
+      -1px -1px 0 var(--gta-text-outline),
+       1px -1px 0 var(--gta-text-outline),
+      -1px  1px 0 var(--gta-text-outline),
+       1px  1px 0 var(--gta-text-outline),
+       0px  2px 0 var(--gta-text-shadow),
+       1px  3px 4px rgba(0, 0, 0, 0.35);
   }
 
   h3 {
     font-family: "Beckett", Georgia, serif;
     letter-spacing: 0.02em;
-    color: var(--color-text-primary);
+    color: var(--gta-text-fill);
+    -webkit-text-stroke: 0.75px var(--gta-text-outline);
+    text-shadow:
+      -1px -1px 0 var(--gta-text-outline),
+       1px -1px 0 var(--gta-text-outline),
+      -1px  1px 0 var(--gta-text-outline),
+       1px  1px 0 var(--gta-text-outline),
+       0px  2px 0 var(--gta-text-shadow);
   }
 
   h4, h5, h6 {
     font-family: "Bank Gothic", monospace, sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: var(--color-text-primary);
+    color: var(--gta-text-outline);
   }
 
   p {
     font-family: "Futura LT", "Futura", "Plus Jakarta Sans", sans-serif;
     @apply leading-relaxed;
-    color: #2D3E38;
+    color: var(--gta-text-outline);
   }
 }
 
@@ -161,26 +199,81 @@
     font-family: 'Futura LT Condensed', 'Futura LT', sans-serif;
   }
 
-  /* GTA Presets */
+  /* GTA Signature Lettering Presets */
+  .gta-lettering, .gta-title {
+    color: var(--gta-text-fill);
+    -webkit-text-stroke: 1.5px var(--gta-text-outline);
+    text-shadow:
+      -1.5px -1.5px 0 var(--gta-text-outline),
+       1.5px -1.5px 0 var(--gta-text-outline),
+      -1.5px  1.5px 0 var(--gta-text-outline),
+       1.5px  1.5px 0 var(--gta-text-outline),
+       0px    3px 0 var(--gta-text-shadow),
+       2px    4px 6px rgba(0, 0, 0, 0.5);
+  }
+
+  .gta-heading {
+    color: var(--gta-text-fill);
+    -webkit-text-stroke: 1px var(--gta-text-outline);
+    text-shadow:
+      -1px -1px 0 var(--gta-text-outline),
+       1px -1px 0 var(--gta-text-outline),
+      -1px  1px 0 var(--gta-text-outline),
+       1px  1px 0 var(--gta-text-outline),
+       0px  2px 0 var(--gta-text-shadow);
+  }
+
+  .gta-sub-gothic {
+    font-family: 'Diploma', serif;
+    color: var(--gta-text-fill);
+    -webkit-text-stroke: 0.8px var(--gta-text-outline);
+    text-shadow:
+      -1px -1px 0 var(--gta-text-outline),
+       1px -1px 0 var(--gta-text-outline),
+      -1px  1px 0 var(--gta-text-outline),
+       1px  1px 0 var(--gta-text-outline),
+       0px  2px 0 var(--gta-text-shadow);
+  }
+
   .gta-hud-label {
     font-family: 'Bank Gothic', monospace, sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
-  .gta-sub-gothic {
-    font-family: 'Diploma', serif;
-    letter-spacing: 0.02em;
+
+  .gta-hud-pill {
+    background-color: var(--gta-text-outline);
+    color: var(--gta-text-fill);
+    border: 1px solid var(--gta-silhouette);
+    font-family: 'Bank Gothic', monospace, sans-serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
+
   .gta-mission-title {
     font-family: 'Pricedown', Impact, sans-serif;
     letter-spacing: 0.04em;
     text-transform: uppercase;
+    color: var(--gta-text-fill);
+    -webkit-text-stroke: 1.5px var(--gta-text-outline);
+    text-shadow:
+      -1.5px -1.5px 0 var(--gta-text-outline),
+       1.5px -1.5px 0 var(--gta-text-outline),
+      -1.5px  1.5px 0 var(--gta-text-outline),
+       1.5px  1.5px 0 var(--gta-text-outline),
+       0px    3px 0 var(--gta-text-shadow);
   }
+
   .gta-menu-item {
     font-family: 'Bank Gothic', monospace, sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.06em;
   }
+
+  .gta-sky-gradient {
+    background-image: linear-gradient(180deg, var(--gta-sky-top) 0%, var(--gta-sky-mid) 35%, var(--gta-sky-low) 70%, var(--gta-sky-horizon) 100%);
+  }
+
   .bg-radial-eye-glow {
     background: radial-gradient(circle at 48% 38%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.3) 25%, transparent 60%);
   }

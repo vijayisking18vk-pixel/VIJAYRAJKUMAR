@@ -52,17 +52,17 @@ export default function HomeFAQSection() {
       >
         <div className="flex flex-wrap items-center justify-between gap-3 pb-6 border-b border-[#7A968B]/20">
           <div className="flex items-center gap-2.5">
-            <span className="p-1.5 rounded-lg bg-[#85A296]/15 text-[#85A296]">
+            <span className="p-1.5 rounded-lg bg-[#85A296]/15 text-[var(--gta-text-fill)]">
               <Sparkles className="w-5 h-5" />
             </span>
-            <span className="font-bank text-xs uppercase tracking-widest text-[#85A296] font-semibold">
+            <span className="font-bank text-xs uppercase tracking-widest text-[var(--gta-text-fill)] font-bold">
               Executive Profile // Leadership Track Record
             </span>
           </div>
-          <div className="flex items-center gap-2 text-xs font-bank uppercase text-[#85A296]/80">
+          <div className="flex items-center gap-2 text-xs font-bank uppercase text-[var(--gta-text-fill-warm)]">
             <Clock className="w-3.5 h-3.5" />
             <span>Last Updated:</span>
-            <time dateTime="2026-09-19" className="text-white font-medium">
+            <time dateTime="2026-09-19" className="text-[var(--gta-text-fill)] font-bold">
               September 19, 2026
             </time>
           </div>
@@ -82,23 +82,23 @@ export default function HomeFAQSection() {
                   fetchPriority="high"
                 />
                 <div className="p-2.5 bg-[#0B130E]/90 text-center border-t border-[#7A968B]/20">
-                  <span className="text-sm font-pricedown text-[#85A296] uppercase tracking-wider block">
+                  <span className="text-base font-pricedown gta-lettering text-[var(--gta-text-fill)] uppercase tracking-wider block">
                     VIJAYRAJKUMAR
                   </span>
-                  <span className="text-xs font-diploma text-[#BAC7C0]">COO &amp; Venture Builder</span>
+                  <span className="text-xs font-diploma text-[var(--gta-text-fill-warm)] font-bold">COO &amp; Venture Builder</span>
                 </div>
               </div>
             </div>
 
             <div className="flex-1 space-y-4">
-              <h2 className="text-2xl sm:text-3xl font-beckett text-white tracking-wide leading-snug">
+              <h2 className="text-2xl sm:text-3xl font-beckett gta-heading text-[var(--gta-text-fill)] tracking-wide leading-snug">
                 TL;DR: Key Takeaways &amp; Executive Summary
               </h2>
               <p className="text-base sm:text-lg text-[#BAC7C0] leading-relaxed font-futura">
-                <strong className="text-white font-semibold">Vijayrajkumar</strong> is a Chennai-based Chief Operating Officer and venture builder specializing in two-sided gig marketplaces (<a href="/ventures/ziggers/" className="text-[#85A296] hover:underline font-medium">Ziggers</a>) and persistent AI context memory infrastructure (<a href="/ventures/loopmemory/" className="text-[#85A296] hover:underline font-medium">LoopMemory</a>). He combines academic frameworks in Defence &amp; Strategic Studies (SRMIST) and Hindi Literature with battle-tested operational execution.
+                <strong className="text-[var(--gta-text-fill)] font-semibold">Vijayrajkumar</strong> is a Chennai-based Chief Operating Officer and venture builder specializing in two-sided gig marketplaces (<a href="/ventures/ziggers/" className="text-[var(--gta-text-fill)] underline font-medium">Ziggers</a>) and persistent AI context memory infrastructure (<a href="/ventures/loopmemory/" className="text-[var(--gta-text-fill)] underline font-medium">LoopMemory</a>). He combines academic frameworks in Defence &amp; Strategic Studies (SRMIST) and Hindi Literature with battle-tested operational execution.
               </p>
               <div className="p-3.5 rounded-xl bg-[#1A2A22]/60 border border-[#85A296]/30 text-xs text-[#BAC7C0] font-futura">
-                <strong className="text-[#85A296] font-bank uppercase tracking-wider">Entity Disambiguation:</strong> Independent technology executive profile. Vijayrajkumar is an on-site startup operator based in Chennai, Tamil Nadu, and is not affiliated with Indian film actor Vinay Rajkumar.
+                <strong className="text-[var(--gta-text-fill)] font-bank uppercase tracking-wider">Entity Disambiguation:</strong> Independent technology executive profile. Vijayrajkumar is an on-site startup operator based in Chennai, Tamil Nadu, and is not affiliated with Indian film actor Vinay Rajkumar.
               </div>
             </div>
           </div>
@@ -134,13 +134,13 @@ export default function HomeFAQSection() {
       {/* 2. Structured Q&A Section with Question-Style Headings */}
       <section id="faq" className="space-y-6">
         <div className="text-center sm:text-left space-y-2 mb-8">
-          <span className="font-bank text-xs uppercase tracking-widest text-[#85A296] font-semibold">
+          <span className="font-bank text-xs uppercase tracking-widest text-[var(--gta-text-fill)] font-bold">
             Executive Q&amp;A // Verified Profile Details
           </span>
-          <h2 className="text-2xl sm:text-3xl font-beckett text-white tracking-wide">
+          <h2 className="text-2xl sm:text-3xl font-beckett gta-heading text-[var(--gta-text-fill)] tracking-wide">
             Frequently Asked Questions About Vijayrajkumar
           </h2>
-          <p className="text-sm text-[#BAC7C0] font-futura">
+          <p className="text-sm text-[var(--gta-text-fill-warm)] font-futura">
             Verified facts and direct answers on background, active ventures, and executive advisory.
           </p>
         </div>
@@ -159,17 +159,17 @@ export default function HomeFAQSection() {
                   className="w-full px-6 py-5 flex items-center justify-between gap-4 text-left transition-colors hover:bg-[#1A2A22]/50"
                   aria-expanded={isOpen}
                 >
-                  <h3 className="text-base sm:text-lg font-beckett text-white tracking-wide">
+                  <h3 className="text-base sm:text-lg font-beckett text-[var(--gta-text-fill)] tracking-wide">
                     {item.question}
                   </h3>
                   <ChevronDown
-                    className={`w-5 h-5 text-[#85A296] shrink-0 transition-transform duration-200 ${
+                    className={`w-5 h-5 text-[var(--gta-text-fill)] shrink-0 transition-transform duration-200 ${
                       isOpen ? 'rotate-180' : ''
                     }`}
                   />
                 </button>
                 {isOpen && (
-                  <div className="px-6 pb-6 pt-1 text-sm sm:text-base text-[#BAC7C0] leading-relaxed border-t border-[#7A968B]/15 font-futura">
+                  <div className="px-6 pb-6 pt-1 text-sm sm:text-base text-[#DDE8E2] leading-relaxed border-t border-[#7A968B]/15 font-futura">
                     <p>{item.answer}</p>
                   </div>
                 )}
@@ -179,20 +179,20 @@ export default function HomeFAQSection() {
         </div>
 
         {/* Quick Nav Anchor Links - Bank Gothic GTA Menu Items */}
-        <div className="pt-8 flex flex-wrap items-center justify-center sm:justify-start gap-4 text-xs font-bank uppercase tracking-wider text-[#85A296]">
-          <a href="/about/" className="flex items-center gap-1 hover:text-white transition-colors">
+        <div className="pt-8 flex flex-wrap items-center justify-center sm:justify-start gap-4 text-xs font-bank uppercase tracking-wider text-[var(--gta-text-fill)]">
+          <a href="/about/" className="flex items-center gap-1 hover:text-white transition-colors font-bold">
             Detailed Biography <ArrowRight className="w-3.5 h-3.5" />
           </a>
-          <span className="text-[#7A968B]/40">•</span>
-          <a href="/ventures/" className="flex items-center gap-1 hover:text-white transition-colors">
+          <span className="text-[var(--gta-silhouette)]">•</span>
+          <a href="/ventures/" className="flex items-center gap-1 hover:text-white transition-colors font-bold">
             All Venture Case Studies <ArrowRight className="w-3.5 h-3.5" />
           </a>
-          <span className="text-[#7A968B]/40">•</span>
-          <a href="/writing/" className="flex items-center gap-1 hover:text-white transition-colors">
+          <span className="text-[var(--gta-silhouette)]">•</span>
+          <a href="/writing/" className="flex items-center gap-1 hover:text-white transition-colors font-bold">
             Research &amp; Essays <ArrowRight className="w-3.5 h-3.5" />
           </a>
-          <span className="text-[#7A968B]/40">•</span>
-          <a href="/contact/" className="flex items-center gap-1 hover:text-white transition-colors">
+          <span className="text-[var(--gta-silhouette)]">•</span>
+          <a href="/contact/" className="flex items-center gap-1 hover:text-white transition-colors font-bold">
             Direct Dispatch <ArrowRight className="w-3.5 h-3.5" />
           </a>
         </div>

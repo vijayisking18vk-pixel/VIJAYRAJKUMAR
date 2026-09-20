@@ -14,6 +14,18 @@ export default {
         'text-muted': 'var(--color-text-muted)',
         surface: 'var(--color-surface)',
         border: 'var(--color-border)',
+        gta: {
+          fill: 'var(--gta-text-fill)',
+          'fill-warm': 'var(--gta-text-fill-warm)',
+          'fill-light': 'var(--gta-text-fill-light)',
+          outline: 'var(--gta-text-outline)',
+          shadow: 'var(--gta-text-shadow)',
+          'sky-top': 'var(--gta-sky-top)',
+          'sky-mid': 'var(--gta-sky-mid)',
+          'sky-low': 'var(--gta-sky-low)',
+          'sky-horizon': 'var(--gta-sky-horizon)',
+          silhouette: 'var(--gta-silhouette)',
+        },
         brand: {
           bg: 'var(--color-background)',
           dark: 'var(--color-text-primary)',
