@@ -384,7 +384,7 @@ export default function ScrollVideoSection({ className = '' }) {
               <a
                 key={idx}
                 href={portal.href}
-                className="group relative bg-[#0D1611]/95 hover:bg-[#15231B] border-2 border-[var(--gta-silhouette)] hover:border-[var(--gta-sky-mid)] rounded-2xl p-4 lg:p-5 flex flex-col gap-2 text-white no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl"
+                className="group relative bg-[#0A0A0A]/95 hover:bg-[#1A1A1A] border-2 border-[var(--gta-silhouette)] hover:border-[var(--gta-sky-mid)] rounded-2xl p-4 lg:p-5 flex flex-col gap-2 text-white no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl"
               >
                 <div className="flex items-center justify-between gap-2">
                   <span className="font-bank text-[10px] lg:text-[11px] font-bold text-[var(--gta-sky-mid)] tracking-wider uppercase truncate">
@@ -422,7 +422,7 @@ export default function ScrollVideoSection({ className = '' }) {
               <a
                 key={idx}
                 href={portal.href}
-                className="group relative bg-[#0D1611]/95 hover:bg-[#15231B] border-2 border-[var(--gta-silhouette)] hover:border-[var(--gta-sky-mid)] rounded-2xl p-4 lg:p-5 flex flex-col gap-2 text-white no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl"
+                className="group relative bg-[#0A0A0A]/95 hover:bg-[#1A1A1A] border-2 border-[var(--gta-silhouette)] hover:border-[var(--gta-sky-mid)] rounded-2xl p-4 lg:p-5 flex flex-col gap-2 text-white no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl"
               >
                 <div className="flex items-center justify-between gap-2">
                   <span className="font-bank text-[10px] lg:text-[11px] font-bold text-[var(--gta-sky-mid)] tracking-wider uppercase truncate">
@@ -451,7 +451,7 @@ export default function ScrollVideoSection({ className = '' }) {
                 <a
                   key={idx}
                   href={portal.href}
-                  className="group bg-[#0D1611]/95 border-2 border-[var(--gta-silhouette)] rounded-xl p-2.5 flex flex-col gap-1 text-white no-underline active:scale-95 transition-all"
+                  className="group bg-[#0A0A0A]/95 border-2 border-[var(--gta-silhouette)] rounded-xl p-2.5 flex flex-col gap-1 text-white no-underline active:scale-95 transition-all"
                 >
                   <div className="flex items-center justify-between gap-1">
                     <span className="font-bank text-[9px] font-bold text-[var(--gta-sky-mid)] uppercase truncate">
@@ -472,7 +472,7 @@ export default function ScrollVideoSection({ className = '' }) {
                 <a
                   key={idx}
                   href={portal.href}
-                  className="group bg-[#0D1611]/95 border-2 border-[var(--gta-silhouette)] rounded-xl p-2.5 flex flex-col gap-1 text-white no-underline active:scale-95 transition-all"
+                  className="group bg-[#0A0A0A]/95 border-2 border-[var(--gta-silhouette)] rounded-xl p-2.5 flex flex-col gap-1 text-white no-underline active:scale-95 transition-all"
                 >
                   <div className="flex items-center justify-between gap-1">
                     <span className="font-bank text-[9px] font-bold text-[var(--gta-sky-mid)] uppercase truncate">

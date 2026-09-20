@@ -19,10 +19,10 @@ export default function GtaHero() {
     <section
       id="hero"
       aria-label="Vijayrajkumar — Chief Operating Officer & Venture Builder in Chennai"
-      className="relative w-full min-h-[85vh] sm:min-h-[90vh] lg:min-h-screen bg-[#070D0A] flex flex-col items-center justify-center overflow-hidden select-none border-b border-[#7A968B]/30"
+      className="relative w-full min-h-[85vh] sm:min-h-[90vh] lg:min-h-screen bg-[var(--gta-text-outline)] flex flex-col items-center justify-center overflow-hidden select-none border-b border-[var(--gta-silhouette)]/30"
     >
       {/* Background Ambience & Subtle Radial Vignette */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(16,28,21,0.4)_0%,rgba(7,13,10,0.95)_100%)] z-0" />
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(26,26,26,0.6)_0%,rgba(10,10,10,0.98)_100%)] z-0" />
 
       {/* Screen Reader Semantic Headings for SEO & AEO */}
       <div className="sr-only">

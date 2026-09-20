@@ -34,7 +34,7 @@ export default function Header({ activeSection, setActiveSection }) {
               <a
                 key={item.label}
                 href={item.href}
-                className="flex items-center space-x-1.5 text-[var(--gta-text-outline)] hover:text-[#1C2E24] font-bank uppercase tracking-wider font-bold transition-colors text-xs py-1"
+                className="flex items-center space-x-1.5 text-[var(--gta-text-outline)] hover:text-[var(--gta-silhouette)] font-bank uppercase tracking-wider font-bold transition-colors text-xs py-1"
               >
                 <Icon className="w-3.5 h-3.5 shrink-0 text-[var(--gta-silhouette)]" />
                 <span>{item.label}</span>

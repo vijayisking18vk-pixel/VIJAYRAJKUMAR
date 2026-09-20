@@ -1,5 +1,5 @@
 import React from 'react';
-import { Compass, BookOpen, Shield, ArrowRight, Award, Zap, CheckCircle2, MapPin, Download, ExternalLink } from 'lucide-react';
+import { Compass, BookOpen, Shield, ArrowRight, Award, Zap, CheckCircle2, MapPin } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -77,7 +77,7 @@ export default function AboutPage() {
               <MapPin className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
               <span>Chennai, Tamil Nadu, India · On-site</span>
             </div>
-            <span className="text-[#85A296]">•</span>
+            <span className="text-[var(--gta-silhouette)]">•</span>
             <a href="/ventures/" className="inline-flex items-center space-x-1 font-bank uppercase tracking-wider text-[var(--color-accent-primary)] hover:underline">
               <span>Explore Ventures &amp; Case Studies</span>
               <ArrowRight className="w-3 h-3" />
@@ -181,23 +181,13 @@ export default function AboutPage() {
 
         {/* Executive Media Kit & Entity Profile */}
         <section id="media-kit" className="space-y-8 border-t border-[var(--color-border)]/60 pt-10">
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <div>
-              <div className="inline-flex items-center space-x-2 bg-[var(--gta-sky-low)] text-[var(--gta-text-outline)] border border-[var(--gta-silhouette)] text-xs px-3 py-1 rounded-full font-bank uppercase tracking-wider mb-2 font-bold">
-                <span>Official Verification &amp; Press Assets</span>
-              </div>
-              <h2 className="text-2xl font-beckett tracking-wide text-[var(--color-text-primary)]">
-                Executive Media Kit &amp; Entity Profile
-              </h2>
+          <div>
+            <div className="inline-flex items-center space-x-2 bg-[var(--gta-sky-low)] text-[var(--gta-text-outline)] border border-[var(--gta-silhouette)] text-xs px-3 py-1 rounded-full font-bank uppercase tracking-wider mb-2 font-bold">
+              <span>Official Verification &amp; Press Assets</span>
             </div>
-            <a
-              href="/vijayrajkumar-poster.jpg"
-              download="vijayrajkumar-official-portrait.jpg"
-              className="inline-flex items-center gap-1.5 text-xs font-bank uppercase tracking-wider px-4 py-2 bg-[var(--gta-text-outline)] text-[var(--gta-text-fill)] rounded-xl hover:bg-[var(--gta-text-shadow)] transition-colors font-bold"
-            >
-              <Download className="w-3.5 h-3.5" />
-              <span>Download Official Portrait (HD)</span>
-            </a>
+            <h2 className="text-2xl font-beckett tracking-wide text-[var(--color-text-primary)]">
+              Executive Media Kit &amp; Entity Profile
+            </h2>
           </div>
 
           {/* Disambiguation Banner */}
@@ -208,58 +198,31 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Portrait Preview Card */}
-            <div className="p-5 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] rounded-2xl space-y-3 shadow-md flex flex-col items-center text-center">
-              <img
-                src="/vijayrajkumar-poster.jpg"
-                alt="Vijayrajkumar — Chief Operating Officer &amp; Venture Builder"
-                width="280"
-                height="373"
-                className="rounded-xl w-full max-w-[220px] h-auto object-cover border border-[var(--gta-silhouette)]/40 shadow"
-                loading="lazy"
-              />
-              <div>
-                <h3 className="font-pricedown text-lg tracking-wider uppercase text-[var(--gta-text-outline)]">VIJAYRAJKUMAR</h3>
-                <p className="text-xs font-bank uppercase tracking-wider font-bold text-[var(--color-accent-primary)]">COO &amp; Venture Builder · Chennai</p>
+          {/* Bios - Full Width */}
+          <div className="space-y-4 w-full">
+            <div className="p-5 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] rounded-2xl space-y-2 shadow-md">
+              <div className="flex items-center justify-between">
+                <h3 className="text-xs font-bank uppercase tracking-wider text-[var(--color-accent-primary)] font-bold">
+                  Short Bio (50 Words — Event Guides &amp; Introductions)
+                </h3>
               </div>
-              <a
-                href="/vijayrajkumar-poster.jpg"
-                target="_blank"
-                rel="noreferrer"
-                className="text-xs font-bank uppercase tracking-wider text-[var(--color-accent-primary)] hover:underline inline-flex items-center gap-1 mt-1 font-bold"
-              >
-                <span>View Full Resolution</span>
-                <ExternalLink className="w-3 h-3" />
-              </a>
+              <p className="text-sm text-[var(--gta-text-outline)] font-futura leading-relaxed">
+                Vijayrajkumar is a Chennai-based Chief Operating Officer and venture builder specializing in two-sided gig marketplaces and AI cognitive memory infrastructure. He co-founded Unfounded Venture Studio, Ziggers (verified gig staffing), and LoopMemory (persistent context for AI agents), combining strategic doctrine with high-velocity product execution.
+              </p>
             </div>
 
-            {/* Bios */}
-            <div className="md:col-span-2 space-y-4">
-              <div className="p-5 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] rounded-2xl space-y-2 shadow-md">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-xs font-bank uppercase tracking-wider text-[var(--color-accent-primary)] font-bold">
-                    Short Bio (50 Words — Event Guides &amp; Introductions)
-                  </h3>
-                </div>
-                <p className="text-sm text-[var(--gta-text-outline)] font-futura leading-relaxed">
-                  Vijayrajkumar is a Chennai-based Chief Operating Officer and venture builder specializing in two-sided gig marketplaces and AI cognitive memory infrastructure. He co-founded Unfounded Venture Studio, Ziggers (verified gig staffing), and LoopMemory (persistent context for AI agents), combining strategic doctrine with high-velocity product execution.
-                </p>
+            <div className="p-5 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] rounded-2xl space-y-2 shadow-md">
+              <div className="flex items-center justify-between">
+                <h3 className="text-xs font-bank uppercase tracking-wider text-[var(--color-accent-primary)] font-bold">
+                  Standard Bio (150 Words — Press &amp; Panel Profiles)
+                </h3>
               </div>
-
-              <div className="p-5 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] rounded-2xl space-y-2 shadow-md">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-xs font-bank uppercase tracking-wider text-[var(--color-accent-primary)] font-bold">
-                    Standard Bio (150 Words — Press &amp; Panel Profiles)
-                  </h3>
-                </div>
-                <p className="text-sm text-[var(--gta-text-outline)] font-futura leading-relaxed">
-                  Vijayrajkumar is an Indian technology executive, Chief Operating Officer, and venture builder based on-site in Chennai, Tamil Nadu. He leads operational execution, marketplace dynamics, and ecosystem growth across three key initiatives: Ziggers, a verified gig-economy staffing marketplace replacing unorganized WhatsApp hiring with escrow payouts; LoopMemory, a persistent context and hierarchical memory engine eliminating context rot in AI agents; and Unfounded, a venture studio validating digital products.
-                </p>
-                <p className="text-sm text-[var(--gta-text-outline)] font-futura leading-relaxed">
-                  Vijayrajkumar holds an unconventional dual academic foundation: a B.Sc. in Defence and Strategic Studies from SRMIST, focusing on asymmetric strategy and game theory, and an MA in Hindi Literature from Dakshina Bharat Hindi Prachar Sabha. He applies strategic doctrine and narrative design to zero-to-one venture architecture.
-                </p>
-              </div>
+              <p className="text-sm text-[var(--gta-text-outline)] font-futura leading-relaxed">
+                Vijayrajkumar is an Indian technology executive, Chief Operating Officer, and venture builder based on-site in Chennai, Tamil Nadu. He leads operational execution, marketplace dynamics, and ecosystem growth across three key initiatives: Ziggers, a verified gig-economy staffing marketplace replacing unorganized WhatsApp hiring with escrow payouts; LoopMemory, a persistent context and hierarchical memory engine eliminating context rot in AI agents; and Unfounded, a venture studio validating digital products.
+              </p>
+              <p className="text-sm text-[var(--gta-text-outline)] font-futura leading-relaxed">
+                Vijayrajkumar holds an unconventional dual academic foundation: a B.Sc. in Defence and Strategic Studies from SRMIST, focusing on asymmetric strategy and game theory, and an MA in Hindi Literature from Dakshina Bharat Hindi Prachar Sabha. He applies strategic doctrine and narrative design to zero-to-one venture architecture.
+              </p>
             </div>
           </div>
 

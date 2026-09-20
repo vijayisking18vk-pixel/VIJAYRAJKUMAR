@@ -82,7 +82,7 @@ export default function PagePortalsGrid() {
                     </div>
 
                     <div className="space-y-2">
-                      <h3 className="text-2xl sm:text-3xl font-beckett font-bold text-[var(--gta-text-outline)] group-hover:text-[#1C2E24] transition-colors">
+                      <h3 className="text-2xl sm:text-3xl font-beckett font-bold text-[var(--gta-text-outline)] group-hover:text-[var(--gta-silhouette)] transition-colors">
                         {portal.title}
                       </h3>
                       <p className="text-sm text-[var(--gta-text-outline)]/85 leading-relaxed font-futura">

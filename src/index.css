@@ -96,11 +96,11 @@
   --color-background-start: #F7F4EB;
   --color-background-end: #EDE8D8;
   --color-text-primary: #0A0A0A;
-  --color-accent-primary: #1C2E24;
+  --color-accent-primary: #0A0A0A;
   --color-accent-secondary: #7C8873;
-  --color-text-muted: #3D4A3E;
+  --color-text-muted: #7C8873;
   --color-surface: #FFFFFF;
-  --color-border: #D8D2C2;
+  --color-border: #7C8873;
 }
 
 @layer base {

@@ -190,8 +190,8 @@ export default function FrameScrollScrubber({ className = '' }) {
         {/* Minimal Initial Preloader (only until first 5 frames are ready) */}
         {loadedCount < 5 && (
           <div className="absolute inset-0 bg-black flex flex-col items-center justify-center text-white space-y-4 font-mono z-30 pointer-events-none">
-            <div className="w-9 h-9 border-2 border-white/20 border-t-[#85A296] rounded-full animate-spin" />
-            <div className="text-xs text-[#C9D6D3] uppercase tracking-widest">
+            <div className="w-9 h-9 border-2 border-white/20 border-t-[var(--gta-silhouette)] rounded-full animate-spin" />
+            <div className="text-xs text-[var(--gta-text-fill)] uppercase tracking-widest">
               Loading Sequence ({loadPercent}%)
             </div>
           </div>
@@ -205,12 +205,12 @@ export default function FrameScrollScrubber({ className = '' }) {
           className="absolute bottom-8 inset-x-0 z-20 flex justify-center items-center font-mono text-xs pointer-events-none px-4 transition-opacity duration-300"
           style={{ opacity: scrollProgress < 0.08 ? 1 : 0 }}
         >
-          <div className="flex items-center space-x-2.5 text-[#E2ECE7] bg-black/60 backdrop-blur-md px-5 py-2 rounded-full border border-[#7A968B]/30 shadow-2xl">
-            <span className="w-2 h-2 rounded-full bg-[#85A296] animate-pulse" />
+          <div className="flex items-center space-x-2.5 text-[var(--gta-text-fill)] bg-black/60 backdrop-blur-md px-5 py-2 rounded-full border border-[var(--gta-silhouette)]/30 shadow-2xl">
+            <span className="w-2 h-2 rounded-full bg-[var(--gta-sky-top)] animate-pulse" />
             <span className="tracking-wider uppercase font-semibold text-[11px]">
               Scroll to scrub timeline
             </span>
-            <ArrowDown className="w-3.5 h-3.5 text-[#85A296] animate-bounce" />
+            <ArrowDown className="w-3.5 h-3.5 text-[var(--gta-sky-top)] animate-bounce" />
           </div>
         </div>
       </div>

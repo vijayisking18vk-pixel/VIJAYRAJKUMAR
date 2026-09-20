@@ -129,7 +129,7 @@ function FlipCard({ study, image, index }) {
 
             {/* Flip back hint */}
             <button
-              className="self-center mt-2 inline-flex items-center space-x-1.5 text-[10px] font-bank uppercase tracking-wider text-[var(--gta-silhouette)] bg-[var(--gta-sky-low)] border border-[var(--gta-silhouette)] px-3 py-1.5 rounded-full hover:bg-[#D0DDD5] transition-colors"
+              className="self-center mt-2 inline-flex items-center space-x-1.5 text-[10px] font-bank uppercase tracking-wider text-[var(--gta-silhouette)] bg-[var(--gta-sky-low)] border border-[var(--gta-silhouette)] px-3 py-1.5 rounded-full hover:bg-[var(--gta-sky-mid)] transition-colors"
               onClick={(e) => {
                 e.stopPropagation();
                 setIsFlipped(false);

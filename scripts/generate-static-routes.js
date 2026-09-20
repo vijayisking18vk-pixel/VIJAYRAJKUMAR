@@ -38,7 +38,7 @@ const routes = [
         "givenName": "Vijayraj",
         "familyName": "Kumar",
         "disambiguatingDescription": "Indian technology executive, Chief Operating Officer, and venture builder based on-site in Chennai, Tamil Nadu. Co-founder of Unfounded, Ziggers, and LoopMemory. Independent executive profile not associated with Indian film actor Vinay Rajkumar.",
-        "image": "https://www.vijayrajkumar.in/vijayrajkumar-poster.jpg",
+        "image": "https://www.vijayrajkumar.in/images/hero-desktop.jpg",
         "jobTitle": "Chief Operating Officer and Co-Founder",
         "worksFor": [
           { "@type": "Organization", "name": "Unfounded", "url": "https://www.unfounded.in/" },
@@ -52,11 +52,6 @@ const routes = [
         <nav class="text-xs text-neutral-500 mb-6"><a href="/">Home</a> / <span>About</span></nav>
         <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-neutral-950">Vijayrajkumar — Background &amp; Strategic Journey</h1>
         <p class="text-lg text-neutral-600 leading-relaxed">Based on-site in Chennai, Tamil Nadu. Building marketplaces and AI cognitive infrastructure as Chief Operating Officer &amp; Co-founder at Unfounded, Ziggers, and LoopMemory.</p>
-        
-        <figure class="my-6">
-          <img src="/vijayrajkumar-poster.jpg" alt="Vijayrajkumar — Chief Operating Officer and Venture Builder in Chennai" width="320" height="427" class="rounded-2xl border border-neutral-200 shadow-md max-w-xs" />
-          <figcaption class="text-xs text-neutral-500 mt-2">Vijayrajkumar — Official Portrait (COO &amp; Venture Builder, Chennai)</figcaption>
-        </figure>
 
         <div class="p-4 bg-neutral-100 border border-neutral-300 rounded-xl text-xs text-neutral-800">
           <strong>Entity Disambiguation:</strong> Independent technology executive profile. Vijayrajkumar is an on-site startup operator based in Chennai, Tamil Nadu, and is not affiliated with Indian film actor Vinay Rajkumar.

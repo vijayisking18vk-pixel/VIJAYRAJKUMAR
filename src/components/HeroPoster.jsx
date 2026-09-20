@@ -83,7 +83,7 @@ export default function HeroPoster({ onStartAnimation }) {
             className="relative z-20 w-full"
           >
             <img
-              src="/vijayrajkumar-poster.jpg"
+              src="/images/hero-mobile.webp"
               alt="Vijayrajkumar — Co-Founder and Venture Builder based in Chennai"
               className="w-full h-auto max-h-[52vh] sm:max-h-[58vh] object-contain filter grayscale contrast-[120%] brightness-[0.98]"
             />

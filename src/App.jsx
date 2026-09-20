@@ -130,7 +130,7 @@ export default function App() {
   return (
     <div className="relative min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] flex flex-col font-futura selection:bg-[var(--color-accent-primary)] selection:text-white overflow-x-clip">
       {/* Global Ambient Interactive Particles Canvas Background */}
-      <Particles particleCount={30} speed={0.3} particleColor="#2C3E2D" />
+      <Particles particleCount={30} speed={0.3} particleColor="#7C8873" />
 
       {/* Navigation Header */}
       <Header />
