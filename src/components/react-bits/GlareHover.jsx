@@ -23,7 +23,7 @@ export default function GlareHover({
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setOpacity(1)}
       onMouseLeave={() => setOpacity(0)}
-      className={`relative overflow-hidden bg-white border-2 border-[#7A968B] hover:border-[#203322] rounded-2xl shadow-md transition-all duration-300 ${className}`}
+      className={`relative overflow-hidden bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] hover:border-[var(--color-accent-primary)] rounded-2xl shadow-md transition-all duration-300 ${className}`}
     >
       <div
         className="pointer-events-none absolute inset-0 transition-opacity duration-300"

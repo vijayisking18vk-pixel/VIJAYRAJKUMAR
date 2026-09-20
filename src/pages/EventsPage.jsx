@@ -96,27 +96,27 @@ export default function EventsPage() {
         </div>
 
         {/* Page Header */}
-        <div className="space-y-4 border-b border-[#7A968B]/40 pb-10">
-          <div className="inline-flex items-center space-x-2 bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] text-xs px-3.5 py-1 rounded-full font-bank uppercase tracking-wider font-bold shadow-sm">
-            <Calendar className="w-3.5 h-3.5 text-[#1B2F21]" />
+        <div className="space-y-4 border-b border-[var(--gta-silhouette)]/40 pb-10">
+          <div className="inline-flex items-center space-x-2 bg-[var(--gta-sky-low)] text-[var(--gta-text-outline)] border border-[var(--gta-silhouette)] text-xs px-3.5 py-1 rounded-full font-bank uppercase tracking-wider font-bold shadow-sm">
+            <Calendar className="w-3.5 h-3.5 text-[var(--gta-text-outline)]" />
             <span>Summits, Hackathons & Keynotes</span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-pricedown font-bold tracking-wide text-[#111815] leading-tight">
+          <h1 className="text-4xl sm:text-6xl font-pricedown font-bold tracking-wide text-[var(--gta-text-outline)] leading-tight">
             Vijayrajkumar — Events, Summits &amp; Builder Sprints
           </h1>
 
-          <p className="text-lg text-[#1D2B24] leading-relaxed max-w-3xl font-futura">
+          <p className="text-lg text-[var(--gta-text-outline)] leading-relaxed max-w-3xl font-futura">
             Firsthand photo records and verified milestones from global summits, international delegations, 36-hour builder sprints, and startup pitchfest finals where Vijayrajkumar represented Unfounded, Ziggers, and LoopMemory.
           </p>
 
-          <div className="pt-1 flex flex-wrap items-center gap-4 text-xs font-bank uppercase tracking-wider text-[#2A3E34]">
+          <div className="pt-1 flex flex-wrap items-center gap-4 text-xs font-bank uppercase tracking-wider text-[var(--gta-silhouette)]">
             <div className="flex items-center space-x-2">
-              <Sparkles className="w-3.5 h-3.5 text-[#203322]" />
+              <Sparkles className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
               <span>Interactive physics: Hover over event cards to experience dynamic liquid displacement</span>
             </div>
-            <span className="text-[#85A296]">•</span>
-            <a href="/about/" className="font-bold text-[#203322] hover:underline">
+            <span className="text-[var(--gta-silhouette)]">•</span>
+            <a href="/about/" className="font-bold text-[var(--color-accent-primary)] hover:underline">
               About Vijayrajkumar →
             </a>
           </div>
@@ -127,10 +127,10 @@ export default function EventsPage() {
           {EVENTS_DATA.map((evt) => (
             <div
               key={evt.id}
-              className="bg-white border-2 border-[#7A968B] hover:border-[#203322] rounded-3xl p-6 sm:p-7 shadow-md transition-all flex flex-col space-y-6"
+              className="bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] hover:border-[var(--color-accent-primary)] rounded-3xl p-6 sm:p-7 shadow-md transition-all flex flex-col space-y-6"
             >
               {/* Interactive DecayCard Canvas Visual */}
-              <div className="w-full flex justify-center items-center overflow-hidden rounded-2xl bg-[#0B1510] py-4">
+              <div className="w-full flex justify-center items-center overflow-hidden rounded-2xl bg-[var(--gta-text-outline)] py-4">
                 <DecayCard
                   width={310}
                   height={400}
@@ -142,7 +142,7 @@ export default function EventsPage() {
                   movementBound={45}
                 >
                   <div className="text-white drop-shadow-[0_6px_16px_rgba(0,0,0,0.95)]">
-                    <span className="text-[10px] uppercase font-bank tracking-widest text-[#98B5A9] font-bold block mb-1">
+                    <span className="text-[10px] uppercase font-bank tracking-widest text-[var(--gta-sky-mid)] font-bold block mb-1">
                       {evt.category}
                     </span>
                     <h2 className="text-2xl sm:text-3xl font-pricedown font-bold text-white leading-tight tracking-wide">
@@ -155,33 +155,33 @@ export default function EventsPage() {
               {/* Event Metadata & Verified Takeaways */}
               <div className="space-y-4 flex-grow flex flex-col justify-between">
                 <div className="space-y-3">
-                  <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-bank uppercase tracking-wider text-[#2A3E34] border-b border-[#7A968B]/30 pb-3">
-                    <span className="flex items-center space-x-1.5 font-bold text-[#111815]">
-                      <MapPin className="w-3.5 h-3.5 text-[#203322] shrink-0" />
+                  <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-bank uppercase tracking-wider text-[var(--gta-silhouette)] border-b border-[var(--gta-silhouette)]/30 pb-3">
+                    <span className="flex items-center space-x-1.5 font-bold text-[var(--gta-text-outline)]">
+                      <MapPin className="w-3.5 h-3.5 text-[var(--color-accent-primary)] shrink-0" />
                       <span>{evt.venue}</span>
                     </span>
-                    <span className="flex items-center space-x-1 text-[#2A3E34]">
-                      <Calendar className="w-3.5 h-3.5 text-[#203322] shrink-0" />
+                    <span className="flex items-center space-x-1 text-[var(--gta-silhouette)]">
+                      <Calendar className="w-3.5 h-3.5 text-[var(--color-accent-primary)] shrink-0" />
                       <span>{evt.date}</span>
                     </span>
                   </div>
 
-                  <h3 className="text-2xl sm:text-3xl font-beckett font-bold text-[#111815] leading-snug">
+                  <h3 className="text-2xl sm:text-3xl font-beckett font-bold text-[var(--gta-text-outline)] leading-snug">
                     {evt.title}
                   </h3>
 
-                  <p className="text-sm text-[#1D2B24] leading-relaxed font-futura">
+                  <p className="text-sm text-[var(--gta-text-outline)] leading-relaxed font-futura">
                     {evt.summary}
                   </p>
 
                   <div className="space-y-1.5 pt-1">
-                    <span className="text-xs font-bank uppercase tracking-widest text-[#2A3E34] font-bold block">
+                    <span className="text-xs font-bank uppercase tracking-widest text-[var(--gta-silhouette)] font-bold block">
                       Key Highlights:
                     </span>
-                    <ul className="space-y-1 text-xs text-[#1D2B24] font-futura">
+                    <ul className="space-y-1 text-xs text-[var(--gta-text-outline)] font-futura">
                       {evt.takeaways.map((highlight, idx) => (
                         <li key={idx} className="flex items-start space-x-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#203322] shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[var(--color-accent-primary)] shrink-0 mt-0.5" />
                           <span>{highlight}</span>
                         </li>
                       ))}
@@ -189,14 +189,14 @@ export default function EventsPage() {
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-[#7A968B]/30 flex items-center justify-between font-bank uppercase tracking-wider text-xs">
-                  <span className="font-bold text-[#203322] inline-flex items-center space-x-1">
-                    <Award className="w-3.5 h-3.5 text-[#203322]" />
+                <div className="pt-4 border-t border-[var(--gta-silhouette)]/30 flex items-center justify-between font-bank uppercase tracking-wider text-xs">
+                  <span className="font-bold text-[var(--color-accent-primary)] inline-flex items-center space-x-1">
+                    <Award className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
                     <span>{evt.role}</span>
                   </span>
                   <a
                     href={evt.ventureLink}
-                    className="inline-flex items-center space-x-1 font-bold text-[#203322] hover:underline"
+                    className="inline-flex items-center space-x-1 font-bold text-[var(--color-accent-primary)] hover:underline"
                   >
                     <span>View Case Study</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />

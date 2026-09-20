@@ -65,7 +65,7 @@ export default function SocialLinks({ className = "", compact = false }) {
               href={s.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 rounded-full bg-[#E2ECE7] hover:bg-[#203322] text-[#203322] hover:text-white border border-[#85A296] flex items-center justify-center transition-colors shadow-sm"
+              className="w-8 h-8 rounded-full bg-[var(--gta-sky-low)] hover:bg-[var(--gta-text-outline)] text-[var(--color-accent-primary)] hover:text-[var(--gta-text-fill)] border border-[var(--gta-silhouette)] flex items-center justify-center transition-colors shadow-sm"
               title={`${s.name} (${s.handle})`}
               aria-label={s.name}
             >
@@ -87,18 +87,18 @@ export default function SocialLinks({ className = "", compact = false }) {
             href={s.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-4 bg-white hover:bg-[#F2F7F4] border-2 border-[#7A968B] hover:border-[#203322] rounded-2xl flex items-center justify-between group transition-all shadow-sm"
+            className="p-4 bg-[var(--gta-text-fill-light)] hover:bg-[var(--gta-sky-horizon)] border-2 border-[var(--gta-silhouette)] hover:border-[var(--color-accent-primary)] rounded-2xl flex items-center justify-between group transition-all shadow-sm"
           >
             <div className="flex items-center space-x-3.5">
-              <div className="w-9 h-9 rounded-xl bg-[#E2ECE7] border border-[#85A296] flex items-center justify-center text-[#203322] group-hover:bg-[#203322] group-hover:text-white transition-colors">
+              <div className="w-9 h-9 rounded-xl bg-[var(--gta-sky-low)] border border-[var(--gta-silhouette)] flex items-center justify-center text-[var(--color-accent-primary)] group-hover:bg-[var(--gta-text-outline)] group-hover:text-[var(--gta-text-fill)] transition-colors">
                 <Icon className="w-4 h-4" />
               </div>
               <div>
-                <span className="text-xs font-bold text-[#111815] block">{s.name}</span>
-                <span className="text-[11px] text-[#354E45] font-semibold block">{s.handle}</span>
+                <span className="text-xs font-bold text-[var(--gta-text-outline)] block">{s.name}</span>
+                <span className="text-[11px] text-[var(--gta-silhouette)] font-semibold block">{s.handle}</span>
               </div>
             </div>
-            <span className="text-xs font-bold text-[#203322] group-hover:translate-x-1 transition-all">
+            <span className="text-xs font-bold text-[var(--color-accent-primary)] group-hover:translate-x-1 transition-all">
               ↗
             </span>
           </a>

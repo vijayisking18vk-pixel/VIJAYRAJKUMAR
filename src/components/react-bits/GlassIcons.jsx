@@ -20,9 +20,9 @@ export default function GlassIcons({
             {...props}
             whileHover={{ y: -2, scale: 1.01 }}
             whileTap={{ scale: 0.98 }}
-            className="flex items-center space-x-2.5 bg-[#E2ECE7] border border-[#85A296] px-4 py-2 rounded-full font-sans text-xs text-[#1B2F21] hover:border-[#203322] hover:text-[#111815] hover:bg-white transition-all shadow-sm cursor-pointer font-bold"
+            className="flex items-center space-x-2.5 bg-[var(--gta-sky-low)] border border-[var(--gta-silhouette)] px-4 py-2 rounded-full font-futura text-xs text-[var(--gta-text-outline)] hover:border-[var(--color-accent-primary)] hover:text-[var(--gta-text-outline)] hover:bg-[var(--gta-text-fill-light)] transition-all shadow-sm cursor-pointer font-bold"
           >
-            {Icon && <Icon className="w-4 h-4 text-neutral-900 shrink-0" />}
+            {Icon && <Icon className="w-4 h-4 text-[var(--gta-text-outline)] shrink-0" />}
             <span className="font-medium tracking-normal">{item.label}</span>
           </Component>
         );

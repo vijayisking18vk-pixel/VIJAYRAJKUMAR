@@ -507,10 +507,6 @@ const articles = [
         body: 'With model providers expanding context windows, many developers assumed the memory problem was solved: just feed the entire chat history back into the LLM on every turn. In practice, this creates severe latency, massive cost penalties, and attention degradation ("lost in the middle"). Agents get confused by outdated user instructions from three days prior.'
       },
       {
-        heading: 'Hierarchical Memory Decomposition',
-        body: 'At LoopMemory, we architected a tripartite memory model: Working Memory (active prompt context), Episodic Memory (raw chronological turn logs), and Semantic Graph Memory (extracted entities, preferences, and verified beliefs). Raw conversational turns pass through an extraction pipeline that updates a developer-queried knowledge graph.'
-      },
-      {
         heading: 'Decay, Pruning, and Relevance Scoring',
         body: 'Human brains forget for a reason. AI agents similarly require deterministic forgetting curves. By scoring memories based on recency, retrieval frequency, and semantic relevance, LoopMemory surfaces only the high-signal context an agent needs to execute its next tool call.'
       }
@@ -628,7 +624,7 @@ export default function WritingPage({ initialArticleId = null }) {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-futura selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
+    <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-futura selection:bg-[var(--color-accent-primary)] selection:text-[var(--gta-text-fill)] flex flex-col">
       <Header />
 
       <main className="flex-grow max-w-4xl mx-auto px-6 py-16 lg:py-24 space-y-16">
@@ -650,29 +646,29 @@ export default function WritingPage({ initialArticleId = null }) {
 
         {/* Article Reader (Article-First View) */}
         {selectedArticle ? (
-          <article className="space-y-10 border-2 border-[#7A968B] bg-white p-8 sm:p-12 rounded-3xl shadow-md animate-in fade-in duration-200 font-futura">
+          <article className="space-y-10 border-2 border-[var(--gta-silhouette)] bg-[var(--gta-text-fill-light)] p-8 sm:p-12 rounded-3xl shadow-md animate-in fade-in duration-200 font-futura">
             <a
               href="/writing/"
               onClick={closeArticle}
-              className="text-xs font-bank uppercase tracking-wider font-bold text-[#203322] hover:underline inline-flex items-center space-x-1"
+              className="text-xs font-bank uppercase tracking-wider font-bold text-[var(--color-accent-primary)] hover:underline inline-flex items-center space-x-1"
             >
               <span>← Back to all essays</span>
             </a>
 
-            <div className="space-y-4 border-b border-[#7A968B]/30 pb-8">
-              <span className="text-xs font-bank uppercase tracking-widest font-bold text-[#2A3E34]">
+            <div className="space-y-4 border-b border-[var(--gta-silhouette)]/30 pb-8">
+              <span className="text-xs font-bank uppercase tracking-widest font-bold text-[var(--gta-silhouette)]">
                 {selectedArticle.category}
               </span>
-              <h1 className="text-3xl sm:text-5xl font-pricedown font-bold text-[#111815] leading-tight tracking-wide">
+              <h1 className="text-3xl sm:text-5xl font-pricedown font-bold text-[var(--gta-text-outline)] leading-tight tracking-wide">
                 {selectedArticle.title}
               </h1>
-              <div className="flex flex-wrap items-center gap-4 text-xs font-bank uppercase tracking-wider text-[#2A3E34]">
-                <a href="/about/" className="font-bold text-[#203322] hover:underline flex items-center space-x-1">
+              <div className="flex flex-wrap items-center gap-4 text-xs font-bank uppercase tracking-wider text-[var(--gta-silhouette)]">
+                <a href="/about/" className="font-bold text-[var(--color-accent-primary)] hover:underline flex items-center space-x-1">
                   <User className="w-3.5 h-3.5" />
                   <span>{selectedArticle.author}</span>
                 </a>
                 <span>•</span>
-                <span className="font-semibold text-[#354E45]">{selectedArticle.authorRole}</span>
+                <span className="font-semibold text-[var(--gta-silhouette)]">{selectedArticle.authorRole}</span>
                 <span>•</span>
                 <span>{selectedArticle.date}</span>
                 <span>•</span>
@@ -681,12 +677,12 @@ export default function WritingPage({ initialArticleId = null }) {
             </div>
 
             {/* Key Takeaways */}
-            <div className="bg-[#E2ECE7] border-2 border-[#85A296] rounded-2xl p-6 space-y-3">
-              <h2 className="text-base font-beckett font-bold uppercase tracking-wider text-[#111815]">Key Takeaways</h2>
-              <ul className="space-y-2 text-sm text-[#1D2B24] font-futura">
+            <div className="bg-[var(--gta-sky-low)] border-2 border-[var(--gta-silhouette)] rounded-2xl p-6 space-y-3">
+              <h2 className="text-base font-beckett font-bold uppercase tracking-wider text-[var(--gta-text-outline)]">Key Takeaways</h2>
+              <ul className="space-y-2 text-sm text-[var(--gta-text-outline)] font-futura">
                 {selectedArticle.takeaways.map((item, idx) => (
                   <li key={idx} className="flex items-start space-x-2">
-                    <ChevronRight className="w-4 h-4 text-[#203322] shrink-0 mt-0.5" />
+                    <ChevronRight className="w-4 h-4 text-[var(--color-accent-primary)] shrink-0 mt-0.5" />
                     <span className="font-medium">{item}</span>
                   </li>
                 ))}
@@ -694,38 +690,38 @@ export default function WritingPage({ initialArticleId = null }) {
             </div>
 
             {/* Content Sections */}
-            <div className="space-y-10 text-[#1D2B24] leading-relaxed text-base font-futura">
+            <div className="space-y-10 text-[var(--gta-text-outline)] leading-relaxed text-base font-futura">
               {selectedArticle.sections.map((section, idx) => (
                 <section key={idx} className="space-y-4">
                   {section.heading && (
-                    <h2 className="text-2xl sm:text-3xl font-beckett font-bold text-[#111815]">{section.heading}</h2>
+                    <h2 className="text-2xl sm:text-3xl font-beckett font-bold text-[var(--gta-text-outline)]">{section.heading}</h2>
                   )}
                   {section.callout && (
-                    <div className="p-5 bg-[#E2ECE7] border-l-4 border-[#203322] rounded-r-2xl my-4 text-sm sm:text-base text-[#1D2B24] font-medium leading-relaxed">
+                    <div className="p-5 bg-[var(--gta-sky-low)] border-l-4 border-[var(--color-accent-primary)] rounded-r-2xl my-4 text-sm sm:text-base text-[var(--gta-text-outline)] font-medium leading-relaxed">
                       {section.callout}
                     </div>
                   )}
                   {section.body && (
-                    <p className="text-[#1D2B24] leading-relaxed font-normal">{section.body}</p>
+                    <p className="text-[var(--gta-text-outline)] leading-relaxed font-normal">{section.body}</p>
                   )}
                   {section.paragraphs && section.paragraphs.map((p, pIdx) => (
-                    <p key={pIdx} className="text-[#1D2B24] leading-relaxed font-normal">{p}</p>
+                    <p key={pIdx} className="text-[var(--gta-text-outline)] leading-relaxed font-normal">{p}</p>
                   ))}
                   {section.table && (
-                    <div className="overflow-x-auto my-6 border border-[#85A296] rounded-2xl shadow-sm">
+                    <div className="overflow-x-auto my-6 border border-[var(--gta-silhouette)] rounded-2xl shadow-sm">
                       <table className="w-full text-left text-sm border-collapse font-futura">
-                        <thead className="bg-[#E2ECE7] text-[#111815] border-b border-[#85A296] font-bank uppercase text-xs tracking-wider">
+                        <thead className="bg-[var(--gta-sky-low)] text-[var(--gta-text-outline)] border-b border-[var(--gta-silhouette)] font-bank uppercase text-xs tracking-wider">
                           <tr>
                             {section.table.headers.map((h, hIdx) => (
                               <th key={hIdx} className="p-3.5 font-bold">{h}</th>
                             ))}
                           </tr>
                         </thead>
-                        <tbody className="bg-white divide-y divide-[#85A296]/30">
+                        <tbody className="bg-[var(--gta-text-fill-light)] divide-y divide-[var(--gta-silhouette)]/30">
                           {section.table.rows.map((row, rIdx) => (
-                            <tr key={rIdx} className="hover:bg-[#F4F8F5] transition-colors">
+                            <tr key={rIdx} className="hover:bg-[var(--gta-sky-horizon)] transition-colors">
                               {row.map((cell, cIdx) => (
-                                <td key={cIdx} className="p-3.5 text-[#1D2B24] font-medium">{cell}</td>
+                                <td key={cIdx} className="p-3.5 text-[var(--gta-text-outline)] font-medium">{cell}</td>
                               ))}
                             </tr>
                           ))}
@@ -736,8 +732,8 @@ export default function WritingPage({ initialArticleId = null }) {
                   {section.bullets && (
                     <ul className="space-y-2 pl-2 font-futura">
                       {section.bullets.map((b, bIdx) => (
-                        <li key={bIdx} className="flex items-start space-x-2 text-sm sm:text-base text-[#1D2B24]">
-                          <span className="text-[#203322] font-bold mt-0.5">•</span>
+                        <li key={bIdx} className="flex items-start space-x-2 text-sm sm:text-base text-[var(--gta-text-outline)]">
+                          <span className="text-[var(--color-accent-primary)] font-bold mt-0.5">•</span>
                           <span>{b}</span>
                         </li>
                       ))}
@@ -746,8 +742,8 @@ export default function WritingPage({ initialArticleId = null }) {
                   {section.numberedList && (
                     <ol className="space-y-2 pl-2 font-futura">
                       {section.numberedList.map((n, nIdx) => (
-                        <li key={nIdx} className="flex items-start space-x-3 text-sm sm:text-base text-[#1D2B24]">
-                          <span className="font-bold text-[#203322] shrink-0 font-bank">{nIdx + 1}.</span>
+                        <li key={nIdx} className="flex items-start space-x-3 text-sm sm:text-base text-[var(--gta-text-outline)]">
+                          <span className="font-bold text-[var(--color-accent-primary)] shrink-0 font-bank">{nIdx + 1}.</span>
                           <span>{n}</span>
                         </li>
                       ))}
@@ -756,16 +752,16 @@ export default function WritingPage({ initialArticleId = null }) {
                   {section.subsections && (
                     <div className="space-y-6 pt-2">
                       {section.subsections.map((sub, sIdx) => (
-                        <div key={sIdx} className="space-y-3 p-5 sm:p-6 bg-[#F4F8F5] border border-[#A6BFB3] rounded-2xl">
-                          <h3 className="text-xl sm:text-2xl font-beckett font-bold text-[#111815]">{sub.heading}</h3>
+                        <div key={sIdx} className="space-y-3 p-5 sm:p-6 bg-[var(--gta-sky-horizon)] border border-[var(--gta-silhouette)] rounded-2xl">
+                          <h3 className="text-xl sm:text-2xl font-beckett font-bold text-[var(--gta-text-outline)]">{sub.heading}</h3>
                           {sub.paragraphs && sub.paragraphs.map((p, spIdx) => (
-                            <p key={spIdx} className="text-[#1D2B24] leading-relaxed text-sm sm:text-base font-futura">{p}</p>
+                            <p key={spIdx} className="text-[var(--gta-text-outline)] leading-relaxed text-sm sm:text-base font-futura">{p}</p>
                           ))}
                           {sub.bullets && (
                             <ul className="space-y-1.5 pl-2 pt-1 font-futura">
                               {sub.bullets.map((b, sbIdx) => (
-                                <li key={sbIdx} className="flex items-start space-x-2 text-sm text-[#1D2B24]">
-                                  <span className="text-[#203322] font-bold mt-0.5">•</span>
+                                <li key={sbIdx} className="flex items-start space-x-2 text-sm text-[var(--gta-text-outline)]">
+                                  <span className="text-[var(--color-accent-primary)] font-bold mt-0.5">•</span>
                                   <span>{b}</span>
                                 </li>
                               ))}
@@ -778,12 +774,12 @@ export default function WritingPage({ initialArticleId = null }) {
                   {section.faqs && (
                     <div className="space-y-4 pt-2">
                       {section.faqs.map((faq, fIdx) => (
-                        <div key={fIdx} className="p-5 sm:p-6 bg-[#F4F8F5] border border-[#A6BFB3] rounded-2xl space-y-2">
-                          <h3 className="text-lg sm:text-xl font-beckett font-bold text-[#111815] flex items-start space-x-2">
-                            <span className="text-[#203322] font-bold">Q:</span>
+                        <div key={fIdx} className="p-5 sm:p-6 bg-[var(--gta-sky-horizon)] border border-[var(--gta-silhouette)] rounded-2xl space-y-2">
+                          <h3 className="text-lg sm:text-xl font-beckett font-bold text-[var(--gta-text-outline)] flex items-start space-x-2">
+                            <span className="text-[var(--color-accent-primary)] font-bold">Q:</span>
                             <span>{faq.question}</span>
                           </h3>
-                          <p className="text-sm sm:text-base text-[#1D2B24] pl-6 leading-relaxed font-futura">
+                          <p className="text-sm sm:text-base text-[var(--gta-text-outline)] pl-6 leading-relaxed font-futura">
                             {faq.answer}
                           </p>
                         </div>
@@ -794,21 +790,21 @@ export default function WritingPage({ initialArticleId = null }) {
                     <div className="space-y-3 pt-2 font-futura">
                       <ul className="space-y-2 list-none pl-0">
                         {section.references.map((ref, rIdx) => (
-                          <li key={rIdx} className="text-xs sm:text-sm text-[#2A3E34] flex flex-wrap items-center gap-x-2">
-                            <span className="font-bank uppercase text-[#203322] font-semibold">[{rIdx + 1}]</span>
+                          <li key={rIdx} className="text-xs sm:text-sm text-[var(--gta-silhouette)] flex flex-wrap items-center gap-x-2">
+                            <span className="font-bank uppercase text-[var(--color-accent-primary)] font-semibold">[{rIdx + 1}]</span>
                             {ref.url ? (
                               <a
                                 href={ref.url}
                                 target={ref.url.startsWith('http') ? '_blank' : '_self'}
                                 rel="noopener noreferrer"
-                                className="font-semibold underline hover:text-[#111815]"
+                                className="font-semibold underline hover:text-[var(--gta-text-outline)]"
                               >
                                 {ref.title}
                               </a>
                             ) : (
-                              <span className="font-medium text-[#111815]">{ref.title}</span>
+                              <span className="font-medium text-[var(--gta-text-outline)]">{ref.title}</span>
                             )}
-                            {ref.note && <span className="text-xs text-[#4A6458]">({ref.note})</span>}
+                            {ref.note && <span className="text-xs text-[var(--gta-silhouette)]">({ref.note})</span>}
                           </li>
                         ))}
                       </ul>
@@ -819,32 +815,32 @@ export default function WritingPage({ initialArticleId = null }) {
             </div>
 
             {/* Single Compact Author Bio (~45 words) */}
-            <div className="p-6 bg-[#E2ECE7] border-2 border-[#85A296] rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="p-6 bg-[var(--gta-sky-low)] border-2 border-[var(--gta-silhouette)] rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="space-y-1">
-                <span className="text-xs font-bank uppercase tracking-widest font-bold text-[#354E45]">About the Author</span>
-                <h3 className="text-2xl font-pricedown font-bold text-[#111815] tracking-wide">Vijayrajkumar</h3>
-                <p className="text-xs font-futura text-[#1D2B24] max-w-xl leading-relaxed">
+                <span className="text-xs font-bank uppercase tracking-widest font-bold text-[var(--gta-silhouette)]">About the Author</span>
+                <h3 className="text-2xl font-pricedown font-bold text-[var(--gta-text-outline)] tracking-wide">Vijayrajkumar</h3>
+                <p className="text-xs font-futura text-[var(--gta-text-outline)] max-w-xl leading-relaxed">
                   Vijayrajkumar is a Chennai-based Chief Operating Officer &amp; Co-Founder at Unfounded, Ziggers, and LoopMemory, operating across gig-economy marketplace mechanics and persistent AI context infrastructure.
                 </p>
               </div>
               <a
                 href="/about/"
-                className="shrink-0 px-4 py-2 bg-[#203322] text-white text-xs font-bank uppercase tracking-wider font-bold rounded-full hover:bg-[#111815] transition-colors shadow-sm"
+                className="shrink-0 px-4 py-2 bg-[var(--color-accent-primary)] text-[var(--gta-text-fill)] text-xs font-bank uppercase tracking-wider font-bold rounded-full hover:bg-[var(--gta-text-shadow)] transition-colors shadow-sm"
               >
                 About Vijayrajkumar →
               </a>
             </div>
 
-            <div className="pt-6 border-t border-[#7A968B]/30 flex justify-between items-center">
+            <div className="pt-6 border-t border-[var(--gta-silhouette)]/30 flex justify-between items-center">
               <button
                 onClick={closeArticle}
-                className="px-5 py-2.5 bg-[#203322] text-white text-xs font-bank uppercase tracking-wider font-semibold rounded-full hover:bg-[#111815] transition-colors shadow-sm"
+                className="px-5 py-2.5 bg-[var(--color-accent-primary)] text-[var(--gta-text-fill)] text-xs font-bank uppercase tracking-wider font-semibold rounded-full hover:bg-[var(--gta-text-shadow)] transition-colors shadow-sm"
               >
                 Close Article
               </button>
               <a
                 href="/contact/"
-                className="text-xs font-bank uppercase tracking-wider font-bold text-[#203322] hover:underline"
+                className="text-xs font-bank uppercase tracking-wider font-bold text-[var(--color-accent-primary)] hover:underline"
               >
                 Discuss this essay with me →
               </a>
@@ -853,17 +849,17 @@ export default function WritingPage({ initialArticleId = null }) {
         ) : (
           /* Writing Index View */
           <div className="space-y-12">
-            <div className="space-y-4 border-b border-[#7A968B]/40 pb-10">
-              <div className="inline-flex items-center space-x-2 bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] text-xs px-3.5 py-1 rounded-full font-bank uppercase tracking-wider font-bold shadow-sm">
-                <BookOpen className="w-3.5 h-3.5 text-[#1B2F21]" />
+            <div className="space-y-4 border-b border-[var(--gta-silhouette)]/40 pb-10">
+              <div className="inline-flex items-center space-x-2 bg-[var(--gta-sky-low)] text-[var(--gta-text-outline)] border border-[var(--gta-silhouette)] text-xs px-3.5 py-1 rounded-full font-bank uppercase tracking-wider font-bold shadow-sm">
+                <BookOpen className="w-3.5 h-3.5 text-[var(--gta-text-outline)]" />
                 <span>Articles &amp; Strategic Insights</span>
               </div>
 
-              <h1 className="text-4xl sm:text-6xl font-pricedown font-bold tracking-wide text-[#111815] leading-tight">
+              <h1 className="text-4xl sm:text-6xl font-pricedown font-bold tracking-wide text-[var(--gta-text-outline)] leading-tight">
                 Vijayrajkumar — Writing &amp; Strategic Research
               </h1>
 
-              <p className="text-lg text-[#1D2B24] leading-relaxed max-w-3xl font-futura">
+              <p className="text-lg text-[var(--gta-text-outline)] leading-relaxed max-w-3xl font-futura">
                 First-party essays on building urban gig marketplaces in India, architecting cognitive AI memory layers, and applying strategic defence doctrines to startup venture incubation.
               </p>
             </div>
@@ -875,37 +871,37 @@ export default function WritingPage({ initialArticleId = null }) {
                 key={art.id}
                 href={`/writing/${art.id}/`}
                 onClick={(e) => openArticle(art, e)}
-                className="block p-8 bg-white border-2 border-[#7A968B] hover:border-[#203322] rounded-2xl shadow-md transition-all cursor-pointer group space-y-4 no-underline text-inherit"
+                className="block p-8 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] hover:border-[var(--color-accent-primary)] rounded-2xl shadow-md transition-all cursor-pointer group space-y-4 no-underline text-inherit"
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="text-xs font-bank uppercase tracking-widest font-bold text-[#2A3E34]">
+                  <span className="text-xs font-bank uppercase tracking-widest font-bold text-[var(--gta-silhouette)]">
                     {art.category}
                   </span>
-                  <div className="flex items-center space-x-3 text-xs font-bank uppercase tracking-wider text-[#2A3E34]">
+                  <div className="flex items-center space-x-3 text-xs font-bank uppercase tracking-wider text-[var(--gta-silhouette)]">
                     <span className="flex items-center space-x-1">
-                      <Calendar className="w-3.5 h-3.5 text-[#203322]" />
+                      <Calendar className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
                       <span>{art.date}</span>
                     </span>
                     <span className="flex items-center space-x-1">
-                      <Clock className="w-3.5 h-3.5 text-[#203322]" />
+                      <Clock className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
                       <span>{art.readTime}</span>
                     </span>
                   </div>
                 </div>
 
-                <h2 className="text-2xl sm:text-3xl font-beckett font-bold text-[#111815] group-hover:text-[#203322] leading-snug transition-colors">
+                <h2 className="text-2xl sm:text-3xl font-beckett font-bold text-[var(--gta-text-outline)] group-hover:text-[var(--color-accent-primary)] leading-snug transition-colors">
                   {art.title}
                 </h2>
 
-                <p className="text-sm text-[#1D2B24] leading-relaxed font-futura">
+                <p className="text-sm text-[var(--gta-text-outline)] leading-relaxed font-futura">
                   {art.summary}
                 </p>
 
                 <div className="pt-2 flex items-center justify-between">
-                  <span className="text-xs font-bank uppercase tracking-wider font-bold text-[#203322]">
+                  <span className="text-xs font-bank uppercase tracking-wider font-bold text-[var(--color-accent-primary)]">
                     {art.author} · {art.authorRole}
                   </span>
-                  <span className="inline-flex items-center space-x-1 text-xs font-bank uppercase tracking-wider font-bold text-[#203322] group-hover:translate-x-1 transition-transform">
+                  <span className="inline-flex items-center space-x-1 text-xs font-bank uppercase tracking-wider font-bold text-[var(--color-accent-primary)] group-hover:translate-x-1 transition-transform">
                     <span>Read complete essay</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </span>

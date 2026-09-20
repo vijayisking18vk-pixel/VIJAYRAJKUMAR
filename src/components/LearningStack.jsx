@@ -51,21 +51,21 @@ export default function LearningStack() {
   ];
 
   return (
-    <section id="skills" className="w-full bg-white text-neutral-950 py-24 lg:py-32 px-6 sm:px-12 border-t border-neutral-200 font-futura">
+    <section id="skills" className="w-full bg-[var(--gta-text-fill-light)] text-[var(--gta-text-outline)] py-24 lg:py-32 px-6 sm:px-12 border-t border-[var(--gta-silhouette)]/30 font-futura">
       <div className="max-w-6xl mx-auto space-y-16 lg:space-y-20">
         
         {/* Section Header with sentence case typography */}
-        <div className="space-y-5 border-b border-neutral-200 pb-10">
-          <div className="inline-flex items-center space-x-2 bg-neutral-100 text-neutral-800 font-bank uppercase text-xs px-3.5 py-1.5 rounded-full font-bold tracking-wider">
-            <Cpu className="w-3.5 h-3.5 shrink-0 text-neutral-900" />
+        <div className="space-y-5 border-b border-[var(--gta-silhouette)]/30 pb-10">
+          <div className="inline-flex items-center space-x-2 bg-[var(--gta-sky-low)] text-[var(--gta-text-outline)] font-bank uppercase text-xs px-3.5 py-1.5 rounded-full font-bold tracking-wider">
+            <Cpu className="w-3.5 h-3.5 shrink-0 text-[var(--gta-text-outline)]" />
             <span>03 // Skills & ecosystem engagements</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold font-pricedown tracking-wide text-neutral-950 leading-tight">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold font-pricedown tracking-wide text-[var(--gta-text-outline)] leading-tight">
             <Shuffle text="Core skills & ecosystem engagements" />
           </h2>
 
-          <p className="text-base sm:text-lg text-neutral-600 font-futura leading-relaxed max-w-2xl">
+          <p className="text-base sm:text-lg text-[var(--gta-silhouette)] font-futura leading-relaxed max-w-2xl">
             Active milestones, hackathons, international delegations, and pitching events where we represent our ventures.
           </p>
         </div>
@@ -74,20 +74,20 @@ export default function LearningStack() {
           
           {/* Left Column: Core Skill Sets with RotatingText & ClickSpark */}
           <div className="lg:col-span-4 space-y-6">
-            <h3 className="text-2xl font-bold font-beckett text-neutral-950 flex items-center space-x-2">
-              <Zap className="w-4 h-4 text-neutral-900 shrink-0" />
+            <h3 className="text-2xl font-bold font-beckett text-[var(--gta-text-outline)] flex items-center space-x-2">
+              <Zap className="w-4 h-4 text-[var(--gta-text-outline)] shrink-0" />
               <span>Core skill sets</span>
             </h3>
 
             <ClickSpark sparkColor="#18181B">
-              <div className="p-7 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-4 shadow-card-clean cursor-pointer hover:border-neutral-300 transition-colors">
-                <span className="text-xs text-neutral-500 block font-bank uppercase tracking-wider font-bold">
+              <div className="p-7 bg-[var(--gta-sky-horizon)] border border-[var(--gta-silhouette)]/30 rounded-2xl space-y-4 shadow-card-clean cursor-pointer hover:border-[var(--gta-silhouette)] transition-colors">
+                <span className="text-xs text-[var(--gta-silhouette)] block font-bank uppercase tracking-wider font-bold">
                   Active focus skill
                 </span>
-                <div className="text-3xl sm:text-4xl font-bold text-neutral-950 tracking-wide font-pricedown leading-tight min-h-[3.5rem]">
+                <div className="text-3xl sm:text-4xl font-bold text-[var(--gta-text-outline)] tracking-wide font-pricedown leading-tight min-h-[3.5rem]">
                   <RotatingText words={skillsList} interval={2000} />
                 </div>
-                <p className="text-xs text-neutral-500 pt-3 border-t border-neutral-200/80 leading-relaxed font-futura">
+                <p className="text-xs text-[var(--gta-silhouette)] pt-3 border-t border-[var(--gta-silhouette)]/30 leading-relaxed font-futura">
                   Click anywhere on this card to trigger subtle spark particles
                 </p>
               </div>
@@ -95,12 +95,12 @@ export default function LearningStack() {
 
             {/* Quick Skills Pills */}
             <div className="space-y-3 pt-2">
-              <span className="text-xs text-neutral-500 font-bank uppercase tracking-widest font-bold block">Capability matrix</span>
+              <span className="text-xs text-[var(--gta-silhouette)] font-bank uppercase tracking-widest font-bold block">Capability matrix</span>
               <div className="flex flex-wrap gap-2 text-xs">
                 {skillsList.map((skill, idx) => (
                   <span
                     key={idx}
-                    className="bg-white border border-neutral-200 px-3 py-1.5 rounded-lg text-neutral-800 font-bank uppercase tracking-wider font-bold shadow-sm"
+                    className="bg-[var(--gta-text-fill-light)] border border-[var(--gta-silhouette)]/30 px-3 py-1.5 rounded-lg text-[var(--gta-text-outline)] font-bank uppercase tracking-wider font-bold shadow-sm"
                   >
                     {skill}
                   </span>
@@ -111,8 +111,8 @@ export default function LearningStack() {
 
           {/* Right Column: Ecosystem Engagement with AccordionGallery */}
           <div className="lg:col-span-8 space-y-6">
-            <h3 className="text-2xl font-bold font-beckett text-neutral-950 flex items-center space-x-2">
-              <Award className="w-4 h-4 text-neutral-900 shrink-0" />
+            <h3 className="text-2xl font-bold font-beckett text-[var(--gta-text-outline)] flex items-center space-x-2">
+              <Award className="w-4 h-4 text-[var(--gta-text-outline)] shrink-0" />
               <span>Key events & milestones ({events.length})</span>
             </h3>
 

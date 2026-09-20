@@ -45,7 +45,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-sans selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
+    <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-futura selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
       <Header />
 
       <main className="flex-grow max-w-4xl mx-auto px-6 py-16 lg:py-24 space-y-16">
@@ -59,8 +59,8 @@ export default function AboutPage() {
 
         {/* Page Header */}
         <div className="space-y-4 border-b border-[var(--color-border)]/60 pb-10">
-          <div className="inline-flex items-center space-x-2 bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] text-xs px-3.5 py-1.5 rounded-full font-bank uppercase tracking-wider">
-            <Compass className="w-3.5 h-3.5 text-[#203322]" />
+          <div className="inline-flex items-center space-x-2 bg-[var(--gta-sky-low)] text-[var(--gta-text-outline)] border border-[var(--gta-silhouette)] text-xs px-3.5 py-1.5 rounded-full font-bank uppercase tracking-wider">
+            <Compass className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
             <span>Profile &amp; Background</span>
           </div>
 
@@ -68,17 +68,17 @@ export default function AboutPage() {
             VIJAYRAJKUMAR — Chief Operating Officer &amp; Venture Builder
           </h1>
 
-          <p className="text-lg text-[#203028] font-futura leading-relaxed max-w-3xl">
+          <p className="text-lg text-[var(--gta-text-outline)] font-futura leading-relaxed max-w-3xl">
             Based on-site in Chennai, Tamil Nadu. Building marketplaces and AI cognitive infrastructure as Chief Operating Officer &amp; Co-founder at Unfounded, Ziggers, and LoopMemory.
           </p>
 
           <div className="flex flex-wrap items-center gap-4 pt-1 font-bank uppercase tracking-wider text-xs">
-            <div className="flex items-center space-x-2 text-[#354E45]">
-              <MapPin className="w-3.5 h-3.5 text-[#203322]" />
+            <div className="flex items-center space-x-2 text-[var(--gta-silhouette)]">
+              <MapPin className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
               <span>Chennai, Tamil Nadu, India · On-site</span>
             </div>
             <span className="text-[#85A296]">•</span>
-            <a href="/ventures/" className="inline-flex items-center space-x-1 font-bank uppercase tracking-wider text-[#203322] hover:underline">
+            <a href="/ventures/" className="inline-flex items-center space-x-1 font-bank uppercase tracking-wider text-[var(--color-accent-primary)] hover:underline">
               <span>Explore Ventures &amp; Case Studies</span>
               <ArrowRight className="w-3 h-3" />
             </a>
@@ -90,7 +90,7 @@ export default function AboutPage() {
           <h2 className="text-2xl font-beckett tracking-wide text-[var(--color-text-primary)]">
             From Literature to Geopolitics to Venture Building
           </h2>
-          <div className="text-[#203028] font-futura space-y-4 text-base leading-relaxed">
+          <div className="text-[var(--gta-text-outline)] font-futura space-y-4 text-base leading-relaxed">
             <p>
               I treat venture building not as isolated software coding, but as systemic architecture. A successful product is the convergence of incentive alignment, technical speed, and human trust.
             </p>
@@ -110,26 +110,26 @@ export default function AboutPage() {
           </h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="p-6 bg-white border-2 border-[#7A968B] hover:border-[var(--color-accent-primary)] rounded-2xl space-y-3 shadow-md transition-all">
-              <div className="w-10 h-10 bg-[#E2ECE7] border border-[#85A296] rounded-xl flex items-center justify-center">
-                <Shield className="w-5 h-5 text-[#203322]" />
+            <div className="p-6 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] hover:border-[var(--color-accent-primary)] rounded-2xl space-y-3 shadow-md transition-all">
+              <div className="w-10 h-10 bg-[var(--gta-sky-low)] border border-[var(--gta-silhouette)] rounded-xl flex items-center justify-center">
+                <Shield className="w-5 h-5 text-[var(--color-accent-primary)]" />
               </div>
-              <span className="text-xs text-[#354E45] font-bank uppercase tracking-wider block">Apr 2023 – Apr 2026</span>
-              <h3 className="text-lg font-beckett text-[#111815] tracking-wide">B.Sc. in Defence &amp; Strategic Studies</h3>
-              <p className="text-xs text-[#203322] font-diploma tracking-wide">SRM Institute of Science and Technology (SRMIST)</p>
-              <p className="text-sm text-[#203028] font-futura leading-relaxed pt-1">
+              <span className="text-xs text-[var(--gta-silhouette)] font-bank uppercase tracking-wider block">Apr 2023 – Apr 2026</span>
+              <h3 className="text-lg font-beckett text-[var(--gta-text-outline)] tracking-wide">B.Sc. in Defence &amp; Strategic Studies</h3>
+              <p className="text-xs text-[var(--color-accent-primary)] font-diploma tracking-wide">SRM Institute of Science and Technology (SRMIST)</p>
+              <p className="text-sm text-[var(--gta-text-outline)] font-futura leading-relaxed pt-1">
                 Rigorous study of international security, geopolitics, grand strategy, conflict resolution, deterrence theory, and global economic interdependencies.
               </p>
             </div>
 
-            <div className="p-6 bg-white border-2 border-[#7A968B] hover:border-[var(--color-accent-primary)] rounded-2xl space-y-3 shadow-md transition-all">
-              <div className="w-10 h-10 bg-[#E2ECE7] border border-[#85A296] rounded-xl flex items-center justify-center">
-                <BookOpen className="w-5 h-5 text-[#203322]" />
+            <div className="p-6 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] hover:border-[var(--color-accent-primary)] rounded-2xl space-y-3 shadow-md transition-all">
+              <div className="w-10 h-10 bg-[var(--gta-sky-low)] border border-[var(--gta-silhouette)] rounded-xl flex items-center justify-center">
+                <BookOpen className="w-5 h-5 text-[var(--color-accent-primary)]" />
               </div>
-              <span className="text-xs text-[#354E45] font-bank uppercase tracking-wider block">Dec 2016 – Jan 2021</span>
-              <h3 className="text-lg font-beckett text-[#111815] tracking-wide">Master of Arts (MA) in Hindi Literature</h3>
-              <p className="text-xs text-[#203322] font-diploma tracking-wide">Dakshina Bharat Hindi Prachar Sabha</p>
-              <p className="text-sm text-[#203028] font-futura leading-relaxed pt-1">
+              <span className="text-xs text-[var(--gta-silhouette)] font-bank uppercase tracking-wider block">Dec 2016 – Jan 2021</span>
+              <h3 className="text-lg font-beckett text-[var(--gta-text-outline)] tracking-wide">Master of Arts (MA) in Hindi Literature</h3>
+              <p className="text-xs text-[var(--color-accent-primary)] font-diploma tracking-wide">Dakshina Bharat Hindi Prachar Sabha</p>
+              <p className="text-sm text-[var(--gta-text-outline)] font-futura leading-relaxed pt-1">
                 Linguistic morphology, literary history, dialectic analysis, and cross-cultural communication strategy across India.
               </p>
             </div>
@@ -143,8 +143,8 @@ export default function AboutPage() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {skills.map((skill, idx) => (
-              <div key={idx} className="flex items-center space-x-3 p-4 bg-white border-2 border-[#7A968B] rounded-xl text-xs font-bank uppercase tracking-wider text-[#111815] shadow-sm">
-                <Zap className="w-4 h-4 text-[#203322] shrink-0" />
+              <div key={idx} className="flex items-center space-x-3 p-4 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] rounded-xl text-xs font-bank uppercase tracking-wider text-[var(--gta-text-outline)] shadow-sm">
+                <Zap className="w-4 h-4 text-[var(--color-accent-primary)] shrink-0" />
                 <span>{skill}</span>
               </div>
             ))}
@@ -157,21 +157,21 @@ export default function AboutPage() {
             <h2 className="text-2xl font-beckett tracking-wide text-[var(--color-text-primary)]">
               Verified Ecosystem Milestones &amp; Summits
             </h2>
-            <span className="text-xs text-[#354E45] font-bank uppercase tracking-wider">2025 – 2026</span>
+            <span className="text-xs text-[var(--gta-silhouette)] font-bank uppercase tracking-wider">2025 – 2026</span>
           </div>
 
           <div className="space-y-4">
             {events.map((ev, idx) => (
-              <div key={idx} className="p-6 bg-white border-2 border-[#7A968B] hover:border-[var(--color-accent-primary)] rounded-2xl space-y-3 shadow-md transition-all">
+              <div key={idx} className="p-6 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] hover:border-[var(--color-accent-primary)] rounded-2xl space-y-3 shadow-md transition-all">
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="text-xs font-bank uppercase tracking-wider px-3 py-1 bg-[#E2ECE7] border border-[#85A296] rounded-full text-[#1B2F21]">
+                  <span className="text-xs font-bank uppercase tracking-wider px-3 py-1 bg-[var(--gta-sky-low)] border border-[var(--gta-silhouette)] rounded-full text-[var(--gta-text-outline)]">
                     {ev.tag}
                   </span>
-                  <span className="text-xs text-[#354E45] font-bank uppercase tracking-wider">{ev.location}</span>
+                  <span className="text-xs text-[var(--gta-silhouette)] font-bank uppercase tracking-wider">{ev.location}</span>
                 </div>
-                <h3 className="text-lg font-beckett tracking-wide text-[#111815]">{ev.title}</h3>
-                <p className="text-sm text-[#203028] font-futura leading-relaxed">{ev.detail}</p>
-                <div className="text-xs font-bank uppercase tracking-wider text-[#203322] pt-1">
+                <h3 className="text-lg font-beckett tracking-wide text-[var(--gta-text-outline)]">{ev.title}</h3>
+                <p className="text-sm text-[var(--gta-text-outline)] font-futura leading-relaxed">{ev.detail}</p>
+                <div className="text-xs font-bank uppercase tracking-wider text-[var(--color-accent-primary)] pt-1">
                   {ev.badge}
                 </div>
               </div>
@@ -183,7 +183,7 @@ export default function AboutPage() {
         <section id="media-kit" className="space-y-8 border-t border-[var(--color-border)]/60 pt-10">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
-              <div className="inline-flex items-center space-x-2 bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] text-xs px-3 py-1 rounded-full font-bank uppercase tracking-wider mb-2">
+              <div className="inline-flex items-center space-x-2 bg-[var(--gta-sky-low)] text-[var(--gta-text-outline)] border border-[var(--gta-silhouette)] text-xs px-3 py-1 rounded-full font-bank uppercase tracking-wider mb-2">
                 <span>Official Verification &amp; Press Assets</span>
               </div>
               <h2 className="text-2xl font-beckett tracking-wide text-[var(--color-text-primary)]">
@@ -193,7 +193,7 @@ export default function AboutPage() {
             <a
               href="/vijayrajkumar-poster.jpg"
               download="vijayrajkumar-official-portrait.jpg"
-              className="inline-flex items-center gap-1.5 text-xs font-bank uppercase tracking-wider px-4 py-2 bg-[#1B2F21] text-white rounded-xl hover:bg-[#2C4834] transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-bank uppercase tracking-wider px-4 py-2 bg-[var(--gta-text-outline)] text-[var(--gta-text-fill)] rounded-xl hover:bg-[var(--gta-silhouette)] transition-colors"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Download Official Portrait (HD)</span>
@@ -201,7 +201,7 @@ export default function AboutPage() {
           </div>
 
           {/* Disambiguation Banner */}
-          <div className="p-4 bg-[#E2ECE7]/80 border-2 border-[#85A296] rounded-2xl text-xs sm:text-sm text-[#1B2F21] space-y-1 font-futura">
+          <div className="p-4 bg-[var(--gta-sky-low)]/80 border-2 border-[var(--gta-silhouette)] rounded-2xl text-xs sm:text-sm text-[var(--gta-text-outline)] space-y-1 font-futura">
             <strong className="block font-bank uppercase tracking-wider">Official Entity Disambiguation Note:</strong>
             <p>
               Vijayrajkumar is an Indian technology executive, venture builder, and Chief Operating Officer based on-site in Chennai, Tamil Nadu, India. Co-founder of Unfounded, Ziggers, and LoopMemory. This is an independent executive identity and profile; he has no affiliation with Indian film actor Vinay Rajkumar or other persons of similar names.
@@ -210,24 +210,24 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Portrait Preview Card */}
-            <div className="p-5 bg-white border-2 border-[#7A968B] rounded-2xl space-y-3 shadow-md flex flex-col items-center text-center">
+            <div className="p-5 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] rounded-2xl space-y-3 shadow-md flex flex-col items-center text-center">
               <img
                 src="/vijayrajkumar-poster.jpg"
                 alt="Vijayrajkumar — Chief Operating Officer &amp; Venture Builder"
                 width="280"
                 height="373"
-                className="rounded-xl w-full max-w-[220px] h-auto object-cover border border-[#7A968B]/40 shadow"
+                className="rounded-xl w-full max-w-[220px] h-auto object-cover border border-[var(--gta-silhouette)]/40 shadow"
                 loading="lazy"
               />
               <div>
-                <h3 className="font-pricedown text-lg tracking-wider uppercase text-[#111815]">VIJAYRAJKUMAR</h3>
-                <p className="text-xs font-diploma text-[#354E45] tracking-wide">COO &amp; Venture Builder · Chennai</p>
+                <h3 className="font-pricedown text-lg tracking-wider uppercase text-[var(--gta-text-outline)]">VIJAYRAJKUMAR</h3>
+                <p className="text-xs font-diploma text-[var(--gta-silhouette)] tracking-wide">COO &amp; Venture Builder · Chennai</p>
               </div>
               <a
                 href="/vijayrajkumar-poster.jpg"
                 target="_blank"
                 rel="noreferrer"
-                className="text-xs font-bank uppercase tracking-wider text-[#203322] hover:underline inline-flex items-center gap-1 mt-1"
+                className="text-xs font-bank uppercase tracking-wider text-[var(--color-accent-primary)] hover:underline inline-flex items-center gap-1 mt-1"
               >
                 <span>View Full Resolution</span>
                 <ExternalLink className="w-3 h-3" />
@@ -236,27 +236,27 @@ export default function AboutPage() {
 
             {/* Bios */}
             <div className="md:col-span-2 space-y-4">
-              <div className="p-5 bg-white border-2 border-[#7A968B] rounded-2xl space-y-2 shadow-md">
+              <div className="p-5 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] rounded-2xl space-y-2 shadow-md">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-xs font-bank uppercase tracking-wider text-[#354E45]">
+                  <h3 className="text-xs font-bank uppercase tracking-wider text-[var(--gta-silhouette)]">
                     Short Bio (50 Words — Event Guides &amp; Introductions)
                   </h3>
                 </div>
-                <p className="text-sm text-[#203028] font-futura leading-relaxed">
+                <p className="text-sm text-[var(--gta-text-outline)] font-futura leading-relaxed">
                   Vijayrajkumar is a Chennai-based Chief Operating Officer and venture builder specializing in two-sided gig marketplaces and AI cognitive memory infrastructure. He co-founded Unfounded Venture Studio, Ziggers (verified gig staffing), and LoopMemory (persistent context for AI agents), combining strategic doctrine with high-velocity product execution.
                 </p>
               </div>
 
-              <div className="p-5 bg-white border-2 border-[#7A968B] rounded-2xl space-y-2 shadow-md">
+              <div className="p-5 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] rounded-2xl space-y-2 shadow-md">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-xs font-bank uppercase tracking-wider text-[#354E45]">
+                  <h3 className="text-xs font-bank uppercase tracking-wider text-[var(--gta-silhouette)]">
                     Standard Bio (150 Words — Press &amp; Panel Profiles)
                   </h3>
                 </div>
-                <p className="text-sm text-[#203028] font-futura leading-relaxed">
+                <p className="text-sm text-[var(--gta-text-outline)] font-futura leading-relaxed">
                   Vijayrajkumar is an Indian technology executive, Chief Operating Officer, and venture builder based on-site in Chennai, Tamil Nadu. He leads operational execution, marketplace dynamics, and ecosystem growth across three key initiatives: Ziggers, a verified gig-economy staffing marketplace replacing unorganized WhatsApp hiring with escrow payouts; LoopMemory, a persistent context and hierarchical memory engine eliminating context rot in AI agents; and Unfounded, a venture studio validating digital products.
                 </p>
-                <p className="text-sm text-[#203028] font-futura leading-relaxed">
+                <p className="text-sm text-[var(--gta-text-outline)] font-futura leading-relaxed">
                   Vijayrajkumar holds an unconventional dual academic foundation: a B.Sc. in Defence and Strategic Studies from SRMIST, focusing on asymmetric strategy and game theory, and an MA in Hindi Literature from Dakshina Bharat Hindi Prachar Sabha. He applies strategic doctrine and narrative design to zero-to-one venture architecture.
                 </p>
               </div>
@@ -264,19 +264,19 @@ export default function AboutPage() {
           </div>
 
           {/* Speaking & Keynote Topics */}
-          <div className="p-6 bg-white border-2 border-[#7A968B] rounded-2xl space-y-3 shadow-md">
-            <h3 className="text-base font-beckett tracking-wide text-[#111815]">Speaking &amp; Press Topics</h3>
+          <div className="p-6 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] rounded-2xl space-y-3 shadow-md">
+            <h3 className="text-base font-beckett tracking-wide text-[var(--gta-text-outline)]">Speaking &amp; Press Topics</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 font-futura">
-              <div className="p-3 bg-[#E2ECE7]/50 rounded-xl text-xs sm:text-sm font-medium text-[#1B2F21]">
+              <div className="p-3 bg-[var(--gta-sky-low)]/50 rounded-xl text-xs sm:text-sm font-medium text-[var(--gta-text-outline)]">
                 • <strong>AI Persistent Context:</strong> Hierarchical semantic graphs vs prompt stuffing
               </div>
-              <div className="p-3 bg-[#E2ECE7]/50 rounded-xl text-xs sm:text-sm font-medium text-[#1B2F21]">
+              <div className="p-3 bg-[var(--gta-sky-low)]/50 rounded-xl text-xs sm:text-sm font-medium text-[var(--gta-text-outline)]">
                 • <strong>Marketplace Liquidity:</strong> Migrating blue-collar gig workflows from WhatsApp to escrow
               </div>
-              <div className="p-3 bg-[#E2ECE7]/50 rounded-xl text-xs sm:text-sm font-medium text-[#1B2F21]">
+              <div className="p-3 bg-[var(--gta-sky-low)]/50 rounded-xl text-xs sm:text-sm font-medium text-[var(--gta-text-outline)]">
                 • <strong>Grand Strategy in Startups:</strong> Applying military doctrine &amp; OODA loops to product sprints
               </div>
-              <div className="p-3 bg-[#E2ECE7]/50 rounded-xl text-xs sm:text-sm font-medium text-[#1B2F21]">
+              <div className="p-3 bg-[var(--gta-sky-low)]/50 rounded-xl text-xs sm:text-sm font-medium text-[var(--gta-text-outline)]">
                 • <strong>Venture Studios in India:</strong> Parallel incubation models for tier-1 tech ecosystems
               </div>
             </div>
@@ -287,7 +287,7 @@ export default function AboutPage() {
         <section className="pt-6 border-t border-[var(--color-border)]/40 flex flex-wrap items-center justify-between gap-4 font-bank uppercase tracking-wider text-xs">
           <a
             href="/ventures/"
-            className="inline-flex items-center space-x-2 px-6 py-3 bg-[var(--color-accent-primary)] text-white font-bank uppercase tracking-wider rounded-full hover:bg-[#1E2C1F] transition-colors text-xs shadow-sm"
+            className="inline-flex items-center space-x-2 px-6 py-3 bg-[var(--color-accent-primary)] text-[var(--gta-text-fill)] font-bank uppercase tracking-wider rounded-full hover:bg-[var(--gta-text-shadow)] transition-colors text-xs shadow-sm"
           >
             <span>Explore all ventures &amp; case studies</span>
             <ArrowRight className="w-4 h-4" />

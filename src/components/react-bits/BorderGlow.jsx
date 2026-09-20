@@ -24,7 +24,7 @@ export default function BorderGlow({
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`relative p-[1px] overflow-hidden border border-neutral-200 ${className}`}
+      className={`relative p-[1px] overflow-hidden border border-[var(--gta-silhouette)]/30 ${className}`}
       style={{ borderRadius: `${borderRadius}px` }}
     >
       <div
@@ -35,7 +35,7 @@ export default function BorderGlow({
         }}
       />
       <div
-        className="relative bg-white z-10 w-full h-full"
+        className="relative bg-[var(--gta-text-fill-light)] z-10 w-full h-full"
         style={{ borderRadius: `${borderRadius - 1}px` }}
       >
         {children}

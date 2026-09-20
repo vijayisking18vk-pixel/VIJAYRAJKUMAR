@@ -17,12 +17,12 @@ export default function BounceCards({
           whileHover={{ y: -3, scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           transition={{ type: 'spring', stiffness: 300, damping: 18 }}
-          className="flex items-center justify-between p-4 bg-white border-2 border-[#7A968B] hover:border-[#203322] rounded-xl transition-all shadow-sm group font-sans text-xs"
+          className="flex items-center justify-between p-4 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] hover:border-[var(--color-accent-primary)] rounded-xl transition-all shadow-sm group font-futura text-xs"
         >
-          <span className="font-bold text-[#111815] group-hover:text-[#203322]">
+          <span className="font-bold text-[var(--gta-text-outline)] group-hover:text-[var(--color-accent-primary)]">
             {item.title}
           </span>
-          <ArrowUpRight className="w-3.5 h-3.5 text-[#203322] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+          <ArrowUpRight className="w-3.5 h-3.5 text-[var(--color-accent-primary)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
         </motion.a>
       ))}
     </div>

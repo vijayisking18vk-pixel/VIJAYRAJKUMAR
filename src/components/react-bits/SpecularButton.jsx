@@ -28,7 +28,7 @@ export default function SpecularButton({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       whileTap={{ scale: 0.98 }}
-      className={`relative overflow-hidden bg-neutral-950 hover:bg-black text-white font-semibold text-sm py-3.5 px-8 rounded-full shadow-sm transition-colors group ${className}`}
+      className={`relative overflow-hidden bg-[var(--gta-text-outline)] hover:bg-[var(--gta-text-shadow)] text-white font-semibold text-sm py-3.5 px-8 rounded-full shadow-sm transition-colors group ${className}`}
     >
       <div
         className="pointer-events-none absolute -inset-full transition-opacity duration-300"

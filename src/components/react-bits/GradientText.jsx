@@ -16,7 +16,7 @@ export default function GradientText({
   };
 
   return (
-    <span className={`inline-block font-bold ${showBorder ? 'border border-neutral-200 px-3 py-1 rounded-full' : ''} ${className}`}>
+    <span className={`inline-block font-bold ${showBorder ? 'border border-[var(--gta-silhouette)]/30 px-3 py-1 rounded-full' : ''} ${className}`}>
       <span style={gradientStyle}>{children}</span>
     </span>
   );

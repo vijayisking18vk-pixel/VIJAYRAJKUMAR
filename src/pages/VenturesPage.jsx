@@ -6,7 +6,7 @@ import { Layers, ArrowRight } from 'lucide-react';
 
 export default function VenturesPage() {
   return (
-    <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-sans selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
+    <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-futura selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
       <Header />
 
       <main className="flex-grow max-w-6xl mx-auto px-6 lg:px-12 py-16 space-y-16">
@@ -28,7 +28,7 @@ export default function VenturesPage() {
             VIJAYRAJKUMAR — Ventures, Marketplaces &amp; AI Systems
           </h1>
 
-          <p className="text-lg text-[#383838] font-futura leading-relaxed max-w-3xl">
+          <p className="text-lg text-[var(--gta-text-outline)] font-futura leading-relaxed max-w-3xl">
             Detailed case studies of ventures co-founded and operated by Vijayrajkumar. Each study outlines the systemic problem, target audience, personal ownership, deliverables shipped, and verifiable evidence.
           </p>
 

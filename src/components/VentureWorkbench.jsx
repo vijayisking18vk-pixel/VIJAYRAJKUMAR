@@ -24,7 +24,7 @@ function FlipCard({ study, image, index }) {
       >
         {/* ====== FRONT FACE — Image Only ====== */}
         <div
-          className="absolute inset-0 rounded-3xl overflow-hidden border-2 border-[#7A968B] shadow-lg"
+          className="absolute inset-0 rounded-3xl overflow-hidden border-2 border-[var(--gta-silhouette)] shadow-lg"
           style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
         >
           <img
@@ -37,7 +37,7 @@ function FlipCard({ study, image, index }) {
 
         {/* ====== BACK FACE — Text ====== */}
         <div
-          className="absolute inset-0 rounded-3xl overflow-hidden bg-white border-2 border-[#7A968B] shadow-lg overflow-y-auto"
+          className="absolute inset-0 rounded-3xl overflow-hidden bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] shadow-lg overflow-y-auto"
           style={{
             backfaceVisibility: 'hidden',
             WebkitBackfaceVisibility: 'hidden',
@@ -48,54 +48,54 @@ function FlipCard({ study, image, index }) {
             <div className="space-y-5">
               {/* Header */}
               <div className="flex items-center justify-between text-xs">
-                <span className="bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] px-3 py-1 rounded-full font-bank uppercase tracking-wider text-[10px]">
+                <span className="bg-[var(--gta-sky-low)] text-[var(--gta-text-outline)] border border-[var(--gta-silhouette)] px-3 py-1 rounded-full font-bank uppercase tracking-wider text-[10px]">
                   {study.badge}
                 </span>
-                <span className="text-[#354E45] font-bank uppercase text-xs font-semibold">Case Study {caseNum}</span>
+                <span className="text-[var(--gta-silhouette)] font-bank uppercase text-xs font-semibold">Case Study {caseNum}</span>
               </div>
 
               {/* Title + Role */}
               <div>
                 <div className="flex items-center justify-between">
-                  <h3 className="text-xl sm:text-2xl font-pricedown uppercase tracking-wider text-[#111815]">
+                  <h3 className="text-xl sm:text-2xl font-pricedown uppercase tracking-wider text-[var(--gta-text-outline)]">
                     <FuzzyText>{study.name}</FuzzyText>
                   </h3>
-                  <div className="w-9 h-9 bg-[#E2ECE7] border border-[#85A296] rounded-xl flex items-center justify-center shrink-0">
-                    <Icon className="w-4 h-4 text-[#203322]" />
+                  <div className="w-9 h-9 bg-[var(--gta-sky-low)] border border-[var(--gta-silhouette)] rounded-xl flex items-center justify-center shrink-0">
+                    <Icon className="w-4 h-4 text-[var(--color-accent-primary)]" />
                   </div>
                 </div>
-                <div className="text-xs font-diploma tracking-wide text-[#203322] mt-1">
+                <div className="text-xs font-diploma tracking-wide text-[var(--color-accent-primary)] mt-1">
                   {study.role}
                 </div>
-                <div className="text-xs font-bank uppercase text-[#354E45] font-medium mt-0.5">
+                <div className="text-xs font-bank uppercase text-[var(--gta-silhouette)] font-medium mt-0.5">
                   {study.period} • {study.location}
                 </div>
               </div>
 
               {/* Case Study Q&A */}
-              <div className="space-y-3 pt-1 text-xs border-t border-[#7A968B]/40 font-futura">
+              <div className="space-y-3 pt-1 text-xs border-t border-[var(--gta-silhouette)]/40 font-futura">
                 <div>
-                  <span className="font-bank uppercase text-[11px] text-[#111815] block mb-0.5 tracking-wider">Problem Solved:</span>
-                  <p className="text-[#203028] leading-relaxed font-futura">{study.problem}</p>
+                  <span className="font-bank uppercase text-[11px] text-[var(--gta-text-outline)] block mb-0.5 tracking-wider">Problem Solved:</span>
+                  <p className="text-[var(--gta-text-outline)] leading-relaxed font-futura">{study.problem}</p>
                 </div>
                 <div>
-                  <span className="font-bank uppercase text-[11px] text-[#111815] block mb-0.5 tracking-wider">Target User:</span>
-                  <p className="text-[#203028] leading-relaxed font-futura">{study.user}</p>
+                  <span className="font-bank uppercase text-[11px] text-[var(--gta-text-outline)] block mb-0.5 tracking-wider">Target User:</span>
+                  <p className="text-[var(--gta-text-outline)] leading-relaxed font-futura">{study.user}</p>
                 </div>
                 <div>
-                  <span className="font-bank uppercase text-[11px] text-[#111815] block mb-0.5 tracking-wider">What I Personally Owned:</span>
-                  <p className="text-[#203028] leading-relaxed font-futura">{study.ownership}</p>
+                  <span className="font-bank uppercase text-[11px] text-[var(--gta-text-outline)] block mb-0.5 tracking-wider">What I Personally Owned:</span>
+                  <p className="text-[var(--gta-text-outline)] leading-relaxed font-futura">{study.ownership}</p>
                 </div>
                 <div>
-                  <span className="font-bank uppercase text-[11px] text-[#111815] block mb-0.5 tracking-wider">What Was Shipped:</span>
-                  <p className="text-[#203028] leading-relaxed font-futura">{study.shipped}</p>
+                  <span className="font-bank uppercase text-[11px] text-[var(--gta-text-outline)] block mb-0.5 tracking-wider">What Was Shipped:</span>
+                  <p className="text-[var(--gta-text-outline)] leading-relaxed font-futura">{study.shipped}</p>
                 </div>
               </div>
 
               {/* Tags */}
               <div className="flex flex-wrap gap-1.5 font-bank uppercase">
                 {study.tags.map((t, i) => (
-                  <span key={i} className="text-[10px] bg-[#E2ECE7] border border-[#85A296] px-2.5 py-1 rounded-md text-[#1B2F21] tracking-wider">
+                  <span key={i} className="text-[10px] bg-[var(--gta-sky-low)] border border-[var(--gta-silhouette)] px-2.5 py-1 rounded-md text-[var(--gta-text-outline)] tracking-wider">
                     {t}
                   </span>
                 ))}
@@ -103,10 +103,10 @@ function FlipCard({ study, image, index }) {
             </div>
 
             {/* Footer links */}
-            <div className="pt-4 border-t border-[#7A968B]/40 flex flex-wrap items-center justify-between gap-3 font-bank uppercase text-xs">
+            <div className="pt-4 border-t border-[var(--gta-silhouette)]/40 flex flex-wrap items-center justify-between gap-3 font-bank uppercase text-xs">
               <a
                 href={study.caseStudyUrl}
-                className="text-xs text-[#203322] hover:underline tracking-wider"
+                className="text-xs text-[var(--color-accent-primary)] hover:underline tracking-wider"
                 onClick={(e) => e.stopPropagation()}
               >
                 Read full case study →
@@ -129,7 +129,7 @@ function FlipCard({ study, image, index }) {
 
             {/* Flip back hint */}
             <button
-              className="self-center mt-2 inline-flex items-center space-x-1.5 text-[10px] font-bank uppercase tracking-wider text-[#354E45] bg-[#E2ECE7] border border-[#85A296] px-3 py-1.5 rounded-full hover:bg-[#D0DDD5] transition-colors"
+              className="self-center mt-2 inline-flex items-center space-x-1.5 text-[10px] font-bank uppercase tracking-wider text-[var(--gta-silhouette)] bg-[var(--gta-sky-low)] border border-[var(--gta-silhouette)] px-3 py-1.5 rounded-full hover:bg-[#D0DDD5] transition-colors"
               onClick={(e) => {
                 e.stopPropagation();
                 setIsFlipped(false);
@@ -213,13 +213,13 @@ export default function VentureWorkbench() {
   ];
 
   return (
-    <section id="ventures" className="w-full bg-[var(--color-background)] text-[var(--color-text-primary)] py-24 lg:py-32 px-6 sm:px-12 border-t border-[var(--color-border)]/40 font-sans">
+    <section id="ventures" className="w-full bg-[var(--color-background)] text-[var(--color-text-primary)] py-24 lg:py-32 px-6 sm:px-12 border-t border-[var(--color-border)]/40 font-futura">
       <div className="max-w-6xl mx-auto space-y-16 lg:space-y-20">
         
         {/* Section Header */}
         <div className="space-y-5 border-b border-[var(--color-border)]/60 pb-10">
-          <div className="inline-flex items-center space-x-2 bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] font-bank uppercase tracking-wider text-xs px-3.5 py-1.5 rounded-full">
-            <Layers className="w-3.5 h-3.5 shrink-0 text-[#203322]" />
+          <div className="inline-flex items-center space-x-2 bg-[var(--gta-sky-low)] text-[var(--gta-text-outline)] border border-[var(--gta-silhouette)] font-bank uppercase tracking-wider text-xs px-3.5 py-1.5 rounded-full">
+            <Layers className="w-3.5 h-3.5 shrink-0 text-[var(--color-accent-primary)]" />
             <span>02 // Ventures &amp; Case Studies</span>
           </div>
 
@@ -227,8 +227,8 @@ export default function VentureWorkbench() {
             Chief Operating Officer roles &amp; verified case studies
           </h2>
 
-          <p className="text-base sm:text-lg text-[#203028] font-futura leading-relaxed max-w-3xl">
-            Detailed case studies of ventures I have co-founded, built, and launched. Each case study documents the core problem, target user, personal ownership, shipped deliverables, and verifiable evidence. <strong className="text-[#111815]">Click any card</strong> to flip and read the details.
+          <p className="text-base sm:text-lg text-[var(--gta-text-outline)] font-futura leading-relaxed max-w-3xl">
+            Detailed case studies of ventures I have co-founded, built, and launched. Each case study documents the core problem, target user, personal ownership, shipped deliverables, and verifiable evidence. <strong className="text-[var(--gta-text-outline)]">Click any card</strong> to flip and read the details.
           </p>
         </div>
 

@@ -358,8 +358,8 @@ export default function ScrollVideoSection({ className = '' }) {
         {/* Minimal Initial Preloader */}
         {loadedCount < 8 && (
           <div className="absolute inset-0 bg-black flex flex-col items-center justify-center text-white space-y-4 font-bank z-30 pointer-events-none">
-            <div className="w-9 h-9 border-2 border-white/20 border-t-[#85A296] rounded-full animate-spin" />
-            <div className="text-xs text-[#C9D6D3] uppercase tracking-widest font-bank">
+            <div className="w-9 h-9 border-2 border-white/20 border-t-[var(--gta-silhouette)] rounded-full animate-spin" />
+            <div className="text-xs text-[var(--gta-sky-mid)] uppercase tracking-widest font-bank">
               Initializing Video ({loadPercent}%)
             </div>
           </div>
@@ -384,15 +384,15 @@ export default function ScrollVideoSection({ className = '' }) {
               <a
                 key={idx}
                 href={portal.href}
-                className="group relative bg-[#121C17]/90 hover:bg-[#1A2A22] border border-[#7A968B]/35 hover:border-[#85A296] rounded-2xl p-4 lg:p-5 flex flex-col gap-2 text-white no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl"
+                className="group relative bg-[var(--gta-text-outline)]/90 hover:bg-[var(--gta-text-shadow)] border border-[var(--gta-silhouette)]/35 hover:border-[var(--gta-silhouette)] rounded-2xl p-4 lg:p-5 flex flex-col gap-2 text-white no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl"
               >
                 <div className="flex items-center justify-between gap-2">
-                  <span className="font-bank text-[10px] lg:text-[11px] font-semibold text-[#85A296] tracking-wider uppercase truncate">
+                  <span className="font-bank text-[10px] lg:text-[11px] font-semibold text-[var(--gta-silhouette)] tracking-wider uppercase truncate">
                     {portal.category}
                   </span>
-                  <ArrowUpRight className="w-4 h-4 text-[#85A296] group-hover:text-white transition-colors shrink-0" />
+                  <ArrowUpRight className="w-4 h-4 text-[var(--gta-silhouette)] group-hover:text-white transition-colors shrink-0" />
                 </div>
-                <h3 className="text-sm lg:text-base font-beckett font-bold text-white tracking-wide leading-snug group-hover:text-[#E2ECE7]">
+                <h3 className="text-sm lg:text-base font-beckett font-bold text-white tracking-wide leading-snug group-hover:text-[var(--gta-sky-low)]">
                   {portal.title}
                 </h3>
               </a>
@@ -422,15 +422,15 @@ export default function ScrollVideoSection({ className = '' }) {
               <a
                 key={idx}
                 href={portal.href}
-                className="group relative bg-[#121C17]/90 hover:bg-[#1A2A22] border border-[#7A968B]/35 hover:border-[#85A296] rounded-2xl p-4 lg:p-5 flex flex-col gap-2 text-white no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl"
+                className="group relative bg-[var(--gta-text-outline)]/90 hover:bg-[var(--gta-text-shadow)] border border-[var(--gta-silhouette)]/35 hover:border-[var(--gta-silhouette)] rounded-2xl p-4 lg:p-5 flex flex-col gap-2 text-white no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl"
               >
                 <div className="flex items-center justify-between gap-2">
-                  <span className="font-bank text-[10px] lg:text-[11px] font-semibold text-[#85A296] tracking-wider uppercase truncate">
+                  <span className="font-bank text-[10px] lg:text-[11px] font-semibold text-[var(--gta-silhouette)] tracking-wider uppercase truncate">
                     {portal.category}
                   </span>
-                  <ArrowUpRight className="w-4 h-4 text-[#85A296] group-hover:text-white transition-colors shrink-0" />
+                  <ArrowUpRight className="w-4 h-4 text-[var(--gta-silhouette)] group-hover:text-white transition-colors shrink-0" />
                 </div>
-                <h3 className="text-sm lg:text-base font-beckett font-bold text-white tracking-wide leading-snug group-hover:text-[#E2ECE7]">
+                <h3 className="text-sm lg:text-base font-beckett font-bold text-white tracking-wide leading-snug group-hover:text-[var(--gta-sky-low)]">
                   {portal.title}
                 </h3>
               </a>
@@ -451,13 +451,13 @@ export default function ScrollVideoSection({ className = '' }) {
                 <a
                   key={idx}
                   href={portal.href}
-                  className="group bg-[#121C17]/95 border border-[#7A968B]/35 rounded-xl p-2.5 flex flex-col gap-1 text-white no-underline active:scale-95 transition-all"
+                  className="group bg-[var(--gta-text-outline)]/95 border border-[var(--gta-silhouette)]/35 rounded-xl p-2.5 flex flex-col gap-1 text-white no-underline active:scale-95 transition-all"
                 >
                   <div className="flex items-center justify-between gap-1">
-                    <span className="font-bank text-[9px] font-semibold text-[#85A296] uppercase truncate">
+                    <span className="font-bank text-[9px] font-semibold text-[var(--gta-silhouette)] uppercase truncate">
                       {portal.category}
                     </span>
-                    <ArrowUpRight className="w-3 h-3 text-[#85A296] shrink-0" />
+                    <ArrowUpRight className="w-3 h-3 text-[var(--gta-silhouette)] shrink-0" />
                   </div>
                   <h3 className="text-[11px] font-beckett font-bold text-white leading-tight line-clamp-2">
                     {portal.title}
@@ -472,13 +472,13 @@ export default function ScrollVideoSection({ className = '' }) {
                 <a
                   key={idx}
                   href={portal.href}
-                  className="group bg-[#121C17]/95 border border-[#7A968B]/35 rounded-xl p-2.5 flex flex-col gap-1 text-white no-underline active:scale-95 transition-all"
+                  className="group bg-[var(--gta-text-outline)]/95 border border-[var(--gta-silhouette)]/35 rounded-xl p-2.5 flex flex-col gap-1 text-white no-underline active:scale-95 transition-all"
                 >
                   <div className="flex items-center justify-between gap-1">
-                    <span className="font-bank text-[9px] font-semibold text-[#85A296] uppercase truncate">
+                    <span className="font-bank text-[9px] font-semibold text-[var(--gta-silhouette)] uppercase truncate">
                       {portal.category}
                     </span>
-                    <ArrowUpRight className="w-3 h-3 text-[#85A296] shrink-0" />
+                    <ArrowUpRight className="w-3 h-3 text-[var(--gta-silhouette)] shrink-0" />
                   </div>
                   <h3 className="text-[11px] font-beckett font-bold text-white leading-tight line-clamp-2">
                     {portal.title}

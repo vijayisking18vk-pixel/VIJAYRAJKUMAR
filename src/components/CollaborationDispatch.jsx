@@ -66,8 +66,8 @@ export default function CollaborationDispatch() {
         
         {/* Section Header */}
         <div className="space-y-5 border-b border-[var(--color-border)]/60 pb-10">
-          <div className="inline-flex items-center space-x-2 bg-[#E2ECE7] text-[#1B2F21] border border-[#85A296] font-bank uppercase text-xs px-3.5 py-1.5 rounded-full font-bold tracking-wider">
-            <Send className="w-3.5 h-3.5 shrink-0 text-[#203322]" />
+          <div className="inline-flex items-center space-x-2 bg-[var(--gta-sky-low)] text-[var(--gta-text-outline)] border border-[var(--gta-silhouette)] font-bank uppercase text-xs px-3.5 py-1.5 rounded-full font-bold tracking-wider">
+            <Send className="w-3.5 h-3.5 shrink-0 text-[var(--color-accent-primary)]" />
             <span>04 // Contact & Collaboration</span>
           </div>
 
@@ -76,35 +76,35 @@ export default function CollaborationDispatch() {
           </div>
 
           {/* Explicit Contact Promise Box - High Contrast Card */}
-          <div className="p-6 bg-white border-2 border-[#7A968B] rounded-2xl max-w-3xl space-y-3 shadow-md">
-            <p className="text-sm sm:text-base text-[#111815] font-semibold leading-relaxed font-futura">
+          <div className="p-6 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] rounded-2xl max-w-3xl space-y-3 shadow-md">
+            <p className="text-sm sm:text-base text-[var(--gta-text-outline)] font-semibold leading-relaxed font-futura">
               "I usually respond within two working days. Contact me about venture partnerships, product and growth collaboration, startup ecosystems, or speaking and research opportunities."
             </p>
-            <div className="flex flex-wrap items-center gap-3 pt-1 text-xs font-bank uppercase tracking-wider text-[#354E45]">
-              <span className="flex items-center space-x-1.5 font-bold text-[#111815]">
-                <Mail className="w-3.5 h-3.5 text-[#203322]" />
+            <div className="flex flex-wrap items-center gap-3 pt-1 text-xs font-bank uppercase tracking-wider text-[var(--gta-silhouette)]">
+              <span className="flex items-center space-x-1.5 font-bold text-[var(--gta-text-outline)]">
+                <Mail className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
                 <span>Direct email:</span>
               </span>
               <a
                 href={`mailto:${directEmail}`}
-                className="font-bold text-[#203322] underline hover:text-[#111815] lowercase"
+                className="font-bold text-[var(--color-accent-primary)] underline hover:text-[var(--gta-text-outline)] lowercase"
               >
                 {directEmail}
               </a>
               <button
                 type="button"
                 onClick={handleCopyEmail}
-                className="inline-flex items-center space-x-1 px-3 py-1 bg-[#E2ECE7] border border-[#85A296] rounded-md text-xs font-bold text-[#1B2F21] hover:bg-[#203322] hover:text-white transition-colors cursor-pointer"
+                className="inline-flex items-center space-x-1 px-3 py-1 bg-[var(--gta-sky-low)] border border-[var(--gta-silhouette)] rounded-md text-xs font-bold text-[var(--gta-text-outline)] hover:bg-[var(--color-accent-primary)] hover:text-[var(--gta-text-fill)] transition-colors cursor-pointer"
                 title="Copy email to clipboard"
               >
                 {copied ? (
                   <>
-                    <Check className="w-3 h-3 text-[#203322]" />
-                    <span className="text-[#203322] font-bold">Copied</span>
+                    <Check className="w-3 h-3 text-[var(--color-accent-primary)]" />
+                    <span className="text-[var(--color-accent-primary)] font-bold">Copied</span>
                   </>
                 ) : (
                   <>
-                    <Copy className="w-3 h-3 text-[#1B2F21]" />
+                    <Copy className="w-3 h-3 text-[var(--gta-text-outline)]" />
                     <span>Copy email</span>
                   </>
                 )}
@@ -117,15 +117,15 @@ export default function CollaborationDispatch() {
           
           {/* Dispatch Brief Form */}
           <FluidGlass className="space-y-6">
-            <h3 className="text-2xl font-bold font-beckett text-neutral-950 border-b border-neutral-100 pb-4">
+            <h3 className="text-2xl font-bold font-beckett text-[var(--gta-text-outline)] border-b border-[var(--gta-silhouette)]/20 pb-4">
               Send a collaboration message
             </h3>
 
             {submitted ? (
-              <div className="p-8 border border-neutral-200 bg-neutral-50 rounded-2xl text-center space-y-3 font-futura">
-                <CheckCircle className="w-10 h-10 mx-auto text-neutral-900" />
-                <div className="text-2xl font-pricedown font-bold text-neutral-950 tracking-wide">Message Sent Successfully</div>
-                <p className="text-xs text-neutral-600 font-medium leading-relaxed font-futura">
+              <div className="p-8 border border-[var(--gta-silhouette)]/30 bg-[var(--gta-sky-horizon)] rounded-2xl text-center space-y-3 font-futura">
+                <CheckCircle className="w-10 h-10 mx-auto text-[var(--gta-text-outline)]" />
+                <div className="text-2xl font-pricedown font-bold text-[var(--gta-text-outline)] tracking-wide">Message Sent Successfully</div>
+                <p className="text-xs text-[var(--gta-silhouette)] font-medium leading-relaxed font-futura">
                   Thank you for reaching out! Your brief has been transmitted directly to Vijayrajkumar. You will receive a response within two working days.
                 </p>
                 <button
@@ -135,7 +135,7 @@ export default function CollaborationDispatch() {
                     setFormData({ name: '', email: '', message: '', botField: '' });
                     setErrorMessage('');
                   }}
-                  className="mt-3 text-xs font-bank uppercase tracking-wider text-neutral-900 font-bold underline"
+                  className="mt-3 text-xs font-bank uppercase tracking-wider text-[var(--gta-text-outline)] font-bold underline"
                 >
                   Send another message
                 </button>
@@ -168,8 +168,8 @@ export default function CollaborationDispatch() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="contact-name" className="block text-neutral-700 font-bank uppercase tracking-wider text-xs font-bold">
-                    Your Name or Organization <span className="text-neutral-400">*</span>
+                  <label htmlFor="contact-name" className="block text-[var(--gta-silhouette)] font-bank uppercase tracking-wider text-xs font-bold">
+                    Your Name or Organization <span className="text-[var(--gta-silhouette)]">*</span>
                   </label>
                   <input
                     id="contact-name"
@@ -178,7 +178,7 @@ export default function CollaborationDispatch() {
                     placeholder="e.g. Founder, Investor, Co-builder"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full bg-white/75 border border-[var(--color-border)]/70 rounded-xl p-3.5 text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] focus:bg-white focus:border-[var(--color-accent-primary)] outline-none transition-all text-xs font-futura"
+                    className="w-full bg-[var(--gta-text-fill-light)]/75 border border-[var(--color-border)]/70 rounded-xl p-3.5 text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] focus:bg-[var(--gta-text-fill-light)] focus:border-[var(--color-accent-primary)] outline-none transition-all text-xs font-futura"
                   />
                 </div>
 
@@ -193,7 +193,7 @@ export default function CollaborationDispatch() {
                     placeholder="name@organization.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-white/75 border border-[var(--color-border)]/70 rounded-xl p-3.5 text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] focus:bg-white focus:border-[var(--color-accent-primary)] outline-none transition-all text-xs font-futura"
+                    className="w-full bg-[var(--gta-text-fill-light)]/75 border border-[var(--color-border)]/70 rounded-xl p-3.5 text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] focus:bg-[var(--gta-text-fill-light)] focus:border-[var(--color-accent-primary)] outline-none transition-all text-xs font-futura"
                   />
                 </div>
 
@@ -208,7 +208,7 @@ export default function CollaborationDispatch() {
                     placeholder="Venture partnership inquiry, product collaboration, or startup ecosystem project..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full bg-white/75 border border-[var(--color-border)]/70 rounded-xl p-3.5 text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] focus:bg-white focus:border-[var(--color-accent-primary)] outline-none transition-all text-xs resize-none font-futura"
+                    className="w-full bg-[var(--gta-text-fill-light)]/75 border border-[var(--color-border)]/70 rounded-xl p-3.5 text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] focus:bg-[var(--gta-text-fill-light)] focus:border-[var(--color-accent-primary)] outline-none transition-all text-xs resize-none font-futura"
                   ></textarea>
                 </div>
 
@@ -218,13 +218,13 @@ export default function CollaborationDispatch() {
                   </SpecularButton>
                 </div>
 
-                <div className="text-[11px] text-neutral-500 text-center pt-1 font-futura space-y-1">
+                <div className="text-[11px] text-[var(--gta-silhouette)] text-center pt-1 font-futura space-y-1">
                   <p>Your information is kept confidential and sent directly. No spam.</p>
                   <p>
                     Or open your email client directly:{' '}
                     <a
                       href={`mailto:${directEmail}?subject=Collaboration%20Inquiry%20from%20Portfolio&body=Hi%20Vijay,%0D%0A%0D%0A`}
-                      className="underline font-bold text-[#203322]"
+                      className="underline font-bold text-[var(--color-accent-primary)]"
                     >
                       Compose Email ↗
                     </a>
@@ -235,68 +235,68 @@ export default function CollaborationDispatch() {
           </FluidGlass>
 
           {/* Contact Details & Links Card */}
-          <div className="space-y-8 flex flex-col justify-between p-8 bg-white border-2 border-[#7A968B] rounded-3xl shadow-md font-futura">
+          <div className="space-y-8 flex flex-col justify-between p-8 bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] rounded-3xl shadow-md font-futura">
             <div className="space-y-6">
               
               {/* Location */}
               <div className="space-y-1.5">
-                <span className="text-xs text-[#354E45] font-bank uppercase tracking-widest font-bold block">Base & Location</span>
-                <div className="text-lg font-bold text-[#111815] flex items-center space-x-2">
-                  <MapPin className="w-4 h-4 text-[#203322] shrink-0" />
+                <span className="text-xs text-[var(--gta-silhouette)] font-bank uppercase tracking-widest font-bold block">Base & Location</span>
+                <div className="text-lg font-bold text-[var(--gta-text-outline)] flex items-center space-x-2">
+                  <MapPin className="w-4 h-4 text-[var(--color-accent-primary)] shrink-0" />
                   <span className="font-bank uppercase text-sm tracking-wider">Chennai, Tamil Nadu, India · On-site</span>
                 </div>
               </div>
 
               {/* Roles */}
               <div className="space-y-1.5">
-                <span className="text-xs text-[#354E45] font-bank uppercase tracking-widest font-bold block">Co-Founder Positions</span>
-                <div className="text-base font-bold text-[#111815] font-bank uppercase tracking-wider">
+                <span className="text-xs text-[var(--gta-silhouette)] font-bank uppercase tracking-widest font-bold block">Co-Founder Positions</span>
+                <div className="text-base font-bold text-[var(--gta-text-outline)] font-bank uppercase tracking-wider">
                   Unfounded • Ziggers • LoopMemory
                 </div>
-                <div className="text-xs text-[#354E45] font-medium font-futura">
+                <div className="text-xs text-[var(--gta-silhouette)] font-medium font-futura">
                   Full-time (Jun 2025 – Present) · Vibe coding & product marketing
                 </div>
               </div>
 
               {/* Education 1: SRMIST */}
               <div className="space-y-1.5">
-                <span className="text-xs text-[#354E45] font-bank uppercase tracking-widest font-bold block">Education // Defence & Strategic Studies</span>
+                <span className="text-xs text-[var(--gta-silhouette)] font-bank uppercase tracking-widest font-bold block">Education // Defence & Strategic Studies</span>
                 <a
                   href="https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/details/education/edit/forms/1193197386/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-base font-bold text-[#111815] flex items-center space-x-2 hover:text-[#203322] hover:underline leading-snug font-diploma"
+                  className="text-base font-bold text-[var(--gta-text-outline)] flex items-center space-x-2 hover:text-[var(--color-accent-primary)] hover:underline leading-snug font-diploma"
                 >
-                  <GraduationCap className="w-4 h-4 text-[#203322] shrink-0" />
+                  <GraduationCap className="w-4 h-4 text-[var(--color-accent-primary)] shrink-0" />
                   <span>SRMIST — B.Sc. Defence &amp; Strategic Studies (2023–2026)</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 shrink-0 text-[#203322]" />
+                  <ArrowUpRight className="w-3.5 h-3.5 shrink-0 text-[var(--color-accent-primary)]" />
                 </a>
               </div>
 
               {/* Education 2: Hindi MA */}
               <div className="space-y-1.5">
-                <span className="text-xs text-[#354E45] font-bank uppercase tracking-widest font-bold block">Education // Hindi Literature</span>
+                <span className="text-xs text-[var(--gta-silhouette)] font-bank uppercase tracking-widest font-bold block">Education // Hindi Literature</span>
                 <a
                   href="https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/details/education/edit/forms/1193198586/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-base font-bold text-[#111815] flex items-center space-x-2 hover:text-[#203322] hover:underline leading-snug font-diploma"
+                  className="text-base font-bold text-[var(--gta-text-outline)] flex items-center space-x-2 hover:text-[var(--color-accent-primary)] hover:underline leading-snug font-diploma"
                 >
-                  <BookOpen className="w-4 h-4 text-[#203322] shrink-0" />
+                  <BookOpen className="w-4 h-4 text-[var(--color-accent-primary)] shrink-0" />
                   <span>Dakshina Bharat Hindi Prachar Sabha — MA Hindi (2016–2021)</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 shrink-0 text-[#203322]" />
+                  <ArrowUpRight className="w-3.5 h-3.5 shrink-0 text-[var(--color-accent-primary)]" />
                 </a>
               </div>
 
             </div>
 
-            <div className="space-y-3 pt-2 border-t border-[#7A968B]/30">
-              <span className="text-xs text-[#354E45] font-bank uppercase tracking-widest font-bold block">Direct Venture Platforms</span>
+            <div className="space-y-3 pt-2 border-t border-[var(--gta-silhouette)]/30">
+              <span className="text-xs text-[var(--gta-silhouette)] font-bank uppercase tracking-widest font-bold block">Direct Venture Platforms</span>
               <BounceCards links={directLinks} />
             </div>
 
-            <div className="space-y-3 pt-4 border-t border-[#7A968B]/30">
-              <span className="text-xs text-[#354E45] font-bank uppercase tracking-widest font-bold block">Social & Professional Channels</span>
+            <div className="space-y-3 pt-4 border-t border-[var(--gta-silhouette)]/30">
+              <span className="text-xs text-[var(--gta-silhouette)] font-bank uppercase tracking-widest font-bold block">Social & Professional Channels</span>
               <SocialLinks compact={false} />
             </div>
 

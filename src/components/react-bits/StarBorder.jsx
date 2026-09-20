@@ -20,7 +20,7 @@ export default function StarBorder({
           animationDuration: speed
         }}
       />
-      <div className="relative bg-neutral-900 text-white px-5 py-2.5 rounded-full flex items-center space-x-2 font-sans text-xs font-semibold tracking-normal group-hover:bg-black transition-colors shadow-sm">
+      <div className="relative bg-[var(--gta-text-outline)] text-white px-5 py-2.5 rounded-full flex items-center space-x-2 font-futura text-xs font-semibold tracking-normal group-hover:bg-[var(--gta-text-shadow)] transition-colors shadow-sm">
         {children}
       </div>
     </Component>
