@@ -1,7 +1,7 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import Header from './components/Header';
 import GtaHero from './components/GtaHero';
-import ScrollVideoSection from './components/ScrollVideoSection';
+import PortalsSection from './components/PortalsSection';
 import HomeFAQSection from './components/HomeFAQSection';
 import Footer from './components/Footer';
 import Particles from './components/react-bits/Particles';
@@ -99,8 +99,8 @@ export default function App() {
         {/* 1. Authentic GTA San Andreas Artwork Hero (Mobile Portrait & Desktop Landscape) */}
         <GtaHero />
 
-        {/* 2. Full-Screen Cinematic Scroll-Driven Video & Frame Progression */}
-        <ScrollVideoSection />
+        {/* 2. Responsive 4-Portal Directory (Zero Scroll-Jacking / Natural Flow) */}
+        <PortalsSection />
 
         {/* 3. AEO/GEO Executive Summary & Question Knowledge Hub */}
         <HomeFAQSection />

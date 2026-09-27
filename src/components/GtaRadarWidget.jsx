@@ -10,13 +10,16 @@ const WAYPOINTS = [
 ];
 
 export default function GtaRadarWidget() {
-  const [isAudioActive, setIsAudioActive] = useState(false);
+  const [isAudioActive, setIsAudioActive] = useState(!soundSystem.isMuted());
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [activeBlip, setActiveBlip] = useState(null);
   const [currentPath, setCurrentPath] = useState('/');
 
   useEffect(() => {
-    setIsAudioActive(!soundSystem.isMuted());
+    const unsubscribe = soundSystem.subscribe((active) => {
+      setIsAudioActive(active);
+    });
+
     if (typeof window !== 'undefined') {
       setCurrentPath(window.location.pathname);
       // Auto-collapse on small mobile screens to keep view clean
@@ -29,7 +32,10 @@ export default function GtaRadarWidget() {
       setCurrentPath(window.location.pathname);
     };
     window.addEventListener('popstate', handlePop);
-    return () => window.removeEventListener('popstate', handlePop);
+    return () => {
+      unsubscribe();
+      window.removeEventListener('popstate', handlePop);
+    };
   }, []);
 
   const handleToggleAudio = () => {
@@ -52,7 +58,7 @@ export default function GtaRadarWidget() {
   return (
     <aside
       aria-label="GTA Minimap Navigation HUD and Audio Console"
-      className="fixed bottom-4 left-4 z-50 select-none print:hidden"
+      className="fixed bottom-4 left-4 z-50 select-none touch-none print:hidden"
     >
       {/* Collapsed State: Discrete circular HUD badge */}
       {isCollapsed ? (
@@ -63,7 +69,7 @@ export default function GtaRadarWidget() {
             setIsCollapsed(false);
           }}
           onMouseEnter={() => soundSystem.playHover()}
-          className="group relative flex items-center justify-center w-12 h-12 rounded-full bg-[var(--gta-text-outline)]/90 backdrop-blur-md border-2 border-[var(--gta-silhouette)] shadow-[0_8px_30px_rgba(0,0,0,0.85)] hover:border-[#E7B85A] transition-all cursor-pointer"
+          className="group relative flex items-center justify-center w-12 h-12 rounded-full bg-[var(--gta-text-outline)]/95 backdrop-blur-md border-2 border-[var(--gta-silhouette)] shadow-[0_8px_30px_rgba(0,0,0,0.85)] hover:border-[#E7B85A] active:scale-95 transition-all cursor-pointer touch-manipulation"
           title="Open GTA Minimap HUD & Audio"
           aria-label="Expand Minimap HUD"
         >
@@ -73,14 +79,14 @@ export default function GtaRadarWidget() {
         </button>
       ) : (
         /* Expanded Circular Radar HUD */
-        <div className="relative bg-[var(--gta-text-outline)]/95 backdrop-blur-lg border-2 border-[var(--gta-silhouette)] rounded-2xl p-3 shadow-[0_12px_40px_rgba(0,0,0,0.9)] max-w-[240px] text-xs">
+        <div className="relative bg-[var(--gta-text-outline)]/95 backdrop-blur-lg border-2 border-[var(--gta-silhouette)] rounded-2xl p-3 shadow-[0_12px_40px_rgba(0,0,0,0.9)] w-[240px] text-xs">
           {/* Header Controls: Minimize & Audio Toggle */}
           <div className="flex items-center justify-between pb-2 mb-2 border-b border-[var(--gta-silhouette)]/30">
             <button
               type="button"
               onClick={handleToggleAudio}
               onMouseEnter={() => soundSystem.playHover()}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bank font-bold tracking-wider transition-all border ${
+              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bank font-bold tracking-wider transition-all border cursor-pointer active:scale-95 touch-manipulation ${
                 isAudioActive
                   ? 'bg-[#E7B85A]/20 text-[#E7B85A] border-[#E7B85A]'
                   : 'bg-[var(--gta-text-outline)] text-[var(--gta-silhouette)] border-[var(--gta-silhouette)]/50 hover:text-[var(--gta-text-fill)]'
@@ -102,7 +108,7 @@ export default function GtaRadarWidget() {
                 setIsCollapsed(true);
               }}
               onMouseEnter={() => soundSystem.playHover()}
-              className="text-[var(--gta-silhouette)] hover:text-[var(--gta-text-fill)] px-1.5 py-0.5 text-xs font-mono font-bold transition-colors cursor-pointer"
+              className="text-[var(--gta-silhouette)] hover:text-[var(--gta-text-fill)] active:scale-90 px-1.5 py-0.5 text-xs font-mono font-bold transition-transform cursor-pointer touch-manipulation"
               title="Minimize Minimap"
               aria-label="Minimize Minimap HUD"
             >
@@ -156,35 +162,35 @@ export default function GtaRadarWidget() {
                   key={wp.id}
                   type="button"
                   onClick={() => handleNavigate(wp.path)}
-                  onMouseEnter={() => {
+                  onPointerEnter={() => {
                     soundSystem.playHover();
                     setActiveBlip(wp);
                   }}
-                  onMouseLeave={() => setActiveBlip(null)}
+                  onPointerLeave={() => setActiveBlip(null)}
                   style={{
                     transform: `translate(${x}px, ${y}px)`,
                     color: wp.color,
                   }}
-                  className={`absolute z-20 w-4 h-4 flex items-center justify-center text-xs font-bold transition-transform hover:scale-150 cursor-pointer ${
-                    isCurrent ? 'animate-pulse scale-125' : ''
+                  className={`absolute z-20 w-5 h-5 -ml-2.5 -mt-2.5 flex items-center justify-center text-xs font-bold transition-transform md:hover:scale-125 active:scale-110 cursor-pointer touch-manipulation ${
+                    isCurrent ? 'animate-pulse scale-110' : ''
                   }`}
                   aria-label={`Jump to ${wp.label}`}
                   title={`${wp.label} — ${wp.path}`}
                 >
-                  <span className="drop-shadow-[0_0_4px_currentColor]">{wp.icon}</span>
+                  <span className="drop-shadow-[0_0_4px_currentColor] pointer-events-none select-none">{wp.icon}</span>
                 </button>
               );
             })}
           </div>
 
-          {/* Active Blip Label or Coordinate Telemetry */}
-          <div className="mt-2 text-center font-bank text-[10px] tracking-wider uppercase">
+          {/* Active Blip Label or Coordinate Telemetry (Fixed height prevents vertical layout shaking) */}
+          <div className="mt-2 h-5 flex items-center justify-center text-center font-bank text-[10px] tracking-wider uppercase overflow-hidden">
             {activeBlip ? (
-              <span className="text-[#E7B85A] font-bold">
+              <span className="text-[#E7B85A] font-bold truncate max-w-full block px-1">
                 DEST: {activeBlip.label} ({activeBlip.path})
               </span>
             ) : (
-              <span className="text-[var(--gta-silhouette)]">
+              <span className="text-[var(--gta-silhouette)] truncate max-w-full block px-1">
                 LOC: CHENNAI // 13.08° N, 80.27° E
               </span>
             )}

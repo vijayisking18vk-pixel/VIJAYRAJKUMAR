@@ -3,31 +3,62 @@
  * Uses Web Audio API — Zero external audio files, zero latency, 100% reliable.
  * 
  * Complies with strict user rule:
- * - Starts 100% MUTED by default.
- * - AudioContext created ONLY upon explicit user interaction.
- * - Persistent mute and volume control.
+ * - Starts 100% MUTED by default on first visit.
+ * - Remembers user's explicit preference across navigation.
+ * - Auto-resumes AudioContext if suspended by mobile OS during touch/scroll.
  */
 
 class SoundSystem {
   constructor() {
     this.ctx = null;
-    this.muted = true; // MUST start muted
+    const saved = typeof window !== 'undefined' ? localStorage.getItem('gta_sound_enabled') : null;
+    this.muted = saved === 'true' ? false : true; // Default muted unless user explicitly enabled
     this.masterGain = null;
     this.ambientGain = null;
     this.ambientOsc = null;
-    this.noiseNode = null;
     this.isInitialized = false;
+    this.listeners = new Set();
+
+    if (typeof window !== 'undefined') {
+      const resumeIfActive = () => {
+        if (!this.muted) {
+          if (!this.isInitialized) {
+            this.init();
+          }
+          if (this.ctx && this.ctx.state === 'suspended') {
+            this.ctx.resume().catch(() => {});
+          }
+        }
+      };
+      window.addEventListener('touchstart', resumeIfActive, { passive: true });
+      window.addEventListener('pointerdown', resumeIfActive, { passive: true });
+      window.addEventListener('click', resumeIfActive, { passive: true });
+    }
+  }
+
+  subscribe(callback) {
+    this.listeners.add(callback);
+    callback(!this.muted);
+    return () => this.listeners.delete(callback);
+  }
+
+  notify() {
+    this.listeners.forEach((fn) => {
+      try {
+        fn(!this.muted);
+      } catch (_) {}
+    });
   }
 
   init() {
-    if (this.isInitialized) return;
+    if (this.isInitialized && this.ctx) return;
     try {
       const AudioCtx = window.AudioContext || window.webkitAudioContext;
       if (!AudioCtx) return;
       this.ctx = new AudioCtx();
 
       this.masterGain = this.ctx.createGain();
-      this.masterGain.gain.setValueAtTime(this.muted ? 0 : 0.25, this.ctx.currentTime);
+      this.masterGain.gain.setValueAtTime(this.muted ? 0 : 0.22, this.ctx.currentTime);
       this.masterGain.connect(this.ctx.destination);
 
       this.isInitialized = true;
@@ -69,17 +100,22 @@ class SoundSystem {
     if (!this.ctx) return false;
 
     if (this.ctx.state === 'suspended') {
-      this.ctx.resume();
+      this.ctx.resume().catch(() => {});
     }
 
     this.muted = !this.muted;
 
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('gta_sound_enabled', this.muted ? 'false' : 'true');
+    }
+
     if (this.masterGain) {
       const targetGain = this.muted ? 0 : 0.22;
       this.masterGain.gain.cancelScheduledValues(this.ctx.currentTime);
-      this.masterGain.gain.linearRampToValueAtTime(targetGain, this.ctx.currentTime + 0.1);
+      this.masterGain.gain.linearRampToValueAtTime(targetGain, this.ctx.currentTime + 0.08);
     }
 
+    this.notify();
     return !this.muted;
   }
 
@@ -91,8 +127,15 @@ class SoundSystem {
    * Tactile UI hover click (crisp wooden mechanical micro-blip)
    */
   playHover() {
-    if (this.muted || !this.ctx || !this.isInitialized) return;
+    if (this.muted) return;
+    if (!this.isInitialized) {
+      this.init();
+    }
+    if (!this.ctx) return;
     try {
+      if (this.ctx.state === 'suspended') {
+        this.ctx.resume().catch(() => {});
+      }
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
 
@@ -115,8 +158,15 @@ class SoundSystem {
    * Tactile mission / button select click (satisfying resonant chirp)
    */
   playSelect() {
-    if (this.muted || !this.ctx || !this.isInitialized) return;
+    if (this.muted) return;
+    if (!this.isInitialized) {
+      this.init();
+    }
+    if (!this.ctx) return;
     try {
+      if (this.ctx.state === 'suspended') {
+        this.ctx.resume().catch(() => {});
+      }
       const now = this.ctx.currentTime;
       const osc1 = this.ctx.createOscillator();
       const osc2 = this.ctx.createOscillator();
