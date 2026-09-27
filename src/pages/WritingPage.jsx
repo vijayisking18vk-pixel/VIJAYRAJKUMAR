@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BookOpen, Calendar, Clock, ArrowRight, User, ChevronRight } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import soundSystem from '../lib/soundSystem';
 
 const articles = [
   {
@@ -605,7 +606,22 @@ export default function WritingPage({ initialArticleId = null }) {
     return () => window.removeEventListener('popstate', handlePop);
   }, []);
 
+  const [readingProgress, setReadingProgress] = useState(0);
+
+  React.useEffect(() => {
+    if (!selectedArticle) return;
+    const handleScroll = () => {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      if (total > 0) {
+        setReadingProgress(Math.min(100, Math.max(0, (window.scrollY / total) * 100)));
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [selectedArticle]);
+
   const openArticle = (art, e) => {
+    soundSystem.playSelect();
     if (e && (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)) return; // Allow new tab
     if (e) e.preventDefault();
     setSelectedArticle(art);
@@ -616,6 +632,7 @@ export default function WritingPage({ initialArticleId = null }) {
   };
 
   const closeArticle = (e) => {
+    soundSystem.playSelect();
     if (e) e.preventDefault();
     setSelectedArticle(null);
     if (typeof window !== 'undefined') {
@@ -625,6 +642,15 @@ export default function WritingPage({ initialArticleId = null }) {
 
   return (
     <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-futura selection:bg-[var(--color-accent-primary)] selection:text-[var(--gta-text-fill)] flex flex-col">
+      {/* Article Reading Progress Indicator */}
+      {selectedArticle && (
+        <div
+          className="fixed top-0 left-0 right-0 h-1 bg-[#E7B85A] z-50 transition-all duration-75 shadow-[0_1px_4px_rgba(231,184,90,0.6)]"
+          style={{ width: `${readingProgress}%` }}
+          aria-hidden="true"
+        />
+      )}
+
       <Header />
 
       <main className="flex-grow max-w-4xl mx-auto px-6 py-16 lg:py-24 space-y-16">

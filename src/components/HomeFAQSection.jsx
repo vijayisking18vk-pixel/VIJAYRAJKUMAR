@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronDown, Sparkles, Clock, CheckCircle2, ArrowRight } from 'lucide-react';
+import soundSystem from '../lib/soundSystem';
 
 const FAQ_ITEMS = [
   {
@@ -33,6 +34,7 @@ export default function HomeFAQSection() {
   const [openIndices, setOpenIndices] = useState({ 0: true, 1: true, 2: true, 3: true, 4: true });
 
   const toggleIndex = (index) => {
+    soundSystem.playSelect();
     setOpenIndices((prev) => ({
       ...prev,
       [index]: !prev[index]
@@ -134,6 +136,7 @@ export default function HomeFAQSection() {
                 <button
                   type="button"
                   onClick={() => toggleIndex(idx)}
+                  onMouseEnter={() => soundSystem.playHover()}
                   className="w-full px-6 py-5 flex items-center justify-between gap-4 text-left transition-colors hover:bg-[var(--gta-text-shadow)]"
                   aria-expanded={isOpen}
                 >

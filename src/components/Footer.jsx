@@ -2,9 +2,11 @@ import React from 'react';
 import LetterGlitch from './react-bits/LetterGlitch';
 import CountUp from './react-bits/CountUp';
 import SocialLinks from './SocialLinks';
+import soundSystem from '../lib/soundSystem';
 
 export default function Footer() {
   const scrollToTop = () => {
+    soundSystem.playSelect();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
