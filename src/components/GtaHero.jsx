@@ -1,7 +1,10 @@
 import React from 'react';
+import StreetscapeScene3D from './StreetscapeScene3D';
+import soundSystem from '../lib/soundSystem';
 
 export default function GtaHero() {
   const handleScrollDown = () => {
+    soundSystem.playSelect();
     const nextSection =
       document.getElementById('scroll-video-section') ||
       document.getElementById('cinematic-story') ||
@@ -19,90 +22,58 @@ export default function GtaHero() {
     <section
       id="hero"
       aria-label="Vijayrajkumar — Chief Operating Officer & Venture Builder in Chennai"
-      className="relative w-full min-h-[85vh] sm:min-h-[90vh] lg:min-h-screen bg-[var(--gta-text-outline)] flex flex-col items-center justify-center overflow-hidden select-none border-b border-[var(--gta-silhouette)]/30"
+      className="relative w-full h-[calc(100vh-68px)] min-h-[540px] sm:min-h-[600px] bg-[var(--gta-text-outline)] flex flex-col items-center justify-between overflow-hidden select-none border-b-2 border-[var(--gta-silhouette)]/40"
     >
-      {/* Background Ambience & Subtle Radial Vignette */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(26,26,26,0.6)_0%,rgba(10,10,10,0.98)_100%)] z-0" />
+      {/* 3D Immersive West Coast Sunset Streetscape */}
+      <StreetscapeScene3D />
 
-      {/* Screen Reader Semantic Headings for SEO & AEO */}
+      {/* Screen Reader Semantic Headings for SEO, AEO & Crawlers */}
       <div className="sr-only">
         <h1>Vijayrajkumar — Chief Operating Officer &amp; Venture Builder in Chennai</h1>
         <p>
           Co-Founder &amp; COO at Unfounded, Ziggers, and LoopMemory. Operating across urban gig-economy
           marketplaces and persistent AI memory infrastructure.
         </p>
+        <img
+          src="/images/hero-desktop.webp"
+          alt="Vijayrajkumar official GTA San Andreas artwork poster in Chennai"
+        />
       </div>
 
       {/* Top HUD Telemetry Ribbon */}
-      <div className="absolute top-4 sm:top-6 left-4 right-4 z-20 flex items-center justify-between pointer-events-none max-w-7xl mx-auto">
-        <div className="flex items-center space-x-2 bg-[var(--gta-text-outline)]/85 backdrop-blur-md border border-[var(--gta-silhouette)] px-3 sm:px-4 py-1.5 rounded-full shadow-lg">
-          <span className="w-2 h-2 rounded-full bg-[var(--gta-sky-top)] animate-ping" />
+      <header className="relative z-20 w-full pt-4 sm:pt-6 px-4 sm:px-6 max-w-7xl mx-auto flex items-center justify-between pointer-events-none">
+        <div className="pointer-events-auto flex items-center space-x-2.5 bg-[var(--gta-text-outline)]/85 backdrop-blur-md border border-[var(--gta-silhouette)] px-3.5 sm:px-4 py-1.5 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.6)]">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#E7B85A] animate-ping" />
           <span className="font-bank uppercase text-[10px] sm:text-xs tracking-widest text-[var(--gta-text-fill)] font-bold">
             CHENNAI, IN // MISSION: ACTIVE
           </span>
         </div>
 
-        <div className="hidden sm:flex items-center space-x-2 bg-[var(--gta-text-outline)]/85 backdrop-blur-md border border-[var(--gta-silhouette)] px-3 sm:px-4 py-1.5 rounded-full shadow-lg">
+        <div className="pointer-events-auto hidden sm:flex items-center space-x-2 bg-[var(--gta-text-outline)]/85 backdrop-blur-md border border-[var(--gta-silhouette)] px-3.5 sm:px-4 py-1.5 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.6)]">
           <span className="font-bank uppercase text-[10px] sm:text-xs tracking-widest text-[var(--gta-text-fill-warm)] font-bold">
             UNFOUNDED // STUDIO OPS
           </span>
         </div>
-      </div>
+      </header>
 
-      {/* Hero Visual Poster: Mobile (First Image) vs Desktop (Second Image) */}
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-14 sm:py-16 flex items-center justify-center">
-        <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border-2 sm:border-4 border-[var(--gta-text-outline)] shadow-[0_20px_60px_rgba(10,10,10,0.85)] bg-[var(--gta-text-outline)] max-w-full">
-          <picture className="block w-full h-full">
-            {/* Desktop Screen: Landscape Widescreen (1024x576, 16:9) */}
-            <source
-              media="(min-width: 768px)"
-              type="image/webp"
-              srcSet="/images/hero-desktop.webp"
-            />
-            <source
-              media="(min-width: 768px)"
-              type="image/jpeg"
-              srcSet="/images/hero-desktop.jpg"
-            />
+      {/* Middle Spacer to keep Billboard visually dominant */}
+      <div className="flex-1 pointer-events-none" />
 
-            {/* Mobile Screen: Portrait Mobile-Optimized (682x1024, 2:3) */}
-            <source
-              media="(max-width: 767px)"
-              type="image/webp"
-              srcSet="/images/hero-mobile.webp"
-            />
-            <source
-              media="(max-width: 767px)"
-              type="image/jpeg"
-              srcSet="/images/hero-mobile.jpg"
-            />
-
-            <img
-              src="/images/hero-desktop.jpg"
-              alt="Vijay Raj Kumar Unfounded — GTA San Andreas Official Artwork Poster"
-              fetchPriority="high"
-              loading="eager"
-              decoding="sync"
-              className="w-full h-auto max-h-[60vh] sm:max-h-[68vh] object-contain mx-auto block transform-gpu hover:scale-[1.01] transition-transform duration-500"
-            />
-          </picture>
-        </div>
-      </div>
-
-      {/* Bottom GTA HUD Scroll Action Button */}
-      <div className="relative z-20 pb-8 flex flex-col items-center justify-center px-4">
+      {/* Bottom GTA HUD Action Bar */}
+      <footer className="relative z-20 pb-6 sm:pb-8 flex flex-col items-center justify-center px-4 w-full">
         <button
           type="button"
           onClick={handleScrollDown}
-          className="flex items-center gap-2.5 sm:gap-3 px-6 py-3 rounded-full bg-[var(--gta-text-outline)] hover:bg-[#1A1A1A] active:scale-95 border-2 border-[var(--gta-silhouette)] text-[var(--gta-text-fill)] text-xs font-bank uppercase tracking-wider font-bold shadow-2xl transition-all cursor-pointer group"
+          onMouseEnter={() => soundSystem.playHover()}
+          className="flex items-center gap-3 px-6 sm:px-8 py-3.5 rounded-full bg-[var(--gta-text-outline)]/95 hover:bg-[#1A1A1A] active:scale-95 border-2 border-[var(--gta-silhouette)] text-[var(--gta-text-fill)] text-xs sm:text-sm font-bank uppercase tracking-widest font-bold shadow-[0_8px_30px_rgba(0,0,0,0.7)] transition-all cursor-pointer group"
           aria-label="Scroll down to explore case studies and portals"
         >
-          <span className="w-2.5 h-2.5 rounded-full bg-[var(--gta-sky-top)] animate-pulse shrink-0" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#E7B85A] group-hover:scale-125 transition-transform shrink-0" />
           <span className="group-hover:text-[var(--gta-text-fill-warm)] transition-colors">
             Explore Portals &amp; Ventures ↓
           </span>
         </button>
-      </div>
+      </footer>
     </section>
   );
 }

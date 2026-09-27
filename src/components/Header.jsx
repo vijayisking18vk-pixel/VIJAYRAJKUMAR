@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Compass, Layers, BookOpen, Send, Calendar, Menu, X } from 'lucide-react';
-import GradientText from './react-bits/GradientText';
 import StarBorder from './react-bits/StarBorder';
+import soundSystem from '../lib/soundSystem';
 
 export default function Header({ activeSection, setActiveSection }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -19,7 +19,12 @@ export default function Header({ activeSection, setActiveSection }) {
       <div className="max-w-6xl mx-auto px-6 lg:px-12 py-4 flex items-center justify-between">
         
         {/* Brand Title linking to Home - GTA Pricedown Logo */}
-        <a href="/" className="flex items-center space-x-2.5 group">
+        <a
+          href="/"
+          onMouseEnter={() => soundSystem.playHover()}
+          onClick={() => soundSystem.playSelect()}
+          className="flex items-center space-x-2.5 group"
+        >
           <span className="w-2.5 h-2.5 bg-[var(--gta-text-outline)] rounded-full animate-pulse transform-gpu"></span>
           <span className="gta-lettering font-pricedown text-xl sm:text-2xl tracking-wider uppercase group-hover:scale-105 transition-transform">
             VIJAYRAJKUMAR
@@ -34,6 +39,8 @@ export default function Header({ activeSection, setActiveSection }) {
               <a
                 key={item.label}
                 href={item.href}
+                onMouseEnter={() => soundSystem.playHover()}
+                onClick={() => soundSystem.playSelect()}
                 className="flex items-center space-x-1.5 text-[var(--gta-text-outline)] hover:text-[var(--gta-silhouette)] font-bank uppercase tracking-wider font-bold transition-colors text-xs py-1"
               >
                 <Icon className="w-3.5 h-3.5 shrink-0 text-[var(--gta-silhouette)]" />
@@ -50,13 +57,19 @@ export default function Header({ activeSection, setActiveSection }) {
             href="https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/"
             target="_blank"
             rel="noopener noreferrer"
+            onMouseEnter={() => soundSystem.playHover()}
+            onClick={() => soundSystem.playSelect()}
             className="hidden sm:inline-flex font-bank uppercase tracking-wider text-xs font-bold"
           >
             <span>LinkedIn Profile ↗</span>
           </StarBorder>
 
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={() => {
+              soundSystem.playSelect();
+              setMobileMenuOpen(!mobileMenuOpen);
+            }}
+            onMouseEnter={() => soundSystem.playHover()}
             className="md:hidden p-2 rounded-lg text-[var(--color-text-primary)] hover:text-[var(--color-accent-primary)] hover:bg-[var(--color-surface)]/25 transition-colors"
             aria-label="Toggle Navigation Menu"
           >
@@ -75,7 +88,11 @@ export default function Header({ activeSection, setActiveSection }) {
               <a
                 key={item.label}
                 href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
+                onMouseEnter={() => soundSystem.playHover()}
+                onClick={() => {
+                  soundSystem.playSelect();
+                  setMobileMenuOpen(false);
+                }}
                 className="flex items-center space-x-2 text-xs font-bank uppercase tracking-wider text-[var(--color-text-primary)] hover:text-[var(--color-accent-primary)] py-2"
               >
                 <Icon className="w-4 h-4 text-[var(--color-text-muted)]" />
@@ -88,6 +105,8 @@ export default function Header({ activeSection, setActiveSection }) {
               href="https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/"
               target="_blank"
               rel="noopener noreferrer"
+              onMouseEnter={() => soundSystem.playHover()}
+              onClick={() => soundSystem.playSelect()}
               className="text-xs font-bank uppercase tracking-wider text-[var(--color-accent-primary)] hover:underline block py-1"
             >
               LinkedIn Profile ↗

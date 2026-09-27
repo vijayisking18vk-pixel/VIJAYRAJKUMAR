@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Layers, ArrowUpRight, Zap, Code, Rocket, RotateCcw } from 'lucide-react';
 import FuzzyText from './react-bits/FuzzyText';
 import ElectricBorder from './react-bits/ElectricBorder';
+import soundSystem from '../lib/soundSystem';
 
 function FlipCard({ study, image, index }) {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -12,7 +13,11 @@ function FlipCard({ study, image, index }) {
     <div
       className="group cursor-pointer"
       style={{ perspective: '1200px' }}
-      onClick={() => setIsFlipped((prev) => !prev)}
+      onMouseEnter={() => soundSystem.playHover()}
+      onClick={() => {
+        soundSystem.playSelect();
+        setIsFlipped((prev) => !prev);
+      }}
     >
       <div
         className="relative w-full transition-transform duration-700 ease-in-out"

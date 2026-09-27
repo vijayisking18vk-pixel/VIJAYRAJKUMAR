@@ -5,6 +5,7 @@ import ScrollVideoSection from './components/ScrollVideoSection';
 import HomeFAQSection from './components/HomeFAQSection';
 import Footer from './components/Footer';
 import Particles from './components/react-bits/Particles';
+import GtaRadarWidget from './components/GtaRadarWidget';
 
 // Code-split multi-page subpages (lazy loaded on demand)
 const AboutPage = lazy(() => import('./pages/AboutPage'));
@@ -39,94 +40,52 @@ export default function App() {
   // Route matching
   const normalizedPath = currentPath.toLowerCase().replace(/\/+$/, '');
 
-  if (normalizedPath === '/vijayrajkumar') {
-    if (typeof window !== 'undefined') {
+  let subpageContent = null;
+
+  if (normalizedPath === '/vijayrajkumar' || normalizedPath === '/about') {
+    if (normalizedPath === '/vijayrajkumar' && typeof window !== 'undefined') {
       window.history.replaceState(null, '', '/about/');
     }
-    return (
-      <Suspense fallback={<PageFallback />}>
-        <AboutPage />
-      </Suspense>
-    );
-  }
-  if (normalizedPath === '/about') {
-    return (
-      <Suspense fallback={<PageFallback />}>
-        <AboutPage />
-      </Suspense>
-    );
-  }
-  if (normalizedPath === '/ventures') {
-    return (
-      <Suspense fallback={<PageFallback />}>
-        <VenturesPage />
-      </Suspense>
-    );
-  }
-  if (normalizedPath === '/ventures/ziggers') {
-    return (
-      <Suspense fallback={<PageFallback />}>
-        <ZiggersPage />
-      </Suspense>
-    );
-  }
-  if (normalizedPath === '/ventures/loopmemory') {
-    return (
-      <Suspense fallback={<PageFallback />}>
-        <LoopMemoryPage />
-      </Suspense>
-    );
-  }
-  if (normalizedPath === '/events') {
-    return (
-      <Suspense fallback={<PageFallback />}>
-        <EventsPage />
-      </Suspense>
-    );
-  }
-  if (normalizedPath === '/writing' || normalizedPath.startsWith('/writing/')) {
-    return (
-      <Suspense fallback={<PageFallback />}>
-        <WritingPage />
-      </Suspense>
-    );
-  }
-  if (normalizedPath === '/startup-builder-venture-builder-india') {
+    subpageContent = <AboutPage />;
+  } else if (normalizedPath === '/ventures') {
+    subpageContent = <VenturesPage />;
+  } else if (normalizedPath === '/ventures/ziggers') {
+    subpageContent = <ZiggersPage />;
+  } else if (normalizedPath === '/ventures/loopmemory') {
+    subpageContent = <LoopMemoryPage />;
+  } else if (normalizedPath === '/events') {
+    subpageContent = <EventsPage />;
+  } else if (normalizedPath === '/writing' || normalizedPath.startsWith('/writing/')) {
+    subpageContent = <WritingPage />;
+  } else if (normalizedPath === '/startup-builder-venture-builder-india') {
     if (typeof window !== 'undefined') {
       window.history.replaceState(null, '', '/writing/startup-builder-venture-builder-india/');
     }
-    return (
-      <Suspense fallback={<PageFallback />}>
-        <WritingPage initialArticleId="startup-builder-venture-builder-india" />
-      </Suspense>
-    );
-  }
-  if (normalizedPath === '/catering-workers-in-chennai') {
+    subpageContent = <WritingPage initialArticleId="startup-builder-venture-builder-india" />;
+  } else if (normalizedPath === '/catering-workers-in-chennai') {
     if (typeof window !== 'undefined') {
       window.history.replaceState(null, '', '/writing/catering-workers-in-chennai/');
     }
-    return (
-      <Suspense fallback={<PageFallback />}>
-        <WritingPage initialArticleId="catering-workers-in-chennai" />
-      </Suspense>
-    );
+    subpageContent = <WritingPage initialArticleId="catering-workers-in-chennai" />;
+  } else if (normalizedPath === '/contact') {
+    subpageContent = <ContactPage />;
+  } else if (normalizedPath !== '' && normalizedPath !== '/') {
+    subpageContent = <NotFoundPage />;
   }
-  if (normalizedPath === '/contact') {
+
+  // If viewing a subpage, render with persistent GTA Radar HUD
+  if (subpageContent) {
     return (
-      <Suspense fallback={<PageFallback />}>
-        <ContactPage />
-      </Suspense>
-    );
-  }
-  if (normalizedPath !== '' && normalizedPath !== '/') {
-    return (
-      <Suspense fallback={<PageFallback />}>
-        <NotFoundPage />
-      </Suspense>
+      <div className="relative min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-futura selection:bg-[var(--color-accent-primary)] selection:text-white">
+        <Suspense fallback={<PageFallback />}>
+          {subpageContent}
+        </Suspense>
+        <GtaRadarWidget />
+      </div>
     );
   }
 
-  // Streamlined Homepage: GTA Hero + Proof Strip + Section Directory Portals
+  // Streamlined Homepage: GTA Hero + Proof Strip + Section Directory Portals + Radar HUD
   return (
     <div className="relative min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] flex flex-col font-futura selection:bg-[var(--color-accent-primary)] selection:text-white overflow-x-clip">
       {/* Global Ambient Interactive Particles Canvas Background */}
@@ -147,9 +106,11 @@ export default function App() {
         <HomeFAQSection />
       </main>
 
-
       {/* Footer */}
       <Footer />
+
+      {/* GTA Minimap HUD & Audio Console */}
+      <GtaRadarWidget />
     </div>
   );
 }

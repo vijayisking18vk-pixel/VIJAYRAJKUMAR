@@ -77,30 +77,46 @@
 }
 
 :root {
-  /* 🎨 Official GTA San Andreas Typography Color Theme */
-  --gta-text-fill: #F0E8D0;
-  --gta-text-fill-warm: #EDE4C8;
-  --gta-text-fill-light: #F5EFDD;
-  --gta-text-outline: #0A0A0A;
-  --gta-text-shadow: #1A1A1A;
-  --gta-text-shadow-soft: rgba(0, 0, 0, 0.5);
+  /* 🌅 GTA: San Andreas West Coast Sunset Palette */
+  --color-asphalt: #11100E;
+  --color-asphalt-dark: #0A0908;
+  --color-asphalt-card: #161513;
+  --color-cream: #F2E8D5;
+  --color-cream-warm: #EBDDC2;
+  --color-cream-light: #FAF5EB;
+  --color-sunset: #D87942;
+  --color-sunset-glow: #E88B54;
+  --color-dusty-rose: #A96E72;
+  --color-hazy-mauve: #563342;
+  --color-olive: #75805A;
+  --color-olive-dark: #4F573C;
+  --color-amber: #E7B85A;
+  --color-amber-dim: #C49740;
 
-  --gta-sky-top: #8FADA0;
-  --gta-sky-mid: #B7C2A8;
-  --gta-sky-low: #D9D8B0;
-  --gta-sky-horizon: #E8DFB8;
-  --gta-silhouette: #7C8873;
+  /* 🎨 GTA San Andreas Typography & Surface Theme */
+  --gta-text-fill: var(--color-cream);
+  --gta-text-fill-warm: var(--color-cream-warm);
+  --gta-text-fill-light: var(--color-cream-light);
+  --gta-text-outline: var(--color-asphalt);
+  --gta-text-shadow: var(--color-asphalt-dark);
+  --gta-text-shadow-soft: rgba(17, 16, 14, 0.65);
+
+  --gta-sky-top: var(--color-hazy-mauve);
+  --gta-sky-mid: var(--color-sunset);
+  --gta-sky-low: var(--color-dusty-rose);
+  --gta-sky-horizon: var(--color-amber);
+  --gta-silhouette: var(--color-olive);
 
   /* App Canvas Variables */
   --color-background: #F7F4EB;
   --color-background-start: #F7F4EB;
   --color-background-end: #EDE8D8;
-  --color-text-primary: #0A0A0A;
-  --color-accent-primary: #0A0A0A;
-  --color-accent-secondary: #7C8873;
-  --color-text-muted: #7C8873;
+  --color-text-primary: var(--color-asphalt);
+  --color-accent-primary: var(--color-asphalt);
+  --color-accent-secondary: var(--color-olive);
+  --color-text-muted: #615D56;
   --color-surface: #FFFFFF;
-  --color-border: #7C8873;
+  --color-border: var(--color-olive);
 }
 
 @layer base {
