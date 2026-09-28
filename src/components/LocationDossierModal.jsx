@@ -128,7 +128,7 @@ export default function LocationDossierModal({ landmark, onClose, onNavigate }) 
             </div>
             <div className="flex flex-wrap gap-2 text-xs">
               <span className="px-3 py-1 rounded-full bg-[var(--gta-text-shadow)] border border-[var(--gta-silhouette)]/40 text-[var(--gta-sky-mid)] font-mono">
-                Email: contact@vijayrajkumar.in
+                Email: vijaykumarunfounded@gmail.com
               </span>
               <span className="px-3 py-1 rounded-full bg-[var(--gta-text-shadow)] border border-[var(--gta-silhouette)]/40 text-[var(--gta-sky-mid)] font-mono">
                 Location: Chennai, Tamil Nadu

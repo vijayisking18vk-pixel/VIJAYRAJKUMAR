@@ -653,17 +653,17 @@ export default function WritingPage({ initialArticleId = null }) {
 
       <Header />
 
-      <main className="flex-grow max-w-4xl mx-auto px-6 py-16 lg:py-24 space-y-16">
+      <main className="flex-grow w-full max-w-4xl mx-auto px-4 sm:px-6 py-12 lg:py-20 space-y-12 sm:space-y-16 min-w-0">
         
         {/* Breadcrumbs */}
-        <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs font-bank uppercase tracking-wider text-[var(--color-text-muted)]">
+        <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-xs font-bank uppercase tracking-wider text-[var(--color-text-muted)] min-w-0">
           <a href="/" className="hover:text-[var(--color-accent-primary)]">Home</a>
           <span>/</span>
           {selectedArticle ? (
             <>
               <a href="/writing/" onClick={closeArticle} className="hover:text-[var(--color-accent-primary)]">Writing</a>
               <span>/</span>
-              <span className="text-[var(--color-text-primary)] font-bold truncate max-w-[280px]">{selectedArticle.title}</span>
+              <span className="text-[var(--color-text-primary)] font-bold break-words min-w-0">{selectedArticle.title}</span>
             </>
           ) : (
             <span className="text-[var(--color-text-primary)] font-bold">Writing &amp; Research</span>
@@ -672,7 +672,7 @@ export default function WritingPage({ initialArticleId = null }) {
 
         {/* Article Reader (Article-First View) */}
         {selectedArticle ? (
-          <article className="space-y-10 border-2 border-[var(--gta-silhouette)] bg-[var(--gta-text-fill-light)] p-8 sm:p-12 rounded-3xl shadow-md animate-in fade-in duration-200 font-futura">
+          <article className="space-y-8 sm:space-y-10 border-2 border-[var(--gta-silhouette)] bg-[var(--gta-text-fill-light)] p-5 sm:p-10 lg:p-12 rounded-2xl sm:rounded-3xl shadow-md animate-in fade-in duration-200 font-futura w-full min-w-0 break-words">
             <a
               href="/writing/"
               onClick={closeArticle}
@@ -685,10 +685,10 @@ export default function WritingPage({ initialArticleId = null }) {
               <span className="text-xs font-bank uppercase tracking-widest font-bold text-[var(--gta-silhouette)]">
                 {selectedArticle.category}
               </span>
-              <h1 className="text-3xl sm:text-5xl font-pricedown font-bold text-[var(--gta-text-outline)] leading-tight tracking-wide">
+              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-futura font-bold text-[var(--gta-text-outline)] leading-tight tracking-tight break-words">
                 {selectedArticle.title}
               </h1>
-              <div className="flex flex-wrap items-center gap-4 text-xs font-bank uppercase tracking-wider text-[var(--gta-silhouette)]">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs font-bank uppercase tracking-wider text-[var(--gta-silhouette)]">
                 <a href="/about/" className="font-bold text-[var(--color-accent-primary)] hover:underline flex items-center space-x-1">
                   <User className="w-3.5 h-3.5" />
                   <span>{selectedArticle.author}</span>
@@ -703,8 +703,8 @@ export default function WritingPage({ initialArticleId = null }) {
             </div>
 
             {/* Key Takeaways */}
-            <div className="bg-[var(--gta-sky-low)] border-2 border-[var(--gta-silhouette)] rounded-2xl p-6 space-y-3">
-              <h2 className="text-base font-beckett font-bold uppercase tracking-wider text-[var(--gta-text-outline)]">Key Takeaways</h2>
+            <div className="bg-[var(--gta-sky-low)] border-2 border-[var(--gta-silhouette)] rounded-2xl p-5 sm:p-6 space-y-3">
+              <h2 className="text-base font-bank font-bold uppercase tracking-wider text-[var(--gta-text-outline)]">Key Takeaways</h2>
               <ul className="space-y-2 text-sm text-[var(--gta-text-outline)] font-futura">
                 {selectedArticle.takeaways.map((item, idx) => (
                   <li key={idx} className="flex items-start space-x-2">
@@ -801,7 +801,7 @@ export default function WritingPage({ initialArticleId = null }) {
                     <div className="space-y-4 pt-2">
                       {section.faqs.map((faq, fIdx) => (
                         <div key={fIdx} className="p-5 sm:p-6 bg-[var(--gta-sky-horizon)] border border-[var(--gta-silhouette)] rounded-2xl space-y-2">
-                          <h3 className="text-lg sm:text-xl font-beckett font-bold text-[var(--gta-text-outline)] flex items-start space-x-2">
+                          <h3 className="text-base sm:text-lg font-futura font-bold text-[var(--gta-text-outline)] flex items-start space-x-2">
                             <span className="text-[var(--color-accent-primary)] font-bold">Q:</span>
                             <span>{faq.question}</span>
                           </h3>
@@ -915,7 +915,7 @@ export default function WritingPage({ initialArticleId = null }) {
                   </div>
                 </div>
 
-                <h2 className="text-2xl sm:text-3xl font-beckett font-bold text-[var(--gta-text-outline)] group-hover:text-[var(--color-accent-primary)] leading-snug transition-colors">
+                <h2 className="text-xl sm:text-2xl font-futura font-bold text-[var(--gta-text-outline)] group-hover:text-[var(--color-accent-primary)] leading-snug transition-colors break-words">
                   {art.title}
                 </h2>
 

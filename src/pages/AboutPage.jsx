@@ -1,5 +1,5 @@
 import React from 'react';
-import { Compass, BookOpen, Shield, ArrowRight, Award, Zap, CheckCircle2, MapPin } from 'lucide-react';
+import { Compass, BookOpen, Shield, ArrowRight, ArrowUpRight, Award, Zap, CheckCircle2, MapPin } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -48,7 +48,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-futura selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
       <Header />
 
-      <main className="flex-grow max-w-4xl mx-auto px-6 py-16 lg:py-24 space-y-16">
+      <main className="flex-grow w-full max-w-4xl mx-auto px-4 sm:px-6 py-12 lg:py-20 space-y-12 sm:space-y-16 min-w-0">
         
         {/* Breadcrumbs */}
         <div className="flex items-center space-x-2 text-xs text-[var(--color-text-muted)] font-medium">
@@ -116,7 +116,15 @@ export default function AboutPage() {
               </div>
               <span className="text-xs text-[var(--color-text-muted)] font-bank uppercase tracking-wider block font-bold">Apr 2023 – Apr 2026</span>
               <h3 className="text-lg font-futura font-bold text-[var(--gta-text-outline)] tracking-wide">B.Sc. in Defence &amp; Strategic Studies</h3>
-              <p className="text-xs text-[var(--color-accent-primary)] font-bank uppercase font-bold tracking-wider">SRM Institute of Science and Technology (SRMIST)</p>
+              <a
+                href="https://www.srmist.edu.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-[var(--color-accent-primary)] font-bank uppercase font-bold tracking-wider hover:underline inline-flex items-center gap-1"
+              >
+                <span>SRM Institute of Science and Technology (SRMIST)</span>
+                <ArrowUpRight className="w-3.5 h-3.5 shrink-0" />
+              </a>
               <p className="text-sm text-[var(--gta-text-outline)] font-futura leading-relaxed pt-1">
                 Rigorous study of international security, geopolitics, grand strategy, conflict resolution, deterrence theory, and global economic interdependencies.
               </p>
@@ -128,7 +136,15 @@ export default function AboutPage() {
               </div>
               <span className="text-xs text-[var(--color-text-muted)] font-bank uppercase tracking-wider block font-bold">Dec 2016 – Jan 2021</span>
               <h3 className="text-lg font-futura font-bold text-[var(--gta-text-outline)] tracking-wide">Master of Arts (MA) in Hindi Literature</h3>
-              <p className="text-xs text-[var(--color-accent-primary)] font-bank uppercase font-bold tracking-wider">Dakshina Bharat Hindi Prachar Sabha</p>
+              <a
+                href="https://www.dbhpscentral.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-[var(--color-accent-primary)] font-bank uppercase font-bold tracking-wider hover:underline inline-flex items-center gap-1"
+              >
+                <span>Dakshina Bharat Hindi Prachar Sabha</span>
+                <ArrowUpRight className="w-3.5 h-3.5 shrink-0" />
+              </a>
               <p className="text-sm text-[var(--gta-text-outline)] font-futura leading-relaxed pt-1">
                 Linguistic morphology, literary history, dialectic analysis, and cross-cultural communication strategy across India.
               </p>

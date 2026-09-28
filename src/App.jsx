@@ -1,7 +1,7 @@
 import React, { useState, useEffect, lazy, Suspense, useCallback } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import GtaRadarWidget from './components/GtaRadarWidget';
+import DistrictMapWidget from './components/DistrictMapWidget';
 import PlayableDistrict3D from './components/PlayableDistrict3D';
 import PlayableDistrictHUD from './components/PlayableDistrictHUD';
 import LocationDossierModal from './components/LocationDossierModal';
@@ -128,7 +128,7 @@ export default function App() {
         <Suspense fallback={<PageFallback />}>
           {subpageContent}
         </Suspense>
-        <GtaRadarWidget />
+        <DistrictMapWidget />
       </div>
     );
   }
@@ -189,8 +189,8 @@ export default function App() {
       {/* 6. Footer (visible in Guided Journey mode) */}
       {!isExploreMode && <Footer />}
 
-      {/* 7. Persistent GTA Radar HUD & Audio Console */}
-      <GtaRadarWidget
+      {/* 7. Persistent GTA District Map HUD & Audio Console */}
+      <DistrictMapWidget
         isExploreMode={isExploreMode}
         onToggleExploreMode={handleToggleExploreMode}
         playerTelemetry={playerTelemetry}

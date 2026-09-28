@@ -18,12 +18,12 @@ export default function AboutBuilder() {
     {
       icon: GraduationCap,
       label: 'SRMIST — B.Sc. Defence & Strategic Studies (2023–2026)',
-      href: 'https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/details/education/edit/forms/1193197386/'
+      href: 'https://www.srmist.edu.in/'
     },
     {
       icon: BookOpen,
       label: 'Dakshina Bharat Hindi Prachar Sabha — MA Hindi (2016–2021)',
-      href: 'https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/details/education/edit/forms/1193198586/'
+      href: 'https://www.dbhpscentral.org/'
     }
   ];
 

@@ -262,7 +262,7 @@ export default function CollaborationDispatch() {
               <div className="space-y-1.5">
                 <span className="text-xs text-[var(--gta-silhouette)] font-bank uppercase tracking-widest font-bold block">Education // Defence & Strategic Studies</span>
                 <a
-                  href="https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/details/education/edit/forms/1193197386/"
+                  href="https://www.srmist.edu.in/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-base font-bold text-[var(--gta-text-outline)] flex items-center space-x-2 hover:text-[var(--color-accent-primary)] hover:underline leading-snug font-diploma"
@@ -277,7 +277,7 @@ export default function CollaborationDispatch() {
               <div className="space-y-1.5">
                 <span className="text-xs text-[var(--gta-silhouette)] font-bank uppercase tracking-widest font-bold block">Education // Hindi Literature</span>
                 <a
-                  href="https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/details/education/edit/forms/1193198586/"
+                  href="https://www.dbhpscentral.org/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-base font-bold text-[var(--gta-text-outline)] flex items-center space-x-2 hover:text-[var(--color-accent-primary)] hover:underline leading-snug font-diploma"

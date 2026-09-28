@@ -286,6 +286,7 @@ const routes = [
           <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-3">
             <span class="text-xs font-mono font-semibold text-neutral-500 uppercase">Kalaivaanar Arangam, Chennai · Feb 2026</span>
             <h2 class="text-2xl font-bold text-neutral-950">India Global Education Summit</h2>
+            <div class="text-xs font-bold text-neutral-900">Official Delegate &amp; Presenter · LoopMemory &amp; Loopverse</div>
             <p class="text-sm text-neutral-600">Represented Unfounded and showcased LoopMemory cognitive memory architecture to international delegations and education leaders.</p>
             <div><a href="/ventures/loopmemory/" class="font-bold text-xs underline text-neutral-950">View LoopMemory Case Study →</a></div>
           </div>
@@ -293,6 +294,7 @@ const routes = [
           <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-3">
             <span class="text-xs font-mono font-semibold text-neutral-500 uppercase">Chennai International Centre · Jan 2026</span>
             <h2 class="text-2xl font-bold text-neutral-950">Kazakhstan - India Innovation Forum</h2>
+            <div class="text-xs font-bold text-neutral-900">Startup Delegation Representative · BAL Carpet Partnership &amp; Unfounded Studio</div>
             <p class="text-sm text-neutral-600">Participated in bilateral innovation dialogues connecting Central Asian venture corridors with South Indian startup ecosystems.</p>
             <div><a href="/about/" class="font-bold text-xs underline text-neutral-950">About Founder Background →</a></div>
           </div>
@@ -300,6 +302,7 @@ const routes = [
           <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-3">
             <span class="text-xs font-mono font-semibold text-neutral-500 uppercase">SSN College of Engineering · Jan 2026</span>
             <h2 class="text-2xl font-bold text-neutral-950">SaaSathoN &apos;26 @ SSN College</h2>
+            <div class="text-xs font-bold text-neutral-900">Co-Founder &amp; System Architect · LoopMemory Developer API</div>
             <p class="text-sm text-neutral-600">Intensive 36-hour sprint pressure-testing LoopMemory under multi-agent traffic and shipping developer API endpoints.</p>
             <div><a href="/ventures/loopmemory/" class="font-bold text-xs underline text-neutral-950">View LoopMemory Case Study →</a></div>
           </div>
@@ -307,6 +310,7 @@ const routes = [
           <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-3">
             <span class="text-xs font-mono font-semibold text-neutral-500 uppercase">Kanyakumari, Tamil Nadu · 2026</span>
             <h2 class="text-2xl font-bold text-neutral-950">Startup Pitchfest 2026 Finals</h2>
+            <div class="text-xs font-bold text-neutral-900">Top Startup Finalist &amp; Pitch Lead · Ziggers Gig Marketplace</div>
             <p class="text-sm text-neutral-600">Pitched Ziggers gig marketplace platform to venture capital funds, angel syndicates, and government incubators as a top state finalist.</p>
             <div><a href="/ventures/ziggers/" class="font-bold text-xs underline text-neutral-950">View Ziggers Case Study →</a></div>
           </div>

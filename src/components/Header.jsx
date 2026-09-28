@@ -15,7 +15,7 @@ export default function Header({ activeSection, setActiveSection, isExploreMode 
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-[var(--color-background)]/85 backdrop-blur-md border-b border-[var(--color-border)]/40 font-sans text-xs select-none">
+    <header className="sticky top-0 z-40 w-full bg-[#11100E] border-b border-[var(--gta-silhouette)]/40 font-futura text-xs select-none">
       <div className="max-w-6xl mx-auto px-6 lg:px-12 py-4 flex items-center justify-between">
         
         {/* Brand Title linking to Home - GTA Pricedown Logo */}
@@ -25,8 +25,8 @@ export default function Header({ activeSection, setActiveSection, isExploreMode 
           onClick={() => soundSystem.playSelect()}
           className="flex items-center space-x-2.5 group"
         >
-          <span className="w-2.5 h-2.5 bg-[var(--gta-text-outline)] rounded-full animate-pulse transform-gpu"></span>
-          <span className="gta-lettering font-pricedown text-xl sm:text-2xl tracking-wider uppercase group-hover:scale-105 transition-transform">
+          <span className="w-2.5 h-2.5 bg-[#E7B85A] rounded-full animate-pulse transform-gpu"></span>
+          <span className="font-pricedown text-xl sm:text-2xl tracking-wider uppercase group-hover:scale-105 transition-transform text-[#F0E8D0] drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
             VIJAYRAJKUMAR
           </span>
         </a>
@@ -41,9 +41,9 @@ export default function Header({ activeSection, setActiveSection, isExploreMode 
                 href={item.href}
                 onMouseEnter={() => soundSystem.playHover()}
                 onClick={() => soundSystem.playSelect()}
-                className="flex items-center space-x-1.5 text-[var(--gta-text-outline)] hover:text-[var(--gta-silhouette)] font-bank uppercase tracking-wider font-bold transition-colors text-xs py-1"
+                className="flex items-center space-x-1.5 text-[#F0E8D0] hover:text-[#E7B85A] font-bank uppercase tracking-wider font-bold transition-colors text-xs py-1"
               >
-                <Icon className="w-3.5 h-3.5 shrink-0 text-[var(--gta-silhouette)]" />
+                <Icon className="w-3.5 h-3.5 shrink-0 text-[#8FADA0]" />
                 <span>{item.label}</span>
               </a>
             );
@@ -85,7 +85,7 @@ export default function Header({ activeSection, setActiveSection, isExploreMode 
               setMobileMenuOpen(!mobileMenuOpen);
             }}
             onMouseEnter={() => soundSystem.playHover()}
-            className="md:hidden p-2 rounded-lg text-[var(--color-text-primary)] hover:text-[var(--color-accent-primary)] hover:bg-[var(--color-surface)]/25 transition-colors"
+            className="md:hidden p-2 rounded-lg text-[#F0E8D0] hover:text-[#E7B85A] hover:bg-[#1A1A1A] transition-colors"
             aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -96,7 +96,7 @@ export default function Header({ activeSection, setActiveSection, isExploreMode 
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-[var(--color-border)]/40 bg-[var(--color-background)] px-6 py-4 space-y-3 shadow-lg">
+        <div className="md:hidden border-t border-[var(--gta-silhouette)]/40 bg-[#11100E] px-6 py-4 space-y-3 shadow-2xl">
           {navItems.map((item) => {
             const Icon = item.icon;
             return (
@@ -108,21 +108,21 @@ export default function Header({ activeSection, setActiveSection, isExploreMode 
                   soundSystem.playSelect();
                   setMobileMenuOpen(false);
                 }}
-                className="flex items-center space-x-2 text-xs font-bank uppercase tracking-wider text-[var(--color-text-primary)] hover:text-[var(--color-accent-primary)] py-2"
+                className="flex items-center space-x-2 text-xs font-bank uppercase tracking-wider text-[#F0E8D0] hover:text-[#E7B85A] py-2"
               >
-                <Icon className="w-4 h-4 text-[var(--color-text-muted)]" />
+                <Icon className="w-4 h-4 text-[#8FADA0]" />
                 <span>{item.label}</span>
               </a>
             );
           })}
-          <div className="pt-2 border-t border-[var(--color-border)]/30">
+          <div className="pt-2 border-t border-[var(--gta-silhouette)]/30">
             <a
               href="https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/"
               target="_blank"
               rel="noopener noreferrer"
               onMouseEnter={() => soundSystem.playHover()}
               onClick={() => soundSystem.playSelect()}
-              className="text-xs font-bank uppercase tracking-wider text-[var(--color-accent-primary)] hover:underline block py-1"
+              className="text-xs font-bank uppercase tracking-wider text-[#E7B85A] hover:underline block py-1"
             >
               LinkedIn Profile ↗
             </a>

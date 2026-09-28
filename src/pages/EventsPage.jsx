@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import DecayCard from '../components/react-bits/DecayCard';
 import { Calendar, MapPin, Award, ArrowUpRight, Sparkles, CheckCircle2 } from 'lucide-react';
 
 const EVENTS_DATA = [
@@ -30,7 +29,7 @@ const EVENTS_DATA = [
     venue: 'Chennai International Centre',
     date: 'January 2026',
     role: 'Startup Delegation Representative',
-    venture: 'Unfounded Venture Studio',
+    venture: 'BAL Carpet Partnership & Unfounded Studio',
     ventureLink: '/about/',
     image: '/events/kazakhstan-india-forum.png',
     summary:
@@ -84,36 +83,36 @@ export default function EventsPage() {
     <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-futura selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
       <Header />
 
-      <main className="flex-grow max-w-6xl mx-auto px-6 lg:px-12 py-16 space-y-16">
+      <main className="flex-grow w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 py-12 lg:py-20 space-y-12 sm:space-y-16 min-w-0">
         
         {/* Breadcrumb Navigation */}
-        <div className="flex items-center space-x-2 text-xs font-bank uppercase tracking-wider text-[var(--color-text-muted)] font-medium">
+        <div className="flex flex-wrap items-center gap-2 text-xs font-bank uppercase tracking-wider text-[var(--color-text-muted)] font-medium">
           <a href="/" className="hover:text-[var(--color-accent-primary)]">Home</a>
           <span>/</span>
           <span className="text-[var(--color-text-muted)]">Overview</span>
           <span>/</span>
-          <span className="text-[var(--color-text-primary)] font-bold">Events & Summits</span>
+          <span className="text-[var(--color-text-primary)] font-bold">Events &amp; Summits</span>
         </div>
 
         {/* Page Header */}
         <div className="space-y-4 border-b border-[var(--gta-silhouette)]/40 pb-10">
           <div className="inline-flex items-center space-x-2 bg-[var(--gta-sky-low)] text-[var(--gta-text-outline)] border border-[var(--gta-silhouette)] text-xs px-3.5 py-1 rounded-full font-bank uppercase tracking-wider font-bold shadow-sm">
             <Calendar className="w-3.5 h-3.5 text-[var(--gta-text-outline)]" />
-            <span>Summits, Hackathons & Keynotes</span>
+            <span>Summits, Hackathons &amp; Keynotes</span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-pricedown font-bold tracking-wide text-[var(--gta-text-outline)] leading-tight">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-pricedown font-bold tracking-wide text-[var(--gta-text-outline)] leading-tight">
             Vijayrajkumar — Events, Summits &amp; Builder Sprints
           </h1>
 
-          <p className="text-lg text-[var(--gta-text-outline)] leading-relaxed max-w-3xl font-futura">
+          <p className="text-base sm:text-lg text-[var(--gta-text-outline)] leading-relaxed max-w-3xl font-futura">
             Firsthand photo records and verified milestones from global summits, international delegations, 36-hour builder sprints, and startup pitchfest finals where Vijayrajkumar represented Unfounded, Ziggers, and LoopMemory.
           </p>
 
-          <div className="pt-1 flex flex-wrap items-center gap-4 text-xs font-bank uppercase tracking-wider text-[var(--gta-silhouette)]">
-            <div className="flex items-center space-x-2">
+          <div className="pt-1 flex flex-wrap items-center gap-3 sm:gap-4 text-xs font-bank uppercase tracking-wider text-[var(--gta-silhouette)]">
+            <div className="flex items-center space-x-2 font-medium">
               <Sparkles className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
-              <span>Interactive physics: Hover over event cards to experience dynamic liquid displacement</span>
+              <span>Verified documentary photographs and event credentials</span>
             </div>
             <span className="text-[var(--gta-silhouette)]">•</span>
             <a href="/about/" className="font-bold text-[var(--color-accent-primary)] hover:underline">
@@ -122,37 +121,27 @@ export default function EventsPage() {
           </div>
         </div>
 
-        {/* 4 Interactive DecayCard Showcase Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
+        {/* Clean Framed Event Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           {EVENTS_DATA.map((evt) => (
             <div
               key={evt.id}
-              className="bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] hover:border-[var(--color-accent-primary)] rounded-3xl p-6 sm:p-7 shadow-md transition-all flex flex-col space-y-6"
+              className="group bg-[var(--gta-text-fill-light)] border-2 border-[var(--gta-silhouette)] hover:border-[var(--color-accent-primary)] rounded-3xl p-5 sm:p-7 shadow-md transition-all flex flex-col space-y-6"
             >
-              {/* Interactive DecayCard Canvas Visual */}
-              <div className="w-full flex justify-center items-center overflow-hidden rounded-2xl bg-[var(--gta-text-outline)] py-4">
-                <DecayCard
-                  width={310}
-                  height={400}
-                  image={evt.image}
-                  baseFrequency={0.018}
-                  numOctaves={4}
-                  seed={7}
-                  maxDisplacement={380}
-                  movementBound={45}
-                >
-                  <div className="text-white drop-shadow-[0_6px_16px_rgba(0,0,0,0.95)]">
-                    <span className="text-[10px] uppercase font-bank tracking-widest text-[var(--gta-sky-mid)] font-bold block mb-1">
-                      {evt.category}
-                    </span>
-                    <h2 className="text-2xl sm:text-3xl font-pricedown font-bold text-white leading-tight tracking-wide">
-                      {evt.title}
-                    </h2>
-                  </div>
-                </DecayCard>
+              {/* Framed Photograph with Aspect Ratio Preservation */}
+              <div className="w-full overflow-hidden rounded-2xl bg-[var(--gta-sky-horizon)] border border-[var(--gta-silhouette)]/40 aspect-[4/3] relative">
+                <img
+                  src={evt.image}
+                  alt={`${evt.title} event photograph`}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]"
+                />
+                <div className="absolute top-3 left-3 bg-[#11100E]/85 backdrop-blur-sm text-[var(--gta-text-fill)] border border-[var(--gta-silhouette)]/40 px-3 py-1 rounded-full text-[10px] font-bank uppercase tracking-wider font-bold">
+                  {evt.category}
+                </div>
               </div>
 
-              {/* Event Metadata & Verified Takeaways */}
+              {/* Event Metadata & Verified Takeaways Outside Frame */}
               <div className="space-y-4 flex-grow flex flex-col justify-between">
                 <div className="space-y-3">
                   <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-bank uppercase tracking-wider text-[var(--color-text-muted)] border-b border-[var(--gta-silhouette)]/30 pb-3 font-semibold">
@@ -166,9 +155,9 @@ export default function EventsPage() {
                     </span>
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-futura font-bold text-[var(--gta-text-outline)] leading-snug">
+                  <h2 className="text-xl sm:text-2xl font-futura font-bold text-[var(--gta-text-outline)] leading-snug">
                     {evt.title}
-                  </h3>
+                  </h2>
 
                   <p className="text-sm text-[var(--gta-text-outline)] leading-relaxed font-futura">
                     {evt.summary}
@@ -189,11 +178,16 @@ export default function EventsPage() {
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-[var(--gta-silhouette)]/30 flex items-center justify-between font-bank uppercase tracking-wider text-xs">
-                  <span className="font-bold text-[var(--color-accent-primary)] inline-flex items-center space-x-1">
-                    <Award className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
-                    <span>{evt.role}</span>
-                  </span>
+                <div className="pt-4 border-t border-[var(--gta-silhouette)]/30 flex flex-wrap items-center justify-between gap-2 font-bank uppercase tracking-wider text-xs">
+                  <div className="flex flex-col">
+                    <span className="font-bold text-[var(--color-accent-primary)] inline-flex items-center space-x-1">
+                      <Award className="w-3.5 h-3.5 text-[var(--color-accent-primary)]" />
+                      <span>{evt.role}</span>
+                    </span>
+                    <span className="text-[10px] text-[var(--gta-silhouette)] font-medium">
+                      {evt.venture}
+                    </span>
+                  </div>
                   <a
                     href={evt.ventureLink}
                     className="inline-flex items-center space-x-1 font-bold text-[var(--color-accent-primary)] hover:underline"
