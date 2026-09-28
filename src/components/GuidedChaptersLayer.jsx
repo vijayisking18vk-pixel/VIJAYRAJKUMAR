@@ -151,6 +151,15 @@ export default function GuidedChaptersLayer({
             </span>
           </div>
 
+          <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden mb-4 border border-[var(--gta-silhouette)]/40 relative shadow-inner">
+            <img
+              src="/images/gta/about_studio.jpg"
+              alt="The Safehouse — Operator Studio & Workspace"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+
           <h2 className="text-xl sm:text-3xl font-bank font-bold text-[#F7F0E3] uppercase leading-snug">
             Operator Mindset &amp; Strategic Journey
           </h2>
@@ -200,6 +209,15 @@ export default function GuidedChaptersLayer({
             <span className="font-bank text-[10px] text-[#8FADA0] tracking-widest uppercase">
               VENTURES &amp; SYSTEMS
             </span>
+          </div>
+
+          <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden mb-4 border border-[var(--gta-silhouette)]/40 relative shadow-inner">
+            <img
+              src="/images/gta/ventures_workshop.jpg"
+              alt="Operations Garage — 3-Bay Industrial Workshop"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
           </div>
 
           <h2 className="text-xl sm:text-3xl font-bank font-bold text-[#F7F0E3] uppercase leading-snug">
@@ -292,6 +310,15 @@ export default function GuidedChaptersLayer({
             </span>
           </div>
 
+          <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden mb-4 border border-[var(--gta-silhouette)]/40 relative shadow-inner">
+            <img
+              src="/images/gta/events_gallery.jpg"
+              alt="The Poster Wall — Courtyard Poster Gallery"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+
           <h2 className="text-xl sm:text-3xl font-bank font-bold text-[#F7F0E3] uppercase leading-snug">
             Keynotes, Summits &amp; Community Forums
           </h2>
@@ -355,6 +382,15 @@ export default function GuidedChaptersLayer({
             <span className="font-bank text-[10px] text-[#8FADA0] tracking-widest uppercase">
               ESSAYS &amp; RESEARCH
             </span>
+          </div>
+
+          <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden mb-4 border border-[var(--gta-silhouette)]/40 relative shadow-inner">
+            <img
+              src="/images/gta/writing_archive.jpg"
+              alt="The Archive — Research Library & Essays"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
           </div>
 
           <h2 className="text-xl sm:text-3xl font-bank font-bold text-[#F7F0E3] uppercase leading-snug">
@@ -433,6 +469,15 @@ export default function GuidedChaptersLayer({
             <span className="font-bank text-[10px] text-[#8FADA0] tracking-widest uppercase">
               CONTACT &amp; ADVISORY
             </span>
+          </div>
+
+          <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden mb-4 border border-[var(--gta-silhouette)]/40 relative shadow-inner">
+            <img
+              src="/images/gta/contact_rooftop.jpg"
+              alt="Dispatch Point — Rooftop Transmission Station"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
           </div>
 
           <h2 className="text-xl sm:text-3xl font-bank font-bold text-[#F7F0E3] uppercase leading-snug">

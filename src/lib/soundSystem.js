@@ -1,26 +1,48 @@
 /**
- * Procedural Sound System for GTA: San Andreas Portfolio Atmosphere
- * Uses Web Audio API — Zero external audio files, zero latency, 100% reliable.
+ * Sound System for GTA: San Andreas Portfolio Atmosphere
+ * Featuring authentic GTA: San Andreas Theme Song playback + Procedural Web Audio UI sound effects.
  * 
- * Complies with strict user rule:
- * - Starts 100% MUTED by default on first visit.
- * - Remembers user's explicit preference across navigation.
- * - Auto-resumes AudioContext if suspended by mobile OS during touch/scroll.
+ * Rules:
+ * - Automatically attempts playback on entry as requested by user.
+ * - Gracefully handles browser autoplay policies by attaching fallback one-time gesture listeners.
+ * - Stores user preference in localStorage if user explicitly mutes/unmutes.
+ * - Loops theme audio smoothly in the background.
+ * - Manages pause/resume on tab visibility changes.
  */
 
 class SoundSystem {
   constructor() {
     this.ctx = null;
     const saved = typeof window !== 'undefined' ? localStorage.getItem('gta_sound_enabled') : null;
-    this.muted = saved === 'true' ? false : true; // Default muted unless user explicitly enabled
+    // Default to enabled (unmuted) on entry unless user explicitly disabled it previously
+    this.muted = saved === 'false';
     this.masterGain = null;
     this.ambientGain = null;
     this.ambientOsc = null;
     this.isInitialized = false;
     this.listeners = new Set();
+    this.bgMusic = null;
+    this._pausedByVisibility = false;
 
     if (typeof window !== 'undefined') {
-      const resumeIfActive = () => {
+      try {
+        this.bgMusic = new Audio('/audio/gta_theme.mp3');
+        this.bgMusic.loop = true;
+        this.bgMusic.volume = 0.42;
+        this.bgMusic.preload = 'auto';
+      } catch (e) {
+        console.warn('Audio initialization warning:', e);
+      }
+
+      // Try autoplaying theme on entry if unmuted
+      if (!this.muted) {
+        this.attemptPlayTheme();
+      }
+
+      // Fallback listeners for modern browser Autoplay Policy restrictions:
+      // If browser blocks unmuted audio before user interaction, start on the first gesture.
+      const interactionEvents = ['pointerdown', 'touchstart', 'click', 'keydown', 'wheel', 'scroll'];
+      const resumeOnGesture = () => {
         if (!this.muted) {
           if (!this.isInitialized) {
             this.init();
@@ -28,12 +50,49 @@ class SoundSystem {
           if (this.ctx && this.ctx.state === 'suspended') {
             this.ctx.resume().catch(() => {});
           }
+          if (this.bgMusic && this.bgMusic.paused) {
+            this.attemptPlayTheme();
+          }
+        }
+        if (this.bgMusic && !this.bgMusic.paused) {
+          interactionEvents.forEach((evt) => {
+            window.removeEventListener(evt, resumeOnGesture);
+          });
         }
       };
-      window.addEventListener('touchstart', resumeIfActive, { passive: true });
-      window.addEventListener('pointerdown', resumeIfActive, { passive: true });
-      window.addEventListener('click', resumeIfActive, { passive: true });
+
+      interactionEvents.forEach((evt) => {
+        window.addEventListener(evt, resumeOnGesture, { passive: true });
+      });
+
+      // Pause audio when switching tabs, resume when returning
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          if (this.bgMusic && !this.bgMusic.paused) {
+            this.bgMusic.pause();
+            this._pausedByVisibility = true;
+          }
+        } else {
+          if (this._pausedByVisibility && !this.muted) {
+            this._pausedByVisibility = false;
+            this.attemptPlayTheme();
+          }
+        }
+      });
     }
+  }
+
+  attemptPlayTheme() {
+    if (this.muted || !this.bgMusic) return;
+    try {
+      const playPromise = this.bgMusic.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Autoplay was prevented by browser policy awaiting user interaction.
+          // The gesture listener will safely start playback on the first interaction.
+        });
+      }
+    } catch (_) {}
   }
 
   subscribe(callback) {
@@ -97,9 +156,7 @@ class SoundSystem {
       this.init();
     }
 
-    if (!this.ctx) return false;
-
-    if (this.ctx.state === 'suspended') {
+    if (this.ctx && this.ctx.state === 'suspended') {
       this.ctx.resume().catch(() => {});
     }
 
@@ -109,10 +166,18 @@ class SoundSystem {
       localStorage.setItem('gta_sound_enabled', this.muted ? 'false' : 'true');
     }
 
-    if (this.masterGain) {
+    if (this.masterGain && this.ctx) {
       const targetGain = this.muted ? 0 : 0.22;
       this.masterGain.gain.cancelScheduledValues(this.ctx.currentTime);
       this.masterGain.gain.linearRampToValueAtTime(targetGain, this.ctx.currentTime + 0.08);
+    }
+
+    if (this.bgMusic) {
+      if (this.muted) {
+        this.bgMusic.pause();
+      } else {
+        this.attemptPlayTheme();
+      }
     }
 
     this.notify();
@@ -121,6 +186,10 @@ class SoundSystem {
 
   isMuted() {
     return this.muted;
+  }
+
+  isThemePlaying() {
+    return Boolean(this.bgMusic && !this.bgMusic.paused);
   }
 
   /**
