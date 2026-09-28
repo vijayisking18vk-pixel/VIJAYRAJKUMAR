@@ -275,8 +275,19 @@ export default function DistrictMapWidget({
               className="w-full h-full"
               preserveAspectRatio="xMidYMid slice"
             >
+              {/* Textured Map Artwork Backdrop */}
+              <image
+                href="/images/gta/district_map_art.jpg"
+                x="0"
+                y="0"
+                width={WORLD.width}
+                height={WORLD.height}
+                preserveAspectRatio="none"
+                opacity="0.35"
+              />
+
               {/* City District Parcel Blocks */}
-              <g id="parcels" opacity="0.85">
+              <g id="parcels" opacity="0.75">
                 {/* Northwest block (near Safehouse) */}
                 <rect x="15" y="10" width="90" height="30" rx="4" fill="#18231C" stroke="#25352A" strokeWidth="1" />
                 {/* Northeast block (near Garage) */}

@@ -2,6 +2,15 @@ import React, { useEffect } from 'react';
 import { X, ArrowUpRight, CheckCircle2, Layers, BookOpen, Calendar, Send, Compass } from 'lucide-react';
 import soundSystem from '../lib/soundSystem';
 
+const LANDMARK_IMAGES = {
+  'arrival': '/images/gta/home_poster.jpg',
+  'safehouse': '/images/gta/about_studio.jpg',
+  'operations-garage': '/images/gta/ventures_workshop.jpg',
+  'poster-wall': '/images/gta/events_gallery.jpg',
+  'archive': '/images/gta/writing_archive.jpg',
+  'dispatch-point': '/images/gta/contact_rooftop.jpg',
+};
+
 export default function LocationDossierModal({ landmark, onClose, onNavigate }) {
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -184,8 +193,22 @@ export default function LocationDossierModal({ landmark, onClose, onNavigate }) 
             </button>
           </div>
 
+          {/* Landmark Visual Preview */}
+          {LANDMARK_IMAGES[landmark.id] && (
+            <div className="mt-4 w-full h-36 sm:h-44 rounded-2xl overflow-hidden border border-[var(--gta-silhouette)]/40 relative shadow-inner">
+              <img
+                src={LANDMARK_IMAGES[landmark.id]}
+                alt={landmark.title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute bottom-2 left-2 bg-[#11100E]/85 backdrop-blur-sm text-[10px] font-bank uppercase tracking-wider px-2.5 py-0.5 rounded text-[#E7B85A] font-bold border border-[var(--gta-silhouette)]/30">
+                {landmark.chapter} // VISUAL RECORD
+              </div>
+            </div>
+          )}
+
           {/* Body Content */}
-          <div className="mt-5 overflow-y-auto max-h-[50vh] pr-1">
+          <div className="mt-4 overflow-y-auto max-h-[42vh] pr-1">
             {renderContent()}
           </div>
         </div>
