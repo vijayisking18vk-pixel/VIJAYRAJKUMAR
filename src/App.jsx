@@ -1,11 +1,11 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect, lazy, Suspense, useCallback } from 'react';
 import Header from './components/Header';
-import GtaHero from './components/GtaHero';
-import PortalsSection from './components/PortalsSection';
-import HomeFAQSection from './components/HomeFAQSection';
 import Footer from './components/Footer';
-import Particles from './components/react-bits/Particles';
 import GtaRadarWidget from './components/GtaRadarWidget';
+import PlayableDistrict3D from './components/PlayableDistrict3D';
+import PlayableDistrictHUD from './components/PlayableDistrictHUD';
+import LocationDossierModal from './components/LocationDossierModal';
+import GuidedChaptersLayer from './components/GuidedChaptersLayer';
 
 // Code-split multi-page subpages (lazy loaded on demand)
 const AboutPage = lazy(() => import('./pages/AboutPage'));
@@ -28,14 +28,62 @@ export default function App() {
     typeof window !== 'undefined' ? window.location.pathname : '/'
   );
 
+  // Playable District State
+  const [activeLandmarkId, setActiveLandmarkId] = useState('arrival');
+  const [isExploreMode, setIsExploreMode] = useState(false);
+  const [playerTelemetry, setPlayerTelemetry] = useState(null);
+  const [proximityLandmark, setProximityLandmark] = useState(null);
+  const [activeDossierLandmark, setActiveDossierLandmark] = useState(null);
+
   useEffect(() => {
     const handleLocationChange = () => {
       setCurrentPath(window.location.pathname);
+      // Close explore mode if navigating to a subpage
+      if (window.location.pathname !== '/') {
+        setIsExploreMode(false);
+      }
     };
 
     window.addEventListener('popstate', handleLocationChange);
     return () => window.removeEventListener('popstate', handleLocationChange);
   }, []);
+
+  const handleNavigate = useCallback((path) => {
+    if (window.location.pathname !== path) {
+      window.history.pushState(null, '', path);
+      window.dispatchEvent(new PopStateEvent('popstate'));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, []);
+
+  const handleToggleExploreMode = useCallback(() => {
+    setIsExploreMode((prev) => !prev);
+    setActiveDossierLandmark(null);
+  }, []);
+
+  const handleExitExploreMode = useCallback(() => {
+    setIsExploreMode(false);
+    setActiveDossierLandmark(null);
+  }, []);
+
+  const handleOpenDossier = useCallback((landmark) => {
+    setActiveDossierLandmark(landmark);
+  }, []);
+
+  const handleCloseDossier = useCallback(() => {
+    setActiveDossierLandmark(null);
+  }, []);
+
+  const handleSelectLandmarkFrom3D = useCallback((landmark) => {
+    if (isExploreMode) {
+      setActiveDossierLandmark(landmark);
+    } else {
+      const el = document.getElementById(landmark.id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [isExploreMode]);
 
   // Route matching
   const normalizedPath = currentPath.toLowerCase().replace(/\/+$/, '');
@@ -73,7 +121,7 @@ export default function App() {
     subpageContent = <NotFoundPage />;
   }
 
-  // If viewing a subpage, render with persistent GTA Radar HUD
+  // If viewing a standalone subpage, render with persistent GTA Radar HUD
   if (subpageContent) {
     return (
       <div className="relative min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-futura selection:bg-[var(--color-accent-primary)] selection:text-white">
@@ -85,32 +133,71 @@ export default function App() {
     );
   }
 
-  // Streamlined Homepage: GTA Hero + Proof Strip + Section Directory Portals + Radar HUD
+  // =========================================================================
+  // THE PLAYABLE PORTFOLIO HOMEPAGE EXPERIENCE
+  // Shared 3D San Andreas District + Guided Chapters Layer + Explore Mode HUD
+  // =========================================================================
   return (
-    <div className="relative min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] flex flex-col font-futura selection:bg-[var(--color-accent-primary)] selection:text-white overflow-x-clip">
-      {/* Global Ambient Interactive Particles Canvas Background */}
-      <Particles particleCount={30} speed={0.3} particleColor="#7C8873" />
+    <div className="relative min-h-screen bg-[var(--gta-text-outline)] text-[var(--gta-text-fill)] flex flex-col font-futura selection:bg-[#E7B85A] selection:text-[#0A0E0C] overflow-x-clip">
+      
+      {/* 1. Shared 3D City District Canvas (Fixed Background Viewport) */}
+      <div className="fixed inset-0 z-0 pointer-events-auto">
+        <PlayableDistrict3D
+          activeLandmarkId={activeLandmarkId}
+          isExploreMode={isExploreMode}
+          onSelectLandmark={handleSelectLandmarkFrom3D}
+          onPlayerTelemetryUpdate={setPlayerTelemetry}
+          onProximityLandmark={setProximityLandmark}
+        />
+      </div>
 
-      {/* Navigation Header */}
-      <Header />
+      {/* 2. Top Navigation Header (hidden when in immersive Explore Mode) */}
+      {!isExploreMode && (
+        <Header
+          isExploreMode={isExploreMode}
+          onToggleExploreMode={handleToggleExploreMode}
+        />
+      )}
 
-      {/* Main Content Flow: Living Centerpiece & Dedicated Portals */}
-      <main className="relative z-10 flex-grow">
-        {/* 1. Authentic GTA San Andreas Artwork Hero (Mobile Portrait & Desktop Landscape) */}
-        <GtaHero />
+      {/* 3. Explore Mode Top/Bottom HUD Overlay (active during free exploration) */}
+      <PlayableDistrictHUD
+        isExploreMode={isExploreMode}
+        proximityLandmark={proximityLandmark}
+        onExitExploreMode={handleExitExploreMode}
+        onOpenDossier={handleOpenDossier}
+        onNavigateToRoute={handleNavigate}
+      />
 
-        {/* 2. Responsive 4-Portal Directory (Zero Scroll-Jacking / Natural Flow) */}
-        <PortalsSection />
+      {/* 4. Location Dossier Modal (opens when inspecting landmark in Explore Mode) */}
+      <LocationDossierModal
+        landmark={activeDossierLandmark}
+        onClose={handleCloseDossier}
+        onNavigate={handleNavigate}
+      />
 
-        {/* 3. AEO/GEO Executive Summary & Question Knowledge Hub */}
-        <HomeFAQSection />
-      </main>
+      {/* 5. Guided Chapters Content Layer (Native vertical scroll moves through city) */}
+      {!isExploreMode && (
+        <main className="relative z-10 flex-grow">
+          <GuidedChaptersLayer
+            onActiveChapterChange={setActiveLandmarkId}
+            onEnterExploreMode={handleToggleExploreMode}
+            onNavigate={handleNavigate}
+          />
+        </main>
+      )}
 
-      {/* Footer */}
-      <Footer />
+      {/* 6. Footer (visible in Guided Journey mode) */}
+      {!isExploreMode && <Footer />}
 
-      {/* GTA Minimap HUD & Audio Console */}
-      <GtaRadarWidget />
+      {/* 7. Persistent GTA Radar HUD & Audio Console */}
+      <GtaRadarWidget
+        isExploreMode={isExploreMode}
+        onToggleExploreMode={handleToggleExploreMode}
+        playerTelemetry={playerTelemetry}
+        activeLandmarkId={activeLandmarkId}
+        onSelectLandmark={handleSelectLandmarkFrom3D}
+      />
+
     </div>
   );
 }

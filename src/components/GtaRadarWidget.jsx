@@ -2,14 +2,20 @@ import React, { useState, useEffect } from 'react';
 import soundSystem from '../lib/soundSystem';
 
 const WAYPOINTS = [
-  { id: 'about', label: 'ABOUT', path: '/about/', angle: -45, dist: 52, color: '#E7B85A', icon: '■' },
-  { id: 'ventures', label: 'VENTURES', path: '/ventures/', angle: 30, dist: 58, color: '#8FADA0', icon: '◆' },
-  { id: 'events', label: 'EVENTS', path: '/events/', angle: 120, dist: 64, color: '#D87942', icon: '▲' },
-  { id: 'writing', label: 'WRITING', path: '/writing/', angle: -130, dist: 50, color: '#A96E72', icon: '●' },
-  { id: 'contact', label: 'CONTACT', path: '/contact/', angle: 180, dist: 55, color: '#F0E8D0', icon: '✦' },
+  { id: 'safehouse', label: 'SAFEHOUSE', sectionId: 'safehouse', path: '/about/', angle: -45, dist: 52, color: '#E7B85A', icon: '■' },
+  { id: 'operations-garage', label: 'VENTURES', sectionId: 'operations-garage', path: '/ventures/', angle: 30, dist: 58, color: '#8FADA0', icon: '◆' },
+  { id: 'poster-wall', label: 'EVENTS', sectionId: 'poster-wall', path: '/events/', angle: 120, dist: 64, color: '#D87942', icon: '▲' },
+  { id: 'archive', label: 'ARCHIVE', sectionId: 'archive', path: '/writing/', angle: -130, dist: 50, color: '#B7C2A8', icon: '●' },
+  { id: 'dispatch-point', label: 'CONTACT', sectionId: 'dispatch-point', path: '/contact/', angle: 180, dist: 55, color: '#EDE4C8', icon: '✦' },
 ];
 
-export default function GtaRadarWidget() {
+export default function GtaRadarWidget({
+  isExploreMode = false,
+  onToggleExploreMode = () => {},
+  playerTelemetry = null,
+  activeLandmarkId = null,
+  onSelectLandmark = null,
+}) {
   const [isAudioActive, setIsAudioActive] = useState(!soundSystem.isMuted());
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [activeBlip, setActiveBlip] = useState(null);
@@ -46,14 +52,28 @@ export default function GtaRadarWidget() {
     }
   };
 
-  const handleNavigate = (path) => {
+  const handleWaypointClick = (wp) => {
     soundSystem.playSelect();
-    if (window.location.pathname !== path) {
-      window.history.pushState(null, '', path);
+    if (onSelectLandmark) {
+      onSelectLandmark(wp);
+    }
+    if (typeof window !== 'undefined' && window.location.pathname === '/') {
+      const el = document.getElementById(wp.sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+    }
+    if (window.location.pathname !== wp.path) {
+      window.history.pushState(null, '', wp.path);
       window.dispatchEvent(new PopStateEvent('popstate'));
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
+
+  const chevronRotation = playerTelemetry?.angle
+    ? `${(-playerTelemetry.angle * 180) / Math.PI}deg`
+    : '0deg';
 
   return (
     <aside
@@ -80,13 +100,14 @@ export default function GtaRadarWidget() {
       ) : (
         /* Expanded Circular Radar HUD */
         <div className="relative bg-[var(--gta-text-outline)]/95 backdrop-blur-lg border-2 border-[var(--gta-silhouette)] rounded-2xl p-3 shadow-[0_12px_40px_rgba(0,0,0,0.9)] w-[240px] text-xs">
-          {/* Header Controls: Minimize & Audio Toggle */}
-          <div className="flex items-center justify-between pb-2 mb-2 border-b border-[var(--gta-silhouette)]/30">
+          {/* Header Controls: Audio Toggle, Explore Mode Toggle & Minimize */}
+          <div className="flex items-center justify-between pb-2 mb-2 border-b border-[var(--gta-silhouette)]/30 gap-1.5">
+            {/* Audio Toggle */}
             <button
               type="button"
               onClick={handleToggleAudio}
               onMouseEnter={() => soundSystem.playHover()}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bank font-bold tracking-wider transition-all border cursor-pointer active:scale-95 touch-manipulation ${
+              className={`flex items-center gap-1.5 px-2 py-1 rounded-full text-[10px] font-bank font-bold tracking-wider transition-all border cursor-pointer active:scale-95 touch-manipulation ${
                 isAudioActive
                   ? 'bg-[#E7B85A]/20 text-[#E7B85A] border-[#E7B85A]'
                   : 'bg-[var(--gta-text-outline)] text-[var(--gta-silhouette)] border-[var(--gta-silhouette)]/50 hover:text-[var(--gta-text-fill)]'
@@ -98,9 +119,29 @@ export default function GtaRadarWidget() {
                   isAudioActive ? 'bg-[#E7B85A] animate-pulse' : 'bg-neutral-600'
                 }`}
               />
-              <span>{isAudioActive ? 'AUDIO: ON' : 'AUDIO: OFF'}</span>
+              <span>{isAudioActive ? 'ON' : 'OFF'}</span>
             </button>
 
+            {/* Desktop Explore Mode Toggle */}
+            <button
+              type="button"
+              onClick={() => {
+                if (isExploreMode) soundSystem.playExploreExit();
+                else soundSystem.playExploreEnter();
+                onToggleExploreMode();
+              }}
+              onMouseEnter={() => soundSystem.playHover()}
+              className={`hidden md:flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-bank font-bold tracking-wider transition-all border cursor-pointer active:scale-95 touch-manipulation ${
+                isExploreMode
+                  ? 'bg-[#E7B85A] text-[#0A0E0C] border-[#E7B85A]'
+                  : 'bg-[var(--gta-text-outline)] text-[var(--gta-silhouette)] border-[var(--gta-silhouette)]/50 hover:text-[var(--gta-text-fill)]'
+              }`}
+              title="Toggle Free 3D Explore Mode (WASD)"
+            >
+              <span>{isExploreMode ? 'GUIDED' : 'EXPLORE'}</span>
+            </button>
+
+            {/* Minimize button */}
             <button
               type="button"
               onClick={() => {
@@ -108,7 +149,7 @@ export default function GtaRadarWidget() {
                 setIsCollapsed(true);
               }}
               onMouseEnter={() => soundSystem.playHover()}
-              className="text-[var(--gta-silhouette)] hover:text-[var(--gta-text-fill)] active:scale-90 px-1.5 py-0.5 text-xs font-mono font-bold transition-transform cursor-pointer touch-manipulation"
+              className="text-[var(--gta-silhouette)] hover:text-[var(--gta-text-fill)] active:scale-90 px-1.5 py-0.5 text-xs font-mono font-bold transition-transform cursor-pointer touch-manipulation ml-auto"
               title="Minimize Minimap"
               aria-label="Minimize Minimap HUD"
             >
@@ -145,8 +186,11 @@ export default function GtaRadarWidget() {
               N
             </div>
 
-            {/* Center Player Marker (White Directional Chevron) */}
-            <div className="relative z-10 w-2.5 h-2.5 flex items-center justify-center text-[var(--gta-text-fill)] font-bold text-[10px] drop-shadow-md pointer-events-none">
+            {/* Center Player Marker (White Directional Chevron, rotates with player facing angle) */}
+            <div
+              className="relative z-10 w-2.5 h-2.5 flex items-center justify-center text-[var(--gta-text-fill)] font-bold text-[10px] drop-shadow-md pointer-events-none transition-transform duration-75"
+              style={{ transform: `rotate(${chevronRotation})` }}
+            >
               ▲
             </div>
 
@@ -155,13 +199,15 @@ export default function GtaRadarWidget() {
               const rad = (wp.angle * Math.PI) / 180;
               const x = Math.cos(rad) * wp.dist;
               const y = Math.sin(rad) * wp.dist;
-              const isCurrent = currentPath.startsWith(wp.path);
+              const isCurrent =
+                activeLandmarkId === wp.id ||
+                currentPath.startsWith(wp.path);
 
               return (
                 <button
                   key={wp.id}
                   type="button"
-                  onClick={() => handleNavigate(wp.path)}
+                  onClick={() => handleWaypointClick(wp)}
                   onPointerEnter={() => {
                     soundSystem.playHover();
                     setActiveBlip(wp);
@@ -188,6 +234,10 @@ export default function GtaRadarWidget() {
             {activeBlip ? (
               <span className="text-[#E7B85A] font-bold truncate max-w-full block px-1">
                 DEST: {activeBlip.label} ({activeBlip.path})
+              </span>
+            ) : isExploreMode && playerTelemetry ? (
+              <span className="text-[#E7B85A] font-bold truncate max-w-full block px-1">
+                POS: [{Math.round(playerTelemetry.x)}, {Math.round(playerTelemetry.z)}] // EXPLORE
               </span>
             ) : (
               <span className="text-[var(--gta-silhouette)] truncate max-w-full block px-1">

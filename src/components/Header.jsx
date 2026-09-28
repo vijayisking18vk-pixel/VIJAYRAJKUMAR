@@ -3,7 +3,7 @@ import { Compass, Layers, BookOpen, Send, Calendar, Menu, X } from 'lucide-react
 import StarBorder from './react-bits/StarBorder';
 import soundSystem from '../lib/soundSystem';
 
-export default function Header({ activeSection, setActiveSection }) {
+export default function Header({ activeSection, setActiveSection, isExploreMode = false, onToggleExploreMode = null }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
@@ -52,6 +52,21 @@ export default function Header({ activeSection, setActiveSection }) {
 
         {/* Action Button & Mobile Toggle */}
         <div className="flex items-center space-x-3">
+          {onToggleExploreMode && (
+            <button
+              type="button"
+              onClick={() => {
+                if (isExploreMode) soundSystem.playExploreExit();
+                else soundSystem.playExploreEnter();
+                onToggleExploreMode();
+              }}
+              onMouseEnter={() => soundSystem.playHover()}
+              className="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--gta-text-outline)] hover:bg-[#1A1A1A] border border-[var(--gta-silhouette)] text-[var(--gta-text-fill)] hover:text-[#E7B85A] font-bank uppercase tracking-wider text-xs font-bold transition-all cursor-pointer active:scale-95"
+            >
+              <span>{isExploreMode ? 'Exit Explore' : '🎮 Explore Mode'}</span>
+            </button>
+          )}
+
           <StarBorder
             as="a"
             href="https://www.linkedin.com/in/vijayraj-kumar-3042b43a3/"

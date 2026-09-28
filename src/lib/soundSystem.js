@@ -193,6 +193,80 @@ class SoundSystem {
       osc2.stop(now + 0.08);
     } catch (_) {}
   }
+
+  /**
+   * Entering Explore Mode: Ascending resonant synth chord
+   */
+  playExploreEnter() {
+    if (this.muted) return;
+    if (!this.isInitialized) this.init();
+    if (!this.ctx) return;
+    try {
+      if (this.ctx.state === 'suspended') this.ctx.resume().catch(() => {});
+      const now = this.ctx.currentTime;
+      [330, 440, 554].forEach((freq, idx) => {
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, now + idx * 0.04);
+        gain.gain.setValueAtTime(0.06, now + idx * 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.04 + 0.25);
+        osc.connect(gain);
+        gain.connect(this.masterGain);
+        osc.start(now + idx * 0.04);
+        osc.stop(now + idx * 0.04 + 0.26);
+      });
+    } catch (_) {}
+  }
+
+  /**
+   * Exiting Explore Mode: Descending soft chord
+   */
+  playExploreExit() {
+    if (this.muted) return;
+    if (!this.isInitialized) this.init();
+    if (!this.ctx) return;
+    try {
+      if (this.ctx.state === 'suspended') this.ctx.resume().catch(() => {});
+      const now = this.ctx.currentTime;
+      [554, 440, 330].forEach((freq, idx) => {
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now + idx * 0.04);
+        gain.gain.setValueAtTime(0.05, now + idx * 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.04 + 0.22);
+        osc.connect(gain);
+        gain.connect(this.masterGain);
+        osc.start(now + idx * 0.04);
+        osc.stop(now + idx * 0.04 + 0.23);
+      });
+    } catch (_) {}
+  }
+
+  /**
+   * Waypoint / Landmark Discovery Beep
+   */
+  playWaypointChirp() {
+    if (this.muted) return;
+    if (!this.isInitialized) this.init();
+    if (!this.ctx) return;
+    try {
+      if (this.ctx.state === 'suspended') this.ctx.resume().catch(() => {});
+      const now = this.ctx.currentTime;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(880, now);
+      osc.frequency.exponentialRampToValueAtTime(1760, now + 0.04);
+      gain.gain.setValueAtTime(0.07, now);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.06);
+      osc.connect(gain);
+      gain.connect(this.masterGain);
+      osc.start(now);
+      osc.stop(now + 0.07);
+    } catch (_) {}
+  }
 }
 
 export const soundSystem = new SoundSystem();
