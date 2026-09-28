@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import soundSystem from '../lib/soundSystem';
 
 const WAYPOINTS = [
-  { id: 'safehouse', label: 'SAFEHOUSE', sectionId: 'safehouse', path: '/about/', angle: -45, dist: 52, color: '#E7B85A', icon: '■' },
-  { id: 'operations-garage', label: 'VENTURES', sectionId: 'operations-garage', path: '/ventures/', angle: 30, dist: 58, color: '#8FADA0', icon: '◆' },
-  { id: 'poster-wall', label: 'EVENTS', sectionId: 'poster-wall', path: '/events/', angle: 120, dist: 64, color: '#D87942', icon: '▲' },
-  { id: 'archive', label: 'ARCHIVE', sectionId: 'archive', path: '/writing/', angle: -130, dist: 50, color: '#B7C2A8', icon: '●' },
-  { id: 'dispatch-point', label: 'CONTACT', sectionId: 'dispatch-point', path: '/contact/', angle: 180, dist: 55, color: '#EDE4C8', icon: '✦' },
+  { id: 'safehouse', label: 'SAFEHOUSE', sectionId: 'safehouse', path: '/about/', angle: 180, dist: 30, color: '#E7B85A', icon: '■' },
+  { id: 'operations-garage', label: 'VENTURES', sectionId: 'operations-garage', path: '/ventures/', angle: 180, dist: 45, color: '#8FADA0', icon: '◆' },
+  { id: 'poster-wall', label: 'EVENTS', sectionId: 'poster-wall', path: '/events/', angle: 180, dist: 58, color: '#D87942', icon: '▲' },
+  { id: 'archive', label: 'ARCHIVE', sectionId: 'archive', path: '/writing/', angle: 180, dist: 68, color: '#B7C2A8', icon: '●' },
+  { id: 'dispatch-point', label: 'CONTACT', sectionId: 'dispatch-point', path: '/contact/', angle: 180, dist: 78, color: '#EDE4C8', icon: '✦' },
 ];
 
 export default function GtaRadarWidget({

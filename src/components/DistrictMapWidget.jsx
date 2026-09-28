@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import soundSystem from '../lib/soundSystem';
 
 // Real 3D world coordinates synchronized with PlayableDistrict3D.jsx
+// Single straight road layout: all landmarks on x=0, spaced along Z-axis
 const MAP_LANDMARKS = [
   {
     id: 'arrival',
@@ -22,8 +23,8 @@ const MAP_LANDMARKS = [
     title: 'Founder Studio & Biography',
     path: '/about/',
     sectionId: 'safehouse',
-    x: -16,
-    z: -4,
+    x: 0,
+    z: -20,
     color: '#E7B85A',
     icon: '■',
   },
@@ -34,8 +35,8 @@ const MAP_LANDMARKS = [
     title: 'Operations Garage (Ziggers & LoopMemory)',
     path: '/ventures/',
     sectionId: 'operations-garage',
-    x: 16,
-    z: -4,
+    x: 0,
+    z: -40,
     color: '#8FADA0',
     icon: '◆',
   },
@@ -46,8 +47,8 @@ const MAP_LANDMARKS = [
     title: 'Poster Wall & Summits',
     path: '/events/',
     sectionId: 'poster-wall',
-    x: -14,
-    z: 14,
+    x: 0,
+    z: -60,
     color: '#D87942',
     icon: '▲',
   },
@@ -58,8 +59,8 @@ const MAP_LANDMARKS = [
     title: 'Research Library & Essays',
     path: '/writing/',
     sectionId: 'archive',
-    x: 14,
-    z: 14,
+    x: 0,
+    z: -80,
     color: '#B7C2A8',
     icon: '●',
   },
@@ -71,21 +72,21 @@ const MAP_LANDMARKS = [
     path: '/contact/',
     sectionId: 'dispatch-point',
     x: 0,
-    z: 24,
+    z: -100,
     color: '#EDE4C8',
     icon: '✦',
   },
 ];
 
-// World bounds for 2D projection
-// X: -25 to +25, Z: -10 to +30
+// World bounds for 2D projection — single vertical road strip
+// X: -12 to +12, Z: +10 to -110
 const WORLD = {
-  minX: -26,
-  maxX: 26,
-  minZ: -10,
-  maxZ: 30,
-  width: 240,
-  height: 200,
+  minX: -12,
+  maxX: 12,
+  minZ: -110,
+  maxZ: 10,
+  width: 120,
+  height: 280,
 };
 
 function projectX(x) {
@@ -93,7 +94,8 @@ function projectX(x) {
 }
 
 function projectY(z) {
-  return ((z - WORLD.minZ) / (WORLD.maxZ - WORLD.minZ)) * WORLD.height;
+  // Invert so z=+10 is at top, z=-110 is at bottom
+  return ((WORLD.maxZ - z) / (WORLD.maxZ - WORLD.minZ)) * WORLD.height;
 }
 
 export default function DistrictMapWidget({

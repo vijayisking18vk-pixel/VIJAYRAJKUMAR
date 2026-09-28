@@ -87,6 +87,22 @@ export default function GuidedChaptersLayer({
             <span className="font-bank text-[10px] sm:text-xs font-black tracking-widest text-[#E7B85A] uppercase block mb-1">
               THE PLAYABLE PORTFOLIO // AUTONOMOUS DISTRICT
             </span>
+
+            {/* Hero Poster Image */}
+            <div className="w-full rounded-2xl overflow-hidden mb-4 border-2 border-[#E7B85A]/60 shadow-[0_8px_32px_rgba(0,0,0,0.7)]">
+              <picture>
+                <source srcSet="/images/hero-mobile.webp" media="(max-width: 639px)" type="image/webp" />
+                <source srcSet="/images/hero-desktop.webp" media="(min-width: 640px)" type="image/webp" />
+                <img
+                  src="/images/hero-desktop.webp"
+                  alt="Vijayrajkumar — GTA San Andreas style poster collage featuring the founder across scenic Indian landscapes"
+                  className="w-full h-auto object-cover"
+                  loading="eager"
+                  fetchPriority="high"
+                />
+              </picture>
+            </div>
+
             <h1 className="text-2xl sm:text-4xl font-bank font-bold text-[#F7F0E3] uppercase tracking-wide leading-tight">
               Vijayrajkumar
             </h1>

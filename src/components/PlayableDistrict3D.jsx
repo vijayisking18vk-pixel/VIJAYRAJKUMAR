@@ -3,7 +3,10 @@ import * as THREE from 'three';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import soundSystem from '../lib/soundSystem';
 
-// District landmark coordinates and metadata
+/**
+ * Straight-road layout: landmarks placed sequentially along a single Z-axis road.
+ * Each banner is spaced 18 units apart for comfortable walking/viewing distance.
+ */
 export const DISTRICT_LANDMARKS = [
   {
     id: 'arrival',
@@ -12,11 +15,14 @@ export const DISTRICT_LANDMARKS = [
     title: 'Arrival Street & Identity',
     path: '/',
     pos: [0, 0, 0],
-    camPos: [0, 2.2, 7.8],
-    lookAt: [0, 2.3, 0],
+    camPos: [0, 2.2, 8],
+    lookAt: [0, 2.0, 0],
     color: '#E7B85A',
     icon: '✦',
-    description: 'Central street corner featuring the Vijayrajkumar official San Andreas artwork billboard.',
+    description: 'Central arrival point featuring the Vijayrajkumar official San Andreas artwork billboard.',
+    textureUrl: '/images/hero-desktop.webp',
+    fallbackUrl: '/images/hero-desktop.jpg',
+    bannerLabel: 'ARRIVAL // VIJAYRAJKUMAR',
   },
   {
     id: 'safehouse',
@@ -24,12 +30,14 @@ export const DISTRICT_LANDMARKS = [
     chapter: '01 // SAFEHOUSE',
     title: 'Biography & Strategic Journey',
     path: '/about/',
-    pos: [-16, 0, -4],
-    camPos: [-10, 2.6, 2],
-    lookAt: [-16, 2.4, -4],
+    pos: [0, 0, -20],
+    camPos: [0, 2.2, -12],
+    lookAt: [0, 2.0, -20],
     color: '#E7B85A',
     icon: '■',
     description: 'Operator studio and safehouse. Background in Defence & Strategic Studies, Hindi Literature, and marketplace execution.',
+    textureUrl: '/images/gta/about_studio.jpg',
+    bannerLabel: 'THE SAFEHOUSE // ABOUT & STRATEGY',
   },
   {
     id: 'operations-garage',
@@ -37,12 +45,14 @@ export const DISTRICT_LANDMARKS = [
     chapter: '02 // VENTURES',
     title: 'Ventures & Case Studies',
     path: '/ventures/',
-    pos: [16, 0, -4],
-    camPos: [10, 2.6, 2],
-    lookAt: [16, 2.4, -4],
+    pos: [0, 0, -40],
+    camPos: [0, 2.2, -32],
+    lookAt: [0, 2.0, -40],
     color: '#8FADA0',
     icon: '◆',
     description: 'Industrial workshop housing Unfounded (venture studio), Ziggers (gig staffing), and LoopMemory (AI context engine).',
+    textureUrl: '/images/gta/ventures_workshop.jpg',
+    bannerLabel: 'OPERATIONS GARAGE // VENTURES',
   },
   {
     id: 'poster-wall',
@@ -50,12 +60,14 @@ export const DISTRICT_LANDMARKS = [
     chapter: '03 // EVENTS',
     title: 'Events & Public Summits',
     path: '/events/',
-    pos: [-14, 0, 14],
-    camPos: [-9, 2.4, 19],
-    lookAt: [-14, 2.2, 14],
+    pos: [0, 0, -60],
+    camPos: [0, 2.2, -52],
+    lookAt: [0, 2.0, -60],
     color: '#D87942',
     icon: '▲',
     description: 'Courtyard poster wall displaying community summits, hackathons, and international forums.',
+    textureUrl: '/images/gta/events_gallery.jpg',
+    bannerLabel: 'THE POSTER WALL // EVENTS',
   },
   {
     id: 'archive',
@@ -63,12 +75,14 @@ export const DISTRICT_LANDMARKS = [
     chapter: '04 // WRITING',
     title: 'Writing & Strategic Research',
     path: '/writing/',
-    pos: [14, 0, 14],
-    camPos: [9, 2.4, 19],
-    lookAt: [14, 2.2, 14],
+    pos: [0, 0, -80],
+    camPos: [0, 2.2, -72],
+    lookAt: [0, 2.0, -80],
     color: '#B7C2A8',
     icon: '●',
     description: 'Architectural bookstore and research archive. Deep dives into marketplace mechanics and cognitive memory.',
+    textureUrl: '/images/gta/writing_archive.jpg',
+    bannerLabel: 'THE ARCHIVE // WRITING & RESEARCH',
   },
   {
     id: 'dispatch-point',
@@ -76,12 +90,14 @@ export const DISTRICT_LANDMARKS = [
     chapter: '05 // CONTACT',
     title: 'Contact & Collaboration',
     path: '/contact/',
-    pos: [0, 0, 24],
-    camPos: [0, 3.4, 30],
-    lookAt: [0, 2.6, 23],
+    pos: [0, 0, -100],
+    camPos: [0, 2.2, -92],
+    lookAt: [0, 2.0, -100],
     color: '#EDE4C8',
     icon: '✦',
     description: 'Rooftop radio transmission station overlooking the city. Direct contact and founder advisory engagements.',
+    textureUrl: '/images/gta/contact_rooftop.jpg',
+    bannerLabel: 'DISPATCH POINT // CONTACT',
   },
 ];
 
@@ -156,155 +172,17 @@ function PalmTree({ position = [0, 0, 0], scale = 1, rotationY = 0, curveDir = 1
 }
 
 /**
- * Utility Pole with cross arms
+ * Flat Artwork Banner — loads a texture and displays it as a flat billboard on the roadside.
+ * No buildings, no walls — just a framed image banner standing on the ground.
  */
-function UtilityPole({ position = [0, 0, 0], scale = 1 }) {
-  const poleMat = useMemo(
-    () => new THREE.MeshBasicMaterial({ color: new THREE.Color('#0B0E0D') }),
-    []
-  );
-
-  return (
-    <group position={position} scale={[scale, scale, scale]}>
-      <mesh position={[0, 4.5, 0]} material={poleMat}>
-        <cylinderGeometry args={[0.12, 0.16, 9, 6]} />
-      </mesh>
-      <mesh position={[0, 7.8, 0]} material={poleMat}>
-        <boxGeometry args={[2.8, 0.12, 0.14]} />
-      </mesh>
-      <mesh position={[0, 6.8, 0]} material={poleMat}>
-        <boxGeometry args={[2.2, 0.1, 0.12]} />
-      </mesh>
-    </group>
-  );
-}
-
-/**
- * Catenary Sagging Wires connecting buildings and poles
- */
-function DistrictWires() {
-  const wireMat = useMemo(
-    () => new THREE.LineBasicMaterial({ color: new THREE.Color('#0C100E'), linewidth: 1 }),
-    []
-  );
-
-  const wireGeos = useMemo(() => {
-    const list = [];
-    const connections = [
-      [[-16, 7.5, -4], [-8, 6.5, -1], [0, 5.8, 0]],
-      [[16, 7.0, -4], [8, 6.5, -1], [0, 5.8, 0]],
-      [[-14, 5.2, 14], [-6, 5.8, 10], [0, 5.8, 0]],
-      [[14, 5.2, 14], [6, 5.8, 10], [0, 5.8, 0]],
-      [[0, 8.0, 24], [0, 6.2, 12], [0, 5.8, 0]],
-    ];
-
-    connections.forEach(([p1, pMid, p2]) => {
-      const curve = new THREE.QuadraticBezierCurve3(
-        new THREE.Vector3(...p1),
-        new THREE.Vector3(...pMid),
-        new THREE.Vector3(...p2)
-      );
-      list.push(new THREE.BufferGeometry().setFromPoints(curve.getPoints(20)));
-    });
-    return list;
-  }, []);
-
-  return (
-    <group>
-      {wireGeos.map((geo, idx) => (
-        <line key={idx} geometry={geo} material={wireMat} />
-      ))}
-    </group>
-  );
-}
-
-/**
- * Central Arrival Billboard Structure
- */
-function ArrivalBillboard({ isMobile }) {
-  const preferredUrl = isMobile ? '/images/hero-mobile.webp' : '/images/gta/home_poster.jpg';
-  const fallbackUrl = isMobile ? '/images/hero-mobile.jpg' : '/images/hero-desktop.webp';
-  const textureRef = useRef();
-  const [textureLoaded, setTextureLoaded] = useState(false);
-
-  useEffect(() => {
-    let active = true;
-    const loader = new THREE.TextureLoader();
-    loader.load(
-      preferredUrl,
-      (tex) => {
-        if (!active) return;
-        tex.colorSpace = THREE.SRGBColorSpace;
-        tex.generateMipmaps = true;
-        tex.minFilter = THREE.LinearMipmapLinearFilter;
-        textureRef.current = tex;
-        setTextureLoaded(true);
-      },
-      undefined,
-      () => {
-        loader.load(
-          fallbackUrl,
-          (tex) => {
-            if (!active) return;
-            tex.colorSpace = THREE.SRGBColorSpace;
-            textureRef.current = tex;
-            setTextureLoaded(true);
-          }
-        );
-      }
-    );
-
-    return () => {
-      active = false;
-      if (textureRef.current) textureRef.current.dispose();
-    };
-  }, [preferredUrl, fallbackUrl]);
-
-  const frameMat = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: '#161917', roughness: 0.8, metalness: 0.5 }),
-    []
-  );
-
-  const panelWidth = isMobile ? 6.0 : 10.2;
-  const panelHeight = isMobile ? 9.0 : 5.74;
-
-  return (
-    <group position={[0, 0.4, 0]}>
-      <mesh position={[-panelWidth * 0.32, -0.6, -0.2]} material={frameMat}>
-        <cylinderGeometry args={[0.22, 0.28, 6.4, 8]} />
-      </mesh>
-      <mesh position={[panelWidth * 0.32, -0.6, -0.2]} material={frameMat}>
-        <cylinderGeometry args={[0.22, 0.28, 6.4, 8]} />
-      </mesh>
-      <mesh position={[0, 2.5, 0]} material={frameMat}>
-        <boxGeometry args={[panelWidth + 0.35, panelHeight + 0.35, 0.3]} />
-      </mesh>
-      <mesh position={[0, 2.5, 0.16]}>
-        <planeGeometry args={[panelWidth, panelHeight]} />
-        {textureLoaded && textureRef.current ? (
-          <meshBasicMaterial map={textureRef.current} toneMapped={false} />
-        ) : (
-          <meshBasicMaterial color="#1A1815" />
-        )}
-      </mesh>
-    </group>
-  );
-}
-
-/**
- * Reusable 3D Landmark Artwork Billboard
- * Mounts illuminated San Andreas concept artwork directly in the 3D district environment
- */
-function LandmarkArtworkBillboard({
+function RoadsideBanner({
   textureUrl,
   fallbackUrl,
-  width = 5.6,
-  height = 3.15,
+  width = 8,
+  height = 4.5,
   position = [0, 0, 0],
-  rotation = [0, 0, 0],
   accentColor = '#E7B85A',
-  badgeText = '',
-  withLamps = true,
+  bannerLabel = '',
 }) {
   const textureRef = useRef();
   const [textureLoaded, setTextureLoaded] = useState(false);
@@ -349,358 +227,58 @@ function LandmarkArtworkBillboard({
     []
   );
 
-  const lampMat = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: '#2A2E2C', roughness: 0.5, metalness: 0.7 }),
-    []
-  );
-
   const lampGlowMat = useMemo(
     () => new THREE.MeshBasicMaterial({ color: '#FFEBB8' }),
     []
   );
 
   return (
-    <group position={position} rotation={rotation}>
-      {/* Outer steel frame backing */}
-      <mesh position={[0, 0, 0]} material={frameMat}>
-        <boxGeometry args={[width + 0.32, height + 0.32, 0.18]} />
+    <group position={position}>
+      {/* Two thin support poles */}
+      <mesh position={[-width * 0.42, height * 0.35, -0.15]} material={frameMat}>
+        <cylinderGeometry args={[0.08, 0.12, height * 0.7, 6]} />
+      </mesh>
+      <mesh position={[width * 0.42, height * 0.35, -0.15]} material={frameMat}>
+        <cylinderGeometry args={[0.08, 0.12, height * 0.7, 6]} />
       </mesh>
 
-      {/* Accent color outer rim */}
-      <mesh position={[0, 0, 0.092]}>
+      {/* Outer frame backing */}
+      <mesh position={[0, height * 0.55, 0]} material={frameMat}>
+        <boxGeometry args={[width + 0.3, height + 0.3, 0.12]} />
+      </mesh>
+
+      {/* Accent border strip */}
+      <mesh position={[0, height * 0.55, 0.065]}>
         <planeGeometry args={[width + 0.08, height + 0.08]} />
         <meshBasicMaterial color={accentColor} />
       </mesh>
 
-      {/* The main artwork canvas */}
-      <mesh position={[0, 0, 0.098]}>
+      {/* Main artwork image */}
+      <mesh position={[0, height * 0.55, 0.07]}>
         <planeGeometry args={[width, height]} />
         {textureLoaded && textureRef.current ? (
           <meshBasicMaterial map={textureRef.current} toneMapped={false} />
         ) : (
-          <meshBasicMaterial color="#1C1E1B" />
+          <meshBasicMaterial color="#1A1815" />
         )}
       </mesh>
 
-      {/* Top Billboard Overhead Lamps */}
-      {withLamps && (
-        <group position={[0, height * 0.5 + 0.16, 0]}>
-          {[-width * 0.28, width * 0.28].map((lampX, idx) => (
-            <group key={idx} position={[lampX, 0, 0]}>
-              {/* Lamp bracket arm extending forward & angling down */}
-              <mesh position={[0, 0.14, 0.35]} rotation={[0.45, 0, 0]} material={lampMat}>
-                <cylinderGeometry args={[0.03, 0.03, 0.75, 6]} />
-              </mesh>
-              {/* Lamp hood fixture */}
-              <mesh position={[0, 0.36, 0.62]} rotation={[0.65, 0, 0]} material={lampMat}>
-                <boxGeometry args={[0.4, 0.12, 0.22]} />
-              </mesh>
-              {/* Warm light emitter */}
-              <mesh position={[0, 0.32, 0.62]} rotation={[Math.PI * 0.5, 0, 0]} material={lampGlowMat}>
-                <planeGeometry args={[0.34, 0.16]} />
-              </mesh>
-            </group>
-          ))}
+      {/* Overhead warm spotlights */}
+      {[-width * 0.3, width * 0.3].map((x, idx) => (
+        <group key={idx} position={[x, height + 0.3, 0.3]}>
+          <mesh material={lampGlowMat}>
+            <boxGeometry args={[0.3, 0.08, 0.14]} />
+          </mesh>
         </group>
-      )}
+      ))}
 
-      {/* Badge Strip at bottom */}
-      {badgeText && (
-        <mesh position={[0, -height * 0.5 - 0.24, 0.095]}>
-          <planeGeometry args={[Math.min(width * 0.9, 4.8), 0.32]} />
+      {/* Badge label strip below the banner */}
+      {bannerLabel && (
+        <mesh position={[0, height * 0.55 - height * 0.5 - 0.22, 0.07]}>
+          <planeGeometry args={[Math.min(width * 0.85, 6), 0.3]} />
           <meshBasicMaterial color={accentColor} />
         </mesh>
       )}
-    </group>
-  );
-}
-
-/**
- * Landmark 1: The Safehouse (About & Strategic Journey)
- */
-function SafehouseBuilding() {
-  const wallMat = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: '#3A3832', roughness: 0.9 }),
-    []
-  );
-  const trimMat = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: '#252522', roughness: 0.7 }),
-    []
-  );
-  const litWindowMat = useMemo(
-    () => new THREE.MeshBasicMaterial({ color: '#F7C66B' }), // Warm amber window glow
-    []
-  );
-  const waterTankMat = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: '#1E2D27', roughness: 0.7 }),
-    []
-  );
-
-  return (
-    <group position={[-16, 0, -4]}>
-      {/* Main 2-story building block */}
-      <mesh position={[0, 3.6, 0]} material={wallMat}>
-        <boxGeometry args={[9.5, 7.2, 8.5]} />
-      </mesh>
-      {/* Roof cornice trim */}
-      <mesh position={[0, 7.3, 0]} material={trimMat}>
-        <boxGeometry args={[9.9, 0.3, 8.9]} />
-      </mesh>
-
-      {/* Outer Lit windows */}
-      {[-3.6, 3.6].map((x, i) => (
-        <mesh key={i} position={[x, 5.2, 4.3]} material={litWindowMat}>
-          <planeGeometry args={[1.2, 1.6]} />
-        </mesh>
-      ))}
-
-      {/* Lit windows - Ground Floor */}
-      {[-3.6, 3.6].map((x, i) => (
-        <mesh key={i} position={[x, 2.0, 4.3]} material={litWindowMat}>
-          <planeGeometry args={[1.2, 1.8]} />
-        </mesh>
-      ))}
-
-      {/* Entrance Door & Awning */}
-      <mesh position={[0, 1.8, 4.32]} material={trimMat}>
-        <planeGeometry args={[2.0, 3.6]} />
-      </mesh>
-      <mesh position={[0, 3.7, 4.8]} material={trimMat} rotation={[0.2, 0, 0]}>
-        <boxGeometry args={[3.2, 0.1, 1.2]} />
-      </mesh>
-
-      {/* Rooftop Water Tank (Classic Chennai Sintex / galvanized tank on steel stilts) */}
-      <group position={[2.5, 8.4, -1.5]}>
-        <mesh position={[0, 0.7, 0]} material={waterTankMat}>
-          <cylinderGeometry args={[0.9, 0.9, 1.4, 12]} />
-        </mesh>
-        <mesh position={[0, -0.2, 0]} material={trimMat}>
-          <boxGeometry args={[1.8, 0.4, 1.8]} />
-        </mesh>
-      </group>
-
-      {/* 3D Landmark Artwork Billboard: The Safehouse Studio */}
-      <LandmarkArtworkBillboard
-        textureUrl="/images/gta/about_studio.jpg"
-        width={5.2}
-        height={2.925}
-        position={[0, 4.9, 4.38]}
-        accentColor="#E7B85A"
-        badgeText="THE SAFEHOUSE // OPERATOR STUDIO"
-      />
-    </group>
-  );
-}
-
-/**
- * Landmark 2: Operations Garage (Ventures & Case Studies)
- */
-function OperationsGarageBuilding() {
-  const brickMat = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: '#3A2E28', roughness: 0.9 }),
-    []
-  );
-  const trimMat = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: '#1B1C1A', roughness: 0.8 }),
-    []
-  );
-  const bayDoorMat = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: '#252B28', roughness: 0.6, metalness: 0.4 }),
-    []
-  );
-
-  return (
-    <group position={[16, 0, -4]}>
-      {/* Main Garage Warehouse structure */}
-      <mesh position={[0, 3.2, 0]} material={brickMat}>
-        <boxGeometry args={[11.5, 6.4, 9.0]} />
-      </mesh>
-      <mesh position={[0, 6.5, 0]} material={trimMat}>
-        <boxGeometry args={[11.9, 0.3, 9.4]} />
-      </mesh>
-
-      {/* 3 Roll-up Garage Bays */}
-      {[
-        { x: -3.5, labelColor: '#8FADA0' },
-        { x: 0, labelColor: '#E7B85A' },
-        { x: 3.5, labelColor: '#B7C2A8' },
-      ].map((bay, i) => (
-        <group key={i} position={[bay.x, 2.0, 4.52]}>
-          <mesh material={bayDoorMat}>
-            <planeGeometry args={[2.8, 4.0]} />
-          </mesh>
-          {/* Illuminated neon sign strip above each bay */}
-          <mesh position={[0, 2.3, 0.05]}>
-            <planeGeometry args={[2.6, 0.45]} />
-            <meshBasicMaterial color={bay.labelColor} />
-          </mesh>
-        </group>
-      ))}
-
-      {/* Overhead Rooftop Industrial Exhaust Pipes */}
-      <mesh position={[-3.5, 7.2, -1.0]} material={trimMat} rotation={[0, 0, Math.PI * 0.5]}>
-        <cylinderGeometry args={[0.3, 0.3, 4.5, 8]} />
-      </mesh>
-
-      {/* 3D Landmark Artwork Billboard: Operations Garage */}
-      <LandmarkArtworkBillboard
-        textureUrl="/images/gta/ventures_workshop.jpg"
-        width={6.0}
-        height={3.375}
-        position={[0, 5.8, 4.62]}
-        accentColor="#8FADA0"
-        badgeText="OPERATIONS GARAGE // VENTURES WORKSHOP"
-      />
-    </group>
-  );
-}
-
-/**
- * Landmark 3: The Poster Wall (Events & Community Summits)
- */
-function PosterWallCourtyard() {
-  const wallMat = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: '#322E2B', roughness: 0.95 }),
-    []
-  );
-  const posterFrameMat = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: '#181A19', roughness: 0.8 }),
-    []
-  );
-
-  return (
-    <group position={[-14, 0, 14]}>
-      {/* Brick courtyard perimeter wall */}
-      <mesh position={[0, 2.2, 0]} material={wallMat}>
-        <boxGeometry args={[12.5, 4.4, 1.2]} />
-      </mesh>
-      <mesh position={[0, 4.5, 0]} material={posterFrameMat}>
-        <boxGeometry args={[12.9, 0.25, 1.4]} />
-      </mesh>
-
-      {/* 3D Landmark Artwork Billboard: Courtyard Poster Gallery */}
-      <LandmarkArtworkBillboard
-        textureUrl="/images/gta/events_gallery.jpg"
-        width={7.8}
-        height={3.6}
-        position={[0, 2.25, 0.68]}
-        accentColor="#D87942"
-        badgeText="THE POSTER WALL // EVENTS & FORUMS"
-      />
-    </group>
-  );
-}
-
-/**
- * Landmark 4: The Archive (Writing & Strategic Research)
- */
-function ArchiveBuilding() {
-  const stoneMat = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: '#2B322F', roughness: 0.9 }),
-    []
-  );
-  const glassMat = useMemo(
-    () => new THREE.MeshBasicMaterial({ color: '#D4B36A' }), // Amber bookshop window
-    []
-  );
-  const trimMat = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: '#1A1E1C', roughness: 0.7 }),
-    []
-  );
-
-  return (
-    <group position={[14, 0, 14]}>
-      {/* Archive Bookstore façade */}
-      <mesh position={[0, 3.4, 0]} material={stoneMat}>
-        <boxGeometry args={[10.5, 6.8, 8.5]} />
-      </mesh>
-      <mesh position={[0, 6.9, 0]} material={trimMat}>
-        <boxGeometry args={[10.9, 0.3, 8.9]} />
-      </mesh>
-
-      {/* Large floor-to-ceiling glass display windows with warm bookshop glow */}
-      {[-3, 0, 3].map((x, i) => (
-        <mesh key={i} position={[x, 2.0, 4.3]} material={glassMat}>
-          <planeGeometry args={[2.2, 3.0]} />
-        </mesh>
-      ))}
-
-      {/* 3D Landmark Artwork Billboard: The Archive */}
-      <LandmarkArtworkBillboard
-        textureUrl="/images/gta/writing_archive.jpg"
-        width={5.8}
-        height={3.26}
-        position={[0, 4.9, 4.38]}
-        accentColor="#B7C2A8"
-        badgeText="THE ARCHIVE // WRITING & RESEARCH"
-      />
-    </group>
-  );
-}
-
-/**
- * Landmark 5: The Dispatch Point (Contact & Collaboration)
- */
-function DispatchPointStation() {
-  const stationMat = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: '#232825', roughness: 0.85 }),
-    []
-  );
-  const mastMat = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: '#141715', roughness: 0.5, metalness: 0.8 }),
-    []
-  );
-  const beaconRef = useRef();
-
-  useFrame(({ clock }) => {
-    if (beaconRef.current) {
-      const t = clock.getElapsedTime() * 3.5;
-      beaconRef.current.intensity = 0.5 + Math.sin(t) * 0.5;
-    }
-  });
-
-  return (
-    <group position={[0, 0, 24]}>
-      {/* Elevated communications platform */}
-      <mesh position={[0, 1.8, 0]} material={stationMat}>
-        <boxGeometry args={[8.5, 3.6, 7.5]} />
-      </mesh>
-
-      {/* Tall Transmission Radio Mast */}
-      <group position={[0, 3.6, 0]}>
-        <mesh position={[0, 5.0, 0]} material={mastMat}>
-          <cylinderGeometry args={[0.08, 0.22, 10, 6]} />
-        </mesh>
-        {/* Mast cross struts */}
-        {[2.5, 5.0, 7.5].map((y, i) => (
-          <mesh key={i} position={[0, y, 0]} material={mastMat}>
-            <boxGeometry args={[1.2, 0.08, 1.2]} />
-          </mesh>
-        ))}
-
-        {/* Pulsing red/amber aircraft warning beacon at apex */}
-        <mesh position={[0, 10.1, 0]}>
-          <sphereGeometry args={[0.2, 8, 8]} />
-          <meshBasicMaterial color="#FF5533" />
-        </mesh>
-        <pointLight
-          ref={beaconRef}
-          position={[0, 10.1, 0]}
-          color="#FF5533"
-          distance={12}
-          intensity={1.0}
-        />
-      </group>
-
-      {/* 3D Landmark Artwork Billboard: Dispatch Point */}
-      <LandmarkArtworkBillboard
-        textureUrl="/images/gta/contact_rooftop.jpg"
-        width={5.4}
-        height={3.0}
-        position={[0, 1.9, 3.82]}
-        accentColor="#EDE4C8"
-        badgeText="DISPATCH POINT // COLLABORATION & CONTACT"
-      />
     </group>
   );
 }
@@ -714,7 +292,7 @@ function WaypointMarkers({ activeLandmarkId, onSelectLandmark }) {
       {DISTRICT_LANDMARKS.map((lm) => {
         const isCurrent = lm.id === activeLandmarkId;
         const [x, , z] = lm.pos;
-        const markerY = lm.id === 'dispatch-point' ? 14.5 : lm.id === 'arrival' ? 6.8 : 8.8;
+        const markerY = 7;
 
         return (
           <group
@@ -725,12 +303,10 @@ function WaypointMarkers({ activeLandmarkId, onSelectLandmark }) {
               onSelectLandmark(lm);
             }}
           >
-            {/* Diamond / Marker Mesh */}
             <mesh rotation={[0, Math.PI * 0.25, 0]}>
-              <octahedronGeometry args={[0.6, 0]} />
+              <octahedronGeometry args={[0.5, 0]} />
               <meshBasicMaterial color={lm.color} wireframe={!isCurrent} />
             </mesh>
-            {/* Subtle glow light */}
             <pointLight color={lm.color} intensity={isCurrent ? 1.4 : 0.4} distance={6} />
           </group>
         );
@@ -740,15 +316,16 @@ function WaypointMarkers({ activeLandmarkId, onSelectLandmark }) {
 }
 
 /**
- * District Ground, Asphalt Streets, Curbs & Amber Markings
+ * Single Straight Road Ground with dashed center-line markings.
+ * Runs along the Z-axis from z=+15 to z=-115 (covering all 6 landmarks).
  */
-function DistrictGround() {
+function StraightRoadGround() {
   const asphaltMat = useMemo(
     () => new THREE.MeshStandardMaterial({ color: '#111312', roughness: 0.95 }),
     []
   );
-  const curbMat = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: '#242725', roughness: 0.85 }),
+  const sidewalkMat = useMemo(
+    () => new THREE.MeshStandardMaterial({ color: '#1A1D1B', roughness: 0.85 }),
     []
   );
   const stripeMat = useMemo(
@@ -756,44 +333,56 @@ function DistrictGround() {
     []
   );
 
+  // Road runs from z = +15 to z = -115
+  const roadLength = 135;
+  const roadCenterZ = -50;
+
+  // Generate dashed center-line markings
+  const dashes = useMemo(() => {
+    const arr = [];
+    for (let z = 12; z >= -112; z -= 4) {
+      arr.push(z);
+    }
+    return arr;
+  }, []);
+
   return (
     <group position={[0, -0.05, 0]}>
-      {/* Main Ground Plane */}
-      <mesh rotation={[-Math.PI * 0.5, 0, 0]} material={asphaltMat} receiveShadow>
-        <planeGeometry args={[70, 70]} />
+      {/* Main road surface */}
+      <mesh rotation={[-Math.PI * 0.5, 0, 0]} position={[0, 0, roadCenterZ]} material={asphaltMat} receiveShadow>
+        <planeGeometry args={[14, roadLength]} />
       </mesh>
 
-      {/* Sidewalk Blocks Left & Right */}
-      <mesh position={[-16, 0.12, 5]} material={curbMat}>
-        <boxGeometry args={[14, 0.24, 45]} />
+      {/* Left sidewalk */}
+      <mesh position={[-9, 0.08, roadCenterZ]} material={sidewalkMat}>
+        <boxGeometry args={[4, 0.16, roadLength]} />
       </mesh>
-      <mesh position={[16, 0.12, 5]} material={curbMat}>
-        <boxGeometry args={[14, 0.24, 45]} />
+      {/* Right sidewalk */}
+      <mesh position={[9, 0.08, roadCenterZ]} material={sidewalkMat}>
+        <boxGeometry args={[4, 0.16, roadLength]} />
       </mesh>
 
-      {/* North-South Center Avenue Dashed Amber Markings */}
-      {[-6, -1, 4, 9, 14, 19, 24, 29].map((z, i) => (
+      {/* Dashed yellow center-line */}
+      {dashes.map((z, i) => (
         <mesh
           key={i}
-          position={[0, 0.02, z]}
+          position={[0, 0.01, z]}
           rotation={[-Math.PI * 0.5, 0, 0]}
           material={stripeMat}
         >
-          <planeGeometry args={[0.2, 2.2]} />
+          <planeGeometry args={[0.18, 2]} />
         </mesh>
       ))}
 
-      {/* East-West Cross Street Dashed Amber Markings */}
-      {[-12, -7, -2, 3, 8, 13].map((x, i) => (
-        <mesh
-          key={i}
-          position={[x, 0.02, 0]}
-          rotation={[-Math.PI * 0.5, 0, Math.PI * 0.5]}
-          material={stripeMat}
-        >
-          <planeGeometry args={[0.2, 2.0]} />
-        </mesh>
-      ))}
+      {/* Road edge white lines */}
+      <mesh position={[-6.5, 0.01, roadCenterZ]} rotation={[-Math.PI * 0.5, 0, 0]}>
+        <planeGeometry args={[0.1, roadLength]} />
+        <meshBasicMaterial color="#3A3D3B" />
+      </mesh>
+      <mesh position={[6.5, 0.01, roadCenterZ]} rotation={[-Math.PI * 0.5, 0, 0]}>
+        <planeGeometry args={[0.1, roadLength]} />
+        <meshBasicMaterial color="#3A3D3B" />
+      </mesh>
     </group>
   );
 }
@@ -809,7 +398,7 @@ function DistantCoastlineSkyline() {
 
   const buildings = useMemo(() => {
     const list = [];
-    const count = 36;
+    const count = 40;
     for (let i = 0; i < count; i++) {
       const x = (i - count / 2) * 1.8;
       const h = 1.4 + Math.abs(Math.sin(i * 1.6)) * 4.2;
@@ -820,9 +409,9 @@ function DistantCoastlineSkyline() {
   }, []);
 
   return (
-    <group position={[0, -0.6, -22]}>
+    <group position={[0, -0.6, -55]}>
       {buildings.map((b, i) => (
-        <mesh key={i} position={[b.x, b.h * 0.5, 0]} material={mat}>
+        <mesh key={i} position={[b.x + 22, b.h * 0.5, -8]} material={mat}>
           <boxGeometry args={[b.w, b.h, 0.2]} />
         </mesh>
       ))}
@@ -838,9 +427,9 @@ function AtmosphericDust({ count = 35 }) {
   const [positions] = useState(() => {
     const pos = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
-      pos[i * 3] = (Math.random() - 0.5) * 45;
+      pos[i * 3] = (Math.random() - 0.5) * 20;
       pos[i * 3 + 1] = Math.random() * 8;
-      pos[i * 3 + 2] = (Math.random() - 0.5) * 45 + 10;
+      pos[i * 3 + 2] = Math.random() * -110;
     }
     return pos;
   });
@@ -877,7 +466,8 @@ function AtmosphericDust({ count = 35 }) {
 }
 
 /**
- * Camera Director: Controls camera during Guided Journey vs Explore Mode
+ * Camera Director: Controls camera during Guided Journey vs Explore Mode.
+ * In explore mode, the player walks along the straight road using WASD.
  */
 function CameraDirector({
   isExploreMode,
@@ -888,22 +478,25 @@ function CameraDirector({
   onProximityLandmark,
 }) {
   const { camera } = useThree();
-  const currentTargetPos = useRef(new THREE.Vector3(0, 2.2, 7.8));
-  const currentLookAt = useRef(new THREE.Vector3(0, 2.3, 0));
+  const currentTargetPos = useRef(new THREE.Vector3(0, 2.2, 8));
+  const currentLookAt = useRef(new THREE.Vector3(0, 2.0, 0));
 
   // Explore Mode State
-  const playerPos = useRef(new THREE.Vector3(0, 1.8, 8));
-  const playerAngle = useRef(0);
+  const playerPos = useRef(new THREE.Vector3(0, 1.8, 10));
+  const playerAngle = useRef(Math.PI); // Face down the road (negative Z)
   const keysPressed = useRef({});
   const isPointerDown = useRef(false);
   const lastPointer = useRef({ x: 0, y: 0 });
+
+  // Touch joystick state for mobile
+  const touchStart = useRef({ x: 0, y: 0 });
+  const touchMoving = useRef(false);
 
   // Guided mouse parallax offset
   const mouseParallax = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      // Don't intercept if an input is focused
       if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) return;
       keysPressed.current[e.key.toLowerCase()] = true;
     };
@@ -918,6 +511,7 @@ function CameraDirector({
     };
     const handlePointerUp = () => {
       isPointerDown.current = false;
+      touchMoving.current = false;
     };
     const handlePointerMove = (e) => {
       if (isExploreMode) {
@@ -933,11 +527,42 @@ function CameraDirector({
       }
     };
 
+    // Mobile touch controls for explore mode: drag to move forward/backward, swipe left/right to turn
+    const handleTouchStart = (e) => {
+      if (!isExploreMode) return;
+      const touch = e.touches[0];
+      touchStart.current = { x: touch.clientX, y: touch.clientY };
+      touchMoving.current = true;
+    };
+    const handleTouchMove = (e) => {
+      if (!isExploreMode || !touchMoving.current) return;
+      const touch = e.touches[0];
+      const dx = touch.clientX - touchStart.current.x;
+      const dy = touch.clientY - touchStart.current.y;
+
+      // Horizontal swipe = turn
+      playerAngle.current -= dx * 0.002;
+
+      // Vertical swipe = move forward/backward
+      const fwd = new THREE.Vector3(-Math.sin(playerAngle.current), 0, -Math.cos(playerAngle.current));
+      if (Math.abs(dy) > 2) {
+        playerPos.current.add(fwd.multiplyScalar(-dy * 0.015));
+      }
+
+      touchStart.current = { x: touch.clientX, y: touch.clientY };
+    };
+    const handleTouchEnd = () => {
+      touchMoving.current = false;
+    };
+
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('keyup', handleKeyUp);
     window.addEventListener('pointerdown', handlePointerDown);
     window.addEventListener('pointerup', handlePointerUp);
     window.addEventListener('pointermove', handlePointerMove, { passive: true });
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd, { passive: true });
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
@@ -945,13 +570,15 @@ function CameraDirector({
       window.removeEventListener('pointerdown', handlePointerDown);
       window.removeEventListener('pointerup', handlePointerUp);
       window.removeEventListener('pointermove', handlePointerMove);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
     };
   }, [isExploreMode, isReducedMotion]);
 
   useFrame((_, delta) => {
     if (isExploreMode) {
-      // --- EXPLORE MODE: Free movement with WASD / Arrows ---
-      const speed = 7.5 * delta;
+      const speed = 8 * delta;
       const angle = playerAngle.current;
       const fwd = new THREE.Vector3(-Math.sin(angle), 0, -Math.cos(angle));
       const right = new THREE.Vector3(Math.cos(angle), 0, -Math.sin(angle));
@@ -967,16 +594,15 @@ function CameraDirector({
         move.normalize().multiplyScalar(speed);
         playerPos.current.add(move);
 
-        // Clamp inside district bounding box
-        playerPos.current.x = Math.max(-22, Math.min(22, playerPos.current.x));
-        playerPos.current.z = Math.max(-8, Math.min(27, playerPos.current.z));
+        // Clamp to road corridor: X stays near road, Z runs from +15 to -110
+        playerPos.current.x = Math.max(-10, Math.min(10, playerPos.current.x));
+        playerPos.current.z = Math.max(-110, Math.min(15, playerPos.current.z));
       }
 
       camera.position.copy(playerPos.current);
       const lookTarget = playerPos.current.clone().add(fwd);
       camera.lookAt(lookTarget);
 
-      // Report telemetry (x, z, angle) to HUD & check proximity to landmarks
       if (onPlayerTelemetryUpdate) {
         onPlayerTelemetryUpdate({
           x: playerPos.current.x,
@@ -985,12 +611,12 @@ function CameraDirector({
         });
       }
 
-      // Check proximity to landmarks (< 6.5 units)
+      // Check proximity to landmarks (< 8 units along Z)
       let closest = null;
-      let minDistance = 6.5;
+      let minDistance = 8;
       DISTRICT_LANDMARKS.forEach((lm) => {
-        const dx = lm.pos[0] - playerPos.current.x;
-        const dz = lm.pos[2] - playerPos.current.z;
+        const dz = Math.abs(lm.pos[2] - playerPos.current.z);
+        const dx = Math.abs(lm.pos[0] - playerPos.current.x);
         const d = Math.sqrt(dx * dx + dz * dz);
         if (d < minDistance) {
           minDistance = d;
@@ -1001,7 +627,7 @@ function CameraDirector({
         onProximityLandmark(closest);
       }
     } else {
-      // --- GUIDED JOURNEY MODE: Smooth Interpolation to active landmark camera pose ---
+      // --- GUIDED JOURNEY MODE ---
       const current = DISTRICT_LANDMARKS.find((lm) => lm.id === activeLandmarkId) || DISTRICT_LANDMARKS[0];
       const targetPos = new THREE.Vector3(...current.camPos);
       const targetLook = new THREE.Vector3(...current.lookAt);
@@ -1024,6 +650,7 @@ function CameraDirector({
 
 /**
  * Main PlayableDistrict3D Export
+ * Flat single straight road with image banners — no buildings, no walls.
  */
 export default function PlayableDistrict3D({
   activeLandmarkId = 'arrival',
@@ -1076,6 +703,10 @@ export default function PlayableDistrict3D({
     );
   }
 
+  // Banner sizing: slightly smaller on mobile
+  const bannerW = isMobile ? 6 : 8.5;
+  const bannerH = isMobile ? 3.375 : 4.78;
+
   return (
     <div className={`absolute inset-0 w-full h-full overflow-hidden select-none pointer-events-auto ${className}`}>
       {/* San Andreas Golden Hour Sky Gradient */}
@@ -1088,55 +719,50 @@ export default function PlayableDistrict3D({
       />
 
       <Canvas
-        camera={{ position: [0, 2.2, 7.8], fov: isMobile ? 55 : 45 }}
+        camera={{ position: [0, 2.2, 8], fov: isMobile ? 58 : 48 }}
         dpr={Math.min(typeof window !== 'undefined' ? window.devicePixelRatio : 1, 1.75)}
         gl={{ antialias: true, powerPreference: 'high-performance', alpha: true }}
         frameloop={isTabVisible ? 'always' : 'never'}
         className="w-full h-full"
       >
         {/* Warm Sunset Lighting */}
-        <ambientLight intensity={0.6} color="#FCE6C4" />
+        <ambientLight intensity={0.65} color="#FCE6C4" />
         <directionalLight position={[-8, 6, 6]} intensity={0.9} color="#E8965A" />
-        <directionalLight position={[8, 4, -4]} intensity={0.4} color="#7A9AA8" />
+        <directionalLight position={[8, 4, -4]} intensity={0.35} color="#7A9AA8" />
 
         {/* Distant Coastline Skyline */}
         <DistantCoastlineSkyline />
 
-        {/* Ground Asphalt, Curbs & Dashed Markings */}
-        <DistrictGround />
+        {/* Flat Straight Road */}
+        <StraightRoadGround />
 
-        {/* Landmark 0: Arrival Billboard */}
-        <ArrivalBillboard isMobile={isMobile} />
+        {/* Image Banners — placed along the road, one per landmark */}
+        {DISTRICT_LANDMARKS.map((lm) => (
+          <RoadsideBanner
+            key={lm.id}
+            textureUrl={lm.textureUrl}
+            fallbackUrl={lm.fallbackUrl}
+            width={lm.id === 'arrival' ? bannerW * 1.15 : bannerW}
+            height={lm.id === 'arrival' ? bannerH * 1.1 : bannerH}
+            position={[0, 0, lm.pos[2]]}
+            accentColor={lm.color}
+            bannerLabel={lm.bannerLabel}
+          />
+        ))}
 
-        {/* Landmark 1: The Safehouse */}
-        <SafehouseBuilding />
-
-        {/* Landmark 2: Operations Garage */}
-        <OperationsGarageBuilding />
-
-        {/* Landmark 3: The Poster Wall */}
-        <PosterWallCourtyard />
-
-        {/* Landmark 4: The Archive */}
-        <ArchiveBuilding />
-
-        {/* Landmark 5: The Dispatch Point */}
-        <DispatchPointStation />
-
-        {/* Silhouetted Palms */}
-        <PalmTree position={[-6.8, 0, 1.2]} scale={1.2} curveDir={-1} rotationY={0.2} swayOffset={0} />
-        <PalmTree position={[-8.5, 0, -1.0]} scale={1.4} curveDir={1} rotationY={-0.3} swayOffset={1.2} />
-        <PalmTree position={[6.9, 0, 1.1]} scale={1.15} curveDir={1} rotationY={-0.2} swayOffset={2.1} />
-        <PalmTree position={[8.6, 0, -0.8]} scale={1.45} curveDir={-1} rotationY={0.4} swayOffset={3.3} />
-        <PalmTree position={[-16.5, 0, 9.5]} scale={1.3} curveDir={1} rotationY={0.5} swayOffset={0.8} />
-        <PalmTree position={[16.5, 0, 9.5]} scale={1.3} curveDir={-1} rotationY={-0.4} swayOffset={1.7} />
-
-        {/* Utility Poles */}
-        <UtilityPole position={[5.6, 0, 0.4]} scale={0.9} />
-        <UtilityPole position={[-5.6, 0, 12]} scale={0.9} />
-
-        {/* Catenary Wires connecting the district */}
-        <DistrictWires />
+        {/* Palm trees along the road — alternating left/right sides */}
+        <PalmTree position={[-8, 0, 5]} scale={1.2} curveDir={-1} rotationY={0.2} swayOffset={0} />
+        <PalmTree position={[8, 0, 5]} scale={1.15} curveDir={1} rotationY={-0.2} swayOffset={2.1} />
+        <PalmTree position={[-8.5, 0, -10]} scale={1.3} curveDir={1} rotationY={-0.3} swayOffset={1.2} />
+        <PalmTree position={[8.5, 0, -10]} scale={1.0} curveDir={-1} rotationY={0.4} swayOffset={3.3} />
+        <PalmTree position={[-8, 0, -30]} scale={1.4} curveDir={-1} rotationY={0.5} swayOffset={0.8} />
+        <PalmTree position={[8, 0, -30]} scale={1.2} curveDir={1} rotationY={-0.4} swayOffset={1.7} />
+        <PalmTree position={[-8.5, 0, -50]} scale={1.1} curveDir={1} rotationY={0.3} swayOffset={2.5} />
+        <PalmTree position={[8.5, 0, -50]} scale={1.35} curveDir={-1} rotationY={-0.1} swayOffset={0.4} />
+        <PalmTree position={[-8, 0, -70]} scale={1.3} curveDir={-1} rotationY={-0.2} swayOffset={1.9} />
+        <PalmTree position={[8, 0, -70]} scale={1.15} curveDir={1} rotationY={0.5} swayOffset={3.0} />
+        <PalmTree position={[-8.5, 0, -90]} scale={1.2} curveDir={1} rotationY={-0.4} swayOffset={0.6} />
+        <PalmTree position={[8.5, 0, -90]} scale={1.4} curveDir={-1} rotationY={0.2} swayOffset={2.8} />
 
         {/* 3D Floating Location Waypoints */}
         <WaypointMarkers
@@ -1147,7 +773,7 @@ export default function PlayableDistrict3D({
         {/* Atmospheric Sunset Dust Motes */}
         {!isReducedMotion && <AtmosphericDust count={isMobile ? 20 : 40} />}
 
-        {/* Camera Director: Manages Guided Journey Lerp & Explore Mode Movement */}
+        {/* Camera Director */}
         <CameraDirector
           isExploreMode={isExploreMode}
           activeLandmarkId={activeLandmarkId}
