@@ -222,15 +222,18 @@ function DistrictWires() {
  * Central Arrival Billboard Structure
  */
 function ArrivalBillboard({ isMobile }) {
-  const textureUrl = isMobile ? '/images/hero-mobile.webp' : '/images/hero-desktop.webp';
+  const preferredUrl = isMobile ? '/images/hero-mobile.webp' : '/images/gta/home_poster.jpg';
+  const fallbackUrl = isMobile ? '/images/hero-mobile.jpg' : '/images/hero-desktop.webp';
   const textureRef = useRef();
   const [textureLoaded, setTextureLoaded] = useState(false);
 
   useEffect(() => {
+    let active = true;
     const loader = new THREE.TextureLoader();
     loader.load(
-      textureUrl,
+      preferredUrl,
       (tex) => {
+        if (!active) return;
         tex.colorSpace = THREE.SRGBColorSpace;
         tex.generateMipmaps = true;
         tex.minFilter = THREE.LinearMipmapLinearFilter;
@@ -240,8 +243,9 @@ function ArrivalBillboard({ isMobile }) {
       undefined,
       () => {
         loader.load(
-          isMobile ? '/images/hero-mobile.jpg' : '/images/hero-desktop.jpg',
+          fallbackUrl,
           (tex) => {
+            if (!active) return;
             tex.colorSpace = THREE.SRGBColorSpace;
             textureRef.current = tex;
             setTextureLoaded(true);
@@ -251,9 +255,10 @@ function ArrivalBillboard({ isMobile }) {
     );
 
     return () => {
+      active = false;
       if (textureRef.current) textureRef.current.dispose();
     };
-  }, [textureUrl, isMobile]);
+  }, [preferredUrl, fallbackUrl]);
 
   const frameMat = useMemo(
     () => new THREE.MeshStandardMaterial({ color: '#161917', roughness: 0.8, metalness: 0.5 }),
@@ -282,6 +287,130 @@ function ArrivalBillboard({ isMobile }) {
           <meshBasicMaterial color="#1A1815" />
         )}
       </mesh>
+    </group>
+  );
+}
+
+/**
+ * Reusable 3D Landmark Artwork Billboard
+ * Mounts illuminated San Andreas concept artwork directly in the 3D district environment
+ */
+function LandmarkArtworkBillboard({
+  textureUrl,
+  fallbackUrl,
+  width = 5.6,
+  height = 3.15,
+  position = [0, 0, 0],
+  rotation = [0, 0, 0],
+  accentColor = '#E7B85A',
+  badgeText = '',
+  withLamps = true,
+}) {
+  const textureRef = useRef();
+  const [textureLoaded, setTextureLoaded] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+    const loader = new THREE.TextureLoader();
+
+    loader.load(
+      textureUrl,
+      (tex) => {
+        if (!active) return;
+        tex.colorSpace = THREE.SRGBColorSpace;
+        tex.generateMipmaps = true;
+        tex.minFilter = THREE.LinearMipmapLinearFilter;
+        textureRef.current = tex;
+        setTextureLoaded(true);
+      },
+      undefined,
+      () => {
+        if (!fallbackUrl) return;
+        loader.load(
+          fallbackUrl,
+          (fallbackTex) => {
+            if (!active) return;
+            fallbackTex.colorSpace = THREE.SRGBColorSpace;
+            textureRef.current = fallbackTex;
+            setTextureLoaded(true);
+          }
+        );
+      }
+    );
+
+    return () => {
+      active = false;
+      if (textureRef.current) textureRef.current.dispose();
+    };
+  }, [textureUrl, fallbackUrl]);
+
+  const frameMat = useMemo(
+    () => new THREE.MeshStandardMaterial({ color: '#141615', roughness: 0.85, metalness: 0.4 }),
+    []
+  );
+
+  const lampMat = useMemo(
+    () => new THREE.MeshStandardMaterial({ color: '#2A2E2C', roughness: 0.5, metalness: 0.7 }),
+    []
+  );
+
+  const lampGlowMat = useMemo(
+    () => new THREE.MeshBasicMaterial({ color: '#FFEBB8' }),
+    []
+  );
+
+  return (
+    <group position={position} rotation={rotation}>
+      {/* Outer steel frame backing */}
+      <mesh position={[0, 0, 0]} material={frameMat}>
+        <boxGeometry args={[width + 0.32, height + 0.32, 0.18]} />
+      </mesh>
+
+      {/* Accent color outer rim */}
+      <mesh position={[0, 0, 0.092]}>
+        <planeGeometry args={[width + 0.08, height + 0.08]} />
+        <meshBasicMaterial color={accentColor} />
+      </mesh>
+
+      {/* The main artwork canvas */}
+      <mesh position={[0, 0, 0.098]}>
+        <planeGeometry args={[width, height]} />
+        {textureLoaded && textureRef.current ? (
+          <meshBasicMaterial map={textureRef.current} toneMapped={false} />
+        ) : (
+          <meshBasicMaterial color="#1C1E1B" />
+        )}
+      </mesh>
+
+      {/* Top Billboard Overhead Lamps */}
+      {withLamps && (
+        <group position={[0, height * 0.5 + 0.16, 0]}>
+          {[-width * 0.28, width * 0.28].map((lampX, idx) => (
+            <group key={idx} position={[lampX, 0, 0]}>
+              {/* Lamp bracket arm extending forward & angling down */}
+              <mesh position={[0, 0.14, 0.35]} rotation={[0.45, 0, 0]} material={lampMat}>
+                <cylinderGeometry args={[0.03, 0.03, 0.75, 6]} />
+              </mesh>
+              {/* Lamp hood fixture */}
+              <mesh position={[0, 0.36, 0.62]} rotation={[0.65, 0, 0]} material={lampMat}>
+                <boxGeometry args={[0.4, 0.12, 0.22]} />
+              </mesh>
+              {/* Warm light emitter */}
+              <mesh position={[0, 0.32, 0.62]} rotation={[Math.PI * 0.5, 0, 0]} material={lampGlowMat}>
+                <planeGeometry args={[0.34, 0.16]} />
+              </mesh>
+            </group>
+          ))}
+        </group>
+      )}
+
+      {/* Badge Strip at bottom */}
+      {badgeText && (
+        <mesh position={[0, -height * 0.5 - 0.24, 0.095]}>
+          <planeGeometry args={[Math.min(width * 0.9, 4.8), 0.32]} />
+          <meshBasicMaterial color={accentColor} />
+        </mesh>
+      )}
     </group>
   );
 }
@@ -318,15 +447,15 @@ function SafehouseBuilding() {
         <boxGeometry args={[9.9, 0.3, 8.9]} />
       </mesh>
 
-      {/* Lit windows - Upper Floor */}
-      {[-3, -1, 1, 3].map((x, i) => (
+      {/* Outer Lit windows */}
+      {[-3.6, 3.6].map((x, i) => (
         <mesh key={i} position={[x, 5.2, 4.3]} material={litWindowMat}>
           <planeGeometry args={[1.2, 1.6]} />
         </mesh>
       ))}
 
       {/* Lit windows - Ground Floor */}
-      {[-3, 3].map((x, i) => (
+      {[-3.6, 3.6].map((x, i) => (
         <mesh key={i} position={[x, 2.0, 4.3]} material={litWindowMat}>
           <planeGeometry args={[1.2, 1.8]} />
         </mesh>
@@ -350,11 +479,15 @@ function SafehouseBuilding() {
         </mesh>
       </group>
 
-      {/* Neon Signboard: THE SAFEHOUSE */}
-      <mesh position={[0, 4.3, 4.4]}>
-        <planeGeometry args={[4.2, 0.7]} />
-        <meshBasicMaterial color="#E7B85A" />
-      </mesh>
+      {/* 3D Landmark Artwork Billboard: The Safehouse Studio */}
+      <LandmarkArtworkBillboard
+        textureUrl="/images/gta/about_studio.jpg"
+        width={5.2}
+        height={2.925}
+        position={[0, 4.9, 4.38]}
+        accentColor="#E7B85A"
+        badgeText="THE SAFEHOUSE // OPERATOR STUDIO"
+      />
     </group>
   );
 }
@@ -408,6 +541,16 @@ function OperationsGarageBuilding() {
       <mesh position={[-3.5, 7.2, -1.0]} material={trimMat} rotation={[0, 0, Math.PI * 0.5]}>
         <cylinderGeometry args={[0.3, 0.3, 4.5, 8]} />
       </mesh>
+
+      {/* 3D Landmark Artwork Billboard: Operations Garage */}
+      <LandmarkArtworkBillboard
+        textureUrl="/images/gta/ventures_workshop.jpg"
+        width={6.0}
+        height={3.375}
+        position={[0, 5.8, 4.62]}
+        accentColor="#8FADA0"
+        badgeText="OPERATIONS GARAGE // VENTURES WORKSHOP"
+      />
     </group>
   );
 }
@@ -424,7 +567,6 @@ function PosterWallCourtyard() {
     () => new THREE.MeshStandardMaterial({ color: '#181A19', roughness: 0.8 }),
     []
   );
-  const posterColors = ['#E7B85A', '#8FADA0', '#D87942', '#EDE4C8'];
 
   return (
     <group position={[-14, 0, 14]}>
@@ -436,18 +578,15 @@ function PosterWallCourtyard() {
         <boxGeometry args={[12.9, 0.25, 1.4]} />
       </mesh>
 
-      {/* 4 Illuminated Framed Event Posters */}
-      {[-4.2, -1.4, 1.4, 4.2].map((x, i) => (
-        <group key={i} position={[x, 2.2, 0.65]}>
-          <mesh material={posterFrameMat}>
-            <boxGeometry args={[2.2, 2.8, 0.08]} />
-          </mesh>
-          <mesh position={[0, 0, 0.05]}>
-            <planeGeometry args={[1.9, 2.5]} />
-            <meshBasicMaterial color={posterColors[i]} />
-          </mesh>
-        </group>
-      ))}
+      {/* 3D Landmark Artwork Billboard: Courtyard Poster Gallery */}
+      <LandmarkArtworkBillboard
+        textureUrl="/images/gta/events_gallery.jpg"
+        width={7.8}
+        height={3.6}
+        position={[0, 2.25, 0.68]}
+        accentColor="#D87942"
+        badgeText="THE POSTER WALL // EVENTS & FORUMS"
+      />
     </group>
   );
 }
@@ -481,16 +620,20 @@ function ArchiveBuilding() {
 
       {/* Large floor-to-ceiling glass display windows with warm bookshop glow */}
       {[-3, 0, 3].map((x, i) => (
-        <mesh key={i} position={[x, 2.2, 4.3]} material={glassMat}>
-          <planeGeometry args={[2.2, 3.4]} />
+        <mesh key={i} position={[x, 2.0, 4.3]} material={glassMat}>
+          <planeGeometry args={[2.2, 3.0]} />
         </mesh>
       ))}
 
-      {/* Architectural fascia sign */}
-      <mesh position={[0, 4.5, 4.35]}>
-        <planeGeometry args={[8.0, 0.7]} />
-        <meshBasicMaterial color="#B7C2A8" />
-      </mesh>
+      {/* 3D Landmark Artwork Billboard: The Archive */}
+      <LandmarkArtworkBillboard
+        textureUrl="/images/gta/writing_archive.jpg"
+        width={5.8}
+        height={3.26}
+        position={[0, 4.9, 4.38]}
+        accentColor="#B7C2A8"
+        badgeText="THE ARCHIVE // WRITING & RESEARCH"
+      />
     </group>
   );
 }
@@ -549,11 +692,15 @@ function DispatchPointStation() {
         />
       </group>
 
-      {/* Dispatch station sign */}
-      <mesh position={[0, 3.0, 3.8]}>
-        <planeGeometry args={[5.2, 0.6]} />
-        <meshBasicMaterial color="#EDE4C8" />
-      </mesh>
+      {/* 3D Landmark Artwork Billboard: Dispatch Point */}
+      <LandmarkArtworkBillboard
+        textureUrl="/images/gta/contact_rooftop.jpg"
+        width={5.4}
+        height={3.0}
+        position={[0, 1.9, 3.82]}
+        accentColor="#EDE4C8"
+        badgeText="DISPATCH POINT // COLLABORATION & CONTACT"
+      />
     </group>
   );
 }
