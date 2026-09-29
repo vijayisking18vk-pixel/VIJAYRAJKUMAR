@@ -4,7 +4,7 @@
  * 
  * Rules:
  * - Automatically attempts playback on entry as requested by user.
- * - Gracefully handles browser autoplay policies by attaching fallback one-time gesture listeners.
+ * - Handles browser autoplay policies with lightweight gesture listeners.
  * - Stores user preference in localStorage if user explicitly mutes/unmutes.
  * - Loops theme audio smoothly in the background.
  * - Manages pause/resume on tab visibility changes.
@@ -13,7 +13,8 @@
 class SoundSystem {
   constructor() {
     this.ctx = null;
-    const saved = typeof window !== 'undefined' ? localStorage.getItem('gta_sound_enabled') : null;
+    let saved = null;
+    try { saved = window.localStorage.getItem('gta_sound_enabled'); } catch (_) {}
     // Default to enabled (unmuted) on entry unless user explicitly disabled it previously
     this.muted = saved === 'false';
     this.masterGain = null;
@@ -30,6 +31,9 @@ class SoundSystem {
         this.bgMusic.loop = true;
         this.bgMusic.volume = 0.42;
         this.bgMusic.preload = 'auto';
+        ['playing', 'pause', 'ended', 'error'].forEach((event) => {
+          this.bgMusic.addEventListener(event, () => this.notify());
+        });
       } catch (e) {
         console.warn('Audio initialization warning:', e);
       }
@@ -41,8 +45,10 @@ class SoundSystem {
 
       // Fallback listeners for modern browser Autoplay Policy restrictions:
       // If browser blocks unmuted audio before user interaction, start on the first gesture.
-      const interactionEvents = ['pointerdown', 'touchstart', 'click', 'keydown', 'wheel', 'scroll'];
-      const resumeOnGesture = () => {
+      const interactionEvents = ['pointerdown', 'pointerup', 'touchend', 'click', 'keydown'];
+      const resumeOnGesture = (event) => {
+        // The explicit sound button handles its own gesture, without a competing toggle.
+        if (event.target.closest?.('[data-sound-control]')) return;
         if (!this.muted) {
           if (!this.isInitialized) {
             this.init();
@@ -54,15 +60,10 @@ class SoundSystem {
             this.attemptPlayTheme();
           }
         }
-        if (this.bgMusic && !this.bgMusic.paused) {
-          interactionEvents.forEach((evt) => {
-            window.removeEventListener(evt, resumeOnGesture);
-          });
-        }
       };
 
       interactionEvents.forEach((evt) => {
-        window.addEventListener(evt, resumeOnGesture, { passive: true });
+        window.addEventListener(evt, resumeOnGesture, { passive: true, capture: true });
       });
 
       // Pause audio when switching tabs, resume when returning
@@ -83,7 +84,7 @@ class SoundSystem {
   }
 
   attemptPlayTheme() {
-    if (this.muted || !this.bgMusic) return;
+    if (this.muted || !this.bgMusic || document.hidden) return;
     try {
       const playPromise = this.bgMusic.play();
       if (playPromise !== undefined) {
@@ -152,19 +153,20 @@ class SoundSystem {
   }
 
   toggleSound() {
-    if (!this.isInitialized) {
+    return this.setSoundEnabled(this.muted);
+  }
+
+  setSoundEnabled(enabled) {
+    this.muted = !enabled;
+    if (enabled && !this.isInitialized) {
       this.init();
     }
 
-    if (this.ctx && this.ctx.state === 'suspended') {
+    if (enabled && this.ctx && this.ctx.state === 'suspended') {
       this.ctx.resume().catch(() => {});
     }
 
-    this.muted = !this.muted;
-
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('gta_sound_enabled', this.muted ? 'false' : 'true');
-    }
+    try { window.localStorage.setItem('gta_sound_enabled', this.muted ? 'false' : 'true'); } catch (_) {}
 
     if (this.masterGain && this.ctx) {
       const targetGain = this.muted ? 0 : 0.22;
