@@ -1,0 +1,16 @@
+[
+  {
+    "viewport": "desktop",
+    "artworkBytes": 238422,
+    "imageRequests": 5,
+    "heroRenderingPaused": true,
+    "errors": []
+  },
+  {
+    "viewport": "phone",
+    "artworkBytes": 119132,
+    "imageRequests": 5,
+    "heroRenderingPaused": true,
+    "errors": []
+  }
+]

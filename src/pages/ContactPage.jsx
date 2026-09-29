@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CollaborationDispatch from '../components/CollaborationDispatch';
 import SocialLinks from '../components/SocialLinks';
@@ -8,7 +7,6 @@ import { Mail, MessageSquare, Clock, MapPin, CheckCircle2, Share2 } from 'lucide
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-futura selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
-      <Header />
 
       <main className="flex-grow max-w-4xl mx-auto px-6 py-16 lg:py-24 space-y-16">
         

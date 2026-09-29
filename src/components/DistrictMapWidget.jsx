@@ -1,442 +1,196 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import soundSystem from '../lib/soundSystem';
-
-// Real 3D world coordinates synchronized with PlayableDistrict3D.jsx
-// Single straight road layout: all landmarks on x=0, spaced along Z-axis
-const MAP_LANDMARKS = [
-  {
-    id: 'arrival',
-    label: 'ARRIVAL',
-    chapter: '00 // ARRIVAL',
-    title: 'Arrival Street',
-    path: '/',
-    sectionId: 'hero',
-    x: 0,
-    z: 0,
-    color: '#E7B85A',
-    icon: '✦',
-  },
-  {
-    id: 'safehouse',
-    label: 'SAFEHOUSE',
-    chapter: '01 // SAFEHOUSE',
-    title: 'Founder Studio & Biography',
-    path: '/about/',
-    sectionId: 'safehouse',
-    x: 0,
-    z: -20,
-    color: '#E7B85A',
-    icon: '■',
-  },
-  {
-    id: 'operations-garage',
-    label: 'VENTURES',
-    chapter: '02 // VENTURES',
-    title: 'Operations Garage (Ziggers & LoopMemory)',
-    path: '/ventures/',
-    sectionId: 'operations-garage',
-    x: 0,
-    z: -40,
-    color: '#8FADA0',
-    icon: '◆',
-  },
-  {
-    id: 'poster-wall',
-    label: 'EVENTS',
-    chapter: '03 // EVENTS',
-    title: 'Poster Wall & Summits',
-    path: '/events/',
-    sectionId: 'poster-wall',
-    x: 0,
-    z: -60,
-    color: '#D87942',
-    icon: '▲',
-  },
-  {
-    id: 'archive',
-    label: 'ARCHIVE',
-    chapter: '04 // WRITING',
-    title: 'Research Library & Essays',
-    path: '/writing/',
-    sectionId: 'archive',
-    x: 0,
-    z: -80,
-    color: '#B7C2A8',
-    icon: '●',
-  },
-  {
-    id: 'dispatch-point',
-    label: 'CONTACT',
-    chapter: '05 // CONTACT',
-    title: 'Rooftop Dispatch & Advisory',
-    path: '/contact/',
-    sectionId: 'dispatch-point',
-    x: 0,
-    z: -100,
-    color: '#EDE4C8',
-    icon: '✦',
-  },
-];
-
-// World bounds for 2D projection — single vertical road strip
-// X: -12 to +12, Z: +10 to -110
-const WORLD = {
-  minX: -12,
-  maxX: 12,
-  minZ: -110,
-  maxZ: 10,
-  width: 120,
-  height: 280,
-};
-
-function projectX(x) {
-  return ((x - WORLD.minX) / (WORLD.maxX - WORLD.minX)) * WORLD.width;
-}
-
-function projectY(z) {
-  // Invert so z=+10 is at top, z=-110 is at bottom
-  return ((WORLD.maxZ - z) / (WORLD.maxZ - WORLD.minZ)) * WORLD.height;
-}
-
-export default function DistrictMapWidget({
-  isExploreMode = false,
-  onToggleExploreMode = () => {},
-  playerTelemetry = null,
-  activeLandmarkId = null,
-  onSelectLandmark = null,
-}) {
-  const [isAudioActive, setIsAudioActive] = useState(!soundSystem.isMuted());
-  const [isCollapsed, setIsCollapsed] = useState(true);
-  const [activeBlip, setActiveBlip] = useState(null);
-  const [currentPath, setCurrentPath] = useState('/');
-
-  useEffect(() => {
-    const unsubscribe = soundSystem.subscribe((active) => {
-      setIsAudioActive(active);
-    });
-
-    if (typeof window !== 'undefined') {
-      const path = window.location.pathname;
-      setCurrentPath(path);
-      // On subpages or on screens narrower than 768px, default to collapsed
-      // On desktop homepage, start open for immediate orientation
-      if (path !== '/' || window.innerWidth < 768) {
-        setIsCollapsed(true);
-      } else {
-        setIsCollapsed(false);
-      }
-    }
-
-    const handlePop = () => {
-      if (typeof window !== 'undefined') {
-        const path = window.location.pathname;
-        setCurrentPath(path);
-        if (path !== '/') {
-          setIsCollapsed(true);
-        }
-      }
-    };
-
-    window.addEventListener('popstate', handlePop);
-    return () => {
-      unsubscribe();
-      window.removeEventListener('popstate', handlePop);
-    };
-  }, []);
-
-  const handleToggleAudio = () => {
-    const active = soundSystem.toggleSound();
-    setIsAudioActive(active);
-    if (active) {
-      soundSystem.playSelect();
-    }
-  };
-
-  const handleWaypointClick = (lm) => {
-    soundSystem.playSelect();
-    if (onSelectLandmark) {
-      onSelectLandmark(lm);
-    }
-    if (typeof window !== 'undefined' && window.location.pathname === '/') {
-      const el = document.getElementById(lm.sectionId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-        return;
-      }
-    }
-    if (window.location.pathname !== lm.path) {
-      window.history.pushState(null, '', lm.path);
-      window.dispatchEvent(new PopStateEvent('popstate'));
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
-
-  // Player position in SVG coordinates
-  const playerSvgPos = useMemo(() => {
-    if (!playerTelemetry) return null;
-    return {
-      x: projectX(playerTelemetry.x),
-      y: projectY(playerTelemetry.z),
-      rotation: playerTelemetry.angle ? (playerTelemetry.angle * 180) / Math.PI : 0,
-    };
-  }, [playerTelemetry]);
-
+import React, { useState } from "react";
+import { DISTRICT_LANDMARKS, LAST_STOP } from "../data/district";
+function Atlas({ progress, current }) {
   return (
-    <aside
-      aria-label="District Map and Navigation HUD"
-      className="fixed bottom-4 left-4 z-50 select-none print:hidden font-futura"
+    <svg
+      viewBox="0 0 300 290"
+      className="district-atlas"
+      role="img"
+      aria-label="Five destinations along the central boulevard"
     >
-      {/* 1. Collapsed State: Clean Discrete Badge that NEVER blocks reading */}
-      {isCollapsed ? (
-        <button
-          type="button"
-          onClick={() => {
-            soundSystem.playSelect();
-            setIsCollapsed(false);
-          }}
-          onMouseEnter={() => soundSystem.playHover()}
-          className="group relative flex items-center gap-2.5 px-3.5 py-2.5 rounded-full bg-[#11100E] border-2 border-[var(--gta-silhouette)] shadow-[0_8px_32px_rgba(0,0,0,0.9)] hover:border-[#E7B85A] active:scale-95 transition-all cursor-pointer"
-          title="Open District Map HUD & Audio Controls"
-          aria-label="Expand District Map"
+      <defs>
+        <pattern
+          id="blocks"
+          width="56"
+          height="48"
+          patternUnits="userSpaceOnUse"
         >
-          <span className="relative flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E7B85A] opacity-75" />
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-[#E7B85A]" />
-          </span>
-          <span className="font-bank text-xs font-bold tracking-wider text-[var(--gta-text-fill)] uppercase">
-            DISTRICT MAP
-          </span>
-        </button>
-      ) : (
-        /* 2. Expanded SVG District Map HUD */
-        <div className="relative bg-[#11100E] border-2 border-[var(--gta-silhouette)] rounded-2xl p-3 shadow-[0_16px_50px_rgba(0,0,0,0.95)] w-[260px] text-xs">
-          
-          {/* Header Controls: Audio Toggle, Explore Button & Close */}
-          <div className="flex items-center justify-between pb-2 mb-2 border-b border-[var(--gta-silhouette)]/30 gap-1.5">
-            {/* Audio Toggle */}
-            <button
-              type="button"
-              onClick={handleToggleAudio}
-              onMouseEnter={() => soundSystem.playHover()}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bank font-bold tracking-wider transition-all border cursor-pointer active:scale-95 ${
-                isAudioActive
-                  ? 'bg-[#E7B85A]/20 text-[#E7B85A] border-[#E7B85A]'
-                  : 'bg-[#181816] text-[var(--gta-silhouette)] border-[var(--gta-silhouette)]/50 hover:text-[var(--gta-text-fill)]'
-              }`}
-              title="Toggle Audio Clicks & Ambience"
+          <rect width="56" height="48" fill="#26342c" />
+          <path
+            d="M0 0H56V48H0Z"
+            fill="none"
+            stroke="#9da58b"
+            strokeWidth="6"
+          />
+          <rect x="9" y="10" width="17" height="27" fill="#647260" />
+          <rect x="31" y="10" width="16" height="11" fill="#76816b" />
+          <rect x="31" y="26" width="16" height="11" fill="#4f6053" />
+        </pattern>
+      </defs>
+      <rect width="300" height="290" fill="url(#blocks)" />
+      <path
+        d="M250 0Q224 50 261 95T245 190T252 290H300V0Z"
+        fill="#617f80"
+        stroke="#b2b894"
+        strokeWidth="6"
+      />
+      <path
+        d="M14 70H106V128H14Z M180 202H229V267H180Z"
+        fill="#3d5940"
+        stroke="#859773"
+        strokeWidth="3"
+      />
+      {[30, 50, 70, 90].map((x) => (
+        <g key={x} fill="#728c58">
+          <circle cx={x} cy="87" r="5" />
+          <circle cx={x} cy="112" r="5" />
+        </g>
+      ))}
+      <path
+        d="M145 300V28 M0 160H244 M0 220H242 M0 48H249"
+        fill="none"
+        stroke="#171e19"
+        strokeWidth="21"
+      />
+      <path
+        d="M145 300V28 M0 160H244 M0 220H242 M0 48H249"
+        fill="none"
+        stroke="#c6c2a1"
+        strokeWidth="13"
+      />
+      <path d="M145 276V31" stroke="#e6bf65" strokeWidth="4" />
+      {DISTRICT_LANDMARKS.map((lm) => {
+        const y = 260 - lm.index * 55,
+          x = lm.index === LAST_STOP ? 145 : lm.pos[0] > 0 ? 179 : 111;
+        return (
+          <g key={lm.id}>
+            <path d={`M145 ${y}H${x}`} stroke="#e6bf65" strokeWidth="2" />
+            <circle
+              cx={x}
+              cy={y}
+              r="12"
+              fill={lm.id === current ? "#efce78" : "#18241c"}
+              stroke={lm.color}
+              strokeWidth="2"
+            />
+            <text
+              x={x}
+              y={y + 4}
+              textAnchor="middle"
+              fill={lm.id === current ? "#18241c" : "#eee8d2"}
+              fontSize="11"
+              fontWeight="bold"
             >
-              <span
-                className={`w-1.5 h-1.5 rounded-full ${
-                  isAudioActive ? 'bg-[#E7B85A] animate-pulse' : 'bg-neutral-600'
-                }`}
-              />
-              <span>AUDIO: {isAudioActive ? 'ON' : 'OFF'}</span>
+              {lm.index + 1}
+            </text>
+          </g>
+        );
+      })}
+      <path
+        d={`M145 ${260 - progress * 55 - 9}l-7 17 7-4 7 4Z`}
+        fill="#fff9e7"
+        stroke="#111"
+        strokeWidth="2"
+      />
+      <text x="22" y="145" fill="#d2d6bb" fontSize="8" letterSpacing="2">
+        GROVE PARK
+      </text>
+      <text
+        x="276"
+        y="180"
+        fill="#d7e4d1"
+        fontSize="8"
+        textAnchor="middle"
+        transform="rotate(-90 276 180)"
+      >
+        COASTLINE
+      </text>
+      <g transform="translate(25 250)">
+        <path d="M0 -10L-5 6H5Z" fill="#eee4c4" />
+        <text y="20" textAnchor="middle" fill="#eee4c4" fontSize="10">
+          N
+        </text>
+      </g>
+    </svg>
+  );
+}
+export default function DistrictMapWidget({
+  activeLandmarkId,
+  playerTelemetry,
+  onSelectLandmark,
+}) {
+  const [open, setOpen] = useState(false);
+  const current =
+    activeLandmarkId ||
+    DISTRICT_LANDMARKS.find((lm) =>
+      window.location.pathname.startsWith(lm.path),
+    )?.id ||
+    "safehouse";
+  const progress = Math.max(
+    0,
+    Math.min(
+      LAST_STOP,
+      playerTelemetry?.progress ??
+        DISTRICT_LANDMARKS.findIndex((lm) => lm.id === current),
+    ),
+  );
+  const select = (lm) => {
+    if (onSelectLandmark) onSelectLandmark(lm);
+    else {
+      window.history.pushState(null, "", lm.path);
+      window.dispatchEvent(new PopStateEvent("popstate"));
+      window.scrollTo(0, 0);
+    }
+    setOpen(false);
+  };
+  return (
+    <aside className="journey-map" aria-label="District route map">
+      {open && (
+        <div
+          className="journey-map-panel"
+          id="district-route-map"
+          onKeyDown={(event) => {
+            if (event.key === "Escape") {
+              setOpen(false);
+              event.stopPropagation();
+            }
+          }}
+        >
+          <div className="journey-map-heading">
+            <span>THE DISTRICT</span>
+            <button aria-label="Close map" onClick={() => setOpen(false)}>
+              ×
             </button>
-
-            {/* Explore Mode Toggle (only relevant on home) */}
-            {currentPath === '/' && (
+          </div>
+          <p>Five destinations · one boulevard</p>
+          <Atlas progress={progress} current={current} />
+          <div className="atlas-destinations">
+            {DISTRICT_LANDMARKS.map((lm) => (
               <button
-                type="button"
-                onClick={() => {
-                  if (isExploreMode) soundSystem.playExploreExit();
-                  else soundSystem.playExploreEnter();
-                  onToggleExploreMode();
-                }}
-                onMouseEnter={() => soundSystem.playHover()}
-                className={`hidden sm:inline-flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-bank font-bold tracking-wider transition-all border cursor-pointer active:scale-95 ${
-                  isExploreMode
-                    ? 'bg-[#E7B85A] text-[#0A0E0C] border-[#E7B85A]'
-                    : 'bg-[#181816] text-[var(--gta-silhouette)] border-[var(--gta-silhouette)]/50 hover:text-[var(--gta-text-fill)]'
-                }`}
-                title="Toggle 3D Free Roam Mode"
+                key={lm.id}
+                aria-current={current === lm.id ? "location" : undefined}
+                onClick={() => select(lm)}
               >
-                <span>{isExploreMode ? 'GUIDED' : '3D EXPLORE'}</span>
+                <b style={{ color: lm.color }}>0{lm.index + 1}</b>
+                <span>{lm.label}</span>
+                <small>{lm.index === LAST_STOP ? "END OF ROAD" : "↗"}</small>
               </button>
-            )}
-
-            {/* Collapse/Minimize Button */}
-            <button
-              type="button"
-              onClick={() => {
-                soundSystem.playSelect();
-                setIsCollapsed(true);
-              }}
-              onMouseEnter={() => soundSystem.playHover()}
-              className="text-[var(--gta-silhouette)] hover:text-[var(--gta-text-fill)] active:scale-90 px-1.5 py-0.5 text-xs font-mono font-bold transition-transform cursor-pointer ml-auto"
-              title="Minimize Map"
-              aria-label="Collapse District Map"
-            >
-              ✕
-            </button>
+            ))}
           </div>
-
-          {/* SVG District Road & Parcel Map */}
-          <div className="relative w-full h-[180px] bg-[#0E1410] border border-[var(--gta-silhouette)]/50 rounded-xl overflow-hidden shadow-inner">
-            <svg
-              viewBox={`0 0 ${WORLD.width} ${WORLD.height}`}
-              className="w-full h-full"
-              preserveAspectRatio="xMidYMid slice"
-            >
-              {/* Textured Map Artwork Backdrop */}
-              <image
-                href="/images/gta/district_map_art.jpg"
-                x="0"
-                y="0"
-                width={WORLD.width}
-                height={WORLD.height}
-                preserveAspectRatio="none"
-                opacity="0.35"
-              />
-
-              {/* City District Parcel Blocks */}
-              <g id="parcels" opacity="0.75">
-                {/* Northwest block (near Safehouse) */}
-                <rect x="15" y="10" width="90" height="30" rx="4" fill="#18231C" stroke="#25352A" strokeWidth="1" />
-                {/* Northeast block (near Garage) */}
-                <rect x="135" y="10" width="90" height="30" rx="4" fill="#18231C" stroke="#25352A" strokeWidth="1" />
-                {/* Central West block */}
-                <rect x="15" y="55" width="90" height="50" rx="4" fill="#16201A" stroke="#25352A" strokeWidth="1" />
-                {/* Central East block */}
-                <rect x="135" y="55" width="90" height="50" rx="4" fill="#16201A" stroke="#25352A" strokeWidth="1" />
-                {/* Southwest block (near Poster Wall) */}
-                <rect x="15" y="120" width="90" height="60" rx="4" fill="#18231C" stroke="#25352A" strokeWidth="1" />
-                {/* Southeast block (near Archive) */}
-                <rect x="135" y="120" width="90" height="60" rx="4" fill="#18231C" stroke="#25352A" strokeWidth="1" />
-              </g>
-
-              {/* Asphalt Road Network */}
-              <g id="roads">
-                {/* Main Central Boulevard (North-South) */}
-                <line x1="120" y1="0" x2="120" y2="200" stroke="#2B3A30" strokeWidth="16" strokeLinecap="square" />
-                <line x1="120" y1="0" x2="120" y2="200" stroke="#E7B85A" strokeWidth="1" strokeDasharray="4 4" opacity="0.6" />
-
-                {/* North Cross Street (Safehouse <-> Garage) */}
-                <line x1="0" y1="30" x2="240" y2="30" stroke="#2B3A30" strokeWidth="14" strokeLinecap="square" />
-                <line x1="0" y1="30" x2="240" y2="30" stroke="#8FADA0" strokeWidth="1" strokeDasharray="3 3" opacity="0.4" />
-
-                {/* South Cross Street (Poster Wall <-> Archive) */}
-                <line x1="0" y1="120" x2="240" y2="120" stroke="#2B3A30" strokeWidth="14" strokeLinecap="square" />
-                <line x1="0" y1="120" x2="240" y2="120" stroke="#8FADA0" strokeWidth="1" strokeDasharray="3 3" opacity="0.4" />
-
-                {/* Arrival Roundabout */}
-                <circle cx="120" cy="50" r="14" fill="#1E2B23" stroke="#2B3A30" strokeWidth="4" />
-                <circle cx="120" cy="50" r="4" fill="#E7B85A" opacity="0.7" />
-
-                {/* Dispatch Cul-de-Sac */}
-                <circle cx="120" cy="170" r="16" fill="#1E2B23" stroke="#2B3A30" strokeWidth="4" />
-              </g>
-
-              {/* Landmark Waypoints / Blips */}
-              {MAP_LANDMARKS.map((lm) => {
-                const cx = projectX(lm.x);
-                const cy = projectY(lm.z);
-                const isCurrent =
-                  activeLandmarkId === lm.id ||
-                  (currentPath === lm.path && lm.path !== '/') ||
-                  (currentPath === '/' && lm.id === 'arrival');
-
-                return (
-                  <g
-                    key={lm.id}
-                    className="cursor-pointer transition-transform"
-                    onClick={() => handleWaypointClick(lm)}
-                    onMouseEnter={() => {
-                      soundSystem.playHover();
-                      setActiveBlip(lm);
-                    }}
-                    onMouseLeave={() => setActiveBlip(null)}
-                  >
-                    {/* Pulsing ring when active */}
-                    {isCurrent && (
-                      <circle
-                        cx={cx}
-                        cy={cy}
-                        r="11"
-                        fill="none"
-                        stroke={lm.color}
-                        strokeWidth="1.5"
-                        opacity="0.8"
-                        className="animate-ping"
-                      />
-                    )}
-
-                    {/* Outer marker boundary */}
-                    <circle
-                      cx={cx}
-                      cy={cy}
-                      r="7.5"
-                      fill="#11100E"
-                      stroke={lm.color}
-                      strokeWidth="2"
-                    />
-
-                    {/* Inner color dot */}
-                    <circle
-                      cx={cx}
-                      cy={cy}
-                      r="4"
-                      fill={lm.color}
-                    />
-
-                    {/* Landmark Short Label */}
-                    <text
-                      x={cx}
-                      y={cy - 10}
-                      fill="#F0E8D0"
-                      fontSize="7"
-                      fontWeight="bold"
-                      fontFamily="Arial, sans-serif"
-                      textAnchor="middle"
-                      className="pointer-events-none drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]"
-                    >
-                      {lm.label}
-                    </text>
-                  </g>
-                );
-              })}
-
-              {/* Dynamic Real-time Player Marker */}
-              {playerSvgPos && (
-                <g
-                  transform={`translate(${playerSvgPos.x}, ${playerSvgPos.y}) rotate(${playerSvgPos.rotation})`}
-                  className="pointer-events-none transition-transform duration-75"
-                >
-                  <polygon
-                    points="0,-7 -5,6 0,3 5,6"
-                    fill="#FFFFFF"
-                    stroke="#11100E"
-                    strokeWidth="1"
-                    className="drop-shadow-[0_0_6px_rgba(255,255,255,0.9)]"
-                  />
-                </g>
-              )}
-            </svg>
-
-            {/* Compass Rose (North Indicator) */}
-            <div className="absolute top-1.5 right-2 font-bank text-[9px] font-black text-[#E7B85A] select-none pointer-events-none">
-              ▲ N
-            </div>
+          <div className="journey-map-legend">
+            ▲ Your position <span>Illustrated portfolio world</span>
           </div>
-
-          {/* Active Blip Description or Telemetry Footer */}
-          <div className="mt-2 h-5 flex items-center justify-center text-center font-bank text-[10px] tracking-wider uppercase overflow-hidden">
-            {activeBlip ? (
-              <span className="text-[#E7B85A] font-bold truncate max-w-full block px-1">
-                DEST: {activeBlip.title}
-              </span>
-            ) : isExploreMode && playerTelemetry ? (
-              <span className="text-[#E7B85A] font-bold truncate max-w-full block px-1">
-                POS: [{Math.round(playerTelemetry.x)}, {Math.round(playerTelemetry.z)}] // 3D EXPLORATION
-              </span>
-            ) : (
-              <span className="text-[var(--gta-silhouette)] truncate max-w-full block px-1">
-                CHENNAI DISTRICT // 13.08° N, 80.27° E
-              </span>
-            )}
-          </div>
-
         </div>
       )}
+      <button
+        className="journey-map-toggle"
+        aria-expanded={open}
+        aria-controls={open ? "district-route-map" : undefined}
+        onClick={() => setOpen(!open)}
+      >
+        <span aria-hidden="true">◈</span>
+        {open ? "Close map" : "District map"}
+      </button>
     </aside>
   );
 }

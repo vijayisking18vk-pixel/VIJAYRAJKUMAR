@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { BookOpen, Calendar, Clock, ArrowRight, User, ChevronRight } from 'lucide-react';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
 import soundSystem from '../lib/soundSystem';
 
@@ -627,7 +626,7 @@ export default function WritingPage({ initialArticleId = null }) {
     setSelectedArticle(art);
     if (typeof window !== 'undefined') {
       window.history.pushState(null, '', `/writing/${art.id}/`);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.getElementById('mission-content')?.scrollIntoView({ behavior: 'instant' });
     }
   };
 
@@ -650,8 +649,6 @@ export default function WritingPage({ initialArticleId = null }) {
           aria-hidden="true"
         />
       )}
-
-      <Header />
 
       <main className="flex-grow w-full max-w-4xl mx-auto px-4 sm:px-6 py-12 lg:py-20 space-y-12 sm:space-y-16 min-w-0">
         

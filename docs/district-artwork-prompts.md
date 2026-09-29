@@ -1,0 +1,23 @@
+# Destination artwork
+
+Generated with the built-in imagegen tool, generation mode. Original PNGs and optimized WebP assets are saved in public/images/district.
+
+## safehouse
+
+Use case: stylized-concept. Create one wide landscape 16:9 artwork for a roadside destination in a Grand Theft Auto San Andreas-inspired personal portfolio set in Chennai. Premium hand-painted game loading-screen environment concept art: confident ink outlines, detailed architectural materials, cinematic dusty sunset, muted olive, warm amber, terracotta, cream highlights, deep green shadows. Empty environment, no people, no cars, no guns, no text, no logos, no border, no UI. Cohesive 2000s open-world aesthetic, sophisticated richly detailed illustration, not pixel art. An inviting founder's safehouse studio, open courtyard doorway looking into a study with books, wooden desk, strategy maps and a lamp, Chennai bungalow with louvered windows, palms, warm sunlight. Symmetrical architectural composition with a clear central focal point.
+
+## garage
+
+Use case: stylized-concept. Create one wide landscape 16:9 artwork for a roadside destination in a Grand Theft Auto San Andreas-inspired personal portfolio set in Chennai. Premium hand-painted game loading-screen environment concept art: confident ink outlines, detailed architectural materials, cinematic dusty sunset, muted olive, warm amber, terracotta, cream highlights, deep green shadows. Empty environment, no people, no cars, no guns, no text, no logos, no border, no UI. Cohesive 2000s open-world aesthetic, sophisticated richly detailed illustration, not pixel art. A beautiful three-bay venture workshop garage in Chennai at golden hour. One open bay reveals an organized design studio with workbenches, schematics, computer screens and tools; two shuttered bays, concrete apron, palms, overhead cables, no vehicles. Architectural front elevation with depth and cinematic lighting.
+
+## events
+
+Use case: stylized-concept. Create one wide landscape 16:9 artwork for a roadside destination in a Grand Theft Auto San Andreas-inspired personal portfolio set in Chennai. Premium hand-painted game loading-screen environment concept art: confident ink outlines, detailed architectural materials, cinematic dusty sunset, muted olive, warm amber, terracotta, cream highlights, deep green shadows. Empty environment, no people, no cars, no guns, no text, no logos, no border, no UI. Cohesive 2000s open-world aesthetic, sophisticated richly detailed illustration, not pixel art. A Chennai cultural courtyard used for community gatherings and startup summits: small stage, empty chairs, string lights, bold blank illustrated posters on weathered walls, lush palms and warm stucco buildings. Welcoming sunset atmosphere, no people or text.
+
+## archives
+
+Use case: stylized-concept. Create one wide landscape 16:9 artwork for a roadside destination in a Grand Theft Auto San Andreas-inspired personal portfolio set in Chennai. Premium hand-painted game loading-screen environment concept art: confident ink outlines, detailed architectural materials, cinematic dusty sunset, muted olive, warm amber, terracotta, cream highlights, deep green shadows. Empty environment, no people, no cars, no guns, no text, no logos, no border, no UI. Cohesive 2000s open-world aesthetic, sophisticated richly detailed illustration, not pixel art. An atmospheric research archive and independent bookshop in Chennai, open entrance with deep rows of bookshelves, manuscript desk, stacks of journals, shaded veranda and warm lamps. Detailed moody scholarly setting at sunset, teal green shadows and amber windows.
+
+## contact
+
+Use case: stylized-concept. Create one wide landscape 16:9 artwork for a roadside destination in a Grand Theft Auto San Andreas-inspired personal portfolio set in Chennai. Premium hand-painted game loading-screen environment concept art: confident ink outlines, detailed architectural materials, cinematic dusty sunset, muted olive, warm amber, terracotta, cream highlights, deep green shadows. Empty environment, no people, no cars, no guns, no text, no logos, no border, no UI. Cohesive 2000s open-world aesthetic, sophisticated richly detailed illustration, not pixel art. A welcoming communication pavilion at the very end of a straight palm-lined Chennai boulevard, perfectly centered one-point perspective, a graceful low-rise art-deco dispatch office with open door, radio aerial, warm illuminated windows and a desk visible inside. A destination straight ahead, symmetrical and inviting, sunset skyline behind. No side billboards, no road continuing beyond the building.

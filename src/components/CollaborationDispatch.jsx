@@ -45,6 +45,9 @@ export default function CollaborationDispatch() {
       return;
     }
 
+    const subject = encodeURIComponent('Collaboration inquiry from ' + formData.name.trim());
+    const body = encodeURIComponent('Name: ' + formData.name.trim() + '\nReply to: ' + formData.email.trim() + '\n\n' + formData.message.trim());
+    window.location.href = 'mailto:' + directEmail + '?subject=' + subject + '&body=' + body;
     setSubmitted(true);
   };
 
@@ -124,9 +127,9 @@ export default function CollaborationDispatch() {
             {submitted ? (
               <div className="p-8 border border-[var(--gta-silhouette)]/30 bg-[var(--gta-sky-horizon)] rounded-2xl text-center space-y-3 font-futura">
                 <CheckCircle className="w-10 h-10 mx-auto text-[var(--gta-text-outline)]" />
-                <div className="text-2xl font-pricedown font-bold text-[var(--gta-text-outline)] tracking-wide">Message Sent Successfully</div>
+                <div className="text-2xl font-pricedown font-bold text-[var(--gta-text-outline)] tracking-wide">Your Email Draft Is Ready</div>
                 <p className="text-xs text-[var(--gta-silhouette)] font-medium leading-relaxed font-futura">
-                  Thank you for reaching out! Your brief has been transmitted directly to Vijayrajkumar. You will receive a response within two working days.
+                  Finish sending in your email app. If it did not open, use the direct email link below. Your message has not been sent by this website.
                 </p>
                 <button
                   type="button"
@@ -137,7 +140,7 @@ export default function CollaborationDispatch() {
                   }}
                   className="mt-3 text-xs font-bank uppercase tracking-wider text-[var(--gta-text-outline)] font-bold underline"
                 >
-                  Send another message
+                  Write another draft
                 </button>
               </div>
             ) : (
@@ -214,12 +217,12 @@ export default function CollaborationDispatch() {
 
                 <div className="w-full pt-1">
                   <SpecularButton type="submit" className="w-full font-bank uppercase tracking-wider font-bold">
-                    Send Collaboration Message
+                    Open Email Draft
                   </SpecularButton>
                 </div>
 
                 <div className="text-[11px] text-[var(--gta-silhouette)] text-center pt-1 font-futura space-y-1">
-                  <p>Your information is kept confidential and sent directly. No spam.</p>
+                  <p>This opens your email app with a prepared draft. You review and send it there.</p>
                   <p>
                     Or open your email client directly:{' '}
                     <a

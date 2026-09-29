@@ -1,12 +1,10 @@
 import React from 'react';
 import { Zap, ArrowUpRight, ArrowLeft, CheckCircle2, Shield, Users, Clock } from 'lucide-react';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 export default function ZiggersPage() {
   return (
     <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-futura selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
-      <Header />
 
       <main className="flex-grow max-w-4xl mx-auto px-6 py-16 lg:py-24 space-y-16">
         

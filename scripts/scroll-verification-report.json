@@ -1,0 +1,38 @@
+[
+  {
+    "round": 1,
+    "width": 1440,
+    "reduced": false,
+    "passed": true
+  },
+  {
+    "round": 1,
+    "width": 390,
+    "reduced": false,
+    "passed": true
+  },
+  {
+    "round": 1,
+    "width": 320,
+    "reduced": true,
+    "passed": true
+  },
+  {
+    "round": 2,
+    "width": 1440,
+    "reduced": false,
+    "passed": true
+  },
+  {
+    "round": 2,
+    "width": 390,
+    "reduced": false,
+    "passed": true
+  },
+  {
+    "round": 2,
+    "width": 320,
+    "reduced": true,
+    "passed": true
+  }
+]

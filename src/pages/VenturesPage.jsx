@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
 import VentureWorkbench from '../components/VentureWorkbench';
 import { Layers, ArrowRight } from 'lucide-react';
@@ -7,7 +6,6 @@ import { Layers, ArrowRight } from 'lucide-react';
 export default function VenturesPage() {
   return (
     <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-futura selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
-      <Header />
 
       <main className="flex-grow max-w-6xl mx-auto px-6 lg:px-12 py-16 space-y-16">
         {/* Breadcrumb Navigation */}

@@ -1,0 +1,31 @@
+{
+  "pageHeadings": {
+    "VenturesPage.jsx": [
+      "<h1 className=\"text-3xl sm:text-5xl font-pricedown tracking-wider uppercase text-[var(--color-text-primary)] leading-tight\">\n            VIJAYRAJKUMAR — Ventures, Marketplaces &amp; AI Systems\n          </h1>"
+    ],
+    "EventsPage.jsx": [
+      "<h1 className=\"text-3xl sm:text-5xl lg:text-6xl font-pricedown font-bold tracking-wide text-[var(--gta-text-outline)] leading-tight\">\n            Vijayrajkumar — Events, Summits &amp; Builder Sprints\n          </h1>"
+    ],
+    "NotFoundPage.jsx": [
+      "<h1 className=\"text-6xl sm:text-8xl font-pricedown font-bold tracking-wide text-[var(--gta-text-outline)]\">\n            404\n          </h1>"
+    ],
+    "WritingPage.jsx": [
+      "<h1 className=\"text-2xl sm:text-4xl lg:text-5xl font-futura font-bold text-[var(--gta-text-outline)] leading-tight tracking-tight break-words\">\n                {selectedArticle.title}\n              </h1>",
+      "<h1 className=\"text-4xl sm:text-6xl font-pricedown font-bold tracking-wide text-[var(--gta-text-outline)] leading-tight\">\n                Vijayrajkumar — Writing &amp; Strategic Research\n              </h1>"
+    ],
+    "ContactPage.jsx": [
+      "<h1 className=\"text-4xl sm:text-6xl font-pricedown font-bold tracking-wide text-[var(--gta-text-outline)] leading-tight\">\n            Vijayrajkumar — Contact &amp; Venture Collaboration\n          </h1>"
+    ],
+    "ZiggersPage.jsx": [
+      "<h1 className=\"text-3xl sm:text-5xl font-pricedown tracking-wider uppercase text-[var(--gta-text-outline)] leading-tight\">\n            Ziggers — Chennai Gig Marketplace &amp; Temporary Staffing Platform\n          </h1>"
+    ],
+    "AboutPage.jsx": [
+      "<h1 className=\"text-3xl sm:text-5xl font-pricedown tracking-wider uppercase text-[var(--color-text-primary)] leading-tight\">\n            VIJAYRAJKUMAR — Chief Operating Officer &amp; Venture Builder\n          </h1>"
+    ],
+    "LoopMemoryPage.jsx": [
+      "<h1 className=\"text-3xl sm:text-5xl font-pricedown tracking-wider uppercase text-[var(--gta-text-outline)] leading-tight\">\n            LoopMemory — Persistent Memory &amp; Context Architecture for AI Agents\n          </h1>"
+    ]
+  },
+  "indexHash": "E2358A2BAE8AD1ADA1614828D0A045A3412E6084C542DDD450E9B3B739235CC2",
+  "routesHash": "022AA42476F9F1AE240773FB70CEB9306F571F383C6F1B830EB875D77B897668"
+}

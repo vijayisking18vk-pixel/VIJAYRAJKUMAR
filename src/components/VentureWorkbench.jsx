@@ -12,6 +12,10 @@ function FlipCard({ study, image, index }) {
   return (
     <div
       className="group cursor-pointer"
+      role="group"
+      tabIndex={0}
+      aria-label={study.name + ' venture dossier. Press Enter to flip.'}
+      onKeyDown={(event) => { if (event.target === event.currentTarget && (event.key === 'Enter' || event.key === ' ')) { event.preventDefault(); setIsFlipped(value => !value); } }}
       style={{ perspective: '1200px' }}
       onMouseEnter={() => soundSystem.playHover()}
       onClick={() => {
@@ -20,7 +24,7 @@ function FlipCard({ study, image, index }) {
       }}
     >
       <div
-        className="relative w-full transition-transform duration-700 ease-in-out"
+        className="relative w-full transition-transform duration-700 ease-in-out motion-reduce:transition-none"
         style={{
           transformStyle: 'preserve-3d',
           transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
@@ -233,7 +237,7 @@ export default function VentureWorkbench() {
           </h2>
 
           <p className="text-base sm:text-lg text-[var(--gta-text-outline)] font-futura leading-relaxed max-w-3xl">
-            Detailed case studies of ventures I have co-founded, built, and launched. Each case study documents the core problem, target user, personal ownership, shipped deliverables, and verifiable evidence. <strong className="text-[var(--gta-text-outline)]">Click any card</strong> to flip and read the details.
+            Detailed case studies of ventures I have co-founded, built, and launched. Each case study documents the core problem, target user, personal ownership, shipped deliverables, and verifiable evidence. <strong className="text-[var(--gta-text-outline)]">Select any card</strong> to flip and read the details.
           </p>
         </div>
 

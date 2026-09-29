@@ -1,12 +1,10 @@
 import React from 'react';
 import { Compass, ArrowLeft, Home, Layers, BookOpen, Send } from 'lucide-react';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 export default function NotFoundPage() {
   return (
     <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-futura selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
-      <Header />
 
       <main className="flex-grow max-w-3xl mx-auto px-6 py-20 lg:py-32 space-y-8 text-center flex flex-col items-center justify-center">
         <div className="inline-flex items-center space-x-2 bg-[var(--gta-sky-low)] text-[var(--gta-text-outline)] border border-[var(--gta-silhouette)] text-xs px-3.5 py-1 rounded-full font-bank uppercase tracking-wider font-bold shadow-sm">

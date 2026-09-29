@@ -1,12 +1,10 @@
 import React from 'react';
 import { Cpu, ArrowUpRight, CheckCircle2, Database, Brain, Sparkles } from 'lucide-react';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 export default function LoopMemoryPage() {
   return (
     <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text-primary)] font-futura selection:bg-[var(--color-accent-primary)] selection:text-white flex flex-col">
-      <Header />
 
       <main className="flex-grow max-w-4xl mx-auto px-6 py-16 lg:py-24 space-y-16">
         
