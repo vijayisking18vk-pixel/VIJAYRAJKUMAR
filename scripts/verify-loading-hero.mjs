@@ -1,0 +1,45 @@
+import puppeteer from 'puppeteer-core';
+import fs from 'node:fs';
+const browser = await puppeteer.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true,args:['--no-sandbox']});
+const page = await browser.newPage();
+const errors=[]; page.on('pageerror',e=>errors.push(e.message));
+fs.mkdirSync('scratch/loading-hero',{recursive:true});
+await page.setViewport({width:1440,height:900});
+await page.goto('http://127.0.0.1:3000/',{waitUntil:'networkidle2'});
+await page.evaluate(()=>document.fonts.ready);
+await page.click('.loading-pause');
+await page.screenshot({path:'scratch/loading-hero/desktop.png'});
+const first = await page.$eval('[role=progressbar]',e=>Number(e.getAttribute('aria-valuenow')));
+await new Promise(r=>setTimeout(r,600));
+const second = await page.$eval('[role=progressbar]',e=>Number(e.getAttribute('aria-valuenow')));
+if(first!==second) throw Error('Pause failed');
+for(let i=0;i<3;i++) {
+ await page.click(`.loading-controls button:nth-child(${i+1})`);
+ await new Promise(r=>setTimeout(r,1700));
+ const active = await page.$eval('.loading-frame.is-active img',e=>({src:e.src,loaded:e.complete&&e.naturalWidth>0}));
+ if(!active.loaded||!active.src.includes(['hills-art','coast-art','operator-art'][i])) throw Error('Photo selection failed');
+}
+await page.click('.loading-pause');
+await page.waitForFunction(()=>document.querySelector('[role=progressbar]').getAttribute('aria-valuenow')==='100',{timeout:10000});
+await page.click('.loading-pause');
+await page.waitForFunction(()=>Number(document.querySelector('[role=progressbar]').getAttribute('aria-valuenow'))<10);
+await page.setViewport({width:375,height:812});
+await page.click('.loading-controls button:nth-child(2)');
+await new Promise(r=>setTimeout(r,1700));
+await page.screenshot({path:'scratch/loading-hero/mobile.png'});
+if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)) throw Error('Horizontal overflow');
+await page.click('.loading-enter');
+await page.waitForFunction(()=>getComputedStyle(document.querySelector('.loading-hero')).visibility==='hidden');
+await page.emulateMediaFeatures([{name:'prefers-reduced-motion',value:'reduce'}]);
+await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));
+await page.waitForFunction(()=>getComputedStyle(document.querySelector('.loading-hero')).visibility==='visible');
+await page.click('.loading-controls button:nth-child(3)');
+const reducedBefore=await page.$eval('[role=progressbar]',e=>e.getAttribute('aria-valuenow'));
+await new Promise(r=>setTimeout(r,700));
+if(reducedBefore!==await page.$eval('[role=progressbar]',e=>e.getAttribute('aria-valuenow'))) throw Error('Reduced motion autoplay');
+await page.setViewport({width:812,height:375});
+await page.screenshot({path:'scratch/loading-hero/landscape.png'});
+console.log(JSON.stringify({passed:['three generated assets','photo selection','pause','completion','replay','mobile overflow','enter district','reduced motion'],errors}));
+await browser.close();
+if(errors.length) process.exitCode=1;
+

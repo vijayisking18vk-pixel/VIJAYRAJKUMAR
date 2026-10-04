@@ -1,0 +1,85 @@
+.loading-hero { background:#191c16; color:#f5efdf; }
+.loading-art { position:absolute; inset:0 0 0 31%; overflow:hidden; }
+.loading-frame { position:absolute; inset:0; opacity:0; transition:opacity 1.6s ease; }
+.loading-frame.is-active { opacity:1; }
+.loading-hero .loading-frame img { width:100%; height:100%; object-fit:cover; filter:sepia(.32) saturate(.64) contrast(1.12) brightness(.82); transform:scale(1.04); }
+.loading-frame.is-active img { animation:portrait-drift 7s ease-out both; }
+.loading-hero.is-paused .loading-frame img { animation-play-state:paused; }
+@keyframes portrait-drift { from { transform:scale(1.04) translateX(1%); } to { transform:scale(1.10) translateX(-1%); } }
+.loading-wash { position:absolute; inset:0; background:linear-gradient(90deg,#191c16 3%,#191c16f5 24%,#191c1680 43%,transparent 65%),linear-gradient(0deg,#12160fea,transparent 40%,#171b1633); }
+.loading-grain { position:absolute; inset:0; pointer-events:none; opacity:.13; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23fff' filter='url(%23n)' opacity='.6' d='M0 0h180v180H0z'/%3E%3C/svg%3E"); }
+.loading-topline { position:absolute; top:38px; left:5vw; right:5vw; display:flex; justify-content:space-between; gap:20px; font:10px 'Bank Gothic',sans-serif; letter-spacing:.2em; color:#e5dcc3; }
+.loading-identity { position:absolute; left:7vw; bottom:24%; width:clamp(280px,31vw,470px); }
+.loading-kicker { display:block; margin-bottom:24px; font:10px 'Bank Gothic',sans-serif; letter-spacing:.22em; color:#d3c4a1; }
+.loading-wordmark { font:clamp(72px,8.4vw,130px)/.72 'Pricedown',Impact,sans-serif; letter-spacing:-.025em; color:#fff9ec; -webkit-text-stroke:8px #10110e; paint-order:stroke fill; filter:drop-shadow(3px 5px 0 #10110e); }
+.loading-wordmark span { display:block; }.loading-wordmark span:first-child { margin-left:3px; }
+.loading-subtitle { position:relative; margin:12px 0 26px 6px; font:clamp(49px,5.3vw,82px)/1 'Diploma',Georgia,serif; color:#f5efdf; -webkit-text-stroke:4px #141510; paint-order:stroke fill; text-shadow:2px 3px #141510; }
+.loading-meter { height:13px; width:83%; border:2px solid #131710; outline:1px solid #ecebd9; background:#777970; box-shadow:0 3px 0 #0008; overflow:hidden; }
+.loading-meter>span { display:block; height:100%; width:100%; transform-origin:left; background:#f1edce; transition:transform .1s linear; }
+.loading-status { width:83%; display:flex; justify-content:space-between; margin-top:12px; font:9px 'Bank Gothic',sans-serif; letter-spacing:.12em; color:#d8d9c2; }
+.loading-caption { position:absolute; right:5vw; bottom:22%; text-align:right; text-shadow:0 2px 15px #000; }.loading-caption>span { font:10px 'Bank Gothic',sans-serif; letter-spacing:.18em; color:#ead7b2; }.loading-caption p { font:clamp(26px,3vw,46px) 'Beckett',Georgia,serif; margin:8px 0 0; color:#fff1d6; }
+.loading-footer { position:absolute; bottom:max(32px,env(safe-area-inset-bottom)); left:5vw; right:5vw; display:flex; align-items:center; justify-content:space-between; border-top:1px solid #eee5c333; padding-top:18px; gap:20px; }
+.loading-controls { display:flex; gap:8px; align-items:center; }.loading-controls button { min-width:44px; min-height:44px; font:11px 'Bank Gothic',sans-serif; color:#c9c9b6; border-bottom:2px solid transparent; transition:color .2s,border-color .2s; }.loading-controls button[aria-pressed=true] { color:#fff5d1; border-color:#e8d79c; }.loading-controls .loading-pause { margin-left:16px; font-size:9px; letter-spacing:.1em; }
+.loading-enter { min-height:48px; padding:10px 0 10px 18px; display:flex; align-items:center; gap:25px; font:12px 'Bank Gothic',sans-serif; letter-spacing:.13em; color:#fff2ca; }.loading-enter span { font:28px sans-serif; }.loading-hero button { cursor:pointer; }.loading-hero button:hover { color:#fff; }.loading-hero button:focus-visible { outline:2px solid #f4d68e; outline-offset:4px; }
+.at-opening .road-header .district-brand { visibility:hidden; }
+.at-opening .road-header .logo-only-header { left:auto; right:22px; top:65px; padding:0; }
+@media(max-width:767px) {
+ .loading-art { inset:0; }.loading-wash { background:linear-gradient(0deg,#141a13 4%,#141a13e0 23%,#141a1350 55%,#141a1322 78%,#141a1377); }
+ .loading-topline { top:25px; left:24px; right:24px; font-size:8px; }.loading-topline>span:last-child { display:none; }
+ .loading-identity { left:28px; bottom:24%; width:285px; }.loading-kicker { font-size:8px; margin-bottom:18px; }.loading-wordmark { font-size:78px; -webkit-text-stroke-width:6px; }.loading-subtitle { font-size:53px; margin:9px 0 20px; }.loading-meter,.loading-status { width:225px; }
+ .loading-caption { right:24px; bottom:15%; }.loading-caption>span { font-size:8px; }.loading-caption p { font-size:25px; }
+ .loading-footer { left:20px; right:20px; bottom:18px; gap:8px; padding-top:10px; }.loading-controls { gap:1px; }.loading-controls .loading-pause { margin-left:3px; font-size:8px; }.loading-enter { font-size:8px; gap:8px; padding-left:6px; max-width:130px; }.loading-enter span { font-size:23px; }
+ .at-opening .road-header .logo-only-header { top:49px; right:16px; }
+}
+@media(max-width:420px) { .loading-footer { flex-wrap:wrap; }.loading-controls { width:100%; justify-content:space-between; }.loading-enter { position:absolute; right:0; bottom:63px; max-width:none; }.loading-caption { bottom:20%; }.loading-identity { bottom:31%; } }
+@media(max-height:520px) and (min-width:600px) { .loading-identity { bottom:25%; width:270px; }.loading-wordmark { font-size:65px; }.loading-subtitle { font-size:43px; margin:5px 0 13px; }.loading-kicker { display:none; }.loading-caption { bottom:29%; }.loading-footer { bottom:12px; padding-top:5px; } }
+@media(prefers-reduced-motion:reduce) { .loading-frame { transition:none; }.loading-hero .loading-frame img { animation:none; transform:none; }.loading-meter>span { transition:none; } }
+/* Keep the edition label clear of the persistent audio control. */
+.loading-topline { padding-right:65px; }
+@media(max-width:767px) {
+ .loading-wordmark { font-size:clamp(62px,20vw,78px); }
+ .loading-identity { width:min(285px,calc(100vw - 56px)); }
+ .loading-topline { padding-right:42px; }
+}
+
+/* Generated scenes fill the whole canvas; the artwork provides its own blend. */
+.loading-art { inset:0; }
+.loading-hero .loading-frame img { object-position:72% center; filter:none; }
+.loading-wash { background:linear-gradient(0deg,#141a13c9,transparent 35%),linear-gradient(90deg,#141a1326,transparent 55%); }
+.loading-grain { opacity:.045; }
+.loading-identity { left:6vw; bottom:25%; width:clamp(280px,30vw,450px); }
+.loading-wordmark { font-size:clamp(68px,7.4vw,112px); }
+.loading-subtitle { font-size:clamp(46px,4.8vw,72px); }
+.loading-caption { bottom:18%; }
+@keyframes portrait-drift { from { transform:scale(1); } to { transform:scale(1.025); } }
+@media(max-width:767px) and (orientation:portrait) {
+ .loading-art { inset:0 0 auto; height:66%; mask-image:linear-gradient(#000 65%,transparent 100%); }
+ .loading-hero .loading-frame img { object-position:76% center; }
+ .loading-wash { background:linear-gradient(0deg,#141a13 0%,#141a13 26%,#141a1300 61%); }
+ .loading-hero { background:#141a13; }
+ .loading-identity { left:26px; right:26px; bottom:155px; width:auto; }
+ .loading-kicker { margin-bottom:14px; font-size:8px; }
+ .loading-wordmark { font-size:clamp(52px,15vw,72px); line-height:.77; -webkit-text-stroke-width:5px; }
+ .loading-subtitle { font-size:42px; margin:9px 0 18px; }
+ .loading-meter,.loading-status { width:min(245px,100%); }
+ .loading-caption { top:76px; bottom:auto; left:26px; right:auto; text-align:left; }
+ .loading-caption p { display:none; }
+ .loading-caption>span { font-size:8px; }
+ .loading-footer { left:26px; right:26px; bottom:max(14px,env(safe-area-inset-bottom)); display:flex; flex-direction:column; align-items:stretch; gap:4px; padding-top:8px; }
+ .loading-controls { width:100%; justify-content:space-between; }
+ .loading-controls button { min-width:44px; }
+ .loading-enter { position:static; max-width:none; justify-content:space-between; padding:4px 0; min-height:44px; font-size:10px; }
+}
+@media(max-width:767px) and (orientation:portrait) and (max-height:680px) {
+ .loading-identity { bottom:144px; }
+ .loading-wordmark { font-size:50px; }
+ .loading-subtitle { font-size:34px; margin:7px 0 12px; }
+ .loading-kicker { display:none; }
+}
+@media(max-height:520px) and (orientation:landscape) {
+ .loading-identity { bottom:26%; width:250px; }
+ .loading-wordmark { font-size:58px; }
+ .loading-subtitle { font-size:37px; margin:8px 0 15px; }
+ .loading-caption { bottom:26%; }
+ .loading-footer { bottom:12px; }
+}
