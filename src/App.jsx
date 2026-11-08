@@ -14,12 +14,13 @@ export default function App() {
         fontFamily: "Georgia, 'Times New Roman', Times, serif",
         color: "#1A1B1F",
         backgroundColor: "#FFFFFF",
+        fontWeight: "700",
       }}
     >
       <h1
         style={{
           fontSize: "clamp(28px, 5vw, 48px)",
-          fontWeight: "400",
+          fontWeight: "700",
           letterSpacing: "0.04em",
           margin: "0 0 12px 0",
           lineHeight: "1.2",
@@ -33,7 +34,7 @@ export default function App() {
       <p
         style={{
           fontSize: "clamp(13px, 2vw, 18px)",
-          fontWeight: "400",
+          fontWeight: "700",
           letterSpacing: "0.12em",
           textTransform: "uppercase",
           margin: "0 0 48px 0",
@@ -49,7 +50,7 @@ export default function App() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: "12px",
+          gap: "14px",
         }}
       >
         <a
@@ -58,6 +59,7 @@ export default function App() {
           rel="noopener noreferrer"
           style={{
             fontSize: "clamp(14px, 1.8vw, 17px)",
+            fontWeight: "700",
             fontFamily: "Georgia, 'Times New Roman', Times, serif",
             color: "#1A1B1F",
             textDecoration: "none",
@@ -72,6 +74,7 @@ export default function App() {
           rel="noopener noreferrer"
           style={{
             fontSize: "clamp(14px, 1.8vw, 17px)",
+            fontWeight: "700",
             fontFamily: "Georgia, 'Times New Roman', Times, serif",
             color: "#1A1B1F",
             textDecoration: "none",
