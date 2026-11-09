@@ -141,10 +141,6 @@ export default function App() {
     };
   }, []);
 
-  // Compute smooth motion values from scroll progress (0 to 1)
-  const videoTranslateY = (scrollProgress - 0.5) * -40;
-  const videoScale = 1 + scrollProgress * 0.04;
-
   return (
     <div
       ref={containerRef}
@@ -157,7 +153,7 @@ export default function App() {
         fontWeight: "700",
       }}
     >
-      {/* Sticky Hero Viewport */}
+      {/* Fixed Hero Viewport — stays completely static while scrolling scrubs video */}
       <section className="hero-sticky-viewport" aria-label="Hero Video Section">
         {/* Top Header */}
         <header style={{ flexShrink: 0, zIndex: 10 }}>
@@ -203,22 +199,7 @@ export default function App() {
             zIndex: 5,
           }}
         >
-          <div
-            style={{
-              position: "relative",
-              aspectRatio: "720 / 1280",
-              height: "100%",
-              maxHeight: "min(60vh, 620px, calc(88vw * 16 / 9))",
-              width: "auto",
-              borderRadius: "16px",
-              overflow: "hidden",
-              boxShadow: "0 18px 45px rgba(26, 27, 31, 0.12)",
-              backgroundColor: "#1A1B1F",
-              transform: `translate3d(0, ${videoTranslateY}px, 0) scale(${videoScale})`,
-              transition: "transform 0.12s ease-out",
-              willChange: "transform",
-            }}
-          >
+          <div className="hero-video-frame">
             <video
               ref={videoRef}
               src="/videos/hero-scroll.mp4?v=617837642707231488"

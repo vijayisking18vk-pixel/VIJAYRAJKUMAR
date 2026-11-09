@@ -46,16 +46,34 @@
 }
 
 .hero-sticky-viewport {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   height: 100vh;
-  height: 100dvh;
+  height: 100svh;
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: clamp(16px, 3.5vh, 32px) clamp(16px, 4vw, 32px);
+  padding: clamp(16px, 3.5svh, 32px) clamp(16px, 4vw, 32px);
   box-sizing: border-box;
   overflow: hidden;
   text-align: center;
+}
+
+.hero-video-frame {
+  position: relative;
+  aspect-ratio: 720 / 1280;
+  height: 100%;
+  max-height: min(60vh, 620px, calc(88vw * 16 / 9));
+  max-height: min(60svh, 620px, calc(88vw * 16 / 9));
+  width: auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 18px 45px rgba(26, 27, 31, 0.12);
+  background-color: #1A1B1F;
 }
