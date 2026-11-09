@@ -153,7 +153,7 @@ export default function App() {
         height: "260vh",
         backgroundColor: "#FFFFFF",
         color: "#1A1B1F",
-        fontFamily: "Georgia, 'Times New Roman', Times, serif",
+        fontFamily: "'Poppins', sans-serif",
         fontWeight: "700",
       }}
     >
@@ -168,7 +168,7 @@ export default function App() {
               letterSpacing: "0.04em",
               margin: "0 0 6px 0",
               lineHeight: "1.15",
-              fontFamily: "Georgia, 'Times New Roman', Times, serif",
+              fontFamily: "'Poppins', sans-serif",
               color: "#1A1B1F",
             }}
           >
@@ -182,7 +182,7 @@ export default function App() {
               letterSpacing: "0.14em",
               textTransform: "uppercase",
               margin: "0",
-              fontFamily: "Georgia, 'Times New Roman', Times, serif",
+              fontFamily: "'Poppins', sans-serif",
               color: "#1A1B1F",
             }}
           >
@@ -298,7 +298,7 @@ export default function App() {
               style={{
                 fontSize: "clamp(13px, 1.6vw, 16px)",
                 fontWeight: "700",
-                fontFamily: "Georgia, 'Times New Roman', Times, serif",
+                fontFamily: "'Poppins', sans-serif",
                 color: "#1A1B1F",
                 textDecoration: "none",
                 letterSpacing: "0.02em",
@@ -315,7 +315,7 @@ export default function App() {
               style={{
                 fontSize: "clamp(13px, 1.6vw, 16px)",
                 fontWeight: "700",
-                fontFamily: "Georgia, 'Times New Roman', Times, serif",
+                fontFamily: "'Poppins', sans-serif",
                 color: "#1A1B1F",
                 textDecoration: "none",
                 letterSpacing: "0.02em",

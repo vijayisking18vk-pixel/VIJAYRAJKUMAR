@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        serif: ['Georgia', '"Times New Roman"', 'Times', 'serif'],
+        sans: ['"Poppins"', 'sans-serif'],
       },
       colors: {
         primary: '#1A1B1F',

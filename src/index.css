@@ -14,7 +14,7 @@
   body {
     background-color: #FFFFFF;
     color: var(--color-text);
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     margin: 0;
     padding: 0;
@@ -29,7 +29,7 @@
   }
 
   h1, h2, h3, h4, h5, h6, p, a, span, div {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Poppins', sans-serif;
     color: #1A1B1F;
     font-weight: 700;
   }
