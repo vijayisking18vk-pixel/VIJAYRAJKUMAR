@@ -9,6 +9,7 @@
 @layer base {
   html {
     background-color: #FFFFFF;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -18,6 +19,7 @@
     font-weight: 700;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -41,5 +43,73 @@
 
   a:hover {
     text-decoration: underline;
+  }
+}
+
+/* Hero Scroll Runway */
+.hero-runway {
+  position: relative;
+  height: 260vh;
+  width: 100%;
+  background-color: #1A1B1F;
+}
+
+.hero-sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #1A1B1F;
+}
+
+.hero-video-frame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  will-change: transform;
+}
+
+/* Desktop: Exact 720 / 1280 (9:16) aspect ratio fitted cleanly to viewport */
+@media (min-width: 768px) {
+  .hero-video-frame {
+    height: min(100dvh, calc(100vw * 1280 / 720));
+    width: auto;
+    aspect-ratio: 720 / 1280;
+    max-width: 100%;
+    max-height: 100dvh;
+  }
+
+  .hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    aspect-ratio: 720 / 1280;
+  }
+}
+
+/* Mobile: Full-bleed fit to screen ("FIT TO FULL") */
+@media (max-width: 767px) {
+  .hero-video-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  .hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    object-position: center center;
+    display: block;
   }
 }

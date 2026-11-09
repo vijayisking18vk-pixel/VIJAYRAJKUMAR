@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#FFFFFF" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#1A1B1F" />
 
     <!-- Primary Metadata -->
     <title>R Vijayrajkumar | Chief Executive Officer</title>
@@ -69,18 +69,16 @@
   </head>
   <body>
     <div id="root">
-      <main style="font-family: Georgia, 'Times New Roman', Times, serif; color: #1A1B1F; font-weight: 700; text-align: center; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 24px; box-sizing: border-box;">
-        <header>
-          <h1 style="font-family: Georgia, 'Times New Roman', Times, serif; color: #1A1B1F; font-weight: 700; font-size: clamp(26px, 4.2vw, 46px); margin: 0 0 6px 0;">R Vijayrajkumar</h1>
-          <p style="font-family: Georgia, 'Times New Roman', Times, serif; color: #1A1B1F; font-weight: 700; font-size: clamp(12px, 1.8vw, 16px); letter-spacing: 0.14em; text-transform: uppercase; margin: 0;">Chief Executive Officer</p>
-        </header>
-        <div style="aspect-ratio: 720 / 1280; max-height: 58vh; max-width: min(90vw, 380px); border-radius: 16px; overflow: hidden; background: #1A1B1F; margin: 12px 0;">
-          <video src="/videos/hero-scroll.mp4" poster="/videos/hero-scroll-poster.jpg" muted playsinline style="width: 100%; height: 100%; object-fit: contain; aspect-ratio: 720 / 1280;"></video>
+      <div class="hero-sticky" style="width: 100%; height: 100dvh; background: #1A1B1F; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+        <div class="hero-video-frame">
+          <img src="/videos/hero-scroll-poster.jpg" alt="" class="hero-video" />
         </div>
-        <footer>
-          <p style="margin: 0 0 10px 0;"><a href="https://www.daas.media" style="font-family: Georgia, 'Times New Roman', Times, serif; color: #1A1B1F; font-weight: 700; text-decoration: none;">www.daas.media</a></p>
-          <p style="margin: 0;"><a href="https://www.chennairents.in" style="font-family: Georgia, 'Times New Roman', Times, serif; color: #1A1B1F; font-weight: 700; text-decoration: none;">www.chennairents.in</a></p>
-        </footer>
+      </div>
+      <main style="font-family: Georgia, 'Times New Roman', Times, serif; color: #1A1B1F; font-weight: 700; text-align: center; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 24px; background: #FFFFFF;">
+        <h1 style="font-family: Georgia, 'Times New Roman', Times, serif; color: #1A1B1F; font-weight: 700; font-size: clamp(30px, 5vw, 52px); margin: 0 0 12px 0;">R Vijayrajkumar</h1>
+        <p style="font-family: Georgia, 'Times New Roman', Times, serif; color: #1A1B1F; font-weight: 700; font-size: clamp(13px, 2vw, 18px); letter-spacing: 0.14em; text-transform: uppercase; margin: 0 0 48px 0;">Chief Executive Officer</p>
+        <p style="margin: 0 0 16px 0;"><a href="https://www.daas.media" style="font-family: Georgia, 'Times New Roman', Times, serif; color: #1A1B1F; font-weight: 700; text-decoration: none;">www.daas.media</a></p>
+        <p style="margin: 0;"><a href="https://www.chennairents.in" style="font-family: Georgia, 'Times New Roman', Times, serif; color: #1A1B1F; font-weight: 700; text-decoration: none;">www.chennairents.in</a></p>
       </main>
     </div>
     <script type="module" src="/src/main.jsx"></script>
