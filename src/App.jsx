@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-// Source video fades in from pure black (0.0s–0.4s); 1.4s is the full-brightness opening frame
+// Source video fades in from pure black (0.0s–0.4s); 1.4s matches the bright opening frame
 const HERO_VIDEO_START_TIME = 1.4;
 
 function computeTargetTime(progress, duration) {
@@ -11,7 +11,7 @@ function computeTargetTime(progress, duration) {
 }
 
 export default function App() {
-  const heroRef = useRef(null);
+  const containerRef = useRef(null);
   const videoRef = useRef(null);
   const unlockedRef = useRef(false);
   const progressRef = useRef(0);
@@ -24,11 +24,12 @@ export default function App() {
 
     let rafId = null;
     let initialSeeked = false;
+    let virtualTime = HERO_VIDEO_START_TIME;
 
     const getProgress = () => {
-      if (!heroRef.current) return 0;
-      const rect = heroRef.current.getBoundingClientRect();
-      const totalScrollable = heroRef.current.offsetHeight - window.innerHeight;
+      if (!containerRef.current) return 0;
+      const rect = containerRef.current.getBoundingClientRect();
+      const totalScrollable = containerRef.current.offsetHeight - window.innerHeight;
       if (totalScrollable <= 0) return 0;
       return Math.max(0, Math.min(1, -rect.top / totalScrollable));
     };
@@ -50,6 +51,7 @@ export default function App() {
       const p = getProgress();
       progressRef.current = p;
       const initialTarget = computeTargetTime(p, video.duration);
+      virtualTime = initialTarget;
       if (Math.abs(video.currentTime - initialTarget) > 0.05) {
         video.addEventListener("seeked", handleSeekedOnce, { once: true });
         video.currentTime = initialTarget;
@@ -61,7 +63,7 @@ export default function App() {
     const handleCanPlay = () => {
       if (!initialSeeked) {
         const initialTarget = computeTargetTime(progressRef.current, video.duration);
-        if (Math.abs(video.currentTime - initialTarget) <= 0.1) {
+        if (Math.abs(video.currentTime - initialTarget) <= 0.15) {
           markFrameReady();
         }
       }
@@ -73,7 +75,7 @@ export default function App() {
       initInitialFrame();
     }
 
-    // Mobile browser (iOS Safari / Android Chrome) media pipeline unlock on first gesture
+    // Unlock media pipeline on first touch/pointer gesture for iOS Safari & Android Chrome
     const unlockVideo = () => {
       if (unlockedRef.current || !video) return;
       unlockedRef.current = true;
@@ -83,7 +85,9 @@ export default function App() {
           .then(() => {
             video.pause();
             if (video.duration && !Number.isNaN(video.duration)) {
-              video.currentTime = computeTargetTime(progressRef.current, video.duration);
+              const target = computeTargetTime(progressRef.current, video.duration);
+              virtualTime = target;
+              video.currentTime = target;
             }
           })
           .catch(() => {
@@ -106,17 +110,15 @@ export default function App() {
         video &&
         video.duration &&
         !Number.isNaN(video.duration) &&
-        video.readyState >= 2 &&
-        !video.seeking
+        video.readyState >= 2
       ) {
-        if (!initialSeeked && video.currentTime >= 0.8) {
+        if (!initialSeeked && video.currentTime >= 1.0) {
           markFrameReady();
         }
         const target = computeTargetTime(progressRef.current, video.duration);
-        const diff = target - video.currentTime;
-        if (Math.abs(diff) > 0.018) {
-          const step = Math.abs(diff) < 0.05 ? diff : diff * 0.35;
-          video.currentTime = video.currentTime + step;
+        virtualTime += (target - virtualTime) * 0.25;
+        if (!video.seeking && Math.abs(virtualTime - video.currentTime) > 0.025) {
+          video.currentTime = virtualTime;
         }
       }
       rafId = requestAnimationFrame(updateVideoFrame);
@@ -139,43 +141,113 @@ export default function App() {
     };
   }, []);
 
-  const cueOpacity = Math.max(0, 1 - scrollProgress * 6);
+  // Compute smooth motion values from scroll progress (0 to 1)
+  const videoTranslateY = (scrollProgress - 0.5) * -40;
+  const videoScale = 1 + scrollProgress * 0.04;
 
   return (
     <div
+      ref={containerRef}
       style={{
+        position: "relative",
+        height: "260vh",
         backgroundColor: "#FFFFFF",
         color: "#1A1B1F",
         fontFamily: "Georgia, 'Times New Roman', Times, serif",
         fontWeight: "700",
       }}
     >
-      {/* Hero Scroll Animation Section (Fits full mobile screen 100%, 9:16 exact ratio on desktop) */}
-      <div ref={heroRef} className="hero-runway">
-        <section className="hero-sticky" aria-label="Hero Video">
-          <div className="hero-video-frame">
+      {/* Sticky Hero Viewport */}
+      <section className="hero-sticky-viewport" aria-label="Hero Video Section">
+        {/* Top Header */}
+        <header style={{ flexShrink: 0, zIndex: 10 }}>
+          <h1
+            style={{
+              fontSize: "clamp(26px, 4.2vw, 46px)",
+              fontWeight: "700",
+              letterSpacing: "0.04em",
+              margin: "0 0 6px 0",
+              lineHeight: "1.15",
+              fontFamily: "Georgia, 'Times New Roman', Times, serif",
+              color: "#1A1B1F",
+            }}
+          >
+            R Vijayrajkumar
+          </h1>
+
+          <p
+            style={{
+              fontSize: "clamp(12px, 1.8vw, 16px)",
+              fontWeight: "700",
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              margin: "0",
+              fontFamily: "Georgia, 'Times New Roman', Times, serif",
+              color: "#1A1B1F",
+            }}
+          >
+            Chief Executive Officer
+          </p>
+        </header>
+
+        {/* Center: Scroll-Driven Video in Exact 720:1280 (9:16) Aspect Ratio */}
+        <div
+          style={{
+            flex: "1 1 auto",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "100%",
+            minHeight: 0,
+            padding: "8px 0",
+            zIndex: 5,
+          }}
+        >
+          <div
+            style={{
+              position: "relative",
+              aspectRatio: "720 / 1280",
+              height: "100%",
+              maxHeight: "min(60vh, 620px, calc(88vw * 16 / 9))",
+              width: "auto",
+              borderRadius: "16px",
+              overflow: "hidden",
+              boxShadow: "0 18px 45px rgba(26, 27, 31, 0.12)",
+              backgroundColor: "#1A1B1F",
+              transform: `translate3d(0, ${videoTranslateY}px, 0) scale(${videoScale})`,
+              transition: "transform 0.12s ease-out",
+              willChange: "transform",
+            }}
+          >
             <video
               ref={videoRef}
-              className="hero-video"
-              src="/videos/hero-scroll.mp4"
-              poster="/videos/hero-scroll-poster.jpg"
+              src="/videos/hero-scroll.mp4?v=617837642707231488"
+              poster="/videos/hero-scroll-poster.jpg?v=617837642707231488"
               muted
               playsInline
               preload="auto"
               style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+                display: "block",
+                aspectRatio: "720 / 1280",
                 pointerEvents: "none",
               }}
             />
 
-            {/* Poster veil prevents any black flash until the first decoded frame at t=1.4s is ready */}
+            {/* Poster veil prevents initial black-frame flash until first decoded frame at t=1.4s is ready */}
             <img
-              src="/videos/hero-scroll-poster.jpg"
+              src="/videos/hero-scroll-poster.jpg?v=617837642707231488"
               alt=""
               aria-hidden="true"
-              className="hero-video"
               style={{
                 position: "absolute",
                 inset: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+                aspectRatio: "720 / 1280",
                 opacity: videoReady ? 0 : 1,
                 transition: "opacity 0.25s ease",
                 pointerEvents: "none",
@@ -183,148 +255,93 @@ export default function App() {
               }}
             />
 
-            {/* Minimal Scroll Indicator */}
-            {cueOpacity > 0.02 && (
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: "max(24px, env(safe-area-inset-bottom, 24px))",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  backgroundColor: "rgba(255, 255, 255, 0.92)",
-                  color: "#1A1B1F",
-                  fontFamily: "Georgia, 'Times New Roman', Times, serif",
-                  fontWeight: "700",
-                  fontSize: "11px",
-                  letterSpacing: "0.16em",
-                  textTransform: "uppercase",
-                  padding: "8px 16px",
-                  borderRadius: "9999px",
-                  opacity: cueOpacity,
-                  pointerEvents: "none",
-                  whiteSpace: "nowrap",
-                  boxShadow: "0 4px 16px rgba(0, 0, 0, 0.25)",
-                  zIndex: 10,
-                }}
-              >
-                Scroll ↓
-              </div>
-            )}
-
-            {/* Scrub Progress Indicator */}
+            {/* Subtle scroll indicator line at base of video */}
             <div
               style={{
                 position: "absolute",
                 bottom: 0,
                 left: 0,
-                right: 0,
-                height: "3px",
-                backgroundColor: "rgba(255, 255, 255, 0.2)",
-                zIndex: 10,
+                height: "4px",
+                width: `${scrollProgress * 100}%`,
+                backgroundColor: "#1A1B1F",
+                transition: "width 0.1s linear",
+                zIndex: 5,
               }}
-            >
-              <div
-                style={{
-                  height: "100%",
-                  width: `${scrollProgress * 100}%`,
-                  backgroundColor: "#FFFFFF",
-                  transition: "width 0.08s linear",
-                }}
-              />
-            </div>
+            />
           </div>
-        </section>
-      </div>
+        </div>
 
-      {/* Identity & Ventures Section */}
-      <main
-        style={{
-          minHeight: "100dvh",
-          backgroundColor: "#FFFFFF",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "48px 24px",
-          textAlign: "center",
-          fontFamily: "Georgia, 'Times New Roman', Times, serif",
-          color: "#1A1B1F",
-          fontWeight: "700",
-          boxSizing: "border-box",
-        }}
-      >
-        <h1
+        {/* Bottom: Links & Coordinates */}
+        <footer
           style={{
-            fontSize: "clamp(30px, 5vw, 52px)",
-            fontWeight: "700",
-            letterSpacing: "0.04em",
-            margin: "0 0 12px 0",
-            lineHeight: "1.2",
-            fontFamily: "Georgia, 'Times New Roman', Times, serif",
-            color: "#1A1B1F",
-          }}
-        >
-          R Vijayrajkumar
-        </h1>
-
-        <p
-          style={{
-            fontSize: "clamp(13px, 2vw, 18px)",
-            fontWeight: "700",
-            letterSpacing: "0.14em",
-            textTransform: "uppercase",
-            margin: "0 0 48px 0",
-            fontFamily: "Georgia, 'Times New Roman', Times, serif",
-            color: "#1A1B1F",
-          }}
-        >
-          Chief Executive Officer
-        </p>
-
-        <div
-          style={{
+            flexShrink: 0,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: "16px",
+            gap: "10px",
+            zIndex: 10,
           }}
         >
-          <a
-            href="https://www.daas.media"
-            target="_blank"
-            rel="noopener noreferrer"
+          <div
             style={{
-              fontSize: "clamp(15px, 2vw, 18px)",
-              fontWeight: "700",
-              fontFamily: "Georgia, 'Times New Roman', Times, serif",
-              color: "#1A1B1F",
-              textDecoration: "none",
-              letterSpacing: "0.02em",
-              borderBottom: "2px solid #1A1B1F",
-              paddingBottom: "3px",
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "clamp(12px, 3vw, 24px)",
             }}
           >
-            www.daas.media
-          </a>
-          <a
-            href="https://www.chennairents.in"
-            target="_blank"
-            rel="noopener noreferrer"
+            <a
+              href="https://www.daas.media"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: "clamp(13px, 1.6vw, 16px)",
+                fontWeight: "700",
+                fontFamily: "Georgia, 'Times New Roman', Times, serif",
+                color: "#1A1B1F",
+                textDecoration: "none",
+                letterSpacing: "0.02em",
+                borderBottom: "1px solid #1A1B1F",
+                paddingBottom: "2px",
+              }}
+            >
+              www.daas.media
+            </a>
+            <a
+              href="https://www.chennairents.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: "clamp(13px, 1.6vw, 16px)",
+                fontWeight: "700",
+                fontFamily: "Georgia, 'Times New Roman', Times, serif",
+                color: "#1A1B1F",
+                textDecoration: "none",
+                letterSpacing: "0.02em",
+                borderBottom: "1px solid #1A1B1F",
+                paddingBottom: "2px",
+              }}
+            >
+              www.chennairents.in
+            </a>
+          </div>
+
+          <div
             style={{
-              fontSize: "clamp(15px, 2vw, 18px)",
+              fontSize: "10px",
               fontWeight: "700",
-              fontFamily: "Georgia, 'Times New Roman', Times, serif",
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
               color: "#1A1B1F",
-              textDecoration: "none",
-              letterSpacing: "0.02em",
-              borderBottom: "2px solid #1A1B1F",
-              paddingBottom: "3px",
+              opacity: 0.65,
+              marginTop: "2px",
             }}
           >
-            www.chennairents.in
-          </a>
-        </div>
-      </main>
+            Scroll to scrub video
+          </div>
+        </footer>
+      </section>
     </div>
   );
 }
