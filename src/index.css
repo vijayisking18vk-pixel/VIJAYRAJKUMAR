@@ -6,10 +6,13 @@
   html,
   body {
     background-color: #120f17;
+    color: #f4f1ea;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     min-height: 100%;
     overflow-x: hidden;
+    scrollbar-gutter: stable;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -18,6 +21,12 @@
     min-height: 100%;
     background-color: #120f17;
   }
+}
+
+html.is-scroll-locked,
+html.is-scroll-locked body {
+  overscroll-behavior: none;
+  touch-action: none;
 }
 
 .hero-section {
@@ -38,35 +47,40 @@
 .links-section {
   width: 100%;
   background-color: #120f17;
-  padding: clamp(56px, 9vh, 110px) 16px clamp(72px, 12vh, 140px);
   box-sizing: border-box;
 }
 
-.links-stage {
-  max-width: 1040px;
+.stage-band {
   width: 100%;
-  margin: 0 auto;
+  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
-  flex-direction: column;
-  gap: clamp(48px, 9vh, 112px);
-}
-
-.link-row {
-  width: 100%;
-  display: flex;
+  align-items: center;
   justify-content: center;
+  padding: clamp(28px, 5vh, 64px) clamp(16px, 4vw, 48px);
   box-sizing: border-box;
 }
 
-.link-row--left {
-  padding-right: clamp(28px, 16vw, 240px);
+.stage-inner {
+  width: 100%;
+  max-width: 820px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(24px, 4.5vw, 60px);
+  box-sizing: border-box;
 }
 
-.link-row--right {
-  padding-left: clamp(28px, 16vw, 240px);
+.stage-inner--left {
+  flex-direction: row;
+}
+
+.stage-inner--right {
+  flex-direction: row-reverse;
 }
 
 .video-link-card {
+  flex-shrink: 0;
   display: block;
   position: relative;
   width: min(68vw, 340px, calc(74vh * 720 / 1280));
@@ -95,4 +109,134 @@
   object-fit: contain;
   display: block;
   pointer-events: none;
+}
+
+.stage-copy {
+  flex: 0 1 320px;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  text-align: left;
+}
+
+.stage-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ff4f2a;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.stage-eyebrow:hover,
+.stage-eyebrow:focus-visible {
+  opacity: 0.85;
+  text-decoration: underline;
+  outline: none;
+}
+
+.stage-title {
+  margin: 0;
+  font-size: clamp(20px, 2.3vw, 28px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #f4f1ea;
+}
+
+.stage-description {
+  margin: 0;
+  font-size: clamp(13px, 1.3vw, 15px);
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(244, 241, 234, 0.78);
+}
+
+.stage-status {
+  width: 100%;
+  min-height: 28px;
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+}
+
+.stage-progress-track {
+  width: 100%;
+  height: 2px;
+  background-color: rgba(244, 241, 234, 0.14);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.stage-progress-fill {
+  width: 100%;
+  height: 100%;
+  background-color: #ff4f2a;
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.stage-status-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(244, 241, 234, 0.62);
+}
+
+.stage-status-label--unlocked {
+  color: rgba(244, 241, 234, 0.48);
+}
+
+@media (max-width: 767px) {
+  .stage-band {
+    padding: 24px 16px;
+  }
+
+  .stage-inner {
+    flex-direction: column;
+    gap: 14px;
+    max-width: 100%;
+  }
+
+  .stage-inner--left {
+    align-items: center;
+    padding-right: clamp(24px, 14vw, 72px);
+  }
+
+  .stage-inner--right {
+    align-items: center;
+    padding-left: clamp(24px, 14vw, 72px);
+  }
+
+  .stage-copy {
+    flex: 0 0 auto;
+    min-width: 0;
+    width: min(100%, 310px);
+    gap: 6px;
+  }
+
+  .stage-title {
+    font-size: clamp(17px, 4.6vw, 20px);
+    line-height: 1.22;
+  }
+
+  .stage-description {
+    font-size: 12.5px;
+    line-height: 1.45;
+  }
+
+  .stage-status {
+    min-height: 24px;
+    margin-top: 4px;
+    gap: 5px;
+  }
 }
