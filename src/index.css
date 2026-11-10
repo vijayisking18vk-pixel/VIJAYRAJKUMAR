@@ -153,16 +153,19 @@
 }
 
 .profile-brands {
-  margin-top: clamp(28px, 4.8vh, 48px);
+  margin-top: clamp(32px, 5.2vh, 54px);
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: clamp(20px, 3.6vh, 34px);
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(20px, 5.5vw, 58px);
 }
 
 .brand-link {
   display: block;
   text-decoration: none;
+  flex-shrink: 0;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
@@ -173,14 +176,18 @@
   outline: none;
 }
 
+.brand-link-daas {
+  margin-top: clamp(88px, 21vw, 158px);
+}
+
 .brand-img-daas {
-  width: clamp(138px, 24vw, 166px);
+  width: clamp(120px, 31vw, 174px);
   height: auto;
   display: block;
 }
 
 .brand-img-crents {
-  width: clamp(176px, 44vw, 224px);
+  width: clamp(148px, 38vw, 224px);
   aspect-ratio: 1 / 1;
   height: auto;
   display: block;
