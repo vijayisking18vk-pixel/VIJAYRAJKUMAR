@@ -12,7 +12,7 @@ export const Chamber3FractureVortex: React.FC<Chamber3FractureVortexProps> = ({ 
   const dnaGroupRef = useRef<THREE.Group>(null);
   const glitchCageRef = useRef<THREE.LineSegments>(null);
 
-  // Generate 80+ random fractured shard transforms
+  // Generate 88 random fractured shard transforms
   const shardCount = 88;
   const shardData = useMemo(() => {
     const temp = [];
@@ -31,12 +31,28 @@ export const Chamber3FractureVortex: React.FC<Chamber3FractureVortexProps> = ({ 
     return temp;
   }, []);
 
-  // Set initial instanced matrices
-  useMemo(() => {
-    // will be animated in useFrame
+  // Procedural DNA Double Helix rungs & strands
+  const dnaNodes = useMemo(() => {
+    const nodes = [];
+    const count = 28;
+    for (let i = 0; i < count; i++) {
+      const t = (i / count) * Math.PI * 4; // 2 full turns
+      const y = (i - count / 2) * 0.35;
+      const r = 1.1;
+      const x1 = Math.cos(t) * r;
+      const z1 = Math.sin(t) * r;
+      const x2 = -x1;
+      const z2 = -z1;
+      nodes.push({ x1, y, z1, x2, z2, key: i });
+    }
+    return nodes;
   }, []);
 
+  const isVisible = scrollProgress >= 0.20 && scrollProgress <= 0.55;
+
   useFrame((state, delta) => {
+    if (!isVisible) return;
+
     if (shardsMeshRef.current) {
       const dummy = new THREE.Object3D();
       shardData.forEach((s, i) => {
@@ -68,27 +84,8 @@ export const Chamber3FractureVortex: React.FC<Chamber3FractureVortexProps> = ({ 
     }
   });
 
-  if (scrollProgress < 0.22 || scrollProgress > 0.52) return null;
-
-  // Procedural DNA Double Helix rungs & strands
-  const dnaNodes = useMemo(() => {
-    const nodes = [];
-    const count = 28;
-    for (let i = 0; i < count; i++) {
-      const t = (i / count) * Math.PI * 4; // 2 full turns
-      const y = (i - count / 2) * 0.35;
-      const r = 1.1;
-      const x1 = Math.cos(t) * r;
-      const z1 = Math.sin(t) * r;
-      const x2 = -x1;
-      const z2 = -z1;
-      nodes.push({ x1, y, z1, x2, z2, key: i });
-    }
-    return nodes;
-  }, []);
-
   return (
-    <group position={[0, 0, 0]}>
+    <group position={[0, 0, 0]} visible={isVisible}>
       {/* 1. Instanced Mesh of 88 Jagged Obsidian Fracture Shards */}
       <instancedMesh ref={shardsMeshRef} args={[undefined, undefined, shardCount]}>
         <tetrahedronGeometry args={[0.8, 0]} />
@@ -97,7 +94,7 @@ export const Chamber3FractureVortex: React.FC<Chamber3FractureVortexProps> = ({ 
           roughness={0.1}
           metalness={0.9}
           emissive="#FF1E56"
-          emissiveIntensity={0.3}
+          emissiveIntensity={0.6}
         />
       </instancedMesh>
 
@@ -106,7 +103,7 @@ export const Chamber3FractureVortex: React.FC<Chamber3FractureVortexProps> = ({ 
         {/* Outer Glitch Cage */}
         <lineSegments ref={glitchCageRef}>
           <boxGeometry args={[4.5, 9.0, 4.5]} />
-          <lineBasicMaterial color="#FF1E56" opacity={0.65} transparent={true} />
+          <lineBasicMaterial color="#FF1E56" opacity={0.75} transparent={true} />
         </lineSegments>
 
         {/* DNA Helix Group */}
@@ -115,12 +112,12 @@ export const Chamber3FractureVortex: React.FC<Chamber3FractureVortexProps> = ({ 
             <group key={node.key}>
               {/* Strand 1 Node */}
               <mesh position={[node.x1, node.y, node.z1]}>
-                <sphereGeometry args={[0.09, 8, 8]} />
+                <sphereGeometry args={[0.12, 8, 8]} />
                 <meshBasicMaterial color="#D147FF" />
               </mesh>
               {/* Strand 2 Node */}
               <mesh position={[node.x2, node.y, node.z2]}>
-                <sphereGeometry args={[0.09, 8, 8]} />
+                <sphereGeometry args={[0.12, 8, 8]} />
                 <meshBasicMaterial color="#FF1E56" />
               </mesh>
               {/* Rung connector */}
@@ -133,7 +130,7 @@ export const Chamber3FractureVortex: React.FC<Chamber3FractureVortexProps> = ({ 
                     itemSize={3}
                   />
                 </bufferGeometry>
-                <lineBasicMaterial color="#9D00FF" opacity={0.7} transparent={true} />
+                <lineBasicMaterial color="#9D00FF" opacity={0.8} transparent={true} />
               </line>
             </group>
           ))}
@@ -143,7 +140,6 @@ export const Chamber3FractureVortex: React.FC<Chamber3FractureVortexProps> = ({ 
         <Text
           position={[0, 4.5, 0]}
           fontSize={0.38}
-          font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_al061wqUbewOs.woff"
           color="#FF1E56"
           letterSpacing={0.2}
           anchorX="center"
@@ -155,7 +151,6 @@ export const Chamber3FractureVortex: React.FC<Chamber3FractureVortexProps> = ({ 
         <Text
           position={[-2.8, -3.2, 1.2]}
           fontSize={0.22}
-          font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_al061wqUbewOs.woff"
           color="#A89BB9"
           letterSpacing={0.15}
           anchorX="center"
@@ -167,7 +162,6 @@ export const Chamber3FractureVortex: React.FC<Chamber3FractureVortexProps> = ({ 
         <Text
           position={[2.8, -3.6, 1.0]}
           fontSize={0.24}
-          font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_al061wqUbewOs.woff"
           color="#D147FF"
           letterSpacing={0.15}
           anchorX="center"

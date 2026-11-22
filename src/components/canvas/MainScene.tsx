@@ -89,13 +89,13 @@ export const MainScene: React.FC<MainSceneProps> = ({
             toneMappingExposure: 1.15,
           }}
         >
+          {/* 1. Spline Flythrough Camera Rig (Always active, never suspends) */}
+          <CameraRig scrollProgress={scrollProgress} mouse={mouse} />
+
+          {/* 2. Unified World Environment - Lighting, Fog & Starfield (Always active) */}
+          <WorldEnvironment scrollProgress={scrollProgress} />
+
           <Suspense fallback={null}>
-            {/* 1. Spline Flythrough Camera Rig */}
-            <CameraRig scrollProgress={scrollProgress} mouse={mouse} />
-
-            {/* 2. Unified World Environment (Lighting, Fog & Starfield) */}
-            <WorldEnvironment scrollProgress={scrollProgress} />
-
             {/* 3. 7 Sequential 3D Storytelling Chambers */}
             <Chamber0Awakening
               scrollProgress={scrollProgress}

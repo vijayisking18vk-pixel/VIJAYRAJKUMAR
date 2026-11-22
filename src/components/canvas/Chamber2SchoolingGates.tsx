@@ -20,10 +20,10 @@ export const Chamber2SchoolingGates: React.FC<Chamber2SchoolingGatesProps> = ({ 
     }
   });
 
-  if (scrollProgress < 0.08 || scrollProgress > 0.40) return null;
+  const isVisible = scrollProgress >= 0.06 && scrollProgress <= 0.42;
 
   return (
-    <group>
+    <group visible={isVisible}>
       {/* ================= GATE 1: ST. JOSEPH ================= */}
       <group position={[0, 0, -45]}>
         {/* Left Obsidian Pillar */}
@@ -61,7 +61,6 @@ export const Chamber2SchoolingGates: React.FC<Chamber2SchoolingGatesProps> = ({ 
         <Text
           position={[0, 2.9, 0]}
           fontSize={0.14}
-          font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_al061wqUbewOs.woff"
           color="#A89BB9"
           letterSpacing={0.15}
           anchorX="center"
@@ -118,7 +117,6 @@ export const Chamber2SchoolingGates: React.FC<Chamber2SchoolingGatesProps> = ({ 
         <Text
           position={[0, 2.9, 0]}
           fontSize={0.14}
-          font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_al061wqUbewOs.woff"
           color="#A89BB9"
           letterSpacing={0.15}
           anchorX="center"
@@ -166,7 +164,6 @@ export const Chamber2SchoolingGates: React.FC<Chamber2SchoolingGatesProps> = ({ 
         <Text
           position={[0, 1.9, 0]}
           fontSize={0.45}
-          font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_al061wqUbewOs.woff"
           color="#D147FF"
           letterSpacing={0.25}
           anchorX="center"

@@ -39,11 +39,10 @@ export const Chamber1StoicVoid: React.FC<Chamber1StoicVoidProps> = ({ scrollProg
     }
   });
 
-  // Cull if far away
-  if (scrollProgress > 0.25) return null;
+  const isVisible = scrollProgress <= 0.28;
 
   return (
-    <group position={[0, 0, -20]}>
+    <group position={[0, 0, -20]} visible={isVisible}>
       {/* 1. Reflective Obsidian Floor */}
       <mesh position={[0, -2.8, 0]} rotation={[-Math.PI / 2, 0, 0]}>
         <planeGeometry args={[50, 60]} />
@@ -124,8 +123,7 @@ export const Chamber1StoicVoid: React.FC<Chamber1StoicVoidProps> = ({ scrollProg
       {/* In-World Spatial Coordinates */}
       <Text
         position={[0, -0.8, 1.0]}
-        fontSize={0.18}
-        font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_al061wqUbewOs.woff"
+        fontSize={0.22}
         color="#D147FF"
         letterSpacing={0.2}
         anchorX="center"

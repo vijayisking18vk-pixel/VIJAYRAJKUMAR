@@ -42,10 +42,10 @@ export const Chamber4WingsAndAbyss: React.FC<Chamber4WingsAndAbyssProps> = ({ sc
     }
   });
 
-  if (scrollProgress < 0.40 || scrollProgress > 0.72) return null;
+  const isVisible = scrollProgress >= 0.38 && scrollProgress <= 0.74;
 
   return (
-    <group>
+    <group visible={isVisible}>
       {/* ================= ACT 4A: THE SPARK — BACKLIT STORM WINGS (Z = -175, Y = 6.0) ================= */}
       <group position={[0, 6.0, -175]}>
         {/* Backlit Storm Cloud Plane */}
@@ -114,7 +114,6 @@ export const Chamber4WingsAndAbyss: React.FC<Chamber4WingsAndAbyssProps> = ({ sc
         <Text
           position={[0, 3.5, 1.0]}
           fontSize={0.24}
-          font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_al061wqUbewOs.woff"
           color="#D147FF"
           letterSpacing={0.2}
           anchorX="center"
@@ -160,7 +159,6 @@ export const Chamber4WingsAndAbyss: React.FC<Chamber4WingsAndAbyssProps> = ({ sc
           <Text
             position={[0, 0.6, 0.2]}
             fontSize={0.9}
-            font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_al061wqUbewOs.woff"
             color="#FF1E56"
             letterSpacing={0.1}
             anchorX="center"
@@ -173,7 +171,6 @@ export const Chamber4WingsAndAbyss: React.FC<Chamber4WingsAndAbyssProps> = ({ sc
           <Text
             position={[0, -0.2, 0.2]}
             fontSize={0.2}
-            font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_al061wqUbewOs.woff"
             color="#A89BB9"
             letterSpacing={0.15}
             anchorX="center"
@@ -212,7 +209,6 @@ export const Chamber4WingsAndAbyss: React.FC<Chamber4WingsAndAbyssProps> = ({ sc
               <Text
                 position={[0, -0.4, 0.45]}
                 fontSize={0.18}
-                font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_al061wqUbewOs.woff"
                 color={i >= 3 ? '#FF1E56' : '#A89BB9'}
                 anchorX="center"
                 anchorY="middle"
@@ -226,7 +222,6 @@ export const Chamber4WingsAndAbyss: React.FC<Chamber4WingsAndAbyssProps> = ({ sc
           <Text
             position={[0, 3.2, 0.5]}
             fontSize={0.28}
-            font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_al061wqUbewOs.woff"
             color="#F8ECFF"
             letterSpacing={0.2}
             anchorX="center"

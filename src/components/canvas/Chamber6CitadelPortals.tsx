@@ -72,10 +72,10 @@ export const Chamber6CitadelPortals: React.FC<Chamber6CitadelPortalsProps> = ({
     onPortalClick?.(url);
   };
 
-  if (scrollProgress < 0.73 || scrollProgress > 0.96) return null;
+  const isVisible = scrollProgress >= 0.70 && scrollProgress <= 0.97;
 
   return (
-    <group position={[0, 0, -305]}>
+    <group position={[0, 0, -305]} visible={isVisible}>
       {/* 1. Grand Reflective Obsidian Arena Floor */}
       <mesh position={[0, -2.6, 0]} rotation={[-Math.PI / 2, 0, 0]}>
         <circleGeometry args={[25, 48]} />
@@ -142,7 +142,6 @@ export const Chamber6CitadelPortals: React.FC<Chamber6CitadelPortalsProps> = ({
         <Text
           position={[0, 2.9, 0]}
           fontSize={0.18}
-          font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_al061wqUbewOs.woff"
           color="#D147FF"
           letterSpacing={0.15}
           anchorX="center"
@@ -153,7 +152,6 @@ export const Chamber6CitadelPortals: React.FC<Chamber6CitadelPortalsProps> = ({
         <Text
           position={[0, -0.6, 0]}
           fontSize={0.14}
-          font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_al061wqUbewOs.woff"
           color="#A89BB9"
           anchorX="center"
           anchorY="middle"
@@ -201,7 +199,6 @@ export const Chamber6CitadelPortals: React.FC<Chamber6CitadelPortalsProps> = ({
         <Text
           position={[0, 2.9, 0]}
           fontSize={0.18}
-          font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_al061wqUbewOs.woff"
           color="#D147FF"
           letterSpacing={0.15}
           anchorX="center"
@@ -212,7 +209,6 @@ export const Chamber6CitadelPortals: React.FC<Chamber6CitadelPortalsProps> = ({
         <Text
           position={[0, -0.6, 0]}
           fontSize={0.14}
-          font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_al061wqUbewOs.woff"
           color="#A89BB9"
           anchorX="center"
           anchorY="middle"
@@ -265,7 +261,6 @@ export const Chamber6CitadelPortals: React.FC<Chamber6CitadelPortalsProps> = ({
         <Text
           position={[0, 2.9, 0]}
           fontSize={0.18}
-          font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_al061wqUbewOs.woff"
           color="#D147FF"
           letterSpacing={0.15}
           anchorX="center"
@@ -276,7 +271,6 @@ export const Chamber6CitadelPortals: React.FC<Chamber6CitadelPortalsProps> = ({
         <Text
           position={[0, -0.6, 0]}
           fontSize={0.14}
-          font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_al061wqUbewOs.woff"
           color="#A89BB9"
           anchorX="center"
           anchorY="middle"
@@ -321,7 +315,6 @@ export const Chamber6CitadelPortals: React.FC<Chamber6CitadelPortalsProps> = ({
         <Text
           position={[0, 2.9, 0]}
           fontSize={0.18}
-          font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_al061wqUbewOs.woff"
           color="#D147FF"
           letterSpacing={0.15}
           anchorX="center"
@@ -332,7 +325,6 @@ export const Chamber6CitadelPortals: React.FC<Chamber6CitadelPortalsProps> = ({
         <Text
           position={[0, -0.6, 0]}
           fontSize={0.14}
-          font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_al061wqUbewOs.woff"
           color="#A89BB9"
           anchorX="center"
           anchorY="middle"

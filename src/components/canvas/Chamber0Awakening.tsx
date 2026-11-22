@@ -22,15 +22,19 @@ export const Chamber0Awakening: React.FC<Chamber0AwakeningProps> = ({
     return {
       uTime: { value: 0 },
       uMouse: { value: new THREE.Vector2(0, 0) },
-      uOpenProgress: { value: 0.0 },
+      uOpenProgress: { value: 1.0 },
       uColorIris: { value: new THREE.Color('#9D00FF') },
       uColorGaze: { value: new THREE.Color('#D147FF') },
       uColorCore: { value: new THREE.Color('#F8ECFF') },
-      uIntensity: { value: 1.8 },
+      uIntensity: { value: 2.4 },
     };
   }, []);
 
+  const isVisible = scrollProgress <= 0.16;
+
   useFrame((state, delta) => {
+    if (!isVisible) return;
+
     if (shaderMatRef.current) {
       shaderMatRef.current.uniforms.uTime.value = state.clock.elapsedTime;
       // Eyes follow cursor
@@ -47,9 +51,8 @@ export const Chamber0Awakening: React.FC<Chamber0AwakeningProps> = ({
         delta
       );
 
-      // Open eye animation based on scroll or time
       const targetOpen = THREE.MathUtils.clamp(
-        Math.min(1.0, state.clock.elapsedTime * 0.8) * (1.0 - scrollProgress * 15),
+        1.0 - scrollProgress * 8,
         0.0,
         1.0
       );
@@ -57,11 +60,8 @@ export const Chamber0Awakening: React.FC<Chamber0AwakeningProps> = ({
     }
   });
 
-  // Only render when near Chamber 0 (t < 0.08)
-  if (scrollProgress > 0.12) return null;
-
   return (
-    <group position={[0, 0, 7]}>
+    <group position={[0, 0, 7]} visible={isVisible}>
       {/* Fractal Eyes Plane */}
       <mesh ref={meshRef} position={[0, 0, 0]} onClick={onEnter}>
         <planeGeometry args={[4.2, 2.2]} />
@@ -78,9 +78,8 @@ export const Chamber0Awakening: React.FC<Chamber0AwakeningProps> = ({
       {/* Floating Micro Monospace Prompt */}
       <Text
         position={[0, -1.3, 0.1]}
-        fontSize={0.09}
-        font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_al061wqUbewOs.woff"
-        color="#A89BB9"
+        fontSize={0.12}
+        color="#F8ECFF"
         letterSpacing={0.25}
         anchorX="center"
         anchorY="middle"

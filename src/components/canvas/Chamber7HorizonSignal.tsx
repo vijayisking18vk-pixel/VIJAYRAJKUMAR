@@ -50,10 +50,10 @@ export const Chamber7HorizonSignal: React.FC<Chamber7HorizonSignalProps> = ({
     }
   });
 
-  if (scrollProgress < 0.88) return null;
+  const isVisible = scrollProgress >= 0.86;
 
   return (
-    <group position={[0, 0.8, -350]}>
+    <group position={[0, 0.8, -350]} visible={isVisible}>
       {/* 1. Calm Focused Fractal Violet Eyes */}
       <mesh position={[0, 0, -0.2]}>
         <planeGeometry args={[4.2, 2.2]} />
@@ -96,7 +96,6 @@ export const Chamber7HorizonSignal: React.FC<Chamber7HorizonSignalProps> = ({
       <Text
         position={[0, -2.4, 0]}
         fontSize={0.2}
-        font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_al061wqUbewOs.woff"
         color="#D147FF"
         letterSpacing={0.2}
         anchorX="center"

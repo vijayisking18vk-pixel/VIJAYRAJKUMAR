@@ -60,10 +60,10 @@ export const Chamber5RemainingFive: React.FC<Chamber5RemainingFiveProps> = ({ sc
     }
   });
 
-  if (scrollProgress < 0.60 || scrollProgress > 0.84) return null;
+  const isVisible = scrollProgress >= 0.58 && scrollProgress <= 0.86;
 
   return (
-    <group position={[0, 0, -255]}>
+    <group position={[0, 0, -255]} visible={isVisible}>
       {/* 1. 15 Dim Ash Orbs Drifting Outward (Faded Friends) */}
       <group ref={fadingOrbsRef}>
         {fadingOrbs.map((orb, i) => (
@@ -139,7 +139,6 @@ export const Chamber5RemainingFive: React.FC<Chamber5RemainingFiveProps> = ({ sc
       <Text
         position={[0, 4.4, 0]}
         fontSize={0.34}
-        font="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_al061wqUbewOs.woff"
         color="#F8ECFF"
         letterSpacing={0.25}
         anchorX="center"

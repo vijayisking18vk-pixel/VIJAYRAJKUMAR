@@ -4,11 +4,11 @@ export const FractalEyesShader = {
   uniforms: {
     uTime: { value: 0 },
     uMouse: { value: new THREE.Vector2(0, 0) },
-    uOpenProgress: { value: 0.0 }, // 0 = closed, 1 = fully open
+    uOpenProgress: { value: 1.0 }, // 0 = closed, 1 = fully open
     uColorIris: { value: new THREE.Color('#9D00FF') },
     uColorGaze: { value: new THREE.Color('#D147FF') },
     uColorCore: { value: new THREE.Color('#F8ECFF') },
-    uIntensity: { value: 1.8 },
+    uIntensity: { value: 2.2 },
   },
   vertexShader: /* glsl */ `
     varying vec2 vUv;
@@ -28,7 +28,6 @@ export const FractalEyesShader = {
 
     varying vec2 vUv;
 
-    // Fractal noise for iris filaments
     float hash(vec2 p) {
       return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
     }
@@ -59,33 +58,33 @@ export const FractalEyesShader = {
     float eyeMask(vec2 uv, vec2 center, vec2 mouseOffset, float open) {
       vec2 p = uv - center;
 
-      // Eyelid shape: almond opening controlled by open
+      // Eyelid opening
       float h = 0.45;
       float w = 0.85;
-      float d = length(vec2(p.x / w, p.y / max(0.01, h * open)));
-      float eyeAperture = smoothstep(1.0, 0.7, d);
+      float d = length(vec2(p.x / w, p.y / max(0.02, h * max(0.05, open))));
+      float eyeAperture = 1.0 - smoothstep(0.7, 1.0, d);
 
-      // Pupil / Iris offset by mouse
+      // Pupil & Iris tracking cursor
       vec2 irisCenter = center + mouseOffset * 0.08;
       vec2 ip = uv - irisCenter;
       float r = length(ip);
       float angle = atan(ip.y, ip.x);
 
-      // Fractal filaments radiating outward
+      // Fractal iris filaments
       float filament = fbm(vec2(angle * 4.0, r * 12.0 - uTime * 0.5));
       filament += 0.5 * fbm(vec2(angle * 8.0 + uTime * 0.3, r * 20.0));
 
-      // Slit or predatory pupil core
-      float pupil = smoothstep(0.06, 0.02, length(vec2(ip.x * 2.2, ip.y)));
-      float iris = smoothstep(0.32, 0.08, r) * (0.6 + 0.4 * filament);
-      float glow = smoothstep(0.6, 0.0, r);
+      // Inverted smoothsteps: 1.0 - smoothstep(min, max, r)
+      float pupil = 1.0 - smoothstep(0.02, 0.06, length(vec2(ip.x * 2.2, ip.y)));
+      float iris = (1.0 - smoothstep(0.08, 0.34, r)) * (0.6 + 0.4 * filament);
+      float glow = 1.0 - smoothstep(0.0, 0.65, r);
 
-      float val = (iris - pupil * 0.85 + glow * 0.5) * eyeAperture;
+      float val = (iris - pupil * 0.85 + glow * 0.6) * eyeAperture;
       return max(0.0, val);
     }
 
     void main() {
-      // UV aspect centered
+      // Centered UV aspect
       vec2 uv = (vUv - 0.5) * vec2(2.4, 1.0) + 0.5;
 
       vec2 leftEye = vec2(0.28, 0.5);
@@ -95,12 +94,11 @@ export const FractalEyesShader = {
       float e2 = eyeMask(uv, rightEye, uMouse, uOpenProgress);
       float totalEyes = e1 + e2;
 
-      // Color mapping
-      vec3 col = mix(uColorIris, uColorGaze, totalEyes * 0.8);
-      col = mix(col, uColorCore, pow(totalEyes, 2.5) * 1.5);
+      // Vivid violet color blend with glowing white core
+      vec3 col = mix(uColorIris, uColorGaze, clamp(totalEyes * 0.8, 0.0, 1.0));
+      col = mix(col, uColorCore, clamp(pow(totalEyes, 2.2) * 1.6, 0.0, 1.0));
       col *= totalEyes * uIntensity;
 
-      // Vignette to pure black void
       float alpha = clamp(totalEyes * 1.8, 0.0, 1.0);
       gl_FragColor = vec4(col, alpha);
     }
