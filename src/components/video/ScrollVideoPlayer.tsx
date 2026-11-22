@@ -15,9 +15,9 @@ function getNarrative(T: number): NarrativeState {
   // 1.5 to 5.3: Chennai 2008
   // 5.3 to 9.7 sec: lazy naughty but pretty good in school
   // 9.7 seconds to 16.8 seconds: everything was good until
-  // 16.8 seconds to 17.7 seconds: Covid struck
-  // 17.7 to 20.7 (3-sec pause): covid struck failed in exams and debarred in college (black screen, no video)
-  // 20.7 to 26.9 (video 17.7 to 23.9): joined hands with bunch of friends and building unfounded things
+  // 16.8 seconds to 17.8 seconds: Covid struck
+  // 17.8 to 20.8 (3-sec pause): covid struck failed in exams and debarred in college (black screen, no video)
+  // 20.8 to 26.9 (video 17.8 to 23.9): joined hands with bunch of friends and built unfounded things
   // 26.9 to 33.73 (video 23.9 to 30.73): Currently Ceo of three business
 
   if (T < 0.1) {
@@ -35,22 +35,22 @@ function getNarrative(T: number): NarrativeState {
   if (T < 16.8) {
     return { text: 'everything was good until', isBlackScreen: false, videoTime: T };
   }
-  if (T < 17.7) {
+  if (T < 17.8) {
     return { text: 'Covid struck', isBlackScreen: false, videoTime: T };
   }
-  // 3-second black screen pause (video holds at 17.7s and is completely hidden)
-  if (T < 20.7) {
+  // 3-second black screen pause (video holds at 17.8s and is completely hidden)
+  if (T < 20.8) {
     return {
       text: 'covid struck failed in exams and debarred in college',
       isBlackScreen: true,
-      videoTime: 17.7,
+      videoTime: 17.8,
     };
   }
-  // 17.7s to 23.9s video (virtual 20.7s to 26.9s)
+  // 17.8s to 23.9s video (virtual 20.8s to 26.9s)
   if (T < 26.9) {
-    const vTime = 17.7 + (T - 20.7);
+    const vTime = 17.8 + (T - 20.8);
     return {
-      text: 'joined hands with bunch of friends and building unfounded things',
+      text: 'joined hands with bunch of friends and built unfounded things',
       isBlackScreen: false,
       videoTime: vTime,
     };
