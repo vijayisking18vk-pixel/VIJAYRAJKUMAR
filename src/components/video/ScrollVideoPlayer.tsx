@@ -1,8 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Virtual timeline duration = 30.73s (video) + 3.0s (black screen pause) - 0.2s offset = 33.53s
-const TOTAL_VIRTUAL_DURATION = 33.53;
+// Virtual timeline duration = 30.73s (video) + 3.0s (black screen pause) - 0.3s (start at 18.0s) = 33.43s
+const TOTAL_VIRTUAL_DURATION = 33.43;
 
 interface NarrativeState {
   text: string;
@@ -17,8 +17,8 @@ function getNarrative(T: number): NarrativeState {
   // 9.7 seconds to 16.8 seconds: everything was good until
   // 16.8 seconds to 17.7 seconds: Covid struck
   // 17.7 to 20.7 (3-sec pause): covid struck failed in exams and debarred in college (black screen, no video)
-  // 20.7 to 26.7 (video 17.9 to 23.9): joined hands with bunch of friends and built unfounded things
-  // 26.7 to 33.53 (video 23.9 to 30.73): Currently Ceo of three business
+  // 20.7 to 26.6 (video 18.0 to 23.9): joined hands with bunch of friends and built unfounded things
+  // 26.6 to 33.43 (video 23.9 to 30.73): Currently Ceo of three business
 
   if (T < 0.1) {
     return { text: '', isBlackScreen: false, videoTime: 0 };
@@ -38,7 +38,7 @@ function getNarrative(T: number): NarrativeState {
   if (T < 17.7) {
     return { text: 'Covid struck', isBlackScreen: false, videoTime: T };
   }
-  // 3-second black screen pause (video holds at 17.7s and is completely hidden)
+  // 3-second black screen pause (video holds and is completely hidden)
   if (T < 20.7) {
     return {
       text: 'covid struck failed in exams and debarred in college',
@@ -46,17 +46,17 @@ function getNarrative(T: number): NarrativeState {
       videoTime: 17.7,
     };
   }
-  // 17.9s to 23.9s video (virtual 20.7s to 26.7s)
-  if (T < 26.7) {
-    const vTime = 17.9 + (T - 20.7);
+  // 18.0s to 23.9s video (virtual 20.7s to 26.6s)
+  if (T < 26.6) {
+    const vTime = 18.0 + (T - 20.7);
     return {
       text: 'joined hands with bunch of friends and built unfounded things',
       isBlackScreen: false,
       videoTime: vTime,
     };
   }
-  // 23.9s to 30.73s video (virtual 26.7s to 33.53s)
-  const vTime = Math.min(23.9 + (T - 26.7), 30.73);
+  // 23.9s to 30.73s video (virtual 26.6s to 33.43s)
+  const vTime = Math.min(23.9 + (T - 26.6), 30.73);
   return {
     text: 'Currently Ceo of three business',
     isBlackScreen: false,
