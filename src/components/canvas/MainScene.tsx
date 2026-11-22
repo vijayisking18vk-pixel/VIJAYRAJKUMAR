@@ -15,8 +15,8 @@ import { Chamber6CitadelPortals } from './Chamber6CitadelPortals';
 import { Chamber7HorizonSignal } from './Chamber7HorizonSignal';
 
 interface MainSceneProps {
-  scrollProgress: number; // 0.0 to 1.0
-  mouse: { x: number; y: number };
+  scrollProgress?: number;
+  mouse?: { x: number; y: number };
   onEnterChamber1?: () => void;
   onPortalClick?: (url: string | null) => void;
   onPortalHover?: (name: string | null) => void;
@@ -54,20 +54,11 @@ class WebGLErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryStat
 }
 
 export const MainScene: React.FC<MainSceneProps> = ({
-  scrollProgress,
-  mouse,
   onEnterChamber1,
   onPortalClick,
   onPortalHover,
 }) => {
-  // Chromatic Aberration spikes during Chapter 3 (COVID fracture) and Chapter 4B (Debarred drop)
-  const isHighIntensity =
-    (scrollProgress > 0.30 && scrollProgress < 0.45) ||
-    (scrollProgress > 0.54 && scrollProgress < 0.65);
-
-  const aberrationOffset = isHighIntensity
-    ? new THREE.Vector2(0.0035, 0.0035)
-    : new THREE.Vector2(0.0006, 0.0006);
+  const aberrationOffset = new THREE.Vector2(0.0008, 0.0008);
 
   const fallbackBackdrop = (
     <div className="fixed inset-0 pointer-events-none z-0 bg-[#020005] overflow-hidden">
@@ -81,7 +72,7 @@ export const MainScene: React.FC<MainSceneProps> = ({
       <WebGLErrorBoundary fallback={fallbackBackdrop}>
         <Canvas
           camera={{ position: [0, 0, 12], fov: 48 }}
-          dpr={[1, 1.75]}
+          dpr={[1, 1.5]}
           gl={{
             antialias: false,
             powerPreference: 'high-performance',
@@ -89,52 +80,47 @@ export const MainScene: React.FC<MainSceneProps> = ({
             toneMappingExposure: 1.15,
           }}
         >
-          {/* 1. Spline Flythrough Camera Rig (Always active, never suspends) */}
-          <CameraRig scrollProgress={scrollProgress} mouse={mouse} />
+          {/* 1. Spline Flythrough Camera Rig (Updates damped scroll inside WebGL frame) */}
+          <CameraRig />
 
-          {/* 2. Unified World Environment - Lighting, Fog & Starfield (Always active) */}
-          <WorldEnvironment scrollProgress={scrollProgress} />
+          {/* 2. Unified World Environment - Dynamic Fog & 3,000 Cosmic Stars */}
+          <WorldEnvironment />
 
           <Suspense fallback={null}>
             {/* 3. 7 Sequential 3D Storytelling Chambers */}
-            <Chamber0Awakening
-              scrollProgress={scrollProgress}
-              mouse={mouse}
-              onEnter={onEnterChamber1}
-            />
+            <Chamber0Awakening onEnter={onEnterChamber1} />
 
-            <Chamber1StoicVoid scrollProgress={scrollProgress} />
+            <Chamber1StoicVoid />
 
-            <Chamber2SchoolingGates scrollProgress={scrollProgress} />
+            <Chamber2SchoolingGates />
 
-            <Chamber3FractureVortex scrollProgress={scrollProgress} />
+            <Chamber3FractureVortex />
 
-            <Chamber4WingsAndAbyss scrollProgress={scrollProgress} />
+            <Chamber4WingsAndAbyss />
 
-            <Chamber5RemainingFive scrollProgress={scrollProgress} />
+            <Chamber5RemainingFive />
 
             <Chamber6CitadelPortals
-              scrollProgress={scrollProgress}
               onPortalClick={onPortalClick}
               onPortalHover={onPortalHover}
             />
 
-            <Chamber7HorizonSignal scrollProgress={scrollProgress} mouse={mouse} />
+            <Chamber7HorizonSignal />
 
-            {/* 4. Post-Processing Engine */}
+            {/* 4. Optimized Post-Processing Engine */}
             <EffectComposer multisampling={0} disableNormalPass>
               <Bloom
                 mipmapBlur
-                luminanceThreshold={0.55}
-                luminanceSmoothing={0.85}
-                intensity={1.4}
+                luminanceThreshold={0.72}
+                luminanceSmoothing={0.5}
+                intensity={0.85}
               />
               <ChromaticAberration
                 offset={aberrationOffset}
                 radialModulation={true}
                 modulationOffset={0.25}
               />
-              <Vignette offset={0.25} darkness={0.8} />
+              <Vignette offset={0.25} darkness={0.75} />
             </EffectComposer>
           </Suspense>
         </Canvas>

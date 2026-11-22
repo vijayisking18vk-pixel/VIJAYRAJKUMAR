@@ -11,27 +11,15 @@ import { AmbientAudio } from './components/ui/AmbientAudio';
 import { CustomCursor } from './components/ui/CustomCursor';
 
 export default function App() {
-  const { progress, currentChamber, scrollToChamber } = useVirtualScroll();
+  const { currentChamber, scrollToChamber } = useVirtualScroll();
 
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const [isDossierOpen, setIsDossierOpen] = useState(false);
   const [isSignalModalOpen, setIsSignalModalOpen] = useState(false);
   const [isMischiefActive, setIsMischiefActive] = useState(false);
   const [portalHoverText, setPortalHoverText] = useState<string | null>(null);
   const [isAudioActive, setIsAudioActive] = useState(false);
 
-  // 1. Mouse Tracking for 3D Camera Parallax (-1 to 1)
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth) * 2 - 1;
-      const y = -(e.clientY / window.innerHeight) * 2 + 1;
-      setMouse({ x, y });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  // 2. Secret Key Sequence Listener: typing "CAT" or "2005" anywhere triggers Mischief Glitch
+  // Secret Key Sequence Listener: typing "CAT" or "2005" anywhere triggers Mischief Glitch
   useEffect(() => {
     let keyBuffer = '';
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -49,7 +37,7 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // 3. Audio & Portal interactions
+  // Audio & Portal interactions
   const handleToggleSound = useCallback(() => {
     const win = window as unknown as { toggleAmbientSound?: () => void };
     win.toggleAmbientSound?.();
@@ -77,8 +65,6 @@ export default function App() {
     <div className="relative w-screen h-screen overflow-hidden bg-[#020005] text-[#F8ECFF] select-none font-sans">
       {/* 1. Pure 3D Canvas Viewport (100vw x 100vh) */}
       <MainScene
-        scrollProgress={progress}
-        mouse={mouse}
         onEnterChamber1={() => scrollToChamber(1)}
         onPortalClick={handlePortalClick}
         onPortalHover={handlePortalHover}

@@ -2,12 +2,14 @@ import React, { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Text } from '@react-three/drei';
 import * as THREE from 'three';
+import { globalScroll } from '../../stores/scrollStore';
 
 interface Chamber3FractureVortexProps {
-  scrollProgress: number;
+  scrollProgress?: number;
 }
 
-export const Chamber3FractureVortex: React.FC<Chamber3FractureVortexProps> = ({ scrollProgress }) => {
+export const Chamber3FractureVortex: React.FC<Chamber3FractureVortexProps> = () => {
+  const groupRef = useRef<THREE.Group>(null);
   const shardsMeshRef = useRef<THREE.InstancedMesh>(null);
   const dnaGroupRef = useRef<THREE.Group>(null);
   const glitchCageRef = useRef<THREE.LineSegments>(null);
@@ -19,7 +21,7 @@ export const Chamber3FractureVortex: React.FC<Chamber3FractureVortexProps> = ({ 
     for (let i = 0; i < shardCount; i++) {
       const radius = 2.5 + Math.random() * 6.0;
       const angle = Math.random() * Math.PI * 2;
-      const z = -90 - Math.random() * 45; // between -90 and -135
+      const z = -105 - Math.random() * 35; // centered around -125
       const x = Math.cos(angle) * radius;
       const y = Math.sin(angle) * radius;
       const rotX = Math.random() * Math.PI;
@@ -48,9 +50,13 @@ export const Chamber3FractureVortex: React.FC<Chamber3FractureVortexProps> = ({ 
     return nodes;
   }, []);
 
-  const isVisible = scrollProgress >= 0.20 && scrollProgress <= 0.55;
-
   useFrame((state, delta) => {
+    const t = globalScroll.current;
+    const isVisible = t > 0.30 && t <= 0.46;
+
+    if (groupRef.current) {
+      groupRef.current.visible = isVisible;
+    }
     if (!isVisible) return;
 
     if (shardsMeshRef.current) {
@@ -85,7 +91,7 @@ export const Chamber3FractureVortex: React.FC<Chamber3FractureVortexProps> = ({ 
   });
 
   return (
-    <group position={[0, 0, 0]} visible={isVisible}>
+    <group ref={groupRef} position={[0, 0, 0]} visible={false}>
       {/* 1. Instanced Mesh of 88 Jagged Obsidian Fracture Shards */}
       <instancedMesh ref={shardsMeshRef} args={[undefined, undefined, shardCount]}>
         <tetrahedronGeometry args={[0.8, 0]} />

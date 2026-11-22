@@ -3,16 +3,15 @@ import { useFrame } from '@react-three/fiber';
 import { Text } from '@react-three/drei';
 import * as THREE from 'three';
 import { FractalEyesShader } from '../shaders/fractalEyes';
+import { globalScroll } from '../../stores/scrollStore';
 
 interface Chamber7HorizonSignalProps {
-  scrollProgress: number;
-  mouse: { x: number; y: number };
+  scrollProgress?: number;
+  mouse?: { x: number; y: number };
 }
 
-export const Chamber7HorizonSignal: React.FC<Chamber7HorizonSignalProps> = ({
-  scrollProgress,
-  mouse,
-}) => {
+export const Chamber7HorizonSignal: React.FC<Chamber7HorizonSignalProps> = () => {
+  const groupRef = useRef<THREE.Group>(null);
   const haloRef = useRef<THREE.Mesh>(null);
   const shaderMatRef = useRef<THREE.ShaderMaterial>(null);
 
@@ -29,6 +28,14 @@ export const Chamber7HorizonSignal: React.FC<Chamber7HorizonSignalProps> = ({
   }, []);
 
   useFrame((state, delta) => {
+    const t = globalScroll.current;
+    const isVisible = t > 0.92;
+
+    if (groupRef.current) {
+      groupRef.current.visible = isVisible;
+    }
+    if (!isVisible) return;
+
     if (haloRef.current) {
       haloRef.current.rotation.z += delta * 0.3;
       haloRef.current.rotation.y += delta * 0.15;
@@ -37,23 +44,21 @@ export const Chamber7HorizonSignal: React.FC<Chamber7HorizonSignalProps> = ({
       shaderMatRef.current.uniforms.uTime.value = state.clock.elapsedTime;
       shaderMatRef.current.uniforms.uMouse.value.x = THREE.MathUtils.damp(
         shaderMatRef.current.uniforms.uMouse.value.x,
-        mouse.x,
+        state.pointer.x,
         3.5,
         delta
       );
       shaderMatRef.current.uniforms.uMouse.value.y = THREE.MathUtils.damp(
         shaderMatRef.current.uniforms.uMouse.value.y,
-        mouse.y,
+        state.pointer.y,
         3.5,
         delta
       );
     }
   });
 
-  const isVisible = scrollProgress >= 0.86;
-
   return (
-    <group position={[0, 0.8, -350]} visible={isVisible}>
+    <group ref={groupRef} position={[0, 0.8, -350]} visible={false}>
       {/* 1. Calm Focused Fractal Violet Eyes */}
       <mesh position={[0, 0, -0.2]}>
         <planeGeometry args={[4.2, 2.2]} />
@@ -73,31 +78,17 @@ export const Chamber7HorizonSignal: React.FC<Chamber7HorizonSignalProps> = ({
         <meshStandardMaterial
           color="#F8ECFF"
           emissive="#D147FF"
-          emissiveIntensity={4.8}
+          emissiveIntensity={4.5}
           roughness={0.1}
         />
       </mesh>
 
-      {/* 3. In-World Monumental Text */}
+      {/* 3. In-World Spatial Creed Coordinates below halo */}
       <Text
-        position={[0, 3.4, 0]}
-        fontSize={0.52}
-        color="#F8ECFF"
-        letterSpacing={0.2}
-        anchorX="center"
-        anchorY="middle"
-        outlineWidth={0.015}
-        outlineColor="#9D00FF"
-      >
-        DEBARRED BY THE SYSTEM. BUILDING AN EMPIRE ANYWAY.
-      </Text>
-
-      {/* Creed & Coordinates */}
-      <Text
-        position={[0, -2.4, 0]}
+        position={[0, -2.0, 0]}
         fontSize={0.2}
         color="#D147FF"
-        letterSpacing={0.2}
+        letterSpacing={0.25}
         anchorX="center"
         anchorY="middle"
       >

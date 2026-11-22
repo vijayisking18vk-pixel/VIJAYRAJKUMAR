@@ -48,86 +48,27 @@ export const CinemaSubtitles: React.FC<CinemaSubtitlesProps> = ({
   onOpenSignalModal,
   onOpenDossier,
 }) => {
-  const current = SUBTITLES[currentChamber] || SUBTITLES[1];
+  const current = SUBTITLES[currentChamber] || SUBTITLES[0];
 
   return (
     <div className="fixed bottom-8 sm:bottom-12 left-0 right-0 z-30 flex flex-col items-center justify-center pointer-events-none px-4 select-none">
-      {/* Fallback Action Links for Chamber 6 (The Citadel) */}
-      {currentChamber === 6 && (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 10 }}
-          className="mb-4 flex flex-wrap justify-center gap-4 sm:gap-6 font-mono text-xs tracking-widest text-[#D147FF] pointer-events-auto"
-        >
-          <a
-            href="https://daas.media/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-[#F8ECFF] transition-colors underline decoration-[#9D00FF]/50 underline-offset-4"
-          >
-            [ DAAS.MEDIA ↗ ]
-          </a>
-          <a
-            href="https://www.chennairents.in/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-[#F8ECFF] transition-colors underline decoration-[#9D00FF]/50 underline-offset-4"
-          >
-            [ CHENNAIRENTS.IN ↗ ]
-          </a>
-          <a
-            href="https://www.schloss.living/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-[#F8ECFF] transition-colors underline decoration-[#9D00FF]/50 underline-offset-4"
-          >
-            [ SCHLOSS.LIVING ↗ ]
-          </a>
-        </motion.div>
-      )}
-
-      {/* Finale Action Strip for Chamber 7 (The Signal) */}
+      {/* Finale Action Strip for Chamber 7 (The Signal) - Clean, focused actions */}
       {currentChamber === 7 && (
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 10 }}
-          className="mb-4 flex flex-wrap justify-center items-center gap-3 sm:gap-5 font-mono text-xs tracking-wider text-[#A89BB9] pointer-events-auto"
+          className="mb-4 flex flex-wrap justify-center items-center gap-3 sm:gap-4 font-mono text-xs tracking-wider pointer-events-auto"
         >
           <button
             onClick={onOpenSignalModal}
-            className="text-[#020005] bg-[#D147FF] hover:bg-[#F8ECFF] font-bold px-3.5 py-1.5 rounded transition-colors shadow-[0_0_15px_rgba(209,71,255,0.4)]"
+            className="text-[#020005] bg-[#D147FF] hover:bg-[#F8ECFF] font-bold px-4 py-2 rounded transition-colors shadow-[0_0_15px_rgba(209,71,255,0.4)]"
           >
             [ SEND SIGNAL ]
           </button>
-          <a
-            href="https://daas.media/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-[#F8ECFF] transition-colors"
-          >
-            [ DAAS.MEDIA ↗ ]
-          </a>
-          <a
-            href="https://www.chennairents.in/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-[#F8ECFF] transition-colors"
-          >
-            [ CHENNAIRENTS.IN ↗ ]
-          </a>
-          <a
-            href="https://www.schloss.living/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-[#F8ECFF] transition-colors"
-          >
-            [ SCHLOSS.LIVING ↗ ]
-          </a>
           <button
             onClick={onOpenDossier}
-            className="hover:text-[#D147FF] transition-colors"
+            className="text-[#F8ECFF] border border-[#9D00FF]/50 hover:border-[#D147FF] hover:bg-[#9D00FF]/20 px-4 py-2 rounded transition-colors"
           >
             [ FULL DOSSIER ]
           </button>
@@ -138,11 +79,11 @@ export const CinemaSubtitles: React.FC<CinemaSubtitlesProps> = ({
       <AnimatePresence mode="wait">
         <motion.div
           key={currentChamber}
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -12 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="text-center max-w-3xl"
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.35, ease: 'easeOut' }}
+          className="text-center max-w-2xl px-4"
         >
           {/* Micro Chapter Label */}
           <span className="block font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.28em] text-[#9D00FF] mb-1.5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">

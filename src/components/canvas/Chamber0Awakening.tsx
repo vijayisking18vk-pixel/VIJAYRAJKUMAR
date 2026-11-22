@@ -1,21 +1,17 @@
 import React, { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Text } from '@react-three/drei';
 import * as THREE from 'three';
 import { FractalEyesShader } from '../shaders/fractalEyes';
+import { globalScroll } from '../../stores/scrollStore';
 
 interface Chamber0AwakeningProps {
-  scrollProgress: number;
-  mouse: { x: number; y: number };
+  scrollProgress?: number;
+  mouse?: { x: number; y: number };
   onEnter?: () => void;
 }
 
-export const Chamber0Awakening: React.FC<Chamber0AwakeningProps> = ({
-  scrollProgress,
-  mouse,
-  onEnter,
-}) => {
-  const meshRef = useRef<THREE.Mesh>(null);
+export const Chamber0Awakening: React.FC<Chamber0AwakeningProps> = ({ onEnter }) => {
+  const groupRef = useRef<THREE.Group>(null);
   const shaderMatRef = useRef<THREE.ShaderMaterial>(null);
 
   const uniforms = useMemo(() => {
@@ -30,40 +26,40 @@ export const Chamber0Awakening: React.FC<Chamber0AwakeningProps> = ({
     };
   }, []);
 
-  const isVisible = scrollProgress <= 0.16;
-
   useFrame((state, delta) => {
+    const t = globalScroll.current;
+    const isVisible = t <= 0.05;
+
+    if (groupRef.current) {
+      groupRef.current.visible = isVisible;
+    }
     if (!isVisible) return;
 
     if (shaderMatRef.current) {
       shaderMatRef.current.uniforms.uTime.value = state.clock.elapsedTime;
-      // Eyes follow cursor
+      // Eyes follow cursor smoothly via native pointer
       shaderMatRef.current.uniforms.uMouse.value.x = THREE.MathUtils.damp(
         shaderMatRef.current.uniforms.uMouse.value.x,
-        mouse.x,
-        4,
+        state.pointer.x,
+        4.0,
         delta
       );
       shaderMatRef.current.uniforms.uMouse.value.y = THREE.MathUtils.damp(
         shaderMatRef.current.uniforms.uMouse.value.y,
-        mouse.y,
-        4,
+        state.pointer.y,
+        4.0,
         delta
       );
 
-      const targetOpen = THREE.MathUtils.clamp(
-        1.0 - scrollProgress * 8,
-        0.0,
-        1.0
-      );
+      const targetOpen = THREE.MathUtils.clamp(1.0 - t * 18, 0.0, 1.0);
       shaderMatRef.current.uniforms.uOpenProgress.value = targetOpen;
     }
   });
 
   return (
-    <group position={[0, 0, 7]} visible={isVisible}>
+    <group ref={groupRef} position={[0, 0, 7]} visible={true}>
       {/* Fractal Eyes Plane */}
-      <mesh ref={meshRef} position={[0, 0, 0]} onClick={onEnter}>
+      <mesh position={[0, 0, 0]} onClick={onEnter}>
         <planeGeometry args={[4.2, 2.2]} />
         <shaderMaterial
           ref={shaderMatRef}
@@ -74,19 +70,6 @@ export const Chamber0Awakening: React.FC<Chamber0AwakeningProps> = ({
           depthWrite={false}
         />
       </mesh>
-
-      {/* Floating Micro Monospace Prompt */}
-      <Text
-        position={[0, -1.3, 0.1]}
-        fontSize={0.12}
-        color="#F8ECFF"
-        letterSpacing={0.25}
-        anchorX="center"
-        anchorY="middle"
-        onClick={onEnter}
-      >
-        SCROLL OR CLICK TO ENTER // R. VIJAYRAJKUMAR
-      </Text>
     </group>
   );
 };

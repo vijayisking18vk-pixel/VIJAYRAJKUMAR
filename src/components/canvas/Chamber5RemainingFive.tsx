@@ -2,12 +2,14 @@ import React, { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Text } from '@react-three/drei';
 import * as THREE from 'three';
+import { globalScroll } from '../../stores/scrollStore';
 
 interface Chamber5RemainingFiveProps {
-  scrollProgress: number;
+  scrollProgress?: number;
 }
 
-export const Chamber5RemainingFive: React.FC<Chamber5RemainingFiveProps> = ({ scrollProgress }) => {
+export const Chamber5RemainingFive: React.FC<Chamber5RemainingFiveProps> = () => {
+  const groupRef = useRef<THREE.Group>(null);
   const crownRef = useRef<THREE.Group>(null);
   const formationRef = useRef<THREE.Group>(null);
   const fadingOrbsRef = useRef<THREE.Group>(null);
@@ -20,7 +22,7 @@ export const Chamber5RemainingFive: React.FC<Chamber5RemainingFiveProps> = ({ sc
       const angle = (i / 5) * Math.PI * 2 - Math.PI / 2;
       const x = Math.cos(angle) * radius;
       const y = Math.sin(angle) * radius;
-      stars.push({ x, y, id: i + 1, name: i === 0 ? 'R.V (OPERATIONS)' : `FOUNDER 0${i + 1}` });
+      stars.push({ x, y, id: i + 1 });
     }
     return stars;
   }, []);
@@ -42,6 +44,14 @@ export const Chamber5RemainingFive: React.FC<Chamber5RemainingFiveProps> = ({ sc
   }, []);
 
   useFrame((state, delta) => {
+    const t = globalScroll.current;
+    const isVisible = t > 0.65 && t <= 0.79;
+
+    if (groupRef.current) {
+      groupRef.current.visible = isVisible;
+    }
+    if (!isVisible) return;
+
     if (formationRef.current) {
       formationRef.current.rotation.z += delta * 0.15;
     }
@@ -60,10 +70,8 @@ export const Chamber5RemainingFive: React.FC<Chamber5RemainingFiveProps> = ({ sc
     }
   });
 
-  const isVisible = scrollProgress >= 0.58 && scrollProgress <= 0.86;
-
   return (
-    <group position={[0, 0, -255]} visible={isVisible}>
+    <group ref={groupRef} position={[0, 0, -255]} visible={false}>
       {/* 1. 15 Dim Ash Orbs Drifting Outward (Faded Friends) */}
       <group ref={fadingOrbsRef}>
         {fadingOrbs.map((orb, i) => (

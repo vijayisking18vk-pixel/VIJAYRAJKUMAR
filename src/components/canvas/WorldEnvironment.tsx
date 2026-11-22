@@ -1,12 +1,13 @@
 import React, { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
+import { globalScroll } from '../../stores/scrollStore';
 
 interface WorldEnvironmentProps {
-  scrollProgress: number; // 0 to 1
+  scrollProgress?: number;
 }
 
-export const WorldEnvironment: React.FC<WorldEnvironmentProps> = ({ scrollProgress }) => {
+export const WorldEnvironment: React.FC<WorldEnvironmentProps> = () => {
   const fogRef = useRef<THREE.FogExp2>(null);
   const starsRef = useRef<THREE.Points>(null);
   const dirLightRef = useRef<THREE.DirectionalLight>(null);
@@ -23,10 +24,9 @@ export const WorldEnvironment: React.FC<WorldEnvironmentProps> = ({ scrollProgre
     const cWhite = new THREE.Color('#F8ECFF');
 
     for (let i = 0; i < count; i++) {
-      // Cylindrical distribution around camera flight path
       const angle = Math.random() * Math.PI * 2;
       const radius = 6.0 + Math.random() * 45.0;
-      const z = 20 - Math.random() * 380; // from +20 down to -360
+      const z = 20 - Math.random() * 380;
       const x = Math.cos(angle) * radius;
       const y = Math.sin(angle) * radius;
 
@@ -34,7 +34,6 @@ export const WorldEnvironment: React.FC<WorldEnvironmentProps> = ({ scrollProgre
       positions[i * 3 + 1] = y;
       positions[i * 3 + 2] = z;
 
-      // Color variation
       const r = Math.random();
       const chosenColor = r < 0.5 ? cViolet : r < 0.8 ? cMagenta : cWhite;
       colors[i * 3] = chosenColor.r;
@@ -46,43 +45,33 @@ export const WorldEnvironment: React.FC<WorldEnvironmentProps> = ({ scrollProgre
   }, []);
 
   useFrame((_, delta) => {
-    // Dynamic Fog Interpolation based on Chamber
+    const t = globalScroll.current;
+
     if (fogRef.current) {
-      // Default fog: density 0.012, color #020005
       let targetDensity = 0.014;
       let targetColor = new THREE.Color('#020005');
 
-      // Chamber 2: Schooling fog
-      if (scrollProgress >= 0.16 && scrollProgress < 0.30) {
+      if (t >= 0.16 && t < 0.31) {
         targetDensity = 0.018;
         targetColor = new THREE.Color('#0B011A');
-      }
-      // Chamber 3: Fracture Vortex (denser, darker)
-      else if (scrollProgress >= 0.30 && scrollProgress < 0.45) {
+      } else if (t >= 0.31 && t < 0.46) {
         targetDensity = 0.022;
         targetColor = new THREE.Color('#100008');
-      }
-      // Chamber 4: Storm clouds & vertical shaft
-      else if (scrollProgress >= 0.45 && scrollProgress < 0.65) {
+      } else if (t >= 0.46 && t < 0.66) {
         targetDensity = 0.024;
         targetColor = new THREE.Color('#1A0028');
-      }
-      // Chamber 5: Boundless deep space cosmos
-      else if (scrollProgress >= 0.65 && scrollProgress < 0.78) {
+      } else if (t >= 0.66 && t < 0.79) {
         targetDensity = 0.008;
         targetColor = new THREE.Color('#020005');
-      }
-      // Chamber 6: Grand Citadel Arena
-      else if (scrollProgress >= 0.78 && scrollProgress < 0.93) {
+      } else if (t >= 0.79 && t < 0.93) {
         targetDensity = 0.012;
         targetColor = new THREE.Color('#070112');
       }
 
-      fogRef.current.density = THREE.MathUtils.damp(fogRef.current.density, targetDensity, 3, delta);
+      fogRef.current.density = THREE.MathUtils.damp(fogRef.current.density, targetDensity, 3.0, delta);
       fogRef.current.color.lerp(targetColor, 0.05);
     }
 
-    // Subtle starfield twinkling rotation
     if (starsRef.current) {
       starsRef.current.rotation.z += delta * 0.02;
     }
@@ -101,7 +90,6 @@ export const WorldEnvironment: React.FC<WorldEnvironmentProps> = ({ scrollProgre
       />
       <directionalLight position={[-10, -10, -10]} color="#9D00FF" intensity={1.8} />
 
-      {/* 3,000 Cosmic Stars Points */}
       <points ref={starsRef}>
         <bufferGeometry>
           <bufferAttribute

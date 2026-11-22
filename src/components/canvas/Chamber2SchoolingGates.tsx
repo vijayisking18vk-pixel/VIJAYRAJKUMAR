@@ -2,28 +2,36 @@ import React, { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Text } from '@react-three/drei';
 import * as THREE from 'three';
+import { globalScroll } from '../../stores/scrollStore';
 
 interface Chamber2SchoolingGatesProps {
-  scrollProgress: number;
+  scrollProgress?: number;
 }
 
-export const Chamber2SchoolingGates: React.FC<Chamber2SchoolingGatesProps> = ({ scrollProgress }) => {
+export const Chamber2SchoolingGates: React.FC<Chamber2SchoolingGatesProps> = () => {
+  const groupRef = useRef<THREE.Group>(null);
   const catEyeGlowRef = useRef<THREE.PointLight>(null);
   const catMeshRef = useRef<THREE.Group>(null);
 
   useFrame((state) => {
+    const t = globalScroll.current;
+    const isVisible = t > 0.16 && t <= 0.31;
+
+    if (groupRef.current) {
+      groupRef.current.visible = isVisible;
+    }
+    if (!isVisible) return;
+
     // Lazy blink logic for cat eye in fog (blinks once every 4 seconds)
     if (catEyeGlowRef.current) {
-      const cycle = (state.clock.elapsedTime % 4.0);
+      const cycle = state.clock.elapsedTime % 4.0;
       const intensity = cycle > 3.7 && cycle < 3.9 ? 0.1 : 1.8;
       catEyeGlowRef.current.intensity = intensity;
     }
   });
 
-  const isVisible = scrollProgress >= 0.06 && scrollProgress <= 0.42;
-
   return (
-    <group visible={isVisible}>
+    <group ref={groupRef} visible={false}>
       {/* ================= GATE 1: ST. JOSEPH ================= */}
       <group position={[0, 0, -45]}>
         {/* Left Obsidian Pillar */}
