@@ -13,24 +13,38 @@ interface Chapter {
 const CHAPTERS: Chapter[] = [
   {
     id: 1,
-    timeRange: [0, 5.2],
+    timeRange: [0, 5.5],
     label: '01 // THE AWAKENING',
     title: 'FRACTAL GAZE',
     subtitle: 'From the deepest void, electric-violet eyes breach the dark.',
   },
   {
     id: 2,
-    timeRange: [5.2, 12.4],
+    timeRange: [5.5, 12.5],
     label: '02 // THE FAMILIAR',
-    title: 'NOCTURNAL SHADOW',
-    subtitle: 'A quiet, stoic sentinel watching through the purple storm.',
+    title: 'NOCTURNAL SENTINEL',
+    subtitle: 'An obsidian silhouette watching stoically through the purple storm.',
   },
   {
     id: 3,
-    timeRange: [12.4, 17.67],
-    label: '03 // THE ROOFTOP VOID',
-    title: 'CELESTIAL HORIZON',
+    timeRange: [12.5, 17.0],
+    label: '03 // ROOFTOP SKYLINE',
+    title: 'CELESTIAL CRESCENT',
     subtitle: 'Perched above the city lights, gazing at crescent moons in the violet sky.',
+  },
+  {
+    id: 4,
+    timeRange: [17.0, 23.0],
+    label: '04 // COSMIC CONVERGENCE',
+    title: 'ELECTRIC LOTUS',
+    subtitle: 'Ethereal hands reaching through stardust, bearing an electric violet bloom.',
+  },
+  {
+    id: 5,
+    timeRange: [23.0, 30.73],
+    label: '05 // THE STOIC IMPERIUM',
+    title: 'HALOED HORIZON',
+    subtitle: 'Debarred by the system. Crowned by discipline. Building an empire anyway.',
   },
 ];
 
@@ -39,7 +53,7 @@ export const ScrollVideoPlayer: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const rafId = useRef<number | null>(null);
 
-  const [duration, setDuration] = useState<number>(17.67);
+  const [duration, setDuration] = useState<number>(30.73);
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [scrollProgress, setScrollProgress] = useState<number>(0);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
@@ -184,7 +198,7 @@ export const ScrollVideoPlayer: React.FC = () => {
     <div
       ref={containerRef}
       className="relative w-full bg-[#020005] text-[#F8ECFF] select-none"
-      style={{ height: '450vh' }} // 450vh native scroll track
+      style={{ height: '600vh' }} // 600vh native scroll track for smooth 30.7s scrubbing
     >
       {/* ================= FIXED IMMERSIVE 100dvh VIEWPORT (Never scrolls away) ================= */}
       <div
