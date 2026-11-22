@@ -24,7 +24,7 @@ function getNarrative(T: number): NarrativeState {
     return {
       text: '05 /04 /2005 Thoothukudi',
       isBlackScreen: false,
-      videoTime: Math.max(T, 0.1), // Keep at least 0.1s so feline eyes are immediately visible on load
+      videoTime: Math.max(T, 0.1),
     };
   }
   if (T < 5.3) {
@@ -85,17 +85,12 @@ export const ScrollVideoPlayer: React.FC = () => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Set initial frame to 0.1s so feline eyes are decoded and visible immediately
     video.currentTime = 0.1;
 
-    // Primes the mobile hardware video decoder (required for iOS Safari and mobile Chrome)
     const primeDecoder = () => {
       video.play().then(() => {
-        // Once video begins playback and paints frame, pause so scroll takes over
         video.pause();
-      }).catch(() => {
-        // Autoplay may be restricted until user interaction; silent catch
-      });
+      }).catch(() => {});
     };
 
     if (video.readyState >= 2) {
@@ -104,7 +99,6 @@ export const ScrollVideoPlayer: React.FC = () => {
       video.addEventListener('canplay', primeDecoder, { once: true });
     }
 
-    // Also prime on first user touch/click as backup
     const handleFirstTouch = () => {
       if (video.paused && video.currentTime === 0) {
         primeDecoder();
@@ -123,7 +117,6 @@ export const ScrollVideoPlayer: React.FC = () => {
 
   // 2. Multi-Platform Scroll & Touch Handlers
   useEffect(() => {
-    // A. Native Window Scroll
     const handleScroll = () => {
       const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
       if (totalScroll <= 0) return;
@@ -133,7 +126,6 @@ export const ScrollVideoPlayer: React.FC = () => {
       targetProgress.current = progress;
     };
 
-    // B. Direct Wheel Listener (Smooth Desktop)
     const handleWheel = (e: WheelEvent) => {
       const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
       if (totalScroll <= 0) return;
@@ -143,7 +135,6 @@ export const ScrollVideoPlayer: React.FC = () => {
       window.scrollTo({ top: targetProgress.current * totalScroll });
     };
 
-    // C. Mobile Touch Listeners (Smooth Mobile Swipe Scrubbing)
     let touchStartY = 0;
     const handleTouchStart = (e: TouchEvent) => {
       touchStartY = e.touches[0].clientY;
@@ -183,7 +174,6 @@ export const ScrollVideoPlayer: React.FC = () => {
       const deltaSec = Math.min((now - lastTime) / 1000, 0.1);
       lastTime = now;
 
-      // Snappy exponential damping towards target scroll progress
       const factor = 1.0 - Math.exp(-14.0 * deltaSec);
       smoothedProgress.current += (targetProgress.current - smoothedProgress.current) * factor;
 
@@ -193,7 +183,6 @@ export const ScrollVideoPlayer: React.FC = () => {
 
       const video = videoRef.current;
       if (video && video.readyState >= 1) {
-        // Throttled seek threshold to keep hardware decoder silky smooth
         if (!video.seeking && Math.abs(video.currentTime - state.videoTime) > 0.02) {
           if ('fastSeek' in video && typeof (video as any).fastSeek === 'function') {
             (video as any).fastSeek(state.videoTime);
@@ -217,47 +206,51 @@ export const ScrollVideoPlayer: React.FC = () => {
     <div
       ref={containerRef}
       className="relative w-full bg-[#020005] text-[#F8ECFF] select-none"
-      style={{ height: '650vh' }} // Native scroll track for smooth scrub
+      style={{ height: '650vh' }}
     >
-      {/* ================= FIXED IMMERSIVE VIEWPORT (100dvh, Pointer events none for touch pass-through) ================= */}
-      <div className="fixed inset-0 w-screen h-[100dvh] overflow-hidden flex items-center justify-center bg-[#020005] z-10 pointer-events-none">
+      {/* ================= FIXED IMMERSIVE VIEWPORT (100dvh) ================= */}
+      <div className="fixed inset-0 w-screen h-[100dvh] overflow-hidden flex flex-col items-center justify-center bg-[#020005] z-10 pointer-events-none px-0 sm:px-6">
         
-        {/* Hardware-Accelerated Video Element with dual-source redundancy */}
-        <video
-          ref={videoRef}
-          className={`relative z-10 w-full h-full object-cover object-center transition-opacity duration-300 ${
-            narrative.isBlackScreen ? 'opacity-0' : 'opacity-100'
-          }`}
-          playsInline
-          muted
-          autoPlay
-          preload="auto"
-          disablePictureInPicture
-          disableRemotePlayback
-        >
-          <source src="/video/scroll-animation.mp4" type="video/mp4" />
-          <source src="https://v1.pinimg.com/videos/iht/expMp4/b9/f2/e5/b9f2e59139cc31d145835f884aa0dd52_720w.mp4" type="video/mp4" />
-        </video>
-
-        {/* Pure Black screen overlay during pause ("no video only text") */}
-        <div
-          className={`absolute inset-0 bg-[#020005] z-20 pointer-events-none transition-opacity duration-300 ${
-            narrative.isBlackScreen ? 'opacity-100' : 'opacity-0'
-          }`}
-        />
-
-        {/* Subtle Vignette for clean mobile framing */}
-        <div className="absolute inset-0 pointer-events-none z-25 bg-[radial-gradient(ellipse_at_center,transparent_70%,#020005_100%)]" />
-
         {/* ================= MINIMAL HEADER: ONLY vijayrajkumar ================= */}
-        <div className="absolute top-6 left-6 sm:top-8 sm:left-10 z-30 pointer-events-none select-none">
+        <div className="absolute top-5 left-5 sm:top-8 sm:left-10 z-30 pointer-events-none select-none">
           <span className="font-mono text-xs sm:text-sm tracking-widest text-[#F8ECFF] uppercase opacity-85 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
             vijayrajkumar
           </span>
         </div>
 
-        {/* ================= NARRATIVE TEXT OVERLAY (ONLY USER TEXTS) ================= */}
-        <div className="absolute inset-x-0 bottom-14 sm:bottom-20 z-30 flex justify-center items-center px-6 pointer-events-none select-none">
+        {/* ================= MOBILE-OPTIMIZED 16:9 VIDEO CONTAINER ================= */}
+        {/* Preserves respected 16:9 aspect ratio on mobile so zero content is cropped */}
+        <div className="relative w-full max-w-5xl aspect-video max-h-[60vh] sm:max-h-[75vh] flex items-center justify-center overflow-hidden z-10 shadow-[0_0_50px_rgba(0,0,0,0.8)]">
+          <video
+            ref={videoRef}
+            className={`w-full h-full object-contain transition-opacity duration-300 ${
+              narrative.isBlackScreen ? 'opacity-0' : 'opacity-100'
+            }`}
+            playsInline
+            muted
+            autoPlay
+            preload="auto"
+            disablePictureInPicture
+            disableRemotePlayback
+          >
+            <source src="/video/scroll-animation.mp4" type="video/mp4" />
+            <source src="https://v1.pinimg.com/videos/iht/expMp4/b9/f2/e5/b9f2e59139cc31d145835f884aa0dd52_720w.mp4" type="video/mp4" />
+          </video>
+
+          {/* Pure Black screen overlay during pause ("no video only text") */}
+          <div
+            className={`absolute inset-0 bg-[#020005] z-20 pointer-events-none transition-opacity duration-300 ${
+              narrative.isBlackScreen ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
+        </div>
+
+        {/* Subtle Vignette for clean framing */}
+        <div className="absolute inset-0 pointer-events-none z-25 bg-[radial-gradient(ellipse_at_center,transparent_75%,#020005_100%)]" />
+
+        {/* ================= NARRATIVE TEXT (DEDICATED LOWER SCREEN PLACEMENT) ================= */}
+        {/* Sits naturally in the portrait blank space below the 16:9 video on mobile */}
+        <div className="absolute inset-x-0 bottom-8 sm:bottom-14 z-30 flex justify-center items-center px-6 pointer-events-none select-none">
           <AnimatePresence mode="wait">
             {narrative.text && (
               <motion.div
@@ -266,13 +259,13 @@ export const ScrollVideoPlayer: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.35, ease: 'easeOut' }}
-                className="text-center max-w-3xl"
+                className="text-center max-w-2xl px-2"
               >
                 <p
                   className={`font-editorial font-light tracking-wide drop-shadow-[0_2px_14px_rgba(0,0,0,1)] ${
                     narrative.isBlackScreen
-                      ? 'text-xl sm:text-3xl md:text-4xl text-[#FF2A6D]'
-                      : 'text-xl sm:text-3xl md:text-4xl text-[#F8ECFF]'
+                      ? 'text-lg sm:text-2xl md:text-3xl text-[#FF2A6D]'
+                      : 'text-base sm:text-2xl md:text-3xl text-[#F8ECFF]'
                   }`}
                 >
                   "{narrative.text}"
