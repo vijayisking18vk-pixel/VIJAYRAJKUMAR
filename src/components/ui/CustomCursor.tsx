@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
-export const CustomCursor: React.FC = () => {
+interface CustomCursorProps {
+  externalHoverText?: string | null;
+}
+
+export const CustomCursor: React.FC<CustomCursorProps> = ({ externalHoverText }) => {
   const [mousePos, setMousePos] = useState({ x: -100, y: -100 });
   const [isHovering, setIsHovering] = useState(false);
   const [cursorText, setCursorText] = useState('');
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Only activate for non-touch pointers
     if (window.matchMedia('(pointer: coarse)').matches) {
       return;
     }
@@ -17,7 +20,6 @@ export const CustomCursor: React.FC = () => {
       setMousePos({ x: e.clientX, y: e.clientY });
       if (!isVisible) setIsVisible(true);
 
-      // Check for custom cursor targets or links
       const target = e.target as HTMLElement | null;
       if (target) {
         const interactive = target.closest('a, button, [data-cursor], .interactive-target');
@@ -25,7 +27,7 @@ export const CustomCursor: React.FC = () => {
           setIsHovering(true);
           const customText = interactive.getAttribute('data-cursor');
           setCursorText(customText || '');
-        } else {
+        } else if (!externalHoverText) {
           setIsHovering(false);
           setCursorText('');
         }
@@ -41,18 +43,30 @@ export const CustomCursor: React.FC = () => {
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [isVisible]);
+  }, [isVisible, externalHoverText]);
+
+  // Sync with 3D portal hover
+  useEffect(() => {
+    if (externalHoverText) {
+      setIsHovering(true);
+      setCursorText(externalHoverText);
+    } else if (!cursorText) {
+      setIsHovering(false);
+    }
+  }, [externalHoverText]);
 
   if (!isVisible) return null;
+
+  const ringRadius = isHovering ? 40 : 18;
 
   return (
     <div className="fixed inset-0 pointer-events-none z-[100] overflow-hidden">
       {/* 1. Sharp Inner Diamond Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-2.5 h-2.5 bg-[#F8ECFF] rotate-45 shadow-[0_0_8px_#D147FF]"
+        className="fixed top-0 left-0 w-2 h-2 bg-[#F8ECFF] rotate-45 shadow-[0_0_8px_#D147FF]"
         animate={{
-          x: mousePos.x - 5,
-          y: mousePos.y - 5,
+          x: mousePos.x - 4,
+          y: mousePos.y - 4,
           scale: isHovering ? 0.6 : 1,
         }}
         transition={{ type: 'spring', damping: 30, stiffness: 450, mass: 0.1 }}
@@ -62,17 +76,17 @@ export const CustomCursor: React.FC = () => {
       <motion.div
         className="fixed top-0 left-0 rounded-full border border-[#9D00FF]/60 flex items-center justify-center bg-[#4B009E]/10 backdrop-blur-[1px]"
         animate={{
-          x: isHovering ? mousePos.x - 36 : mousePos.y ? mousePos.x - 18 : -100,
-          y: isHovering ? mousePos.y - 36 : mousePos.x ? mousePos.y - 18 : -100,
-          width: isHovering ? 72 : 36,
-          height: isHovering ? 72 : 36,
+          x: mousePos.x - ringRadius,
+          y: mousePos.y - ringRadius,
+          width: ringRadius * 2,
+          height: ringRadius * 2,
           borderColor: isHovering ? 'rgba(209, 71, 255, 0.9)' : 'rgba(157, 0, 255, 0.4)',
           boxShadow: isHovering ? '0 0 25px rgba(209, 71, 255, 0.5)' : 'none',
         }}
         transition={{ type: 'spring', damping: 24, stiffness: 280, mass: 0.35 }}
       >
         {cursorText && (
-          <span className="text-[10px] font-mono tracking-widest text-[#F8ECFF] font-bold uppercase select-none">
+          <span className="text-[9px] font-mono tracking-widest text-[#F8ECFF] font-bold uppercase select-none text-center px-1">
             {cursorText}
           </span>
         )}

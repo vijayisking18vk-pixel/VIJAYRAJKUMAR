@@ -1,18 +1,28 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { Volume2, VolumeX } from 'lucide-react';
 
 interface AmbientAudioProps {
+  currentChamber?: number;
   isPlaying?: boolean;
   onToggle?: (playing: boolean) => void;
 }
 
-export const AmbientAudio: React.FC<AmbientAudioProps> = ({ isPlaying = false, onToggle }) => {
+export interface AmbientAudioController {
+  toggleSound: () => void;
+  playPortalChime: () => void;
+  isActive: boolean;
+}
+
+export const AmbientAudio: React.FC<AmbientAudioProps> = ({
+  currentChamber = 0,
+  isPlaying = false,
+  onToggle,
+}) => {
   const [active, setActive] = useState(isPlaying);
   const audioCtxRef = useRef<AudioContext | null>(null);
   const masterGainRef = useRef<GainNode | null>(null);
+  const filterRef = useRef<BiquadFilterNode | null>(null);
   const osc1Ref = useRef<OscillatorNode | null>(null);
   const osc2Ref = useRef<OscillatorNode | null>(null);
-  const lfoRef = useRef<OscillatorNode | null>(null);
 
   // Initialize Web Audio API Synth Drone
   const initAudio = useCallback(() => {
@@ -28,12 +38,13 @@ export const AmbientAudio: React.FC<AmbientAudioProps> = ({ isPlaying = false, o
       masterGain.connect(ctx.destination);
       masterGainRef.current = masterGain;
 
-      // Low pass filter for dark stoic drone
+      // Low pass filter whose cutoff shifts dynamically per chamber
       const filter = ctx.createBiquadFilter();
       filter.type = 'lowpass';
       filter.frequency.setValueAtTime(140, ctx.currentTime);
       filter.Q.setValueAtTime(2.5, ctx.currentTime);
       filter.connect(masterGain);
+      filterRef.current = filter;
 
       // Sub-bass drone oscillator (55Hz - A1 note)
       const osc1 = ctx.createOscillator();
@@ -50,22 +61,34 @@ export const AmbientAudio: React.FC<AmbientAudioProps> = ({ isPlaying = false, o
       osc2.connect(filter);
       osc2.start();
       osc2Ref.current = osc2;
-
-      // Slow LFO for filter breath (0.12Hz)
-      const lfo = ctx.createOscillator();
-      const lfoGain = ctx.createGain();
-      lfo.frequency.setValueAtTime(0.12, ctx.currentTime);
-      lfoGain.gain.setValueAtTime(45, ctx.currentTime);
-      lfo.connect(lfoGain);
-      lfoGain.connect(filter.frequency);
-      lfo.start();
-      lfoRef.current = lfo;
     } catch (e) {
       console.warn("Web Audio API not supported or blocked by browser policy.", e);
     }
   }, []);
 
-  const toggleSound = () => {
+  // Shift Low-Pass Filter Frequency per Chamber dynamically
+  useEffect(() => {
+    if (!filterRef.current || !audioCtxRef.current || !active) return;
+    const ctx = audioCtxRef.current;
+    const filter = filterRef.current;
+
+    const CUTOFFS: Record<number, number> = {
+      0: 120, // Void
+      1: 150, // Stoic Monolith
+      2: 200, // Mischievous Spark
+      3: 110, // 2020 Fracture
+      4: 85,  // Deep Abyss & Debarred
+      5: 230, // The Five Luminous Stars
+      6: 300, // The Grand Citadel
+      7: 170, // Epilogue Signal
+    };
+
+    const targetFreq = CUTOFFS[currentChamber] || 150;
+    filter.frequency.cancelScheduledValues(ctx.currentTime);
+    filter.frequency.setTargetAtTime(targetFreq, ctx.currentTime, 0.8);
+  }, [currentChamber, active]);
+
+  const toggleSound = useCallback(() => {
     initAudio();
     const ctx = audioCtxRef.current;
     const master = masterGainRef.current;
@@ -77,67 +100,48 @@ export const AmbientAudio: React.FC<AmbientAudioProps> = ({ isPlaying = false, o
     }
 
     if (!active) {
-      // Fade in smoothly
       master.gain.cancelScheduledValues(ctx.currentTime);
       master.gain.setValueAtTime(master.gain.value, ctx.currentTime);
-      master.gain.linearRampToValueAtTime(0.22, ctx.currentTime + 1.5);
+      master.gain.linearRampToValueAtTime(0.22, ctx.currentTime + 1.2);
       setActive(true);
       onToggle?.(true);
     } else {
-      // Fade out smoothly
       master.gain.cancelScheduledValues(ctx.currentTime);
       master.gain.setValueAtTime(master.gain.value, ctx.currentTime);
       master.gain.linearRampToValueAtTime(0.0001, ctx.currentTime + 0.8);
       setActive(false);
       onToggle?.(false);
     }
-  };
+  }, [active, initAudio, onToggle]);
 
-  // Play subtle tactile high-frequency click on UI interactions
-  const playClick = useCallback(() => {
+  // Expose toggleSound on window for header button trigger
+  useEffect(() => {
+    (window as unknown as { toggleAmbientSound?: () => void; isAudioActive?: boolean }).toggleAmbientSound = toggleSound;
+    (window as unknown as { isAudioActive?: boolean }).isAudioActive = active;
+  }, [toggleSound, active]);
+
+  // Tactile Portal Hover Chime
+  const playChime = useCallback(() => {
     if (!audioCtxRef.current || !active) return;
     try {
       const ctx = audioCtxRef.current;
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
       osc.type = 'sine';
-      osc.frequency.setValueAtTime(800, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.04);
-      gain.gain.setValueAtTime(0.04, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.04);
+      osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
+      osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.15); // A5
+      gain.gain.setValueAtTime(0.08, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
       osc.connect(gain);
       gain.connect(ctx.destination);
       osc.start();
-      osc.stop(ctx.currentTime + 0.05);
+      osc.stop(ctx.currentTime + 0.22);
     } catch {}
   }, [active]);
 
   useEffect(() => {
-    window.addEventListener('click', playClick);
-    return () => window.removeEventListener('click', playClick);
-  }, [playClick]);
+    (window as unknown as { playPortalChime?: () => void }).playPortalChime = playChime;
+  }, [playChime]);
 
-  return (
-    <button
-      onClick={toggleSound}
-      aria-label="Toggle ambient audio"
-      className="flex items-center space-x-2 text-xs font-mono tracking-widest text-[#A89BB9] hover:text-[#F8ECFF] transition-all duration-200 px-3 py-1.5 rounded-sm border border-[#9D00FF]/20 hover:border-[#D147FF]/60 bg-[#0B011A]/50 backdrop-blur-md"
-    >
-      {active ? (
-        <>
-          <div className="flex items-center space-x-0.5 h-3">
-            <span className="w-0.5 h-full bg-[#D147FF] animate-pulse" />
-            <span className="w-0.5 h-2 bg-[#9D00FF] animate-pulse delay-75" />
-            <span className="w-0.5 h-3 bg-[#F8ECFF] animate-pulse delay-150" />
-          </div>
-          <span className="text-[#F8ECFF]">SOUND: ON</span>
-        </>
-      ) : (
-        <>
-          <VolumeX className="w-3.5 h-3.5 text-[#A89BB9]/60" />
-          <span className="text-[#A89BB9]/60">SOUND: OFF</span>
-        </>
-      )}
-    </button>
-  );
+  return null;
 };
