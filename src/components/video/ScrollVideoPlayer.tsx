@@ -11,7 +11,7 @@ interface NarrativeState {
 }
 
 function getNarrative(T: number): NarrativeState {
-  // 0.1 to 1.5 second: 05 /04 /2005 Thoothukudi
+  // 0.0 to 1.5 second: 05 /04 /2005 Thoothukudi (immediate on load)
   // 1.5 to 5.3: Chennai 2008
   // 5.3 to 9.7 sec: lazy naughty but pretty good in school
   // 9.7 seconds to 16.8 seconds: everything was good until
@@ -20,11 +20,12 @@ function getNarrative(T: number): NarrativeState {
   // 20.7 to 26.6 (video 18.0 to 23.9): joined hands with bunch of friends and built unfounded things
   // 26.6 to 33.43 (video 23.9 to 30.73): Currently Ceo of three business
 
-  if (T < 0.1) {
-    return { text: '', isBlackScreen: false, videoTime: 0 };
-  }
   if (T < 1.5) {
-    return { text: '05 /04 /2005 Thoothukudi', isBlackScreen: false, videoTime: T };
+    return {
+      text: '05 /04 /2005 Thoothukudi',
+      isBlackScreen: false,
+      videoTime: Math.max(T, 0.1), // Keep at least 0.1s so feline eyes are immediately visible on load
+    };
   }
   if (T < 5.3) {
     return { text: 'Chennai 2008', isBlackScreen: false, videoTime: T };
@@ -38,7 +39,7 @@ function getNarrative(T: number): NarrativeState {
   if (T < 17.7) {
     return { text: 'Covid struck', isBlackScreen: false, videoTime: T };
   }
-  // 3-second black screen pause (video holds and is completely hidden)
+  // 3-second black screen pause (video holds at 17.7s and is completely hidden)
   if (T < 20.7) {
     return {
       text: 'covid struck failed in exams and debarred in college',
@@ -69,17 +70,60 @@ export const ScrollVideoPlayer: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const rafId = useRef<number | null>(null);
 
+  // Initialize with the first narrative state so content is visible IMMEDIATELY on load
   const [narrative, setNarrative] = useState<NarrativeState>({
-    text: '',
+    text: '05 /04 /2005 Thoothukudi',
     isBlackScreen: false,
-    videoTime: 0,
+    videoTime: 0.1,
   });
 
   const targetProgress = useRef<number>(0);
   const smoothedProgress = useRef<number>(0);
 
-  // 1. Native Window Scroll Listener mapping window scrollY to 0..1
+  // 1. Mobile Video Decoder Warmup & Autoplay Initialization
   useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Set initial frame to 0.1s so feline eyes are decoded and visible immediately
+    video.currentTime = 0.1;
+
+    // Primes the mobile hardware video decoder (required for iOS Safari and mobile Chrome)
+    const primeDecoder = () => {
+      video.play().then(() => {
+        // Once video begins playback and paints frame, pause so scroll takes over
+        video.pause();
+      }).catch(() => {
+        // Autoplay may be restricted until user interaction; silent catch
+      });
+    };
+
+    if (video.readyState >= 2) {
+      primeDecoder();
+    } else {
+      video.addEventListener('canplay', primeDecoder, { once: true });
+    }
+
+    // Also prime on first user touch/click as backup
+    const handleFirstTouch = () => {
+      if (video.paused && video.currentTime === 0) {
+        primeDecoder();
+      }
+      window.removeEventListener('touchstart', handleFirstTouch);
+      window.removeEventListener('click', handleFirstTouch);
+    };
+    window.addEventListener('touchstart', handleFirstTouch, { passive: true });
+    window.addEventListener('click', handleFirstTouch, { passive: true });
+
+    return () => {
+      window.removeEventListener('touchstart', handleFirstTouch);
+      window.removeEventListener('click', handleFirstTouch);
+    };
+  }, []);
+
+  // 2. Multi-Platform Scroll & Touch Handlers
+  useEffect(() => {
+    // A. Native Window Scroll
     const handleScroll = () => {
       const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
       if (totalScroll <= 0) return;
@@ -89,11 +133,49 @@ export const ScrollVideoPlayer: React.FC = () => {
       targetProgress.current = progress;
     };
 
+    // B. Direct Wheel Listener (Smooth Desktop)
+    const handleWheel = (e: WheelEvent) => {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalScroll <= 0) return;
+
+      const delta = e.deltaY * 0.0006;
+      targetProgress.current = Math.min(Math.max(targetProgress.current + delta, 0), 1);
+      window.scrollTo({ top: targetProgress.current * totalScroll });
+    };
+
+    // C. Mobile Touch Listeners (Smooth Mobile Swipe Scrubbing)
+    let touchStartY = 0;
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartY = e.touches[0].clientY;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      const currentY = e.touches[0].clientY;
+      const deltaY = touchStartY - currentY;
+      touchStartY = currentY;
+
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalScroll <= 0) return;
+
+      const delta = (deltaY / window.innerHeight) * 0.8;
+      targetProgress.current = Math.min(Math.max(targetProgress.current + delta, 0), 1);
+      window.scrollTo({ top: targetProgress.current * totalScroll });
+    };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
+    };
   }, []);
 
-  // 2. Smooth Damped Scrub Loop in RAF (60-120fps)
+  // 3. Smooth Damped Scrub Loop in RAF (60-120fps)
   useEffect(() => {
     let lastTime = performance.now();
 
@@ -135,41 +217,37 @@ export const ScrollVideoPlayer: React.FC = () => {
     <div
       ref={containerRef}
       className="relative w-full bg-[#020005] text-[#F8ECFF] select-none"
-      style={{ height: '650vh' }} // Expansive scroll track for buttery-smooth scrubbing
+      style={{ height: '650vh' }} // Native scroll track for smooth scrub
     >
-      {/* ================= FIXED IMMERSIVE VIEWPORT (100dvh) ================= */}
-      <div className="fixed inset-0 w-screen h-[100dvh] overflow-hidden flex items-center justify-center bg-[#020005] z-10">
+      {/* ================= FIXED IMMERSIVE VIEWPORT (100dvh, Pointer events none for touch pass-through) ================= */}
+      <div className="fixed inset-0 w-screen h-[100dvh] overflow-hidden flex items-center justify-center bg-[#020005] z-10 pointer-events-none">
         
-        {/* Background Ambient Glow */}
-        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,_rgba(157,0,255,0.14)_0%,_rgba(11,1,26,0.5)_60%,_#020005_100%)] z-0" />
-
-        {/* Video Element (Hardware Accelerated, Mobile-Optimized) */}
+        {/* Hardware-Accelerated Video Element with dual-source redundancy */}
         <video
           ref={videoRef}
-          src="/video/scroll-animation.mp4"
           className={`relative z-10 w-full h-full object-cover object-center transition-opacity duration-300 ${
             narrative.isBlackScreen ? 'opacity-0' : 'opacity-100'
           }`}
           playsInline
           muted
+          autoPlay
           preload="auto"
           disablePictureInPicture
           disableRemotePlayback
-        />
+        >
+          <source src="/video/scroll-animation.mp4" type="video/mp4" />
+          <source src="https://v1.pinimg.com/videos/iht/expMp4/b9/f2/e5/b9f2e59139cc31d145835f884aa0dd52_720w.mp4" type="video/mp4" />
+        </video>
 
-        {/* Black screen overlay during pause (No video, only text) */}
+        {/* Pure Black screen overlay during pause ("no video only text") */}
         <div
           className={`absolute inset-0 bg-[#020005] z-20 pointer-events-none transition-opacity duration-300 ${
             narrative.isBlackScreen ? 'opacity-100' : 'opacity-0'
           }`}
         />
 
-        {/* Cinematic Film Grain & CRT Scanline Accents */}
-        <div className="film-grain fixed inset-0 pointer-events-none z-25 opacity-25" />
-        <div className="crt-scanlines fixed inset-0 pointer-events-none z-25 opacity-20" />
-
-        {/* Subtle Vignette */}
-        <div className="absolute inset-0 pointer-events-none z-25 bg-[radial-gradient(ellipse_at_center,transparent_65%,#020005_100%)]" />
+        {/* Subtle Vignette for clean mobile framing */}
+        <div className="absolute inset-0 pointer-events-none z-25 bg-[radial-gradient(ellipse_at_center,transparent_70%,#020005_100%)]" />
 
         {/* ================= MINIMAL HEADER: ONLY vijayrajkumar ================= */}
         <div className="absolute top-6 left-6 sm:top-8 sm:left-10 z-30 pointer-events-none select-none">
@@ -184,17 +262,17 @@ export const ScrollVideoPlayer: React.FC = () => {
             {narrative.text && (
               <motion.div
                 key={narrative.text}
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
+                exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.35, ease: 'easeOut' }}
                 className="text-center max-w-3xl"
               >
                 <p
-                  className={`font-editorial font-light tracking-wide drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] ${
+                  className={`font-editorial font-light tracking-wide drop-shadow-[0_2px_14px_rgba(0,0,0,1)] ${
                     narrative.isBlackScreen
-                      ? 'text-xl sm:text-3xl md:text-4xl text-[#FF2A6D] text-glow'
-                      : 'text-lg sm:text-2xl md:text-3xl text-[#F8ECFF]'
+                      ? 'text-xl sm:text-3xl md:text-4xl text-[#FF2A6D]'
+                      : 'text-xl sm:text-3xl md:text-4xl text-[#F8ECFF]'
                   }`}
                 >
                   "{narrative.text}"
