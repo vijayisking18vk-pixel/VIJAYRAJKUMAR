@@ -25,4 +25,5 @@ dist-ssr
 *.zip
 *.mp4
 !public/videos/*.mp4
+!public/video/scroll-animation.mp4
 scratch/

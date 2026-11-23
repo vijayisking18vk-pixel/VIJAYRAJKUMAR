@@ -237,6 +237,19 @@ export const ScrollVideoPlayer: React.FC = () => {
             <source src="https://v1.pinimg.com/videos/iht/expMp4/b9/f2/e5/b9f2e59139cc31d145835f884aa0dd52_720w.mp4" type="video/mp4" />
           </video>
 
+          {/* Black round mask covering the watermark star throughout the 30s */}
+          <div
+            className="absolute pointer-events-none z-20 rounded-full bg-black shadow-[0_0_6px_2px_#000000]"
+            style={{
+              left: '90.56%',
+              top: '83.21%',
+              width: '4.8%',
+              aspectRatio: '1 / 1',
+              transform: 'translate(-50%, -50%)',
+            }}
+            aria-hidden="true"
+          />
+
           {/* Pure Black screen overlay during pause ("no video only text") */}
           <div
             className={`absolute inset-0 bg-[#020005] z-20 pointer-events-none transition-opacity duration-300 ${
@@ -249,8 +262,8 @@ export const ScrollVideoPlayer: React.FC = () => {
         <div className="absolute inset-0 pointer-events-none z-25 bg-[radial-gradient(ellipse_at_center,transparent_75%,#020005_100%)]" />
 
         {/* ================= NARRATIVE TEXT (DEDICATED LOWER SCREEN PLACEMENT) ================= */}
-        {/* Sits naturally in the portrait blank space below the 16:9 video on mobile */}
-        <div className="absolute inset-x-0 bottom-8 sm:bottom-14 z-30 flex justify-center items-center px-6 pointer-events-none select-none">
+        {/* Lifted higher up from screen bottom for superior mobile and desktop readability */}
+        <div className="absolute inset-x-0 bottom-[16vh] sm:bottom-14 md:bottom-16 z-30 flex justify-center items-center px-6 pointer-events-none select-none">
           <AnimatePresence mode="wait">
             {narrative.text && (
               <motion.div
